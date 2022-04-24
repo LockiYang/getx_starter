@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:getx_test/app/common/colors/color.dart';
-import 'package:getx_test/app/common/colors/style.dart';
 import 'package:getx_test/app/common/size.dart';
 
 class GradientBtnWidget extends StatelessWidget {

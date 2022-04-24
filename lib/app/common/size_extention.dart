@@ -24,11 +24,11 @@ class SizeConfig {
 extension SizeExtension on num {
   /// 根据屏幕尺寸获取宽度比例
   double spW() {
-    return (this.toDouble() / SizeConfig.dWidth!) * SizeConfig.width!;
+    return (toDouble() / SizeConfig.dWidth!) * SizeConfig.width!;
   }
 
   /// 根据屏幕尺寸获取高度比例
   double spH() {
-    return (this.toDouble() / SizeConfig.dHeight!) * SizeConfig.height!;
+    return (toDouble() / SizeConfig.dHeight!) * SizeConfig.height!;
   }
 }

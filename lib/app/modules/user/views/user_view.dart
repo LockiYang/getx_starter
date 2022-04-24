@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/home_controller.dart';
+import '../controllers/user_controller.dart';
 
-class HomeView extends GetView<HomeController> {
+class UserView extends GetView<UserController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomeView'),
+        title: Text('UserView'),
         centerTitle: true,
       ),
       body: Center(
-        child: Text('Home'),
+        child: Text(
+          'UserView is working',
+          style: TextStyle(fontSize: 20),
+        ),
       ),
     );
   }
