@@ -50,7 +50,7 @@ class AppTheme {
         titleTextStyle: Get.theme.textTheme.bodyText1,
         toolbarTextStyle: Get.theme.textTheme.bodyText1),
     textTheme: ThemeData.light().textTheme.copyWith(),
-    buttonTheme: 
+    // buttonTheme: 
   );
 
   static ThemeData dark = ThemeData(

@@ -12,6 +12,11 @@ abstract class Routes {
   static const SETTING = _Paths.SETTING;
   static const TEST = _Paths.TEST;
   static const ENROLL = _Paths.ENROLL;
+  static const BASIC_WIDGETS = _Paths.TEST + _Paths.BASIC_WIDGETS;
+  static const LIST_VIEW = _Paths.TEST + _Paths.LIST_VIEW;
+  static const GRID_VIEW = _Paths.TEST + _Paths.GRID_VIEW;
+  static const CUSTOM_ICON = _Paths.TEST + _Paths.CUSTOM_ICON;
+  static const SLIVER_WIDGETS = _Paths.TEST + _Paths.SLIVER_WIDGETS;
 }
 
 abstract class _Paths {
@@ -25,4 +30,9 @@ abstract class _Paths {
   static const SETTING = '/setting';
   static const TEST = '/test';
   static const ENROLL = '/enroll';
+  static const BASIC_WIDGETS = '/basic-widgets';
+  static const LIST_VIEW = '/list-view';
+  static const GRID_VIEW = '/grid-view';
+  static const CUSTOM_ICON = '/custom-icon';
+  static const SLIVER_WIDGETS = '/sliver-widgets';
 }
