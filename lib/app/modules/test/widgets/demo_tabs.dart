@@ -28,6 +28,7 @@ class DemoTabs extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        centerTitle: true,
         bottom: TabBar(
           controller: tabController,
           isScrollable: tabScrollable,

@@ -48,34 +48,45 @@ class TestView extends GetView<TestController> {
               title: Text('Navbar'),
               onTap: () => Get.to(Navbar()),
             ),
-            ElevatedButton(
-                style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.all(Colors.transparent),
-                  animationDuration: const Duration(milliseconds: 200),
-                  padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-                  shape: MaterialStateProperty.all(const StadiumBorder()),
-                  shadowColor: MaterialStateProperty.all(Colors.transparent),
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                  // foregroundColor: MaterialStateProperty.all(Colors.green)
-                ),
-                onPressed: () => Get.toNamed(Routes.WELCOME),
-                child: Text('登录')),
-            OutlinedButton(
-                onPressed: () {
-                  Get.dialog(CommonDialog(
-                    title: '退出登录',
-                    content: '确定要退出登录',
-                    backText: '取消',
-                    nextText: '确定',
-                  ));
-                },
-                child: Text('Common Dialog')),
-            OutlinedButton(
-                onPressed: () {
-                  Get.dialog(LoadingDialog());
-                },
-                child: Text('Loadding Dialog')),
-            Text('测试测试', style: Get.textTheme.caption),
+            ListTile(
+              title: Text('News'),
+              onTap: () => Get.toNamed(Routes.TEST_NEWS),
+            ),
+            ListTile(
+              title: Text('闪验测试'),
+              onTap: () => Get.toNamed(Routes.SHANYAN),
+            ),
+            // ListTile(
+            //   title: Text('登录'),
+            //   onTap: () => Get.toNamed(Routes.WELCOME),
+            // ),
+            // ElevatedButton(
+            //     style: ButtonStyle(
+            //       overlayColor: MaterialStateProperty.all(Colors.transparent),
+            //       animationDuration: const Duration(milliseconds: 200),
+            //       padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+            //       shape: MaterialStateProperty.all(const StadiumBorder()),
+            //       shadowColor: MaterialStateProperty.all(Colors.transparent),
+            //       backgroundColor: MaterialStateProperty.all(Colors.red),
+            //       // foregroundColor: MaterialStateProperty.all(Colors.green)
+            //     ),
+            //     onPressed: () => Get.toNamed(Routes.WELCOME),
+            //     child: Text('登录')),
+            // OutlinedButton(
+            //     onPressed: () {
+            //       Get.dialog(CommonDialog(
+            //         title: '退出登录',
+            //         content: '确定要退出登录',
+            //         backText: '取消',
+            //         nextText: '确定',
+            //       ));
+            //     },
+            //     child: Text('Common Dialog')),
+            // OutlinedButton(
+            //     onPressed: () {
+            //       Get.dialog(LoadingDialog());
+            //     },
+            //     child: Text('Loadding Dialog')),
           ],
         ),
       ),

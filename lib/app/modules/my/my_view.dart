@@ -6,7 +6,7 @@ import 'package:getx_test/app/routes/app_pages.dart';
 import 'package:getx_test/app/styles/app_theme.dart';
 import 'package:getx_test/app/utils/screen_util.dart';
 
-import '../controllers/my_controller.dart';
+import 'my_controller.dart';
 
 class MyView extends GetView<MyController> {
   @override

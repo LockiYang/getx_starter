@@ -8,7 +8,7 @@ import 'package:getx_test/app/common/size_extention.dart';
 import 'package:getx_test/app/components/btn.dart';
 import 'package:getx_test/app/routes/app_pages.dart';
 
-import '../controllers/welcome_controller.dart';
+import 'welcome_controller.dart';
 
 class WelcomeView extends GetView<WelcomeController> {
   @override

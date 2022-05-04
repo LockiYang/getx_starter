@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:getx_test/app/modules/home/views/home_view.dart';
-import 'package:getx_test/app/modules/message/views/message_view.dart';
-import 'package:getx_test/app/modules/my/views/my_view.dart';
+import 'package:getx_test/app/modules/home/home_view.dart';
+import 'package:getx_test/app/modules/message/message_view.dart';
+import 'package:getx_test/app/modules/my/my_view.dart';
 import 'package:getx_test/app/styles/app_theme.dart';
 
 class Navbar extends StatefulWidget {

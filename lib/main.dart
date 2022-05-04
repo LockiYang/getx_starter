@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_test/app/global_service.dart';
+import 'package:getx_test/app/services/storage_service.dart';
 
 import 'app/routes/app_pages.dart';
 import 'app/styles/app_theme.dart';
@@ -12,6 +13,7 @@ void main() {
 
 void appInit() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Get.putAsync<StorageService>(() => StorageService().init());
   Get.put<GlobalService>(GlobalService());
   runApp(const App());
 }

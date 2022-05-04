@@ -1,4 +1,4 @@
-package com.locki.getx_test;
+package com.szsdtech.wyykt;
 
 import io.flutter.embedding.android.FlutterActivity;
 

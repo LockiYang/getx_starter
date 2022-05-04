@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_test/app/components/page_bar.dart';
 
-import '../controllers/enroll_controller.dart';
+import 'enroll_controller.dart';
 
 class EnrollView extends GetView<EnrollController> {
 

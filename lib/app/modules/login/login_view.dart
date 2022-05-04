@@ -8,7 +8,7 @@ import 'package:getx_test/app/common/size.dart';
 import 'package:getx_test/app/common/size_extention.dart';
 import 'package:getx_test/app/components/btn.dart';
 
-import '../controllers/login_controller.dart';
+import 'login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
   @override

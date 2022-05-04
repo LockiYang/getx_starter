@@ -17,6 +17,13 @@ abstract class Routes {
   static const GRID_VIEW = _Paths.TEST + _Paths.GRID_VIEW;
   static const CUSTOM_ICON = _Paths.TEST + _Paths.CUSTOM_ICON;
   static const SLIVER_WIDGETS = _Paths.TEST + _Paths.SLIVER_WIDGETS;
+  static const TEST_NEWS = _Paths.TEST_NEWS;
+  static const NEWS_SIGNUP = _Paths.TEST_NEWS + _Paths.NEWS_SIGNUP;
+  static const NEWS_SIGNIN = _Paths.TEST_NEWS + _Paths.NEWS_SIGNIN;
+  static const NEWS_INDEX = _Paths.TEST_NEWS + _Paths.NEWS_INDEX;
+  static const NEWS_HOME = _Paths.TEST_NEWS + _Paths.NEWS_HOME;
+  static const NEWS_CATEGORY = _Paths.TEST_NEWS + _Paths.NEWS_CATEGORY;
+  static const SHANYAN = _Paths.TEST + _Paths.SHANYAN;
 }
 
 abstract class _Paths {
@@ -35,4 +42,11 @@ abstract class _Paths {
   static const GRID_VIEW = '/grid-view';
   static const CUSTOM_ICON = '/custom-icon';
   static const SLIVER_WIDGETS = '/sliver-widgets';
+  static const TEST_NEWS = '/test-news';
+  static const NEWS_SIGNUP = '/news-signup';
+  static const NEWS_SIGNIN = '/news-signin';
+  static const NEWS_INDEX = '/news-index';
+  static const NEWS_HOME = '/news-home';
+  static const NEWS_CATEGORY = '/news-category';
+  static const SHANYAN = '/shanyan';
 }
