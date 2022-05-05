@@ -1,4 +1,6 @@
-import 'package:getx_test/app/http/http_exception.dart';
+
+
+import 'package:getx_test/app/common/http/http_exception.dart';
 
 /// 返回数据类型
 class HttpResponse {
@@ -6,7 +8,7 @@ class HttpResponse {
   dynamic data;
   HttpException? error;
 
-  HttpResponse._internal({this.ok = false});
+  // HttpResponse._internal({this.ok = false});
 
   HttpResponse.success(this.data) {
     ok = true;
@@ -17,7 +19,7 @@ class HttpResponse {
     ok = false;
   }
 
-  HttpResponse.failFormResponse({dynamic? data}) {
+  HttpResponse.failFormResponse({dynamic data}) {
     error = BadResponseException(data);
     ok = false;
   }

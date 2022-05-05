@@ -18,8 +18,12 @@ import '../modules/test/custom_icon/custom_icon_binding.dart';
 import '../modules/test/custom_icon/custom_icon_view.dart';
 import '../modules/test/grid_view/grid_view_binding.dart';
 import '../modules/test/grid_view/grid_view_view.dart';
+import '../modules/test/http_test/http_test_binding.dart';
+import '../modules/test/http_test/http_test_view.dart';
 import '../modules/test/list_view/list_view_binding.dart';
 import '../modules/test/list_view/list_view_view.dart';
+import '../modules/test/little_widgets/little_widgets_binding.dart';
+import '../modules/test/little_widgets/little_widgets_view.dart';
 import '../modules/test/shanyan/shanyan_binding.dart';
 import '../modules/test/shanyan/shanyan_view.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_binding.dart';
@@ -40,6 +44,8 @@ import '../modules/test_news/test_news_binding.dart';
 import '../modules/test_news/test_news_view.dart';
 import '../modules/user/user_binding.dart';
 import '../modules/user/user_view.dart';
+import '../modules/webview/webview_binding.dart';
+import '../modules/webview/webview_view.dart';
 import '../modules/welcome/welcome_binding.dart';
 import '../modules/welcome/welcome_view.dart';
 
@@ -121,6 +127,16 @@ class AppPages {
           page: () => ShanyanView(),
           binding: ShanyanBinding(),
         ),
+        GetPage(
+          name: _Paths.LITTLE_WIDGETS,
+          page: () => LittleWidgetsView(),
+          binding: LittleWidgetsBinding(),
+        ),
+        GetPage(
+          name: _Paths.HTTP_TEST,
+          page: () => HttpTestView(),
+          binding: HttpTestBinding(),
+        ),
       ],
     ),
     GetPage(
@@ -159,6 +175,11 @@ class AppPages {
           binding: NewsCategoryBinding(),
         ),
       ],
+    ),
+    GetPage(
+      name: _Paths.WEBVIEW,
+      page: () => WebviewView(),
+      binding: WebviewBinding(),
     ),
   ];
 }

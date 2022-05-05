@@ -24,6 +24,9 @@ abstract class Routes {
   static const NEWS_HOME = _Paths.TEST_NEWS + _Paths.NEWS_HOME;
   static const NEWS_CATEGORY = _Paths.TEST_NEWS + _Paths.NEWS_CATEGORY;
   static const SHANYAN = _Paths.TEST + _Paths.SHANYAN;
+  static const WEBVIEW = _Paths.WEBVIEW;
+  static const LITTLE_WIDGETS = _Paths.TEST + _Paths.LITTLE_WIDGETS;
+  static const HTTP_TEST = _Paths.TEST + _Paths.HTTP_TEST;
 }
 
 abstract class _Paths {
@@ -49,4 +52,7 @@ abstract class _Paths {
   static const NEWS_HOME = '/news-home';
   static const NEWS_CATEGORY = '/news-category';
   static const SHANYAN = '/shanyan';
+  static const WEBVIEW = '/webview';
+  static const LITTLE_WIDGETS = '/little-widgets';
+  static const HTTP_TEST = '/http-test';
 }

@@ -1,13 +1,11 @@
 import 'package:dio/dio.dart';
-import 'http_response.dart';
+import '../http_response.dart';
 import 'http_transformer.dart';
 
 class DefaultHttpTransformer extends HttpTransformer {
   @override
   HttpResponse parse(Response response) {
-    if (response.data["status"] == 100) {
-      return HttpResponse.success(response.data["data"]);
-    } else if (response.data["code"] == 1 && response.data["msg"] == "成功") {
+    if (response.data["errorCode"] == 0) {
       return HttpResponse.success(response.data["data"]);
     } else {
       return HttpResponse.fail(

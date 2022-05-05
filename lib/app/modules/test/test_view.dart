@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_test/app/components/common_dialog.dart';
-import 'package:getx_test/app/components/loadding_dialog.dart';
 
 import '../../routes/app_pages.dart';
 import '../../utils/screen_util.dart';
@@ -56,10 +54,14 @@ class TestView extends GetView<TestController> {
               title: Text('闪验测试'),
               onTap: () => Get.toNamed(Routes.SHANYAN),
             ),
-            // ListTile(
-            //   title: Text('登录'),
-            //   onTap: () => Get.toNamed(Routes.WELCOME),
-            // ),
+            ListTile(
+              title: Text('小组件'),
+              onTap: () => Get.toNamed(Routes.LITTLE_WIDGETS),
+            ),
+            ListTile(
+              title: Text('HTTP测试'),
+              onTap: () => Get.toNamed(Routes.HTTP_TEST),
+            ),
             // ElevatedButton(
             //     style: ButtonStyle(
             //       overlayColor: MaterialStateProperty.all(Colors.transparent),

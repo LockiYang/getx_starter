@@ -1,8 +1,10 @@
+
+// 自定义异常
 class HttpException implements Exception {
   final int? _code;
   final String? _message;
   int get code => _code ?? -1;
-  String get message => _message ?? this.runtimeType.toString();
+  String get message => _message ?? runtimeType.toString();
 
   HttpException([this._message, this._code]);
 }

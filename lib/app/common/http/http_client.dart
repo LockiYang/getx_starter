@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
 
-import 'app_dio.dart';
+import 'config/dio_init.dart';
 import 'http_response.dart';
-import 'http_config.dart';
+import 'config/dio_config.dart';
 import 'http_parse.dart';
-import 'http_transformer.dart';
+import 'transformer/http_transformer.dart';
 
 class HttpClient {
-  late AppDio _dio;
+  late final DioInit _dio;
 
-  HttpClient({BaseOptions? options, HttpConfig? dioConfig})
-      : _dio = AppDio(options: options, dioConfig: dioConfig);
+  HttpClient({BaseOptions? options, DioConfig? dioConfig})
+      : _dio = DioInit(options: options, dioConfig: dioConfig);
 
   Future<HttpResponse> get(String uri,
       {Map<String, dynamic>? queryParameters,

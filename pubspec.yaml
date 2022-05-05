@@ -14,6 +14,7 @@ dependencies:
   cached_network_image: ^3.2.0
   pull_to_refresh: ^2.0.0
   webview_flutter: ^3.0.2
+  fluttertoast: ^8.0.9
   dio: ^4.0.6
   dio_cache_interceptor: ^3.2.6
   shanyan:

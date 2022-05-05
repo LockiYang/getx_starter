@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'default_http_transformer.dart';
+import 'transformer/default_http_transformer.dart';
 import 'http_exception.dart';
 import 'http_response.dart';
-import 'http_transformer.dart';
+import 'transformer/http_transformer.dart';
 
 HttpResponse handleResponse(Response? response,
     {HttpTransformer? httpTransformer}) {
