@@ -10,6 +10,7 @@ dependencies:
   get: ^4.6.1
   intl: ^0.17.0
   flutter_screenutil: ^5.4.0
+  flutter_svg: ^1.0.3
   shared_preferences: ^2.0.13
   cached_network_image: ^3.2.0
   pull_to_refresh: ^2.0.0
@@ -40,6 +41,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/img/
+    - assets/svg/
   fonts:
     - family: AntdIcons
       fonts:

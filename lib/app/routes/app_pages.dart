@@ -20,8 +20,6 @@ import '../modules/test/custom_icon/custom_icon_binding.dart';
 import '../modules/test/custom_icon/custom_icon_view.dart';
 import '../modules/test/grid_view/grid_view_binding.dart';
 import '../modules/test/grid_view/grid_view_view.dart';
-import '../modules/test/http_test/http_test_binding.dart';
-import '../modules/test/http_test/http_test_view.dart';
 import '../modules/test/list_view/list_view_binding.dart';
 import '../modules/test/list_view/list_view_view.dart';
 import '../modules/test/little_widgets/little_widgets_binding.dart';
@@ -44,6 +42,10 @@ import '../modules/test_news/news_signup/news_signup_binding.dart';
 import '../modules/test_news/news_signup/news_signup_view.dart';
 import '../modules/test_news/test_news_binding.dart';
 import '../modules/test_news/test_news_view.dart';
+import '../modules/test_wanandroid/test_wanandroid_binding.dart';
+import '../modules/test_wanandroid/test_wanandroid_view.dart';
+import '../modules/test_wanandroid/wa_home/wa_home_binding.dart';
+import '../modules/test_wanandroid/wa_home/wa_home_view.dart';
 import '../modules/user/user_binding.dart';
 import '../modules/user/user_view.dart';
 import '../modules/webview/webview_binding.dart';
@@ -135,11 +137,6 @@ class AppPages {
           binding: LittleWidgetsBinding(),
         ),
         GetPage(
-          name: _Paths.HTTP_TEST,
-          page: () => HttpTestView(),
-          binding: HttpTestBinding(),
-        ),
-        GetPage(
           name: _Paths.BANNER_SWIPER,
           page: () => BannerSwiperView(),
           binding: BannerSwiperBinding(),
@@ -187,6 +184,18 @@ class AppPages {
       name: _Paths.WEBVIEW,
       page: () => WebviewView(),
       binding: WebviewBinding(),
+    ),
+    GetPage(
+      name: _Paths.TEST_WANANDROID,
+      page: () => TestWanandroidView(),
+      binding: TestWanandroidBinding(),
+      children: [
+        GetPage(
+          name: _Paths.WA_HOME,
+          page: () => WaHomeView(),
+          binding: WaHomeBinding(),
+        ),
+      ],
     ),
   ];
 }

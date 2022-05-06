@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'test_news_controller.dart';
 
+// 欢迎页面
 class TestNewsView extends GetView<TestNewsController> {
   @override
   Widget build(BuildContext context) {

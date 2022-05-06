@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 
 import 'config/dio_init.dart';
 import 'config/dio_config.dart';
-import 'http_parse.dart';
+import 'response_parse.dart';
 import 'transformer/http_transformer.dart';
 
 typedef Success<T> = Function(T data);

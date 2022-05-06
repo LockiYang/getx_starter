@@ -4,10 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'banner_mode.dart';
 
-/// @class : BannerWidget
-/// @date : 2021/9/3
-/// @name : jhf
-/// @description :Banner
 class BannerWidget extends StatefulWidget {
   /// Banners列表数据
   final List<Banners> banner;
@@ -152,11 +148,11 @@ class _BannerState extends State<BannerWidget> {
       _timer = null;
     }
     _timer ??= Timer.periodic(const Duration(seconds: 3), (t) {
-      if(widget.banner.isEmpty){
+      if (widget.banner.isEmpty) {
         return;
       }
       _curIndex++;
-      if (!_pageController.hasClients){
+      if (!_pageController.hasClients) {
         return;
       }
       _pageController.animateToPage(

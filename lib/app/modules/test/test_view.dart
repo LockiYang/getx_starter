@@ -39,6 +39,14 @@ class TestView extends GetView<TestController> {
               onTap: () => Get.toNamed(Routes.SLIVER_WIDGETS),
             ),
             ListTile(
+              title: Text('News APP'),
+              onTap: () => Get.toNamed(Routes.TEST_NEWS),
+            ),
+            ListTile(
+              title: Text('WanAndroid APP'),
+              onTap: () => Get.toNamed(Routes.TEST_WANANDROID),
+            ),
+            ListTile(
               title: Text('登录'),
               onTap: () => Get.toNamed(Routes.WELCOME),
             ),
@@ -47,20 +55,12 @@ class TestView extends GetView<TestController> {
               onTap: () => Get.to(Navbar()),
             ),
             ListTile(
-              title: Text('News'),
-              onTap: () => Get.toNamed(Routes.TEST_NEWS),
-            ),
-            ListTile(
               title: Text('闪验测试'),
               onTap: () => Get.toNamed(Routes.SHANYAN),
             ),
             ListTile(
               title: Text('小组件'),
               onTap: () => Get.toNamed(Routes.LITTLE_WIDGETS),
-            ),
-            ListTile(
-              title: Text('HTTP测试'),
-              onTap: () => Get.toNamed(Routes.HTTP_TEST),
             ),
             ListTile(
               title: Text('Banner'),

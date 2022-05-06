@@ -1,12 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../styles/app_colors.dart';
 
 class NewsIndexController extends GetxController {
-
   /// 响应式成员变量
   var page = 0.obs;
 

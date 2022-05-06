@@ -26,8 +26,9 @@ abstract class Routes {
   static const SHANYAN = _Paths.TEST + _Paths.SHANYAN;
   static const WEBVIEW = _Paths.WEBVIEW;
   static const LITTLE_WIDGETS = _Paths.TEST + _Paths.LITTLE_WIDGETS;
-  static const HTTP_TEST = _Paths.TEST + _Paths.HTTP_TEST;
   static const BANNER_SWIPER = _Paths.TEST + _Paths.BANNER_SWIPER;
+  static const TEST_WANANDROID = _Paths.TEST_WANANDROID;
+  static const WA_HOME = _Paths.TEST_WANANDROID + _Paths.WA_HOME;
 }
 
 abstract class _Paths {
@@ -55,6 +56,7 @@ abstract class _Paths {
   static const SHANYAN = '/shanyan';
   static const WEBVIEW = '/webview';
   static const LITTLE_WIDGETS = '/little-widgets';
-  static const HTTP_TEST = '/http-test';
   static const BANNER_SWIPER = '/banner-swiper';
+  static const TEST_WANANDROID = '/test-wanandroid';
+  static const WA_HOME = '/wa-home';
 }

@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 
-import '../api/user.dart';
 import '../data/user.dart';
+import '../data/user_api.dart';
 import 'config_store.dart';
 import 'storage_service.dart';
 

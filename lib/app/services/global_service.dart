@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import 'styles/app_theme.dart';
+import '../styles/app_theme.dart';
 
 class GlobalService extends GetxService {
   static GlobalService get to => Get.find();
