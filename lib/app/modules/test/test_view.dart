@@ -62,6 +62,10 @@ class TestView extends GetView<TestController> {
               title: Text('HTTP测试'),
               onTap: () => Get.toNamed(Routes.HTTP_TEST),
             ),
+            ListTile(
+              title: Text('Banner'),
+              onTap: () => Get.toNamed(Routes.BANNER_SWIPER),
+            ),
             // ElevatedButton(
             //     style: ButtonStyle(
             //       overlayColor: MaterialStateProperty.all(Colors.transparent),

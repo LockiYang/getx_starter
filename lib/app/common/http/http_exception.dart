@@ -1,4 +1,3 @@
-
 // 自定义异常
 class HttpException implements Exception {
   final int? _code;
@@ -33,9 +32,4 @@ class NetworkException extends HttpException {
 
 class UnauthorisedException extends HttpException {
   UnauthorisedException({String? message, int? code = 401}) : super(message);
-}
-
-class BadResponseException extends HttpException {
-  dynamic data;
-  BadResponseException([this.data]) : super();
 }

@@ -27,6 +27,7 @@ abstract class Routes {
   static const WEBVIEW = _Paths.WEBVIEW;
   static const LITTLE_WIDGETS = _Paths.TEST + _Paths.LITTLE_WIDGETS;
   static const HTTP_TEST = _Paths.TEST + _Paths.HTTP_TEST;
+  static const BANNER_SWIPER = _Paths.TEST + _Paths.BANNER_SWIPER;
 }
 
 abstract class _Paths {
@@ -55,4 +56,5 @@ abstract class _Paths {
   static const WEBVIEW = '/webview';
   static const LITTLE_WIDGETS = '/little-widgets';
   static const HTTP_TEST = '/http-test';
+  static const BANNER_SWIPER = '/banner-swiper';
 }

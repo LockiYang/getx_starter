@@ -12,6 +12,8 @@ import '../modules/my/my_binding.dart';
 import '../modules/my/my_view.dart';
 import '../modules/setting/setting_binding.dart';
 import '../modules/setting/setting_view.dart';
+import '../modules/test/banner_swiper/banner_swiper_binding.dart';
+import '../modules/test/banner_swiper/banner_swiper_view.dart';
 import '../modules/test/basic_widgets/basic_widgets_binding.dart';
 import '../modules/test/basic_widgets/basic_widgets_view.dart';
 import '../modules/test/custom_icon/custom_icon_binding.dart';
@@ -136,6 +138,11 @@ class AppPages {
           name: _Paths.HTTP_TEST,
           page: () => HttpTestView(),
           binding: HttpTestBinding(),
+        ),
+        GetPage(
+          name: _Paths.BANNER_SWIPER,
+          page: () => BannerSwiperView(),
+          binding: BannerSwiperBinding(),
         ),
       ],
     ),

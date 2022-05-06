@@ -1,16 +1,13 @@
-/// @class : Banner
-/// @date : 2021/9/2
-/// @name : jhf
-/// @description : Banner轮播图
+/// Banner轮播图
 class Banners {
   ///描述
-  String desc = "";
+  String desc = '';
 
   ///ID
   int id = 0;
 
   ///图片路径
-  String imagePath = "";
+  String imagePath = '';
 
   ///是否显示
   int isVisible = 0;
@@ -23,7 +20,7 @@ class Banners {
   int type = 0;
 
   ///对应链接
-  String url = "";
+  String url = '';
 
   ///是否为本地图片
   bool isAssets = false;
@@ -34,26 +31,26 @@ class Banners {
   });
 
   Banners.fromJson(Map<dynamic, dynamic> json) {
-    desc = json["desc"];
-    id = json["id"];
-    imagePath = json["imagePath"];
-    isVisible = json["isVisible"];
-    order = json["order"];
-    title = json["title"];
-    type = json["type"];
-    url = json["url"];
+    desc = json['desc'];
+    id = json['id'];
+    imagePath = json['imagePath'];
+    isVisible = json['isVisible'];
+    order = json['order'];
+    title = json['title'];
+    type = json['type'];
+    url = json['url'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data["desc"] = desc;
-    data["id"] = id;
-    data["imagePath"] = imagePath;
-    data["isVisible"] = isVisible;
-    data["order"] = order;
-    data["title"] = title;
-    data["type"] = type;
-    data["url"] = url;
+    data['desc'] = desc;
+    data['id'] = id;
+    data['imagePath'] = imagePath;
+    data['isVisible'] = isVisible;
+    data['order'] = order;
+    data['title'] = title;
+    data['type'] = type;
+    data['url'] = url;
     return data;
   }
 }

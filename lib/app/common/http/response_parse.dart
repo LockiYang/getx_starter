@@ -1,38 +1,47 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:getx_test/app/common/http/http_client.dart';
 import 'transformer/default_http_transformer.dart';
 import 'http_exception.dart';
-import 'http_response.dart';
 import 'transformer/http_transformer.dart';
 
-HttpResponse handleResponse(Response? response,
-    {HttpTransformer? httpTransformer}) {
+//正常返回
+handleResponse<T>(Response? response,
+    {HttpTransformer? httpTransformer, Success<T>? success, Fail? fail}) {
   httpTransformer ??= DefaultHttpTransformer.getInstance();
 
   // 返回值异常
   if (response == null) {
-    return HttpResponse.failFromError();
+    _handleError(UnknownException(), fail: fail);
+    return;
   }
 
   // token失效
   if (_isTokenTimeout(response.statusCode)) {
-    return HttpResponse.failFromError(
-        UnauthorisedException(message: "没有权限", code: response.statusCode));
+    _handleError(
+        UnauthorisedException(message: "没有权限", code: response.statusCode),
+        fail: fail);
   }
   // 接口调用成功
   if (_isRequestSuccess(response.statusCode)) {
-    return httpTransformer.parse(response);
+    // 成功则解析出data<T>回调success，不成功解析出errCode和errMsg回调fail
+    httpTransformer.parse(response, success: success, fail: fail);
   } else {
-    // 接口调用失败
-    return HttpResponse.fail(
-        errMsg: response.statusMessage, errCode: response.statusCode);
+    // 接口调用失败，HTTP状态码异常
+    // TODO 也可能有服务器异常啊
+    _handleError(BadRequestException(
+        message: response.statusMessage, code: response.statusCode));
   }
 }
 
-HttpResponse handleException(Exception exception) {
+handleException(Exception exception, {Fail? fail}) {
   var parseException = _parseException(exception);
-  return HttpResponse.failFromError(parseException);
+  _handleError(parseException, fail: fail);
+}
+
+_handleError(HttpException exception, {Fail? fail}) {
+  if (fail != null) fail(exception.code, exception.message);
 }
 
 /// 鉴权失败
@@ -45,6 +54,7 @@ bool _isRequestSuccess(int? statusCode) {
   return (statusCode != null && statusCode >= 200 && statusCode < 300);
 }
 
+/// 转换异常
 HttpException _parseException(Exception error) {
   if (error is DioError) {
     switch (error.type) {

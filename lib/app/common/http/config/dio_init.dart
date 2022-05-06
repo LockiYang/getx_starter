@@ -9,8 +9,8 @@ import 'dio_config.dart';
 class DioInit with DioMixin implements Dio {
   DioInit({BaseOptions? options, DioConfig? dioConfig}) {
     options ??= BaseOptions(
-      baseUrl: dioConfig?.baseUrl ?? "",
-      contentType: 'application/json',
+      baseUrl: dioConfig?.baseUrl ?? '',
+      contentType: Headers.jsonContentType,
       connectTimeout: dioConfig?.connectTimeout,
       sendTimeout: dioConfig?.sendTimeout,
       receiveTimeout: dioConfig?.receiveTimeout,

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 
-import '../http_response.dart';
+import '../http_client.dart';
 
 ///返回数据脱壳，拿到解析后的data
 abstract class HttpTransformer {
-  HttpResponse parse(Response response);
+  parse<T>(Response response, {Success<T>? success, Fail? fail});
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_test/app/global_service.dart';
+import 'package:getx_test/app/data/repositorys/wan_android_api.dart';
 import 'package:getx_test/app/services/storage_service.dart';
 
 import 'app/routes/app_pages.dart';
@@ -14,7 +14,8 @@ void main() {
 void appInit() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Get.putAsync<StorageService>(() => StorageService().init());
-  Get.put<GlobalService>(GlobalService());
+  // Get.putAsync<GlobalService>(() => GlobalService().init());
+  Get.putAsync<WanAndroidApi>(() => WanAndroidApi().init());
   runApp(const App());
 }
 

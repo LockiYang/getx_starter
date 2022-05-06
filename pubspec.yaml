@@ -15,8 +15,10 @@ dependencies:
   pull_to_refresh: ^2.0.0
   webview_flutter: ^3.0.2
   fluttertoast: ^8.0.9
+  card_swiper: ^2.0.3
   dio: ^4.0.6
   dio_cache_interceptor: ^3.2.6
+  json_annotation: ^4.5.0
   shanyan:
     git:
       url: https://gitee.com/TaXiangZhiKe/CLShanYan_Flutter.git

@@ -1,20 +1,21 @@
 import 'package:dio/dio.dart';
-import '../http_response.dart';
+import '../http_client.dart';
 import 'http_transformer.dart';
 
 class DefaultHttpTransformer extends HttpTransformer {
   @override
-  HttpResponse parse(Response response) {
+  parse<T>(Response response, {Success<T>? success, Fail? fail}) {
     if (response.data["errorCode"] == 0) {
-      return HttpResponse.success(response.data["data"]);
+      if (success != null) success(response.data["data"]);
     } else {
-      return HttpResponse.fail(
-          errMsg: response.data["message"], errCode: response.data["code"]);
+      //后台errorCode不为0，返回了异常
+      if (fail != null) fail(response.data["errorCode"], response.data["errorMsg"]);
     }
   }
 
   /// 单例对象
-  static final DefaultHttpTransformer _instance = DefaultHttpTransformer._internal();
+  static final DefaultHttpTransformer _instance =
+      DefaultHttpTransformer._internal();
 
   /// 内部构造方法，可避免外部暴露构造函数，进行实例化
   DefaultHttpTransformer._internal();
