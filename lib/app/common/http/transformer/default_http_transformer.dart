@@ -6,6 +6,7 @@ class DefaultHttpTransformer extends HttpTransformer {
   @override
   parse<T>(Response response, {Success<T>? success, Fail? fail}) {
     if (response.data["errorCode"] == 0) {
+      // 回调函数执行点
       if (success != null) success(response.data["data"]);
     } else {
       //后台errorCode不为0，返回了异常
