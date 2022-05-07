@@ -7,14 +7,13 @@ class WaProjectController extends PagingController<Project> {
   late WanAndroidApi wanAndroidApi;
 
   @override
-  loadData() async {
-    await wanAndroidApi.getProjects(pageIndex, success: (data, total) {
-      hasMore = data.length < total;
-      newData = data;
-    }, fail: (code, msg) {
+  Future<List<Project>> loadData() async {
+    ProjectPage projectPage =
+        await wanAndroidApi.getProjects(pageIndex, fail: (exception) {
       loadStatus = 3;
       // 重试 refreshData
     });
+    return projectPage.datas.map((e) => Project.fromJson(e)).toList();
   }
 
   @override
@@ -22,5 +21,4 @@ class WaProjectController extends PagingController<Project> {
     super.onInit();
     wanAndroidApi = Get.find<WanAndroidApi>();
   }
-
 }

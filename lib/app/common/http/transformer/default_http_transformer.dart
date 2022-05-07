@@ -1,16 +1,29 @@
 import 'package:dio/dio.dart';
 import '../http_client.dart';
+import '../http_exception.dart';
 import 'http_transformer.dart';
 
 class DefaultHttpTransformer extends HttpTransformer {
   @override
-  parse<T>(Response response, {Success<T>? success, Fail? fail}) {
+  T? transform<T>(Response response, {Success<T>? success, Fail? fail}) {
+    // 成功则解析出data<T>回调success，不成功解析出errCode和errMsg回调fail
     if (response.data["errorCode"] == 0) {
+      T data = response.data["data"];
       // 回调函数执行点
-      if (success != null) success(response.data["data"]);
+      if (success != null) {
+        success(data);
+      }
+      return data;
     } else {
-      //后台errorCode不为0，返回了异常
-      if (fail != null) fail(response.data["errorCode"], response.data["errorMsg"]);
+      //后台errorCode不为0，返回了异常，获取业务异常代码封装
+      HttpException exception = BadServiceException(
+          code: response.data["errorCode"], message: response.data["errorMsg"]);
+      if (fail != null) {
+        fail.call(exception);
+        return null;
+      } else {
+        throw exception;
+      }
     }
   }
 

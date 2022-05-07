@@ -10,7 +10,6 @@ abstract class PagingController<T> extends GetxController {
 
   /// 列表数据
   List<T> data = <T>[];
-  List<T> newData = <T>[];
 
   /// 加载状态: 0加载中 1加载成功 2加载数据为空 3加载失败
   var loadStatus = 0;
@@ -29,8 +28,8 @@ abstract class PagingController<T> extends GetxController {
     pageIndex = 0;
     hasMore = true;
     data.clear();
-    await loadData();
-    data.addAll(newData);
+    List<T> datas = await loadData();
+    data.addAll(datas);
     refreshController.refreshCompleted();
     if (refreshController.footerStatus == LoadStatus.noMore) {
       refreshController.resetNoData();
@@ -41,8 +40,8 @@ abstract class PagingController<T> extends GetxController {
 
   /// 加载更多
   void loadMoreData() async{
-    await loadData();
-    data.addAll(newData);
+    List<T> datas = await loadData();
+    data.addAll(datas);
     /// 加载完成
     if (hasMore) {
       refreshController.loadComplete();
@@ -52,5 +51,5 @@ abstract class PagingController<T> extends GetxController {
     update();
   }
 
-  loadData();
+  Future<List<T>> loadData();
 }

@@ -1,12 +1,13 @@
 import 'package:dio/dio.dart';
+import 'package:getx_test/app/common/http/http_exception.dart';
 
 import 'config/dio_init.dart';
 import 'config/dio_config.dart';
-import 'response_parse.dart';
+import 'response_handler.dart';
 import 'transformer/http_transformer.dart';
 
 typedef Success<T> = Function(T data);
-typedef Fail = Function(int errCode, String errMsg);
+typedef Fail = Function(HttpException exception);
 
 class HttpClient {
   late final DioInit _dio;
@@ -14,7 +15,7 @@ class HttpClient {
   HttpClient({BaseOptions? options, DioConfig? dioConfig})
       : _dio = DioInit(options: options, dioConfig: dioConfig);
 
-  Future get<T>(String uri,
+  Future<T?> get<T>(String uri,
       {Map<String, dynamic>? queryParameters,
       Options? options,
       CancelToken? cancelToken,
@@ -30,10 +31,10 @@ class HttpClient {
         cancelToken: cancelToken, //通过cancel token来取消发起的请求
         onReceiveProgress: onReceiveProgress, //接收进度
       );
-      handleResponse<T>(response,
+      return handleResponse<T>(response,
           httpTransformer: httpTransformer, success: success, fail: fail);
     } on Exception catch (e) {
-      handleException(e, fail: fail);
+      return handleException(e, fail: fail);
     }
   }
 

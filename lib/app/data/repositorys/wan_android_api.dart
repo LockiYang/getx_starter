@@ -23,20 +23,20 @@ class WanAndroidApi extends GetxService {
           .map((e) => Banner.fromJson(e as Map<String, dynamic>))
           .toList();
       if (success != null) success(result);
-    }, fail: (code, msg) {
-      if (fail != null) fail(code, msg);
+    }, fail: (exception) {
+      if (fail != null) fail(exception);
     });
   }
 
   ///获取项目列表
-  getProjects(int page, {SuccessPaging<List<Project>>? success, Fail? fail}) async {
-    await client.get('article/listproject/page/json'.replaceFirst(RegExp('page'), '$page'),
-        success: (data) {
-      ProjectPage page = ProjectPage.fromJson(data as Map<String, dynamic>);
-      var result = page.datas.map((e) => Project.fromJson(e)).toList();
-      if (success != null) success(result, page.total);
-    }, fail: (code, msg) {
-      if (fail != null) fail(code, msg);
+  Future<ProjectPage> getProjects(int page,
+      {SuccessPaging<dynamic>? success, Fail? fail}) async {
+    var uri =
+        'article/listproject/page/json'.replaceFirst(RegExp('page'), '$page');
+    dynamic result = await client.get(uri, fail: (exception) {
+      if (fail != null) fail(exception);
     });
+
+    return ProjectPage.fromJson(result as Map<String, dynamic>);
   }
 }

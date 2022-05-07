@@ -7,8 +7,6 @@ import '../../../../data/models/index.dart';
 class ProjectListItem extends StatelessWidget {
   final Project project;
 
-  // final Function(bool) onResult;
-
   ProjectListItem(
     this.project, {
     Key? key,

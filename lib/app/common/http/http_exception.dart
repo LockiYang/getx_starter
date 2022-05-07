@@ -1,4 +1,4 @@
-// 自定义异常
+/// HTTP异常
 class HttpException implements Exception {
   final int? _code;
   final String? _message;
@@ -27,9 +27,9 @@ class CancelException extends HttpException {
 }
 
 class NetworkException extends HttpException {
-  NetworkException({String? message, int? code}) : super(message, code);
+  NetworkException({int? code, String? message}) : super(message, code);
 }
 
 class UnauthorisedException extends HttpException {
-  UnauthorisedException({String? message, int? code = 401}) : super(message);
+  UnauthorisedException({int? code = 401, String? message}) : super(message);
 }
