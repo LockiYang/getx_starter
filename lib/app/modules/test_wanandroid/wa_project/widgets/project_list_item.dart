@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../data/models/index.dart';
+import '../../../../data/models/project.dart';
 
 /// 项目列表item widget
 class ProjectListItem extends StatelessWidget {
@@ -56,7 +56,7 @@ class ProjectListItem extends StatelessWidget {
                   Row(
                     children: [
                       SvgPicture.asset(
-                        'assets/svg/program.svg',
+                        'assets/svgs/program.svg',
                         width: 16,
                       ),
                       SizedBox(height: 10),
@@ -75,7 +75,7 @@ class ProjectListItem extends StatelessWidget {
                   Row(
                     children: [
                       SvgPicture.asset(
-                        'assets/svg/date_time.svg',
+                        'assets/svgs/date_time.svg',
                         width: 16,
                       ),
                       SizedBox(height: 10),

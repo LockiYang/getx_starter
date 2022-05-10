@@ -7,6 +7,9 @@ import '../../../common/widgets/paging_refresher.dart';
 import 'wa_project_controller.dart';
 
 class WaProjectView extends GetView<WaProjectController> {
+  WaProjectView({Key? key}) : super(key: key) {
+    Get.put<WaProjectController>(WaProjectController());
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,14 +17,15 @@ class WaProjectView extends GetView<WaProjectController> {
             top: true,
             child: GetBuilder<WaProjectController>(
               // 此处可以用GetBuilder或GetView注入的WaProjectController都可以
-              builder: ((wpController) => PagingRefreshWidget<WaProjectController>(
-                  child: ListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      itemCount: wpController.data.length,
-                      itemBuilder: (context, index) {
-                        return ProjectListItem(wpController.data[index]);
-                      }))),
+              builder: (c) =>
+                  PagingRefreshWidget<WaProjectController>(
+                      child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          itemCount: c.data.length,
+                          itemBuilder: (context, index) {
+                            return ProjectListItem(c.data[index]);
+                          })),
             )));
   }
 }

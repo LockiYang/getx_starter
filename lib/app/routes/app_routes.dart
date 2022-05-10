@@ -29,6 +29,10 @@ abstract class Routes {
   static const BANNER_SWIPER = _Paths.TEST + _Paths.BANNER_SWIPER;
   static const TEST_WANANDROID = _Paths.TEST_WANANDROID;
   static const WA_HOME = _Paths.TEST_WANANDROID + _Paths.WA_HOME;
+  static const WA_MY = _Paths.TEST_WANANDROID + _Paths.WA_MY;
+  static const WA_SEARCH = _Paths.TEST_WANANDROID + _Paths.WA_SEARCH;
+  static const WA_SETTING =
+      _Paths.TEST_WANANDROID + _Paths.WA_MY + _Paths.WA_SETTING;
 }
 
 abstract class _Paths {
@@ -59,4 +63,7 @@ abstract class _Paths {
   static const BANNER_SWIPER = '/banner-swiper';
   static const TEST_WANANDROID = '/test-wanandroid';
   static const WA_HOME = '/wa-home';
+  static const WA_MY = '/wa-my';
+  static const WA_SEARCH = '/wa-search';
+  static const WA_SETTING = '/wa-setting';
 }

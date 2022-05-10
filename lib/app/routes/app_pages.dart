@@ -46,6 +46,12 @@ import '../modules/test_wanandroid/test_wanandroid_binding.dart';
 import '../modules/test_wanandroid/test_wanandroid_view.dart';
 import '../modules/test_wanandroid/wa_home/wa_home_binding.dart';
 import '../modules/test_wanandroid/wa_home/wa_home_view.dart';
+import '../modules/test_wanandroid/wa_my/wa_my_binding.dart';
+import '../modules/test_wanandroid/wa_my/wa_my_view.dart';
+import '../modules/test_wanandroid/wa_my/wa_setting/wa_setting_binding.dart';
+import '../modules/test_wanandroid/wa_my/wa_setting/wa_setting_view.dart';
+import '../modules/test_wanandroid/wa_search/wa_search_binding.dart';
+import '../modules/test_wanandroid/wa_search/wa_search_view.dart';
 import '../modules/user/user_binding.dart';
 import '../modules/user/user_view.dart';
 import '../modules/webview/webview_binding.dart';
@@ -194,6 +200,23 @@ class AppPages {
           name: _Paths.WA_HOME,
           page: () => WaHomeView(),
           binding: WaHomeBinding(),
+        ),
+        GetPage(
+          name: _Paths.WA_MY,
+          page: () => WaMyView(),
+          binding: WaMyBinding(),
+          children: [
+            GetPage(
+              name: _Paths.WA_SETTING,
+              page: () => WaSettingView(),
+              binding: WaSettingBinding(),
+            ),
+          ],
+        ),
+        GetPage(
+          name: _Paths.WA_SEARCH,
+          page: () => WaSearchView(),
+          binding: WaSearchBinding(),
         ),
       ],
     ),

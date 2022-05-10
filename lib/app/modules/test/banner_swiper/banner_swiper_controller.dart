@@ -8,9 +8,9 @@ class BannerSwiperController extends GetxController {
   final banners = Rx<List<Banner>?>([]);
 
   loadBanners() async {
-    wanAndroidApi.getBanners(
-      success: (data) => banners.value = data,
-    );
+    // wanAndroidApi.getBanners(
+    //   success: (data) => banners.value = data,
+    // );
   }
 
   @override

@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
+import 'package:getx_test/app/common/widgets/banner_model.dart';
 
 import '../../common/http/config/dio_config.dart';
 import '../../common/http/http_client.dart';
-import '../models/banner.dart';
 import '../models/project.dart';
 
 typedef SuccessPaging<T> = Function(T data, int total);
@@ -17,22 +17,31 @@ class WanAndroidApi extends GetxService {
   }
 
   ///首页banner轮播图
-  getBanners({Success<List<Banner>>? success, Fail? fail}) {
+  getBanners({Success<List<BannerModel>>? success}) {
     client.get('banner/json', success: (data) {
       var result = (data as List<dynamic>)
-          .map((e) => Banner.fromJson(e as Map<String, dynamic>))
+          .map((e) => BannerModel.fromJson(e as Map<String, dynamic>))
           .toList();
-      if (success != null) success(result);
-    }, fail: (exception) {
-      if (fail != null) fail(exception);
+      if (success != null) {
+        success(result);
+      }
     });
   }
 
   ///获取项目列表
-  Future<ProjectPage> getProjects(int page,
-      {SuccessPaging<dynamic>? success, Fail? fail}) async {
+  Future<ProjectPage> getProjects(int page, {Fail? fail}) async {
     var uri =
         'article/listproject/page/json'.replaceFirst(RegExp('page'), '$page');
+    dynamic result = await client.get(uri, fail: (exception) {
+      if (fail != null) fail(exception);
+    });
+
+    return ProjectPage.fromJson(result as Map<String, dynamic>);
+  }
+
+  ///获取文章列表
+  Future<ProjectPage> getArticles(int page, {Fail? fail}) async {
+    var uri = 'article/list/page/json'.replaceFirst(RegExp('page'), '$page');
     dynamic result = await client.get(uri, fail: (exception) {
       if (fail != null) fail(exception);
     });

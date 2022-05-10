@@ -1,20 +1,35 @@
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_test/app/common/widgets/banner_model.dart';
 
-class WaHomeController extends GetxController {
-  //TODO: Implement WaHomeController
+import '../../../data/repositorys/wan_android_api.dart';
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+class WaHomeController extends GetxController with GetSingleTickerProviderStateMixin {
+  late WanAndroidApi wanAndroidApi;
+  late TabController tabController;
+  var banners = <BannerModel>[];
+
+  getBanners() {
+    wanAndroidApi.getBanners(
+      success: (data) {
+        banners.addAll(data);
+        for (var e in data) {
+          precacheImage(NetworkImage(e.imagePath), Get.context!);
+        }
+        update();
+      }
+    );
   }
 
   @override
-  void onReady() {
-    super.onReady();
+  void onInit() {
+    super.onInit();
+    wanAndroidApi = Get.find<WanAndroidApi>();
+    tabController = TabController(length: 3, vsync: this);
+    getBanners();
   }
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

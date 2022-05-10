@@ -42,15 +42,19 @@ const appColorBackground = Color(0xfff8f8f8);
 class AppTheme {
   static ThemeData light = ThemeData(
     colorScheme: lightColorScheme,
+    splashColor: Colors.transparent,
     splashFactory: NoSplashFactory(),
+    highlightColor: Colors.transparent,
     appBarTheme: ThemeData.light().appBarTheme.copyWith(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        shadowColor: Colors.transparent,
-        titleTextStyle: Get.theme.textTheme.bodyText1,
-        toolbarTextStyle: Get.theme.textTheme.bodyText1),
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          shadowColor: Colors.transparent,
+          titleTextStyle: Get.theme.textTheme.bodyText1,
+          toolbarTextStyle: Get.theme.textTheme.bodyText1,
+        ),
     textTheme: ThemeData.light().textTheme.copyWith(),
-    // buttonTheme: 
+    // buttonTheme:
   );
 
   static ThemeData dark = ThemeData(

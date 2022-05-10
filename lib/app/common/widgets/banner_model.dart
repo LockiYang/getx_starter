@@ -1,10 +1,10 @@
 /// Banner轮播图
-class Banners {
-  ///描述
-  String desc = '';
-
+class BannerModel {
   ///ID
   int id = 0;
+  
+  ///描述
+  String desc = '';
 
   ///图片路径
   String imagePath = '';
@@ -25,12 +25,12 @@ class Banners {
   ///是否为本地图片
   bool isAssets = false;
 
-  Banners({
+  BannerModel({
     required this.imagePath,
     required this.isAssets,
   });
 
-  Banners.fromJson(Map<dynamic, dynamic> json) {
+  BannerModel.fromJson(Map<dynamic, dynamic> json) {
     desc = json['desc'];
     id = json['id'];
     imagePath = json['imagePath'];

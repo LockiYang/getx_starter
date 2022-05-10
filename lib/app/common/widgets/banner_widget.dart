@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'banner_mode.dart';
+import 'banner_model.dart';
 
 class BannerWidget extends StatefulWidget {
   /// Banners列表数据
-  final List<Banners> banner;
+  final List<BannerModel> banners;
 
   /// Banners高度
   final double height;
@@ -18,7 +18,7 @@ class BannerWidget extends StatefulWidget {
   final Curve curve;
 
   BannerWidget(
-    this.banner, {
+    this.banners, {
     this.height = 200,
     required this.onTap,
     this.curve = Curves.linear,
@@ -36,7 +36,7 @@ class _BannerState extends State<BannerWidget> {
   @override
   void initState() {
     super.initState();
-    _curIndex = widget.banner.length * 5;
+    _curIndex = widget.banners.length * 5;
     _pageController = PageController(initialPage: _curIndex);
     _initTimer();
   }
@@ -54,21 +54,21 @@ class _BannerState extends State<BannerWidget> {
 
   ///指引器
   Widget _buildIndicator() {
-    if (widget.banner.isEmpty) {
+    if (widget.banners.isEmpty) {
       return const SizedBox();
     }
-    var length = widget.banner.length;
+    var length = widget.banners.length;
     return Positioned(
       bottom: 10,
       child: Row(
-        children: widget.banner.map((s) {
+        children: widget.banners.map((s) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 3.0),
             child: ClipOval(
               child: Container(
                 width: 7,
                 height: 7,
-                color: s == widget.banner[_curIndex % length]
+                color: s == widget.banners[_curIndex % length]
                     ? Colors.white
                     : Colors.grey,
               ),
@@ -81,12 +81,29 @@ class _BannerState extends State<BannerWidget> {
 
   ///PageView
   Widget _buildPageView() {
-    if (widget.banner.isEmpty) {
+    if (widget.banners.isEmpty) {
       return const SizedBox();
     }
-    var length = widget.banner.length;
+
+    // 计算banner的高度
+    double bannerHeight = 150.0;
+    int imageWidth = 1;
+    int imageHeight = 1;
+    Image image = Image.asset('assets/images/banner.png');
+    image.image.resolve(ImageConfiguration()).addListener(
+      ImageStreamListener(
+        (ImageInfo info, bool _) {
+          imageWidth = info.image.width;
+          imageHeight = info.image.height;
+        },
+      ),
+    );
+    double width = MediaQuery.of(context).size.width;
+    bannerHeight =  imageHeight/imageWidth*width;
+
+    var length = widget.banners.length;
     return SizedBox(
-      height: widget.height,
+      height: bannerHeight,
       child: PageView.builder(
         controller: _pageController,
         scrollDirection: Axis.horizontal,
@@ -111,18 +128,18 @@ class _BannerState extends State<BannerWidget> {
               widget.onTap(index % length);
             },
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
+              // margin: const EdgeInsets.symmetric(horizontal: 20),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: widget.banner[index % length].isAssets
+                // borderRadius: BorderRadius.circular(20),
+                child: widget.banners[index % length].isAssets
                     ? Container(
                         color: Color(0xFFFBE240),
                         child: Image.asset(
-                            widget.banner[index % length].imagePath),
+                            widget.banners[index % length].imagePath),
                       )
                     : Image.network(
-                        widget.banner[index % length].imagePath,
-                        fit: BoxFit.fill,
+                        widget.banners[index % length].imagePath,
+                        fit: BoxFit.fitWidth,
                       ),
               ),
             ),
@@ -148,7 +165,7 @@ class _BannerState extends State<BannerWidget> {
       _timer = null;
     }
     _timer ??= Timer.periodic(const Duration(seconds: 3), (t) {
-      if (widget.banner.isEmpty) {
+      if (widget.banners.isEmpty) {
         return;
       }
       _curIndex++;
