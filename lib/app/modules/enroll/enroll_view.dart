@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_test/app/components/page_bar.dart';
 
 import 'enroll_controller.dart';
 
@@ -11,8 +10,8 @@ class EnrollView extends GetView<EnrollController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(title: Text('我的报名')),
       body: Column(children: [
-        PageBarWidget(title: '我的报名'),
         TabBar(
             tabs: controller.myTabs,
             controller: controller.controller,

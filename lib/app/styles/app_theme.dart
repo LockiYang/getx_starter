@@ -50,10 +50,16 @@ class AppTheme {
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
           shadowColor: Colors.transparent,
-          titleTextStyle: Get.theme.textTheme.bodyText1,
-          toolbarTextStyle: Get.theme.textTheme.bodyText1,
+          titleTextStyle: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            color: Colors.black
+          ),
+          // toolbarTextStyle: Get.theme.textTheme.bodyText1,
         ),
-    textTheme: ThemeData.light().textTheme.copyWith(),
+    textTheme: ThemeData.light()
+        .textTheme
+        .copyWith(headline4: TextStyle(color: Colors.red)),
     // buttonTheme:
   );
 

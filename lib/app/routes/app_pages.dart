@@ -46,6 +46,8 @@ import '../modules/test_wanandroid/test_wanandroid_binding.dart';
 import '../modules/test_wanandroid/test_wanandroid_view.dart';
 import '../modules/test_wanandroid/wa_home/wa_home_binding.dart';
 import '../modules/test_wanandroid/wa_home/wa_home_view.dart';
+import '../modules/test_wanandroid/wa_my/wa_feedback/wa_feedback_binding.dart';
+import '../modules/test_wanandroid/wa_my/wa_feedback/wa_feedback_view.dart';
 import '../modules/test_wanandroid/wa_my/wa_my_binding.dart';
 import '../modules/test_wanandroid/wa_my/wa_my_view.dart';
 import '../modules/test_wanandroid/wa_my/wa_setting/wa_setting_binding.dart';
@@ -210,6 +212,11 @@ class AppPages {
               name: _Paths.WA_SETTING,
               page: () => WaSettingView(),
               binding: WaSettingBinding(),
+            ),
+            GetPage(
+              name: _Paths.WA_FEEDBACK,
+              page: () => WaFeedbackView(),
+              binding: WaFeedbackBinding(),
             ),
           ],
         ),

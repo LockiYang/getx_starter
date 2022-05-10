@@ -177,6 +177,7 @@ class WaMyView extends GetView<WaMyController> {
                 icon: Icons.perm_identity,
                 title: '问题反馈',
                 endIconColor: appColorMedium,
+                onTap: () => Get.toNamed(Routes.WA_FEEDBACK),
               )
             ]),
           )

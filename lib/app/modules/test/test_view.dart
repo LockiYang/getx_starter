@@ -63,7 +63,8 @@ class TestView extends GetView<TestController> {
               onTap: () => Get.toNamed(Routes.LITTLE_WIDGETS),
             ),
             ListTile(
-              title: Text('Banner'),
+              // title: Text('Banner', style: ThemeData.light().textTheme.displayLarge,),
+              title: Text('Banner', style: Get.theme.textTheme.headline4,),
               onTap: () => Get.toNamed(Routes.BANNER_SWIPER),
             ),
             // ElevatedButton(

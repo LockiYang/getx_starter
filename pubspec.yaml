@@ -22,6 +22,7 @@ dependencies:
   dio: ^4.0.6
   dio_cache_interceptor: ^3.2.6
   json_annotation: ^4.5.0
+  path_provider: ^2.0.9
   shanyan:
     git:
       url: https://gitee.com/TaXiangZhiKe/CLShanYan_Flutter.git
