@@ -20,7 +20,7 @@ class WaLoginView extends GetzView<WaLoginController> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
-                  'assets/images/logo.png',
+                  'assets/images/logo1.png',
                   width: 40,
                   height: 40,
                 ),
