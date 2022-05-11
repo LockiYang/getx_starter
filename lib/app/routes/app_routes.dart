@@ -35,6 +35,7 @@ abstract class Routes {
       _Paths.TEST_WANANDROID + _Paths.WA_MY + _Paths.WA_SETTING;
   static const WA_FEEDBACK =
       _Paths.TEST_WANANDROID + _Paths.WA_MY + _Paths.WA_FEEDBACK;
+  static const WA_LOGIN = _Paths.TEST_WANANDROID + _Paths.WA_LOGIN;
 }
 
 abstract class _Paths {
@@ -69,4 +70,5 @@ abstract class _Paths {
   static const WA_SEARCH = '/wa-search';
   static const WA_SETTING = '/wa-setting';
   static const WA_FEEDBACK = '/wa-feedback';
+  static const WA_LOGIN = '/wa-login';
 }

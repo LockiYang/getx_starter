@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:getx_test/app/common/no_splash_factory.dart';
 
 import 'lib_color_schemes.g.dart';
@@ -51,15 +50,17 @@ class AppTheme {
           foregroundColor: Colors.black,
           shadowColor: Colors.transparent,
           titleTextStyle: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 16,
-            color: Colors.black
-          ),
+              fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
           // toolbarTextStyle: Get.theme.textTheme.bodyText1,
         ),
-    textTheme: ThemeData.light()
-        .textTheme
-        .copyWith(headline4: TextStyle(color: Colors.red)),
+    textTheme: ThemeData.light().textTheme.copyWith(
+        headline5: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
+        // headline6: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+        // subtitle1: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+        // subtitle2: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+        // bodyText1: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
+        // bodyText2: TextStyle(fontWeight: FontWeight.normal, fontSize: 14)
+      ),
     // buttonTheme:
   );
 

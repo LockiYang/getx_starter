@@ -138,7 +138,7 @@ class WaMyView extends GetView<WaMyController> {
             child: Column(children: [
               ///积分排行榜
               GestureDetector(
-                onTap: () => {},
+                onTap: () => Get.toNamed(Routes.WA_LOGIN),
                 child: Container(
                   padding: const EdgeInsets.only(top: 16, left: 16, bottom: 10),
                   child: Row(
