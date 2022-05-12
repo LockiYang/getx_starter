@@ -16,6 +16,7 @@ void appInit() async {
   await Get.putAsync<StorageService>(() => StorageService().init());
   // Get.putAsync<GlobalService>(() => GlobalService().init());
   Get.putAsync<WanAndroidApi>(() => WanAndroidApi().init());
+  AppTheme.initTheme();
   runApp(const App());
 }
 

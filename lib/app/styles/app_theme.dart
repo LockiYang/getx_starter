@@ -1,5 +1,7 @@
+import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:getx_test/app/common/no_splash_factory.dart';
+import 'package:getx_test/app/styles/theme_constants.dart';
 
 import 'lib_color_schemes.g.dart';
 
@@ -54,17 +56,78 @@ class AppTheme {
           // toolbarTextStyle: Get.theme.textTheme.bodyText1,
         ),
     textTheme: ThemeData.light().textTheme.copyWith(
-        headline5: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
-        // headline6: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
-        // subtitle1: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
-        // subtitle2: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
-        // bodyText1: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
-        // bodyText2: TextStyle(fontWeight: FontWeight.normal, fontSize: 14)
-      ),
+          headline5: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
+          // headline6: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+          // subtitle1: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+          // subtitle2: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+          // bodyText1: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
+          // bodyText2: TextStyle(fontWeight: FontWeight.normal, fontSize: 14)
+        ),
     // buttonTheme:
   );
 
   static ThemeData dark = ThemeData(
     colorScheme: darkColorScheme,
   );
+
+  static BrnCommonConfig commonConfig = BrnCommonConfig(
+      brandPrimary: ThemeConstants.brandPrimary,
+      brandPrimaryTap: ThemeConstants.brandPrimaryTap,
+      brandSuccess: ThemeConstants.brandSuccess,
+      brandWarning: ThemeConstants.brandWarning,
+      brandError: ThemeConstants.brandError,
+      brandImportant: ThemeConstants.brandImportant,
+      brandImportantValue: ThemeConstants.brandImportantValue,
+      brandAuxiliary: ThemeConstants.brandAuxiliary,
+      colorTextBase: ThemeConstants.colorTextBase,
+      colorTextImportant: ThemeConstants.colorTextImportant,
+      colorTextBaseInverse: ThemeConstants.colorTextBaseInverse,
+      colorTextSecondary: ThemeConstants.colorTextSecondary,
+      colorTextDisabled: ThemeConstants.colorTextDisabled,
+      colorTextHint: ThemeConstants.colorTextHint,
+      colorLink: ThemeConstants.colorLink,
+      fillBase: ThemeConstants.fillBase,
+      fillBody: ThemeConstants.fillBody,
+      fillMask: ThemeConstants.fillMask,
+      borderColorBase: ThemeConstants.borderColorBase,
+      dividerColorBase: ThemeConstants.dividerColorBase,
+      fontSizeBebas: ThemeConstants.fontSizeBebas,
+      fontSizeHeadLg: ThemeConstants.fontSizeHeadLg,
+      fontSizeHead: ThemeConstants.fontSizeHead,
+      fontSizeSubHead: ThemeConstants.fontSizeSubHead,
+      fontSizeBase: ThemeConstants.fontSizeBase,
+      fontSizeCaption: ThemeConstants.fontSizeCaption,
+      fontSizeCaptionSm: ThemeConstants.fontSizeCaptionSm,
+      radiusXs: ThemeConstants.radiusXs,
+      radiusSm: ThemeConstants.radiusSm,
+      radiusMd: ThemeConstants.radiusMd,
+      radiusLg: ThemeConstants.radiusLg,
+      borderWidthSm: ThemeConstants.borderWidthSm,
+      borderWidthMd: ThemeConstants.borderWidthMd,
+      borderWidthLg: ThemeConstants.borderWidthLg,
+      hSpacingXs: ThemeConstants.hSpacingXs,
+      hSpacingSm: ThemeConstants.hSpacingSm,
+      hSpacingMd: ThemeConstants.hSpacingMd,
+      hSpacingLg: ThemeConstants.hSpacingLg,
+      hSpacingXl: ThemeConstants.hSpacingXl,
+      hSpacingXxl: ThemeConstants.hSpacingXxl,
+      vSpacingXs: ThemeConstants.vSpacingXs,
+      vSpacingSm: ThemeConstants.vSpacingSm,
+      vSpacingMd: ThemeConstants.vSpacingMd,
+      vSpacingLg: ThemeConstants.vSpacingLg,
+      vSpacingXl: ThemeConstants.vSpacingXl,
+      vSpacingXxl: ThemeConstants.vSpacingXxl,
+      iconSizeXxs: ThemeConstants.iconSizeXxs,
+      iconSizeXs: ThemeConstants.iconSizeXs,
+      iconSizeSm: ThemeConstants.iconSizeSm,
+      iconSizeMd: ThemeConstants.iconSizeMd,
+      iconSizeLg: ThemeConstants.iconSizeLg);
+  static BrnCardTitleConfig cardTitleConfig = BrnCardTitleConfig(
+      titleTextStyle: BrnTextStyle.withStyle(
+          TextStyle(fontSize: 16, fontWeight: FontWeight.w400)));
+
+  static initTheme() {
+    BrnInitializer.register(
+        allThemeConfig: BrnAllThemeConfig(cardTitleConfig: cardTitleConfig));
+  }
 }

@@ -1,8 +1,8 @@
+import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/getx/getz_view.dart';
-import 'package:getx_test/app/common/widgets/round_check_box.dart';
 
 import 'wa_login_controller.dart';
 
@@ -11,7 +11,7 @@ class WaLoginView extends GetzView<WaLoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(),
+      appBar: BrnAppBar(),
       body: Container(
         padding: EdgeInsets.all(20),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -48,7 +48,7 @@ class WaLoginView extends GetzView<WaLoginController> {
                   padding: EdgeInsets.only(right: 10),
                   child: Text(
                     '+86',
-                    style: TextStyle(fontSize: 16,height: 1),
+                    style: TextStyle(fontSize: 16, height: 1),
                   )),
               SizedBox(
                 width: 1,
@@ -110,36 +110,23 @@ class WaLoginView extends GetzView<WaLoginController> {
           Row(
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Checkbox(
-              //   value: controller.checked,
-              //   onChanged: (bool? value) => controller.changeChecked(value),
-              //   // shape: CircleBorder(),
-              //   // side: BorderSide.none,
-              // ),
-              RoundCheckBox(
-                size: 15,
-                checkedWidget: const Icon(
-                  Icons.check,
-                  color: Colors.white,
-                  size: 10,
+              BrnCheckbox(
+                radioIndex: 1,
+                isSelected: controller.checked,
+                onValueChangedAtIndex: (index, status) =>
+                    controller.changeChecked(status),
+                child: Text(
+                  '已阅读并同意用户协议和隐私协议',
+                  style: TextStyle(fontSize: 14),
+                  // strutStyle: StrutStyle(forceStrutHeight: true, leading: 0.2),
                 ),
-                isChecked: controller.checked,
-                onTap: (value) => controller.changeChecked(value),
               ),
-              Text(
-                '已阅读并同意用户协议和隐私协议',
-                style: TextStyle(fontSize: 16, height: 1),
-                // strutStyle: StrutStyle(forceStrutHeight: true, leading: 0.2),
-              )
             ],
           ),
           SizedBox(
             height: 20,
           ),
-          Container(
-            width: double.infinity,
-            child: ElevatedButton(onPressed: () => {}, child: Text('立即登录')),
-          )
+          BrnBigMainButton(title: '立即登录',)
         ]),
       ),
     );

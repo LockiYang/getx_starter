@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 
-class StyleConstants {
+class ThemeConstants {
   /// 主题色相关
   ///
   /// 主题色
-  static Color colorPrimary = Color(0xFF0984F9);
+  static Color brandPrimary = Color(0xFF0984F9);
 
   /// 主题色按下效果
-  static Color colorPrimaryTap = Color(0x190984F9);
+  static Color brandPrimaryTap = Color(0x190984F9);
 
   /// 成功色
-  static Color colorSuccess = Color(0xFF00AE66);
+  static Color brandSuccess = Color(0xFF00AE66);
 
   /// 警告色
-  static Color colorWarning = Color(0xFFFAAD14);
+  static Color brandWarning = Color(0xFFFAAD14);
 
   /// 失败色
-  static Color colorError = Color(0xFFFA3F3F);
+  static Color brandError = Color(0xFFFA3F3F);
 
   /// 重要-多用于红点色
-  static Color colorImportant = Color(0xFFFA3F3F);
+  static Color brandImportant = Color(0xFFFA3F3F);
 
   /// 重要数值色
-  static Color colorImportantValue = Color(0xFFFF5722);
+  static Color brandImportantValue = Color(0xFFFF5722);
 
   /// 辅助色
-  static Color colorAuxiliary = Color(0xFF44C2FF);
+  static Color brandAuxiliary = Color(0xFF44C2FF);
 
   /// 文本色相关
   ///
@@ -70,61 +70,61 @@ class StyleConstants {
   /// 文本字号
   ///
   /// 特殊数据展示，Bebas 数字字体，用于强吸引
-  double fontSizeBebas = 28.0;
+  static double fontSizeBebas = 28.0;
 
   /// 标题字体
   /// 名称/页面大标题
-  double fontSizeHeadLg = 22.0;
+  static double fontSizeHeadLg = 22.0;
 
   /// 标题字体
   /// 内容模块标题/一级标题
-  double fontSizeHead = 18.0;
+  static double fontSizeHead = 18.0;
 
   /// 子标题字体
   /// 标题/录入文字/大按钮文字/二级标题
-  double fontSizeSubHead = 16.0;
+  static double fontSizeSubHead = 16.0;
 
   /// 基础字体
   /// 内容副文本/普通说明文字
-  double fontSizeBase = 14.0;
+  static double fontSizeBase = 14.0;
 
   /// 辅助字体-普通
-  double fontSizeCaption = 12.0;
+  static double fontSizeCaption = 12.0;
 
   ///辅助字体-小
-  double fontSizeCaptionSm = 11.0;
+  static double fontSizeCaptionSm = 11.0;
 
   /// 圆角尺寸
-  double radiusXs = 2.0;
-  double radiusSm = 4.0;
-  double radiusMd = 6.0;
-  double radiusLg = 8.0;
+  static double radiusXs = 2.0;
+  static double radiusSm = 4.0;
+  static double radiusMd = 6.0;
+  static double radiusLg = 8.0;
 
   /// 边框尺寸
-  double borderWidthSm = 0.5;
-  double borderWidthMd = 1.0;
-  double borderWidthLg = 2.0;
+  static double borderWidthSm = 0.5;
+  static double borderWidthMd = 1.0;
+  static double borderWidthLg = 2.0;
 
   /// 水平间距
-  double hSpacingXs = 8.0;
-  double hSpacingSm = 12.0;
-  double hSpacingMd = 16.0;
-  double hSpacingLg = 20.0;
-  double hSpacingXl = 24.0;
-  double hSpacingXxl = 42.0;
+  static double hSpacingXs = 8.0;
+  static double hSpacingSm = 12.0;
+  static double hSpacingMd = 16.0;
+  static double hSpacingLg = 20.0;
+  static double hSpacingXl = 24.0;
+  static double hSpacingXxl = 42.0;
 
   /// 垂直间距
-  double vSpacingXs = 4.0;
-  double vSpacingSm = 8.0;
-  double vSpacingMd = 12.0;
-  double vSpacingLg = 14.0;
-  double vSpacingXl = 16.0;
-  double vSpacingXxl = 28.0;
+  static double vSpacingXs = 4.0;
+  static double vSpacingSm = 8.0;
+  static double vSpacingMd = 12.0;
+  static double vSpacingLg = 14.0;
+  static double vSpacingXl = 16.0;
+  static double vSpacingXxl = 28.0;
 
   /// 图标大小
-  double iconSizeXxs = 8.0;
-  double iconSizeXs = 12.0;
-  double iconSizeSm = 14.0;
-  double iconSizeMd = 16.0;
-  double iconSizeLg = 32.0;
+  static double iconSizeXxs = 8.0;
+  static double iconSizeXs = 12.0;
+  static double iconSizeSm = 14.0;
+  static double iconSizeMd = 16.0;
+  static double iconSizeLg = 32.0;
 }

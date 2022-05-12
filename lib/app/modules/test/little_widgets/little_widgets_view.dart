@@ -18,7 +18,7 @@ class LittleWidgetsView extends GetView<LittleWidgetsController> {
         children: [
           ListTile(title: Text('Toast'), onTap: () => ToastUtil.show('这是测试')),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {ToastUtil.show('默认通知')},
             child: Text('Elevated button'),
             style: ButtonStyle(splashFactory: NoSplashFactory()),
           ),
