@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getx_test/app/modules/test_news/news_home/news_home_controller.dart';
 
-import '../../../../styles/app_colors.dart';
+import '../../common/app_colors.dart';
 
 /// ad广告
 class AdWidget extends GetView<NewsHomeController> {

@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../data/news.dart';
-import '../../../styles/app_colors.dart';
 import '../../../utils/date.dart';
+import '../common/app_colors.dart';
 import '../widgets/button.dart';
 import '../widgets/image.dart';
 import '../widgets/input.dart';

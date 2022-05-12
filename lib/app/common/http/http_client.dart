@@ -31,9 +31,12 @@ class HttpClient {
         cancelToken: cancelToken, //通过cancel token来取消发起的请求
         onReceiveProgress: onReceiveProgress, //接收进度
       );
+
+      // HTTP status >=200 & <300
       return handleResponse<T>(response,
           httpTransformer: httpTransformer, success: success, fail: fail);
     } on Exception catch (e) {
+      // HTTP status <200 & >=300
       return handleException(e, fail: fail);
     }
   }

@@ -48,7 +48,7 @@ class WaLoginView extends GetzView<WaLoginController> {
                   padding: EdgeInsets.only(right: 10),
                   child: Text(
                     '+86',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16,height: 1),
                   )),
               SizedBox(
                 width: 1,
@@ -64,7 +64,7 @@ class WaLoginView extends GetzView<WaLoginController> {
                       hintText: '请输入手机号',
                       hintStyle: TextStyle(fontSize: 18, height: 1),
                       border: InputBorder.none),
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18, height: 1),
                 ),
               ),
             ],
@@ -81,7 +81,7 @@ class WaLoginView extends GetzView<WaLoginController> {
                       hintText: '请输入验证码',
                       hintStyle: TextStyle(fontSize: 18, height: 1),
                       border: InputBorder.none),
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18, height: 1),
                 ),
               ),
               SizedBox(
@@ -96,6 +96,7 @@ class WaLoginView extends GetzView<WaLoginController> {
                 child: Text(
                   '获取验证码',
                   style: TextStyle(fontSize: 16, height: 1),
+                  // strutStyle: StrutStyle(forceStrutHeight: true, leading: 0.2),
                 ),
               )
             ],
@@ -107,7 +108,7 @@ class WaLoginView extends GetzView<WaLoginController> {
             height: 30,
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Checkbox(
               //   value: controller.checked,
@@ -127,8 +128,8 @@ class WaLoginView extends GetzView<WaLoginController> {
               ),
               Text(
                 '已阅读并同意用户协议和隐私协议',
-                style: Get.textTheme.caption,
-                strutStyle: StrutStyle(forceStrutHeight: true, leading: 0.2),
+                style: TextStyle(fontSize: 16, height: 1),
+                // strutStyle: StrutStyle(forceStrutHeight: true, leading: 0.2),
               )
             ],
           ),

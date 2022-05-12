@@ -13,7 +13,7 @@ class BadRequestException extends HttpException {
   BadRequestException({int? code, String? message}) : super(message, code);
 }
 
-/// 服务端异常
+/// 服务端业务异常
 class BadServiceException extends HttpException {
   BadServiceException({int? code, String? message}) : super(message, code);
 }

@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import 'package:getx_test/app/modules/test_news/news_category/news_category_view.dart';
 import 'package:getx_test/app/modules/test_news/news_home/news_home_view.dart';
 
-import '../../../styles/app_colors.dart';
+
+import '../common/app_colors.dart';
 import '../widgets/appbar.dart';
 import 'news_index_controller.dart';
 

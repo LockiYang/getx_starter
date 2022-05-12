@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../data/news.dart';
-import '../../../../styles/app_colors.dart';
 import '../../../../utils/date.dart';
+import '../../common/app_colors.dart';
 import '../../widgets/image.dart';
 
 Widget newsListItem(NewsItem item) {

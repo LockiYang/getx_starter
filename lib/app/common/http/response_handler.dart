@@ -13,19 +13,12 @@ T? handleResponse<T>(Response? response,
   // 返回值异常
   if (response == null) {
     return _handleError(UnknownException(), fail: fail);
-  } else if (_isTokenTimeout(response.statusCode)) {
-    // token失效
-    return _handleError(
-        UnauthorisedException(message: "没有权限", code: response.statusCode),
-        fail: fail);
   } else if (_isRequestSuccess(response.statusCode)) {
     // 接口调用成功
     return httpTransformer.transform(response, success: success, fail: fail);
   } else {
-    // 接口调用失败，HTTP状态码异常
-    // TODO 也可能有服务器业务异常
-    return _handleError(BadRequestException(
-        message: response.statusMessage, code: response.statusCode));
+    // 不太可能
+    return _handleError(UnknownException(), fail: fail);
   }
 }
 
@@ -43,11 +36,6 @@ _handleError(HttpException exception, {Fail? fail}) {
   }
 }
 
-/// 鉴权失败
-bool _isTokenTimeout(int? code) {
-  return code == 401;
-}
-
 /// 请求成功
 bool _isRequestSuccess(int? statusCode) {
   return (statusCode != null && statusCode >= 200 && statusCode < 300);
@@ -63,7 +51,7 @@ HttpException _transformException(Exception error) {
         return NetworkException(message: error.message);
       case DioErrorType.cancel:
         return CancelException(error.message);
-      case DioErrorType.response:
+      case DioErrorType.response: //wrong incorrect HTTP status
         try {
           int? errCode = error.response?.statusCode;
           switch (errCode) {
