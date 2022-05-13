@@ -78,6 +78,7 @@ class HttpClient {
 
   Future patch<T>(String uri,
       {data,
+      bool? isJson = false,
       Map<String, dynamic>? queryParameters,
       Options? options,
       CancelToken? cancelToken,
@@ -87,7 +88,7 @@ class HttpClient {
       Success<T>? success,
       Fail? fail}) async {
     try {
-      var response = await _dio.patch(
+      var response = await _instance(isJson: isJson).patch(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -105,6 +106,7 @@ class HttpClient {
 
   Future delete<T>(String uri,
       {data,
+      bool? isJson = false,
       Map<String, dynamic>? queryParameters,
       Options? options,
       CancelToken? cancelToken,
@@ -112,7 +114,7 @@ class HttpClient {
       Success<T>? success,
       Fail? fail}) async {
     try {
-      var response = await _dio.delete(
+      var response = await _instance(isJson: isJson).delete(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -128,6 +130,7 @@ class HttpClient {
 
   Future put<T>(String uri,
       {data,
+      bool? isJson = false,
       Map<String, dynamic>? queryParameters,
       Options? options,
       CancelToken? cancelToken,
@@ -135,7 +138,7 @@ class HttpClient {
       Success<T>? success,
       Fail? fail}) async {
     try {
-      var response = await _dio.put(
+      var response = await _instance(isJson: isJson).put(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -172,6 +175,18 @@ class HttpClient {
       return response;
     } catch (e) {
       rethrow;
+    }
+  }
+
+  callbackSuccess<T>(Success<T>? success, T data) {
+    if (success != null) {
+      success.call(data);
+    }
+  }
+
+  callbackFial(Fail? fail, HttpException error) {
+    if (fail != null) {
+      fail.call(error);
     }
   }
 }

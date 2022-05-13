@@ -20,8 +20,6 @@ class WaLoginController extends GetxController {
   }
 
   login() {
-    debugPrint(username);
-    debugPrint(password);
     if (username.isEmpty || password.isEmpty) {
       return;
     }
@@ -30,7 +28,7 @@ class WaLoginController extends GetxController {
       var loginUser = User.fromJson(data);
       loginUser.password = password;
       CacheUtil.putUserInfo(loginUser);
-      Get.offNamed(Routes.TEST_WANANDROID);
+      Get.offAllNamed(Routes.TEST_WANANDROID);
     }, fail: (error){
       ToastUtil.show(error.message);
     });
