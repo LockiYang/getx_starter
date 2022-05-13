@@ -34,7 +34,12 @@ class WaMyView extends GetView<WaMyController> {
               // 昵称
               Container(
                 margin: EdgeInsets.only(left: 10),
-                child: Text('我是张三'),
+                child: controller.loginUser != null
+                    ? Text(controller.loginUser!.nickname)
+                    : GestureDetector(
+                        child: Text('点击登录'),
+                        onTap: () => Get.toNamed(Routes.WA_LOGIN),
+                      ),
               ),
               const Expanded(child: Text('')),
               // 设置

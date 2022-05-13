@@ -28,9 +28,7 @@ class WaMainController extends PagingController<Article> {
   @override
   Future<List<Article>> loadData() async {
     ProjectPage projectPage =
-        await wanAndroidApi.getProjects(pageIndex, fail: (exception) {
-      loadStatus = 3;
-    });
+        await wanAndroidApi.getProjects(pageIndex);
     return projectPage.datas.map((e) => Article.fromJson(e)).toList();
   }
 }

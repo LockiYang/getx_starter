@@ -15,8 +15,15 @@ class HttpClient {
   HttpClient({BaseOptions? options, DioConfig? dioConfig})
       : _dio = DioInit(options: options, dioConfig: dioConfig);
 
+  DioInit _instance({bool? isJson}) {
+    _dio.options.contentType =
+        isJson! ? Headers.jsonContentType : Headers.formUrlEncodedContentType;
+    return _dio;
+  }
+
   Future<T?> get<T>(String uri,
-      {Map<String, dynamic>? queryParameters,
+      {bool? isJson = false,
+      Map<String, dynamic>? queryParameters,
       Options? options,
       CancelToken? cancelToken,
       ProgressCallback? onReceiveProgress,
@@ -24,7 +31,7 @@ class HttpClient {
       Success<T>? success,
       Fail? fail}) async {
     try {
-      var response = await _dio.get(
+      var response = await _instance(isJson: isJson).get(
         uri,
         queryParameters: queryParameters,
         options: options,
@@ -43,6 +50,7 @@ class HttpClient {
 
   Future post<T>(String uri,
       {data,
+      bool? isJson = false,
       Map<String, dynamic>? queryParameters,
       Options? options,
       CancelToken? cancelToken,
@@ -52,7 +60,7 @@ class HttpClient {
       Success<T>? success,
       Fail? fail}) async {
     try {
-      var response = await _dio.post(
+      var response = await _instance(isJson: isJson).post(
         uri,
         data: data,
         queryParameters: queryParameters,

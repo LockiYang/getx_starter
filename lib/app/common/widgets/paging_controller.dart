@@ -27,8 +27,8 @@ abstract class PagingController<T> extends GetxController {
   void refreshData() async {
     pageIndex = 0;
     hasMore = true;
-    data.clear();
     List<T> datas = await loadData();
+    data.clear();
     data.addAll(datas);
     refreshController.refreshCompleted();
     if (refreshController.footerStatus == LoadStatus.noMore) {

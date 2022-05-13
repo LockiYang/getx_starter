@@ -25,9 +25,9 @@ class WaSettingView extends GetzView<WaSettingController> {
             onTap: () => {controller.clearCache()},
           ),
           SizedBox(
-            height: 20,
+            height: 50,
           ),
-          OutlinedButton(onPressed: () => {}, child: Text('退出登录'))
+          BrnSmallOutlineButton(onTap: () => controller.logout(), title: '退出登录')
         ]),
       ),
     );

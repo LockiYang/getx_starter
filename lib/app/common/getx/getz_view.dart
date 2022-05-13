@@ -23,7 +23,8 @@ class _GetzViewState<S extends GetxController> extends State<GetzView> {
         id: widget.updateId,
         builder: (controller) {
           return widget.build(context);
-        });
+        },
+        tag: widget.tag);
   }
 
   @override

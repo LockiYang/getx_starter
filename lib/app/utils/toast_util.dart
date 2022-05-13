@@ -10,6 +10,6 @@ class ToastUtil {
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.black,
         textColor: Colors.white,
-        fontSize: 16.0);
+        fontSize: 14.0);
   }
 }

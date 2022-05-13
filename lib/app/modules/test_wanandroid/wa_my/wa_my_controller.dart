@@ -1,12 +1,19 @@
 import 'package:get/get.dart';
 
-class WaMyController extends GetxController {
-  //TODO: Implement WaMyController
+import '../../../data/models/user.dart';
+import '../../../utils/cache_util.dart';
 
-  final count = 0.obs;
+class WaMyController extends GetxController {
+  User? loginUser;
+  
   @override
   void onInit() {
     super.onInit();
+    var info = CacheUtil.getUserInfo();
+    if (info != null) {
+      loginUser = info;
+      update();
+    }
   }
 
   @override
@@ -16,5 +23,4 @@ class WaMyController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

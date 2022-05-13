@@ -48,4 +48,23 @@ class WanAndroidApi extends GetxService {
 
     return ProjectPage.fromJson(result as Map<String, dynamic>);
   }
+
+  login(String username, String password,
+      {Success<dynamic>? success, Fail? fail}) {
+    client.post('user/login',
+        data: {"username": username, "password": password}, success: (data) {
+      if (success != null) {
+        success(data);
+      }
+    }, fail: (exception) {
+      if (fail != null) fail(exception);
+    });
+  }
+
+  logout({
+    Success<bool>? success,
+    Fail? fail,
+  }) {
+    client.post('user/logout/json');
+  }
 }

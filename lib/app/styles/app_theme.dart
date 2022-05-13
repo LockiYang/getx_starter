@@ -122,12 +122,14 @@ class AppTheme {
       iconSizeSm: ThemeConstants.iconSizeSm,
       iconSizeMd: ThemeConstants.iconSizeMd,
       iconSizeLg: ThemeConstants.iconSizeLg);
+
   static BrnCardTitleConfig cardTitleConfig = BrnCardTitleConfig(
       titleTextStyle: BrnTextStyle.withStyle(
           TextStyle(fontSize: 16, fontWeight: FontWeight.w400)));
 
   static initTheme() {
     BrnInitializer.register(
-        allThemeConfig: BrnAllThemeConfig(cardTitleConfig: cardTitleConfig));
+        allThemeConfig: BrnAllThemeConfig(
+            commonConfig: commonConfig, cardTitleConfig: cardTitleConfig));
   }
 }

@@ -65,6 +65,9 @@ class WaLoginView extends GetzView<WaLoginController> {
                       hintStyle: TextStyle(fontSize: 18, height: 1),
                       border: InputBorder.none),
                   style: TextStyle(fontSize: 18, height: 1),
+                  onChanged: (value) => controller
+                    ..username = value
+                    ..update(),
                 ),
               ),
             ],
@@ -82,6 +85,9 @@ class WaLoginView extends GetzView<WaLoginController> {
                       hintStyle: TextStyle(fontSize: 18, height: 1),
                       border: InputBorder.none),
                   style: TextStyle(fontSize: 18, height: 1),
+                  onChanged: (value) => controller
+                    ..password = value
+                    ..update(),
                 ),
               ),
               SizedBox(
@@ -112,7 +118,7 @@ class WaLoginView extends GetzView<WaLoginController> {
             children: [
               BrnCheckbox(
                 radioIndex: 1,
-                isSelected: controller.checked,
+                isSelected: controller.protocalChecked,
                 onValueChangedAtIndex: (index, status) =>
                     controller.changeChecked(status),
                 child: Text(
@@ -126,7 +132,10 @@ class WaLoginView extends GetzView<WaLoginController> {
           SizedBox(
             height: 20,
           ),
-          BrnBigMainButton(title: '立即登录',)
+          BrnBigMainButton(
+            title: '立即登录',
+            onTap: () => controller.login(),
+          )
         ]),
       ),
     );
