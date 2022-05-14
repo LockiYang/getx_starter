@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
+import '../../../common/getx/get_extension.dart';
 
 import '../../../components/menu_item.dart';
 import '../../../routes/app_pages.dart';
@@ -167,6 +169,7 @@ class WaMyView extends GetView<WaMyController> {
                 icon: Icons.perm_identity,
                 title: '个人信息',
                 endIconColor: appColorMedium,
+                onTap: () => Get.showLoading(text: '加载中'),
               ),
               MenuItemWidget(
                 icon: Icons.perm_identity,

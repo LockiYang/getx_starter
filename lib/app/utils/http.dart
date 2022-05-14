@@ -379,6 +379,7 @@ class ErrorEntity implements Exception {
   String message = "";
   ErrorEntity({required this.code, required this.message});
 
+  @override
   String toString() {
     if (message == "") return "Exception";
     return "Exception: code $code, $message";

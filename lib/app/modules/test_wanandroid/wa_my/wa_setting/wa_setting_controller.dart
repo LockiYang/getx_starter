@@ -40,10 +40,6 @@ class WaSettingController extends GetxController {
     loadCache();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}

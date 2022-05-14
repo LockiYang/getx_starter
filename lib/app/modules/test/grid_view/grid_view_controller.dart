@@ -22,10 +22,6 @@ class GridViewController extends GetxController
     tabController = TabController(length: demos.length, vsync: this);
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}

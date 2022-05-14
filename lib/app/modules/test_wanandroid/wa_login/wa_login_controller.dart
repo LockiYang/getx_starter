@@ -40,10 +40,6 @@ class WaLoginController extends GetxController {
     wanAndroidApi = Get.find<WanAndroidApi>();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}

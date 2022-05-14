@@ -88,7 +88,7 @@ class CacheUtil {
 
   ///递归方式删除目录
   ///[file]文件目录
-  static Future<Null> delDir(FileSystemEntity file) async {
+  static Future<void> delDir(FileSystemEntity file) async {
     try {
       if (file is Directory) {
         final List<FileSystemEntity> children = file.listSync();

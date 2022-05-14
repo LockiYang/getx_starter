@@ -18,10 +18,6 @@ class EnrollController extends GetxController with GetSingleTickerProviderStateM
     controller = TabController(length: myTabs.length, vsync: this);
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}

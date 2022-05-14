@@ -218,10 +218,10 @@ class PetCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          this.renderCover(),
-          this.renderUserInfo(),
-          this.renderPublishContent(),
-          this.renderInteractionArea(),
+          renderCover(),
+          renderUserInfo(),
+          renderPublishContent(),
+          renderInteractionArea(),
         ],
       ),
     );

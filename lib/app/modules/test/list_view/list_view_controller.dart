@@ -26,10 +26,6 @@ class ListViewController extends GetxController with GetSingleTickerProviderStat
     tabController = TabController(length: demos.length, vsync: this);
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}

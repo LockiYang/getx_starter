@@ -19,7 +19,7 @@ class Article {
   late String envelopePic;
   late bool fresh;
   late String host;
-  late num id;
+  late int id;
   late String link;
   late String niceDate;
   late String niceShareDate;

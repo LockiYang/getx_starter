@@ -87,10 +87,6 @@ class NewsIndexController extends GetxController {
     pageController = PageController(initialPage: page.value);
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}

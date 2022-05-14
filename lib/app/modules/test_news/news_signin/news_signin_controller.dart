@@ -41,15 +41,7 @@ class NewsSigninController extends GetxController {
     Get.offAndToNamed(Routes.NEWS_INDEX);
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}

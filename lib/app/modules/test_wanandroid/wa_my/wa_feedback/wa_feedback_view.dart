@@ -34,7 +34,9 @@ class WaFeedbackView extends GetView<WaFeedbackController> {
               borderColor: ThemeConstants.borderColorBase,
               padding: EdgeInsets.all(10),
               borderRadius: ThemeConstants.radiusMd,
-              onTextChange: (text) => {},
+              onTextChange: (text) => controller
+                ..issue
+                ..update(),
               minLines: 5,
             ),
             SizedBox(
@@ -46,6 +48,9 @@ class WaFeedbackView extends GetView<WaFeedbackController> {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               alignment: Alignment.centerLeft,
+            ),
+            SizedBox(
+              height: 10,
             ),
             FeedbackPhotoSelectWidget(),
             SizedBox(
@@ -88,7 +93,7 @@ class WaFeedbackView extends GetView<WaFeedbackController> {
             ),
             BrnBigOutlineButton(
               title: '提交',
-              onTap: controller.requestFeedback(context),
+              onTap: () => controller.requestFeedback(context),
             )
           ],
         ),

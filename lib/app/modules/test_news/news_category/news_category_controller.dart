@@ -58,15 +58,7 @@ class NewsCategoryController extends GetxController {
     newsList.addAll(result.items!);
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}

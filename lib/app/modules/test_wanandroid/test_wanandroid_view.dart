@@ -1,6 +1,5 @@
 import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../common/getx/getz_view.dart';
 import 'test_wanandroid_controller.dart';

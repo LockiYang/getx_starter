@@ -49,15 +49,7 @@ class NewsSignupController extends GetxController {
     Get.back();
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}

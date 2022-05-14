@@ -7,6 +7,7 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+  # warning on 3.0.0
   bruno: ^2.2.0
   flutter_screenutil: ^5.4.0
   fluttertoast: ^8.0.9
@@ -17,7 +18,9 @@ dependencies:
   intl: ^0.17.0
   shared_preferences: ^2.0.13
   image_picker: ^0.8.5+3
+  # warning on 3.0.0
   cached_network_image: ^3.2.0
+  # warning on 3.0.0
   pull_to_refresh: ^2.0.0
   webview_flutter: ^2.8.0
   dio: ^4.0.6
@@ -46,6 +49,8 @@ flutter:
     - assets/images/
     - assets/img/
     - assets/svgs/
+    - assets/lotties/lottie_common_load.json
+    - assets/lotties/refresh_empty_page.json
   fonts:
     - family: AntdIcons
       fonts:

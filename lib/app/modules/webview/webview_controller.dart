@@ -1,19 +1,8 @@
 import 'package:get/get.dart';
 
 class WebviewController extends GetxController {
-  
   WebModel model = Get.arguments;
-  var progress = 0.0.obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  var progress = 0.0;
 
   @override
   void onClose() {}
@@ -21,6 +10,10 @@ class WebviewController extends GetxController {
 
 class WebModel {
   String title;
-  String url;
-  WebModel({required this.title, required this.url});
+  String link;
+  int id;
+  bool isCollect;
+
+  WebModel(
+      {this.title = '', this.link = '', this.id = 0, this.isCollect = true});
 }

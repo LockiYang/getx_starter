@@ -302,9 +302,9 @@ class ShanyanController extends GetxController {
 
     List<ShanYanCustomWidgetIOS> shanyanCustomWidgetIOS = [];
 
-    final String btn_widgetId = "other_custom_button"; // 标识控件 id
+    final String btnWidgetId = "other_custom_button"; // 标识控件 id
     ShanYanCustomWidgetIOS buttonWidgetiOS =
-    ShanYanCustomWidgetIOS(btn_widgetId, ShanYanCustomWidgetType.Button);
+    ShanYanCustomWidgetIOS(btnWidgetId, ShanYanCustomWidgetType.Button);
     buttonWidgetiOS.textContent = "其他方式登录 >1";
     buttonWidgetiOS.centerY = 100;
     buttonWidgetiOS.centerX = 0;
@@ -321,10 +321,10 @@ class ShanyanController extends GetxController {
 
     shanyanCustomWidgetIOS.add(buttonWidgetiOS);
 
-    final String nav_right_btn_widgetId = "other_custom_nav_right_button"; // 标识控件 id
+    final String navRightBtnWidgetId = "other_custom_nav_right_button"; // 标识控件 id
     ShanYanCustomWidgetIOS navRightButtonWidgetiOS =
     ShanYanCustomWidgetIOS(
-        nav_right_btn_widgetId, ShanYanCustomWidgetType.Button);
+        navRightBtnWidgetId, ShanYanCustomWidgetType.Button);
     navRightButtonWidgetiOS.navPosition =
         ShanYanCustomWidgetiOSNavPosition.navright;
     navRightButtonWidgetiOS.textContent = "联系客服";
@@ -349,15 +349,15 @@ class ShanyanController extends GetxController {
     shanYanUIConfig.androidPortrait.setPrivacyNavTextColor = "#00aacc";
     shanYanUIConfig.androidPortrait.setCheckBoxOffsetXY = [10, 5];
     List<ShanYanCustomWidgetLayout> shanYanCustomWidgetLayout = [];
-    String layout_name = "relative_item_view";
+    String layoutName = "relative_item_view";
     ShanYanCustomWidgetLayout relativeLayoutWidget = ShanYanCustomWidgetLayout(
-        layout_name, ShanYanCustomWidgetLayoutType.RelativeLayout);
+        layoutName, ShanYanCustomWidgetLayoutType.RelativeLayout);
     relativeLayoutWidget.top = 380;
     relativeLayoutWidget.widgetLayoutId = ["weixin", "qq", "weibo"];
     shanYanCustomWidgetLayout.add(relativeLayoutWidget);
     List<ShanYanCustomWidget> shanyanCustomWidgetAndroid = [];
     ShanYanCustomWidget buttonWidgetAndroid =
-    ShanYanCustomWidget(btn_widgetId, ShanYanCustomWidgetType.Button);
+    ShanYanCustomWidget(btnWidgetId, ShanYanCustomWidgetType.Button);
     buttonWidgetAndroid.textContent = "其他方式登录 >";
     buttonWidgetAndroid.top = 300;
     buttonWidgetAndroid.width = 150;
@@ -393,9 +393,9 @@ class ShanyanController extends GetxController {
 
 
     List<ShanYanCustomWidgetLayout> shanYanCustomWidgetLayoutLand = [];
-    String layout_name_land = "relative_item_view";
+    String layoutNameLand = "relative_item_view";
     ShanYanCustomWidgetLayout relativeLayoutWidgetLand = ShanYanCustomWidgetLayout(
-        layout_name_land, ShanYanCustomWidgetLayoutType.RelativeLayout);
+        layoutNameLand, ShanYanCustomWidgetLayoutType.RelativeLayout);
     relativeLayoutWidgetLand.top = 200;
     relativeLayoutWidgetLand.widgetLayoutId = ["weixin", "qq", "weibo"];
     shanYanCustomWidgetLayoutLand.add(relativeLayoutWidgetLand);
@@ -595,9 +595,9 @@ class ShanyanController extends GetxController {
 
     List<ShanYanCustomWidgetIOS> shanyanCustomWidgetIOS = [];
 
-    final String btn_widgetId = "other_custom_button"; // 标识控件 id
+    final String btnWidgetId = "other_custom_button"; // 标识控件 id
     ShanYanCustomWidgetIOS buttonWidgetiOS =
-    ShanYanCustomWidgetIOS(btn_widgetId, ShanYanCustomWidgetType.Button);
+    ShanYanCustomWidgetIOS(btnWidgetId, ShanYanCustomWidgetType.Button);
     buttonWidgetiOS.textContent = "其他方式登录 >";
     buttonWidgetiOS.top = 140 + 20 + 10;
     buttonWidgetiOS.centerX = 0;
@@ -611,10 +611,10 @@ class ShanyanController extends GetxController {
 
     shanyanCustomWidgetIOS.add(buttonWidgetiOS);
 
-    final String nav_right_btn_widgetId = "other_custom_nav_right_button"; // 标识控件 id
+    final String navRightBtnWidgetId = "other_custom_nav_right_button"; // 标识控件 id
     ShanYanCustomWidgetIOS navRightButtonWidgetiOS =
     ShanYanCustomWidgetIOS(
-        nav_right_btn_widgetId, ShanYanCustomWidgetType.Button);
+        navRightBtnWidgetId, ShanYanCustomWidgetType.Button);
     navRightButtonWidgetiOS.navPosition =
         ShanYanCustomWidgetiOSNavPosition.navright;
     navRightButtonWidgetiOS.textContent = "联系客服";
@@ -641,15 +641,15 @@ class ShanyanController extends GetxController {
 
 
     List<ShanYanCustomWidgetLayout> shanYanCustomWidgetLayout = [];
-    String layout_name = "relative_item_view";
+    String layoutName = "relative_item_view";
     ShanYanCustomWidgetLayout relativeLayoutWidget = ShanYanCustomWidgetLayout(
-        layout_name, ShanYanCustomWidgetLayoutType.RelativeLayout);
+        layoutName, ShanYanCustomWidgetLayoutType.RelativeLayout);
     relativeLayoutWidget.top = 270;
     relativeLayoutWidget.widgetLayoutId = ["weixin", "qq", "weibo"];
     shanYanCustomWidgetLayout.add(relativeLayoutWidget);
     List<ShanYanCustomWidget> shanyanCustomWidgetAndroid = [];
     ShanYanCustomWidget buttonWidgetAndroid =
-    ShanYanCustomWidget(btn_widgetId, ShanYanCustomWidgetType.Button);
+    ShanYanCustomWidget(btnWidgetId, ShanYanCustomWidgetType.Button);
     buttonWidgetAndroid.textContent = "其他方式登录 >";
     buttonWidgetAndroid.top = 200;
     buttonWidgetAndroid.width = 150;
@@ -675,9 +675,9 @@ class ShanyanController extends GetxController {
 
 
     List<ShanYanCustomWidgetLayout> shanYanCustomWidgetLayoutLand = [];
-    String layout_name_land = "relative_item_view";
+    String layoutNameLand = "relative_item_view";
     ShanYanCustomWidgetLayout relativeLayoutWidgetLand = ShanYanCustomWidgetLayout(
-        layout_name_land, ShanYanCustomWidgetLayoutType.RelativeLayout);
+        layoutNameLand, ShanYanCustomWidgetLayoutType.RelativeLayout);
     relativeLayoutWidgetLand.top = 200;
     relativeLayoutWidgetLand.widgetLayoutId = ["weixin", "qq", "weibo"];
     shanYanCustomWidgetLayoutLand.add(relativeLayoutWidgetLand);
@@ -700,15 +700,7 @@ class ShanyanController extends GetxController {
     content.value = '界面配置成功';
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}

@@ -205,6 +205,6 @@ class LoginClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return this.hashCode != oldClipper.hashCode;
+    return hashCode != oldClipper.hashCode;
   }
 }

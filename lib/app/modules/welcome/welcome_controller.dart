@@ -4,15 +4,7 @@ class WelcomeController extends GetxController {
   //TODO: Implement WelcomeController
 
   final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {}
