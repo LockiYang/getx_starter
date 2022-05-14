@@ -51,6 +51,11 @@ flutter:
     - assets/svgs/
     - assets/lotties/lottie_common_load.json
     - assets/lotties/refresh_empty_page.json
+    - assets/lotties/refresh_head_loading.json
+    - assets/lotties/refresh_footer.json
+    - assets/lotties/page_loading_anim.json
+    - assets/lotties/refresh_empty_page.json
+    - assets/lotties/refresh_error.json
   fonts:
     - family: AntdIcons
       fonts:

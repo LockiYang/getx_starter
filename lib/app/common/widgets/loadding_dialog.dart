@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-/// 公共加载中弹窗
+/// 加载中弹窗
 class LoadingDialog extends StatelessWidget {
   final String text;
 

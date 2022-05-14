@@ -16,7 +16,7 @@ class WanAndroidApi extends GetxService {
     return this;
   }
 
-  ///首页banner轮播图
+  /// 首页banner轮播图
   getBanners({Success<List<BannerModel>>? success}) {
     client.get('banner/json', success: (data) {
       var result = (data as List<dynamic>)
@@ -28,7 +28,7 @@ class WanAndroidApi extends GetxService {
     });
   }
 
-  ///获取项目列表
+  /// 获取项目列表
   Future<ProjectPage> getProjects(int page, {Fail? fail}) async {
     var uri =
         'article/listproject/page/json'.replaceFirst(RegExp('page'), '$page');
@@ -39,7 +39,7 @@ class WanAndroidApi extends GetxService {
     return ProjectPage.fromJson(result as Map<String, dynamic>);
   }
 
-  ///获取文章列表
+  /// 获取文章列表
   Future<ProjectPage> getArticles(int page, {Fail? fail}) async {
     var uri = 'article/list/page/json'.replaceFirst(RegExp('page'), '$page');
     dynamic result = await client.get(uri, fail: (exception) {
@@ -49,6 +49,18 @@ class WanAndroidApi extends GetxService {
     return ProjectPage.fromJson(result as Map<String, dynamic>);
   }
 
+  /// 我的收藏列表
+  Future<ProjectPage> getMyCollet(int page, {Fail? fail}) async {
+    var uri =
+        'lg/collect/list/page/json'.replaceFirst(RegExp('page'), '$page');
+    dynamic result = await client.get(uri, fail: (exception) {
+      if (fail != null) fail(exception);
+    });
+
+    return ProjectPage.fromJson(result as Map<String, dynamic>);
+  }
+
+  /// 用户登录接口
   login(String username, String password,
       {Success<dynamic>? success, Fail? fail}) {
     client.post('user/login',

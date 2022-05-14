@@ -1,17 +1,5 @@
 import 'package:get/get.dart';
 
-import '../modules/enroll/enroll_binding.dart';
-import '../modules/enroll/enroll_view.dart';
-import '../modules/home/home_binding.dart';
-import '../modules/home/home_view.dart';
-import '../modules/login/login_binding.dart';
-import '../modules/login/login_view.dart';
-import '../modules/message/message_binding.dart';
-import '../modules/message/message_view.dart';
-import '../modules/my/my_binding.dart';
-import '../modules/my/my_view.dart';
-import '../modules/setting/setting_binding.dart';
-import '../modules/setting/setting_view.dart';
 import '../modules/test/basic_widgets/basic_widgets_binding.dart';
 import '../modules/test/basic_widgets/basic_widgets_view.dart';
 import '../modules/test/custom_icon/custom_icon_binding.dart';
@@ -28,6 +16,8 @@ import '../modules/test/sliver_widgets/sliver_widgets_binding.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_view.dart';
 import '../modules/test/test_binding.dart';
 import '../modules/test/test_view.dart';
+import '../modules/test_flutter/test_flutter_binding.dart';
+import '../modules/test_flutter/test_flutter_view.dart';
 import '../modules/test_news/news_category/news_category_binding.dart';
 import '../modules/test_news/news_category/news_category_view.dart';
 import '../modules/test_news/news_home/news_home_binding.dart';
@@ -46,6 +36,8 @@ import '../modules/test_wanandroid/wa_home/wa_home_binding.dart';
 import '../modules/test_wanandroid/wa_home/wa_home_view.dart';
 import '../modules/test_wanandroid/wa_login/wa_login_binding.dart';
 import '../modules/test_wanandroid/wa_login/wa_login_view.dart';
+import '../modules/test_wanandroid/wa_my/wa_collect/wa_collect_binding.dart';
+import '../modules/test_wanandroid/wa_my/wa_collect/wa_collect_view.dart';
 import '../modules/test_wanandroid/wa_my/wa_feedback/wa_feedback_binding.dart';
 import '../modules/test_wanandroid/wa_my/wa_feedback/wa_feedback_view.dart';
 import '../modules/test_wanandroid/wa_my/wa_my_binding.dart';
@@ -54,12 +46,8 @@ import '../modules/test_wanandroid/wa_my/wa_setting/wa_setting_binding.dart';
 import '../modules/test_wanandroid/wa_my/wa_setting/wa_setting_view.dart';
 import '../modules/test_wanandroid/wa_search/wa_search_binding.dart';
 import '../modules/test_wanandroid/wa_search/wa_search_view.dart';
-import '../modules/user/user_binding.dart';
-import '../modules/user/user_view.dart';
 import '../modules/webview/webview_binding.dart';
 import '../modules/webview/webview_view.dart';
-import '../modules/welcome/welcome_binding.dart';
-import '../modules/welcome/welcome_view.dart';
 
 part 'app_routes.dart';
 
@@ -69,41 +57,6 @@ class AppPages {
   static const INITIAL = Routes.TEST;
 
   static final routes = [
-    GetPage(
-      name: _Paths.HOME,
-      page: () => HomeView(),
-      binding: HomeBinding(),
-    ),
-    GetPage(
-      name: _Paths.LOGIN,
-      page: () => LoginView(),
-      binding: LoginBinding(),
-    ),
-    GetPage(
-      name: _Paths.WELCOME,
-      page: () => WelcomeView(),
-      binding: WelcomeBinding(),
-    ),
-    GetPage(
-      name: _Paths.USER,
-      page: () => UserView(),
-      binding: UserBinding(),
-    ),
-    GetPage(
-      name: _Paths.MESSAGE,
-      page: () => MessageView(),
-      binding: MessageBinding(),
-    ),
-    GetPage(
-      name: _Paths.MY,
-      page: () => MyView(),
-      binding: MyBinding(),
-    ),
-    GetPage(
-      name: _Paths.SETTING,
-      page: () => SettingView(),
-      binding: SettingBinding(),
-    ),
     GetPage(
       name: _Paths.TEST,
       page: () => TestView(),
@@ -145,11 +98,6 @@ class AppPages {
           binding: LittleWidgetsBinding(),
         ),
       ],
-    ),
-    GetPage(
-      name: _Paths.ENROLL,
-      page: () => EnrollView(),
-      binding: EnrollBinding(),
     ),
     GetPage(
       name: _Paths.TEST_NEWS,
@@ -213,6 +161,11 @@ class AppPages {
               page: () => WaFeedbackView(),
               binding: WaFeedbackBinding(),
             ),
+            GetPage(
+              name: _Paths.WA_COLLECT,
+              page: () => WaCollectView(),
+              binding: WaCollectBinding(),
+            ),
           ],
         ),
         GetPage(
@@ -226,6 +179,11 @@ class AppPages {
           binding: WaLoginBinding(),
         ),
       ],
+    ),
+    GetPage(
+      name: _Paths.TEST_FLUTTER,
+      page: () => TestFlutterView(),
+      binding: TestFlutterBinding(),
     ),
   ];
 }

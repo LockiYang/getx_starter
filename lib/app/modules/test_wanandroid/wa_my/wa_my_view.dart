@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
+import 'package:getx_test/app/common/getx/getz_view_binding.dart';
+import 'package:getx_test/app/modules/test_wanandroid/wa_my/wa_my_binding.dart';
 import '../../../common/getx/get_extension.dart';
 
-import '../../../components/menu_item.dart';
+import '../../../common/widgets/menu_item.dart';
 import '../../../routes/app_pages.dart';
 import '../../../styles/app_theme.dart';
 import '../../../utils/screen_util.dart';
 import 'wa_my_controller.dart';
 
-class WaMyView extends GetView<WaMyController> {
+class WaMyView extends GetzViewBindng<WaMyController> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.removeStatusBarTransparent(context);
@@ -37,9 +38,12 @@ class WaMyView extends GetView<WaMyController> {
               Container(
                 margin: EdgeInsets.only(left: 10),
                 child: controller.loginUser != null
-                    ? Text(controller.loginUser!.nickname)
+                    ? Text(
+                        controller.loginUser!.nickname,
+                        style: TextStyle(fontSize: 16),
+                      )
                     : GestureDetector(
-                        child: Text('点击登录'),
+                        child: Text('点击登录', style: TextStyle(fontSize: 16)),
                         onTap: () => Get.toNamed(Routes.WA_LOGIN),
                       ),
               ),
@@ -56,24 +60,24 @@ class WaMyView extends GetView<WaMyController> {
           ),
 
           // 数据预览
-          GestureDetector(
-            onTap: () => Get.toNamed(Routes.ENROLL),
-            child: Container(
-              margin: EdgeInsets.only(top: 20),
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                        offset: const Offset(4, 4),
-                        color: appColorlight,
-                        blurRadius: 10)
-                  ]),
-              child: Row(
-                children: [
-                  Expanded(
-                      child: Column(
+          Container(
+            margin: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                      offset: const Offset(4, 4),
+                      color: appColorlight,
+                      blurRadius: 10)
+                ]),
+            child: Row(
+              children: [
+                Expanded(
+                    child: GestureDetector(
+                  onTap: () => Get.toNamed(Routes.WA_COLLECT),
+                  child: Column(
                     children: [
                       Text('0'),
                       SizedBox(
@@ -84,49 +88,49 @@ class WaMyView extends GetView<WaMyController> {
                         style: TextStyle(color: appColorMedium),
                       )
                     ],
-                  )),
-                  Expanded(
-                      child: Column(
-                    children: [
-                      Text('0'),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        '分享',
-                        style: TextStyle(color: appColorMedium),
-                      )
-                    ],
-                  )),
-                  Expanded(
-                      child: Column(
-                    children: [
-                      Text('0'),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        '积分',
-                        style: TextStyle(color: appColorMedium),
-                      )
-                    ],
-                  )),
-                  Expanded(
-                      child: Column(
-                    children: [
-                      Text('0'),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        '历史',
-                        style: TextStyle(color: appColorMedium),
-                      )
-                    ],
-                  ))
-                ],
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-              ),
+                  ),
+                )),
+                Expanded(
+                    child: Column(
+                  children: [
+                    Text('0'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      '分享',
+                      style: TextStyle(color: appColorMedium),
+                    )
+                  ],
+                )),
+                Expanded(
+                    child: Column(
+                  children: [
+                    Text('0'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      '积分',
+                      style: TextStyle(color: appColorMedium),
+                    )
+                  ],
+                )),
+                Expanded(
+                    child: Column(
+                  children: [
+                    Text('0'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      '历史',
+                      style: TextStyle(color: appColorMedium),
+                    )
+                  ],
+                ))
+              ],
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
             ),
           ),
 
@@ -192,5 +196,10 @@ class WaMyView extends GetView<WaMyController> {
         ]),
       ),
     );
+  }
+
+  @override
+  Bindings? binding() {
+    return WaMyBinding();
   }
 }

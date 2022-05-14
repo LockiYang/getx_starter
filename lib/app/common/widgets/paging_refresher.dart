@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getx_test/app/common/widgets/paging_controller.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:get/get.dart';
 
@@ -33,11 +34,11 @@ class PagingRefreshWidget<T extends PagingController> extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return PagingRefreshWidgetState<T>();
+    return _PagingRefreshWidgetState<T>();
   }
 }
 
-class PagingRefreshWidgetState<T extends PagingController>
+class _PagingRefreshWidgetState<T extends PagingController>
     extends State<PagingRefreshWidget> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
@@ -58,6 +59,8 @@ class PagingRefreshWidgetState<T extends PagingController>
                     enablePullUp: widget.enablePullUp,
                     onRefresh: () => controller.refreshData(),
                     onLoading: () => controller.loadMoreData(),
+                    header: _buildHeader(),
+                    footer: _buildFooter(),
                     child: widget.child)),
             tag: widget.tag,
           ),
@@ -69,7 +72,8 @@ class PagingRefreshWidgetState<T extends PagingController>
                 child: SizedBox(
                   width: 200,
                   height: 200,
-                  child: Text('加载中'),
+                  child: Lottie.asset('assets/lotties/page_loading_anim.json',
+                      width: 200, height: 200, animate: true),
                 )),
             tag: widget.tag,
           ),
@@ -77,7 +81,10 @@ class PagingRefreshWidgetState<T extends PagingController>
           ///加载数据为空
           GetBuilder<T>(
             builder: (controller) => Visibility(
-                visible: controller.loadStatus == 2, child: Text('数据为空')),
+              visible: controller.loadStatus == 2,
+              child: Lottie.asset('assets/lotties/refresh_empty_page.json',
+                  width: 200, height: 200, animate: true),
+            ),
             tag: widget.tag,
           ),
 
@@ -85,12 +92,68 @@ class PagingRefreshWidgetState<T extends PagingController>
           GetBuilder<T>(
             builder: (controller) => Visibility(
               visible: controller.loadStatus == 3,
-              child: Text('加载出错'),
+              child: Lottie.asset('assets/lotties/refresh_error.json',
+                  width: 200, height: 200, animate: true),
             ),
             tag: widget.tag,
           ),
         ],
       ),
+    );
+  }
+
+  CustomFooter _buildFooter() {
+    return CustomFooter(
+      builder: (BuildContext context, LoadStatus? mode) {
+        Widget footer;
+        if (mode == LoadStatus.idle) {
+          ///下拉提示
+          footer = const Text("pull up load");
+        } else if (mode == LoadStatus.loading) {
+          ///加载中
+          footer = Lottie.asset('assets/lotties/refresh_footer.json',
+              width: 200, animate: true);
+        } else if (mode == LoadStatus.failed) {
+          ///加载失败
+          footer = Text('加载失败');
+        } else {
+          ///无更多数据
+          footer = Text('没有更多数据啦');
+        }
+        return SizedBox(
+          height: 60,
+          child: Center(child: footer),
+        );
+      },
+    );
+  }
+
+  CustomHeader _buildHeader() {
+    return CustomHeader(
+      builder: (BuildContext context, RefreshStatus? mode) {
+        Widget header;
+        if (mode == RefreshStatus.idle) {
+          ///下拉时显示
+          header = Text('上拉刷新');
+        } else if (mode == RefreshStatus.refreshing) {
+          ///加载中
+          header = Lottie.asset('assets/lotties/refresh_head_loading.json',
+              width: 100, animate: true);
+        } else if (mode == RefreshStatus.failed) {
+          ///加载失败
+          header = Text('刷新失败');
+        } else if (mode == RefreshStatus.completed) {
+          ///加载成功
+          header = Text('刷新成功');
+        } else {
+          ///超过二层
+          header = Text('釋放刷新');
+        }
+        return SizedBox(
+          height: 64,
+          child: Center(child: header),
+        );
+      },
     );
   }
 

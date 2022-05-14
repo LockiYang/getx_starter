@@ -1,7 +1,7 @@
 
 
 import '../data/user.dart';
-import '../utils/http.dart';
+import '../modules/test_news/common/http.dart';
 
 /// 用户
 class UserAPI {

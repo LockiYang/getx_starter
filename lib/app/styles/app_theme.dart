@@ -125,7 +125,8 @@ class AppTheme {
 
   static BrnCardTitleConfig cardTitleConfig = BrnCardTitleConfig(
       titleTextStyle: BrnTextStyle.withStyle(
-          TextStyle(fontSize: 16, fontWeight: FontWeight.w400)));
+          TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+      cardTitlePadding: EdgeInsets.symmetric(vertical: 15));
 
   static initTheme() {
     BrnInitializer.register(

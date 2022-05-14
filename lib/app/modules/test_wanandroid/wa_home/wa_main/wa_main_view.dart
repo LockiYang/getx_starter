@@ -14,7 +14,7 @@ class WaMainView extends GetzViewKeepAlive<WaMainController> {
     return PagingRefreshWidget<WaMainController>(
         child: ListView.builder(
             padding: EdgeInsets.zero,
-            shrinkWrap: true,
+            shrinkWrap: true, // 无边界滚动
             itemCount: controller.data.length,
             itemBuilder: (context, index) {
               return GestureDetector(
@@ -30,5 +30,10 @@ class WaMainView extends GetzViewKeepAlive<WaMainController> {
                 ),
               );
             }));
+  }
+  
+  @override
+  Bindings? binding() {
+    return null;
   }
 }

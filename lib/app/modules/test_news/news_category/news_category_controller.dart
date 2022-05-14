@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../data/news.dart';
-import '../../../data/news_api.dart';
+import '../common/news_api.dart';
 
 class NewsCategoryController extends GetxController {
   RxList<NewsItem> newsList = <NewsItem>[].obs;

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../../data/categories.dart';
 import '../../../data/channels.dart';
 import '../../../data/news.dart';
-import '../../../data/news_api.dart';
+import '../common/news_api.dart';
 
 class NewsHomeController extends GetxController {
   // 分类

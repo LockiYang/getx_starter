@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:getx_test/app/common/getx/getz_view_binding.dart';
+import 'package:getx_test/app/modules/test_wanandroid/wa_project/wa_project_binding.dart';
 import 'package:getx_test/app/modules/test_wanandroid/wa_project/widgets/project_list_item.dart';
 
-import '../../../common/getx/getz_view_keep_alive.dart';
 import '../../../common/widgets/paging_refresher.dart';
 import 'wa_project_controller.dart';
 
-class WaProjectView extends GetzViewKeepAlive<WaProjectController> {
-  WaProjectView({Key? key}) : super(key: key) {
-    Get.put<WaProjectController>(WaProjectController());
-  }
+class WaProjectView extends GetzViewBindng<WaProjectController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         body: SafeArea(
             top: true,
             child: PagingRefreshWidget<WaProjectController>(
@@ -24,5 +23,10 @@ class WaProjectView extends GetzViewKeepAlive<WaProjectController> {
                     itemBuilder: (context, index) {
                       return ProjectListItem(controller.data[index]);
                     }))));
+  }
+
+  @override
+  Bindings? binding() {
+    return WaProjectBinding();
   }
 }

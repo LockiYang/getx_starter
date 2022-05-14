@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import 'package:getx_test/app/common/getx/getz_view.dart';
+import 'package:getx_test/app/common/getx/getz_view_binding.dart';
 import 'package:getx_test/app/modules/test_wanandroid/wa_home/wa_ask/wa_ask_view.dart';
+import 'package:getx_test/app/modules/test_wanandroid/wa_home/wa_home_binding.dart';
 import 'package:getx_test/app/modules/test_wanandroid/wa_home/wa_main/wa_main_view.dart';
 import 'package:getx_test/app/modules/test_wanandroid/wa_home/wa_square/wa_square_view.dart';
 
@@ -11,7 +12,7 @@ import '../../../common/widgets/banner_widget.dart';
 import '../../../routes/app_pages.dart';
 import 'wa_home_controller.dart';
 
-class WaHomeView extends GetzView<WaHomeController> {
+class WaHomeView extends GetzViewBindng<WaHomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,9 +52,7 @@ class WaHomeView extends GetzView<WaHomeController> {
                 ],
               ),
             ),
-
             const Expanded(child: SizedBox()),
-
             InkWell(
               borderRadius: BorderRadius.all(
                 Radius.circular(20),
@@ -76,5 +75,10 @@ class WaHomeView extends GetzView<WaHomeController> {
                 children: [WaMainView(), WaSquareView(), WaAskView()]))
       ],
     ));
+  }
+
+  @override
+  Bindings? binding() {
+    return WaHomeBinding();
   }
 }

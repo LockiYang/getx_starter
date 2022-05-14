@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import '../../routes/app_pages.dart';
 import '../../utils/screen_util.dart';
-import '../navbar/navbar.dart';
 import 'test_controller.dart';
 
 class TestView extends GetView<TestController> {
@@ -40,19 +39,15 @@ class TestView extends GetView<TestController> {
             ),
             ListTile(
               title: Text('News APP'),
-              onTap: () => Get.toNamed(Routes.TEST_NEWS),
+              onTap: () => Get.offAllNamed(Routes.TEST_NEWS),
             ),
             ListTile(
               title: Text('WanAndroid APP'),
-              onTap: () => Get.toNamed(Routes.TEST_WANANDROID),
+              onTap: () => Get.offAllNamed(Routes.TEST_WANANDROID),
             ),
             ListTile(
               title: Text('登录'),
               onTap: () => Get.toNamed(Routes.WELCOME),
-            ),
-            ListTile(
-              title: Text('Navbar'),
-              onTap: () => Get.to(Navbar()),
             ),
             ListTile(
               title: Text('闪验测试'),

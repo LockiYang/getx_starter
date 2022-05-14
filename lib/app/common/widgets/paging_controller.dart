@@ -23,6 +23,12 @@ abstract class PagingController<T> extends GetxController {
     refreshData();
   }
 
+  @override
+  void onClose() {
+    refreshController.dispose();
+    super.onClose();
+  }
+
   /// 刷新数据
   void refreshData() async {
     pageIndex = 0;

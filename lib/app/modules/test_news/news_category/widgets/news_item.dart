@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../data/news.dart';
-import '../../../../utils/date.dart';
+import '../../../../utils/date_util.dart';
 import '../../common/app_colors.dart';
 import '../../widgets/image.dart';
 
@@ -106,7 +106,7 @@ Widget newsListItem(NewsItem item) {
                         maxWidth: 100.w,
                       ),
                       child: Text(
-                        '• ${duTimeLineFormat(item.addtime ?? DateTime(0))}',
+                        '• ${DateUtil.duTimeLineFormat(item.addtime ?? DateTime(0))}',
                         style: TextStyle(
                           fontFamily: 'Avenir',
                           fontWeight: FontWeight.normal,

@@ -35,6 +35,9 @@ abstract class Routes {
   static const WA_FEEDBACK =
       _Paths.TEST_WANANDROID + _Paths.WA_MY + _Paths.WA_FEEDBACK;
   static const WA_LOGIN = _Paths.TEST_WANANDROID + _Paths.WA_LOGIN;
+  static const WA_COLLECT =
+      _Paths.TEST_WANANDROID + _Paths.WA_MY + _Paths.WA_COLLECT;
+  static const TEST_FLUTTER = _Paths.TEST_FLUTTER;
 }
 
 abstract class _Paths {
@@ -69,4 +72,6 @@ abstract class _Paths {
   static const WA_SETTING = '/wa-setting';
   static const WA_FEEDBACK = '/wa-feedback';
   static const WA_LOGIN = '/wa-login';
+  static const WA_COLLECT = '/wa-collect';
+  static const TEST_FLUTTER = '/test-flutter';
 }

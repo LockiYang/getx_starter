@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../data/news.dart';
-import '../../../utils/date.dart';
+import '../../../utils/date_util.dart';
 import '../common/app_colors.dart';
 import '../widgets/button.dart';
 import '../widgets/image.dart';
@@ -158,7 +158,7 @@ class NewsHomeView extends GetView<NewsHomeController> {
                           maxWidth: 120,
                         ),
                         child: Text(
-                          '• ${duTimeLineFormat(controller.newsRecommend.value!.addtime!)}',
+                          '• ${DateUtil.duTimeLineFormat(controller.newsRecommend.value!.addtime!)}',
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontWeight: FontWeight.normal,
@@ -492,7 +492,7 @@ class NewsHomeView extends GetView<NewsHomeController> {
                           maxWidth: 100.w,
                         ),
                         child: Text(
-                          '• ${duTimeLineFormat(item.addtime ?? DateTime(0))}',
+                          '• ${DateUtil.duTimeLineFormat(item.addtime ?? DateTime(0))}',
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontWeight: FontWeight.normal,

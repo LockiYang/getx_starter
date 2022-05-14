@@ -29,13 +29,13 @@ class ThemeConstants {
 
   /// 文本色相关
   ///
-  /// 基础文字纯黑色
+  /// 基础文字色
   static const Color colorTextBase = Color(0xFF222222);
 
   /// 基础文字重要色
   static const Color colorTextImportant = Color(0xFF666666);
 
-  /// 基础文字-反色
+  /// 基础文字色-反
   static const Color colorTextBaseInverse = Color(0xFFFFFFFF);
 
   /// 辅助文字色
@@ -44,7 +44,7 @@ class ThemeConstants {
   /// 失效或不可更改文字色
   static const Color colorTextDisabled = Color(0xFF999999);
 
-  /// 文本框提示暗文文字色
+  /// 文本框提示文字色
   static const Color colorTextHint = Color(0xFFCCCCCC);
 
   /// 跟随主题色[brandPrimary]
@@ -69,29 +69,29 @@ class ThemeConstants {
 
   /// 文本字号
   ///
-  /// 特殊数据展示，Bebas 数字字体，用于强吸引
+  /// 特殊字号 特殊数据展示，Bebas 数字字体，用于强吸引
   static const double fontSizeBebas = 28.0;
 
-  /// 标题字体
+  /// 大标题字号
   /// 名称/页面大标题
   static const double fontSizeHeadLg = 22.0;
 
-  /// 标题字体
+  /// 标题字号
   /// 内容模块标题/一级标题
   static const double fontSizeHead = 18.0;
 
-  /// 子标题字体
+  /// 子标题字号
   /// 标题/录入文字/大按钮文字/二级标题
   static const double fontSizeSubHead = 16.0;
 
-  /// 基础字体
+  /// 基础字号
   /// 内容副文本/普通说明文字
   static const double fontSizeBase = 14.0;
 
-  /// 辅助字体-普通
+  /// 辅助字号
   static const double fontSizeCaption = 12.0;
 
-  ///辅助字体-小
+  ///辅助字号-小
   static const double fontSizeCaptionSm = 11.0;
 
   /// 圆角尺寸

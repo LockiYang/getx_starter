@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+/// 装载GetxController
+/// 装载GetBuilder状态管理
+/// 注入Bingding
+/// keep-alive => AutomaticKeepAliveClientMixin
+/// WidgetsBindingObserver
 abstract class GetzViewKeepAlive<T extends GetxController>
     extends StatefulWidget {
   const GetzViewKeepAlive({Key? key}) : super(key: key);
 
   final String? tag = null;
 
+  /// 注入控制器
   T get controller => GetInstance().find<T>(tag: tag);
 
-  /// Get 局部更新字段
+  /// Get局部更新字段
   get updateId => null;
 
   /// widget生命周期
   get lifecycle => null;
+
+  @protected
+  Bindings? binding();
 
   @protected
   Widget build(BuildContext context);
@@ -22,9 +31,17 @@ abstract class GetzViewKeepAlive<T extends GetxController>
   State<GetzViewKeepAlive> createState() => _GetzViewKeepAliveState<T>();
 }
 
-/// AutomaticKeepAliveClientMixin 在flutter中如果切换tabar,则initState方法会被反复重调,若想保持原有状态,切换页面时不再调用initState方法,则需使用AutomaticKeepAliveClientMixin.
-/// 同Vue中的<keep-alive>使用原理一样，<keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。
-/// WidgetsBindingObserver 想要知道Flutter App的生命周期
+/// WidgetsBindingObserver 监控生命周期
+///   didPopRoute
+///   didPushRoute
+///   didPushRouteInformation
+///   didChangeMetrics 应用尺寸改变时回调，例如旋转
+///   didChangeTextScaleFactor 文字系数变化
+///   didChangePlatformBrightness
+///   didChangeLocales 用户本地设置变化时调用，如系统语言改变
+///   didChangeAppLifecycleState App生命周期
+///   didHaveMemoryPressure 低内存回调
+///   didChangeAccessibilityFeatures
 class _GetzViewKeepAliveState<S extends GetxController>
     extends State<GetzViewKeepAlive>
     with
@@ -43,13 +60,12 @@ class _GetzViewKeepAliveState<S extends GetxController>
   @override
   void initState() {
     super.initState();
-    /// 想要知道Flutter App的生命周期
+    widget.binding()?.dependencies();
     if (widget.lifecycle != null) {
       WidgetsBinding.instance.addObserver(this);
     }
   }
 
-  /// 当 View 不需要再显示，从渲染树中移除的时候，State 就会永久的从渲染树中移除，就会调用 dispose 生命周期，这时候就可以在 dispose 里做一些取消监听、动画的操作，和 initState 是相反的
   @override
   void dispose() {
     Get.delete<S>();
@@ -61,8 +77,11 @@ class _GetzViewKeepAliveState<S extends GetxController>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    /// AppLifecycleState 就是 App 的生命周期
-    /// resumed inactive paused suspending
+    /// AppLifecycleState =》 App的生命周期
+    ///   resumed: 应用可见并可响应用户操作
+    ///   inactive: 用户可见，但不可响应用户操作
+    ///   paused: 已经暂停了，用户不可见、不可操作
+    ///   suspending: 应用被挂起，此状态IOS永远不会回调
     super.didChangeAppLifecycleState(state);
     if (widget.lifecycle != null) {
       widget.lifecycle(state);

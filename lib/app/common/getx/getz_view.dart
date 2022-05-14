@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-/// 自动绑定GetxController
-/// 自动装载状态管理
+/// 装载GetxController
+/// 装载GetBuilder状态管理
 abstract class GetzView<T extends GetxController> extends StatefulWidget {
   const GetzView({Key? key}) : super(key: key);
 
   final String? tag = null;
 
   T get controller => GetInstance().find<T>(tag: tag);
+
   get updateId => null;
 
   @protected
@@ -31,7 +32,7 @@ class _GetzViewState<S extends GetxController> extends State<GetzView> {
 
   @override
   void dispose() {
-    super.dispose();
     Get.delete<S>();
+    super.dispose();
   }
 }
