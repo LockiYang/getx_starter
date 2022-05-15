@@ -16,6 +16,8 @@ import '../modules/test/sliver_widgets/sliver_widgets_binding.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_view.dart';
 import '../modules/test/test_binding.dart';
 import '../modules/test/test_view.dart';
+import '../modules/test_eyepetizer/test_eyepetizer_binding.dart';
+import '../modules/test_eyepetizer/test_eyepetizer_view.dart';
 import '../modules/test_flutter/test_flutter_binding.dart';
 import '../modules/test_flutter/test_flutter_view.dart';
 import '../modules/test_news/news_category/news_category_binding.dart';
@@ -184,6 +186,11 @@ class AppPages {
       name: _Paths.TEST_FLUTTER,
       page: () => TestFlutterView(),
       binding: TestFlutterBinding(),
+    ),
+    GetPage(
+      name: _Paths.TEST_EYEPETIZER,
+      page: () => TestEyepetizerView(),
+      binding: TestEyepetizerBinding(),
     ),
   ];
 }

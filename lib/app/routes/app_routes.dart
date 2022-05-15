@@ -38,6 +38,7 @@ abstract class Routes {
   static const WA_COLLECT =
       _Paths.TEST_WANANDROID + _Paths.WA_MY + _Paths.WA_COLLECT;
   static const TEST_FLUTTER = _Paths.TEST_FLUTTER;
+  static const TEST_EYEPETIZER = _Paths.TEST_EYEPETIZER;
 }
 
 abstract class _Paths {
@@ -74,4 +75,5 @@ abstract class _Paths {
   static const WA_LOGIN = '/wa-login';
   static const WA_COLLECT = '/wa-collect';
   static const TEST_FLUTTER = '/test-flutter';
+  static const TEST_EYEPETIZER = '/test-eyepetizer';
 }

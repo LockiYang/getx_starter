@@ -2,27 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:getx_test/app/styles/theme_constants.dart';
 
 class Stylez {
-  /// 特殊字号
+  /// 超大标题
   static const TextStyle textBebas = TextStyle(
       fontSize: ThemeConstants.fontSizeBebas,
       fontWeight: FontWeight.bold,
       color: ThemeConstants.brandPrimary);
 
-  /// 大标题字号
+  /// 大标题
   /// 名称/页面大标题
   static const TextStyle textHeadLg = TextStyle(
       fontSize: ThemeConstants.fontSizeHeadLg,
       fontWeight: FontWeight.bold,
       color: ThemeConstants.colorTextBase);
 
-  /// 标题字号
+  /// 主标题
   /// 内容模块标题/一级标题
   static const TextStyle textHead = TextStyle(
       fontSize: ThemeConstants.fontSizeHead,
       fontWeight: FontWeight.w600,
       color: ThemeConstants.colorTextBase);
 
-  /// 子标题字号
+  /// 副标题
   /// 标题/录入文字/大按钮文字/二级标题
   static const TextStyle textSubHead = TextStyle(
       fontSize: ThemeConstants.fontSizeSubHead,
@@ -42,7 +42,7 @@ class Stylez {
       fontWeight: FontWeight.normal,
       color: ThemeConstants.colorTextSecondary);
 
-  ///辅助字号-小
+  /// 辅助字号-小
   static const TextStyle textCaptionSm = TextStyle(
       fontSize: ThemeConstants.fontSizeCaptionSm,
       fontWeight: FontWeight.normal,
