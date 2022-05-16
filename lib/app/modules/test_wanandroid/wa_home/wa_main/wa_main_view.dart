@@ -6,6 +6,7 @@ import 'package:getx_test/app/modules/webview/webview_controller.dart';
 
 import '../../../../common/widgets/paging_refresher.dart';
 import '../../../../routes/app_pages.dart';
+import 'wa_main_binding.dart';
 import 'wa_main_controller.dart';
 
 class WaMainView extends GetzViewKeepAlive<WaMainController> {
@@ -31,9 +32,9 @@ class WaMainView extends GetzViewKeepAlive<WaMainController> {
               );
             }));
   }
-  
+
   @override
   Bindings? binding() {
-    return null;
+    return WamainBinding();
   }
 }

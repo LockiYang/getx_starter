@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/no_splash_factory.dart';
-import 'package:getx_test/app/utils/toast_util.dart';
 
+import '../../../common/utils/toast_util.dart';
 import 'little_widgets_controller.dart';
 
 class LittleWidgetsView extends GetView<LittleWidgetsController> {

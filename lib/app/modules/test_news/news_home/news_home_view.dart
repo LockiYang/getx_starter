@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../common/utils/date_util.dart';
 import '../../../data/news.dart';
-import '../../../utils/date_util.dart';
 import '../common/app_colors.dart';
 import '../widgets/button.dart';
 import '../widgets/image.dart';

@@ -2,8 +2,8 @@ import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_test/app/styles/theme_constants.dart';
 
+import '../../../../common/styles/theme_constants.dart';
 import 'wa_feedback_controller.dart';
 import 'widgets/feedback_photo_select_widget.dart';
 

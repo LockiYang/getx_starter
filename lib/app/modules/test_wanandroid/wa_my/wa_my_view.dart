@@ -5,10 +5,10 @@ import 'package:getx_test/app/common/getx/getz_view_binding.dart';
 import 'package:getx_test/app/modules/test_wanandroid/wa_my/wa_my_binding.dart';
 import '../../../common/getx/get_extension.dart';
 
+import '../../../common/styles/app_theme.dart';
+import '../../../common/utils/screen_util.dart';
 import '../../../common/widgets/menu_item.dart';
 import '../../../routes/app_pages.dart';
-import '../../../styles/app_theme.dart';
-import '../../../utils/screen_util.dart';
 import 'wa_my_controller.dart';
 
 class WaMyView extends GetzViewBindng<WaMyController> {
@@ -50,7 +50,8 @@ class WaMyView extends GetzViewBindng<WaMyController> {
               const Expanded(child: Text('')),
               // 设置
               GestureDetector(
-                onTap: () => Get.toNamed(Routes.WA_SETTING),
+                onTap: () => Get.toNamed(Routes.WA_SETTING)
+                    ?.then((value) => {controller.routeCallback()}),
                 child: Icon(
                   Icons.settings,
                   color: appColorMedium,

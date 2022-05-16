@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:getx_test/app/data/repositorys/wan_android_api.dart';
 
+import '../../../../common/utils/cache_util.dart';
+import '../../../../common/utils/file_util.dart';
+import '../../../../common/utils/toast_util.dart';
 import '../../../../routes/app_pages.dart';
-import '../../../../utils/file_util.dart';
-import '../../../../utils/toast_util.dart';
 
 class WaSettingController extends GetxController {
   late WanAndroidApi wanAndroidApi;
@@ -27,10 +28,12 @@ class WaSettingController extends GetxController {
   }
 
   logout() {
-    // CacheUtil.deleteUserInfo();
+    CacheUtil.deleteUserInfo();
     // wanAndroidApi.logout();
     // Get.offAllNamed(Routes.TEST_WANANDROID);
-    Get.offNamed(Routes.TEST_WANANDROID);
+    Get.until((route) => Get.currentRoute == Routes.TEST_WANANDROID);
+    // Get.back()
+    // Get.offAllNamed(Routes.TEST_WANANDROID);
   }
 
   @override

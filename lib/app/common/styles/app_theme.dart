@@ -1,9 +1,9 @@
 import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
-import 'package:getx_test/app/common/no_splash_factory.dart';
-import 'package:getx_test/app/styles/theme_constants.dart';
 
+import '../no_splash_factory.dart';
 import 'lib_color_schemes.g.dart';
+import 'theme_constants.dart';
 
 ///一、颜色
 ///关键颜色

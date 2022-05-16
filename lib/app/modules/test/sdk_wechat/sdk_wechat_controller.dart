@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class TestEyepetizerController extends GetxController {
-  //TODO: Implement TestEyepetizerController
+class SdkWechatController extends GetxController {
+  //TODO: Implement SdkWechatController
 
   final count = 0.obs;
   @override

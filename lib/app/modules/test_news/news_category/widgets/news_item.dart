@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../common/utils/date_util.dart';
 import '../../../../data/news.dart';
-import '../../../../utils/date_util.dart';
 import '../../common/app_colors.dart';
 import '../../widgets/image.dart';
 

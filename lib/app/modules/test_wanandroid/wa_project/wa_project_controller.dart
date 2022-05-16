@@ -9,7 +9,7 @@ class WaProjectController extends PagingController<Project> {
   @override
   Future<List<Project>> loadData() async {
     ProjectPage projectPage =
-        await wanAndroidApi.getProjects(pageIndex, fail: (exception) {
+        await wanAndroidApi.getProjects(currentPage, fail: (exception) {
       loadStatus = 3;
       // 重试 refreshData
     });

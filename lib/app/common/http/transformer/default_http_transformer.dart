@@ -11,7 +11,7 @@ class DefaultHttpTransformer extends HttpTransformer {
       T data = response.data["data"];
       // 回调函数执行点
       if (success != null) {
-        success(data);
+        success.call(data);
       }
       return data;
     } else {

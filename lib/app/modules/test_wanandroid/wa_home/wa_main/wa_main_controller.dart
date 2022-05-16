@@ -9,7 +9,6 @@ import '../../../../data/repositorys/wan_android_api.dart';
 class WaMainController extends PagingController<Article> {
   late WanAndroidApi wanAndroidApi;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -23,12 +22,11 @@ class WaMainController extends PagingController<Article> {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 
   @override
   Future<List<Article>> loadData() async {
     ProjectPage projectPage =
-        await wanAndroidApi.getProjects(pageIndex);
+        await wanAndroidApi.getProjects(currentPage);
     return projectPage.datas.map((e) => Article.fromJson(e)).toList();
   }
 }

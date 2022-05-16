@@ -49,7 +49,7 @@ class _PagingRefreshWidgetState<T extends PagingController>
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          ///上下刷新、下拉加载控件
+          /// 加载成功
           GetBuilder<T>(
             builder: (controller) => Visibility(
                 visible: controller.loadStatus == 1,
@@ -132,22 +132,27 @@ class _PagingRefreshWidgetState<T extends PagingController>
     return CustomHeader(
       builder: (BuildContext context, RefreshStatus? mode) {
         Widget header;
-        if (mode == RefreshStatus.idle) {
-          ///下拉时显示
-          header = Text('上拉刷新');
-        } else if (mode == RefreshStatus.refreshing) {
-          ///加载中
-          header = Lottie.asset('assets/lotties/refresh_head_loading.json',
-              width: 100, animate: true);
-        } else if (mode == RefreshStatus.failed) {
-          ///加载失败
-          header = Text('刷新失败');
-        } else if (mode == RefreshStatus.completed) {
-          ///加载成功
-          header = Text('刷新成功');
-        } else {
-          ///超过二层
-          header = Text('釋放刷新');
+        switch (mode) {
+          case RefreshStatus.idle:
+            // 下拉时显示
+            header = Text('上拉刷新');
+            break;
+          case RefreshStatus.refreshing:
+            // 加载中
+            header = Lottie.asset('assets/lotties/refresh_head_loading.json',
+                width: 100, animate: true);
+            break;
+          case RefreshStatus.failed:
+            // 加载失败
+            header = Text('刷新失败');
+            break;
+          case RefreshStatus.completed:
+            // 加载成功
+            header = Text('刷新成功');
+            break;
+          default:
+            // 超过二层
+            header = Text('釋放刷新');
         }
         return SizedBox(
           height: 64,

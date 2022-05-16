@@ -1,14 +1,20 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../common/utils/cache_util.dart';
 import '../../../data/models/user.dart';
-import '../../../utils/cache_util.dart';
 
 class WaMyController extends GetxController {
   User? loginUser;
-  
-  @override
-  void onInit() {
-    super.onInit();
+
+  /// 路由回传，更新页面数据
+  void routeCallback() {
+    debugPrint('update my page');
+    notifyUserInfo();
+  }
+
+  /// 更新用户信息，每次进入时更新
+  void notifyUserInfo() {
     var info = CacheUtil.getUserInfo();
     if (info != null) {
       loginUser = info;
@@ -16,6 +22,11 @@ class WaMyController extends GetxController {
     }
   }
 
+  @override
+  void onInit() {
+    super.onInit();
+    notifyUserInfo();
+  }
 
   @override
   void onClose() {}

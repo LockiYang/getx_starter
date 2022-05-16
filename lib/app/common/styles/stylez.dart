@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:getx_test/app/styles/theme_constants.dart';
+
+import 'theme_constants.dart';
 
 class Stylez {
   /// 超大标题

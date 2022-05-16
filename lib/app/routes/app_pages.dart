@@ -10,14 +10,16 @@ import '../modules/test/list_view/list_view_binding.dart';
 import '../modules/test/list_view/list_view_view.dart';
 import '../modules/test/little_widgets/little_widgets_binding.dart';
 import '../modules/test/little_widgets/little_widgets_view.dart';
+import '../modules/test/sdk_umeng/sdk_umeng_binding.dart';
+import '../modules/test/sdk_umeng/sdk_umeng_view.dart';
+import '../modules/test/sdk_wechat/sdk_wechat_binding.dart';
+import '../modules/test/sdk_wechat/sdk_wechat_view.dart';
 import '../modules/test/shanyan/shanyan_binding.dart';
 import '../modules/test/shanyan/shanyan_view.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_binding.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_view.dart';
 import '../modules/test/test_binding.dart';
 import '../modules/test/test_view.dart';
-import '../modules/test_eyepetizer/test_eyepetizer_binding.dart';
-import '../modules/test_eyepetizer/test_eyepetizer_view.dart';
 import '../modules/test_flutter/test_flutter_binding.dart';
 import '../modules/test_flutter/test_flutter_view.dart';
 import '../modules/test_news/news_category/news_category_binding.dart';
@@ -48,6 +50,10 @@ import '../modules/test_wanandroid/wa_my/wa_setting/wa_setting_binding.dart';
 import '../modules/test_wanandroid/wa_my/wa_setting/wa_setting_view.dart';
 import '../modules/test_wanandroid/wa_search/wa_search_binding.dart';
 import '../modules/test_wanandroid/wa_search/wa_search_view.dart';
+import '../modules/test_wanandroid/wa_video/wa_video_binding.dart';
+import '../modules/test_wanandroid/wa_video/wa_video_view.dart';
+import '../modules/test_wanandroid/wa_video_detail/wa_video_detail_binding.dart';
+import '../modules/test_wanandroid/wa_video_detail/wa_video_detail_view.dart';
 import '../modules/webview/webview_binding.dart';
 import '../modules/webview/webview_view.dart';
 
@@ -98,6 +104,16 @@ class AppPages {
           name: _Paths.LITTLE_WIDGETS,
           page: () => LittleWidgetsView(),
           binding: LittleWidgetsBinding(),
+        ),
+        GetPage(
+          name: _Paths.SDK_WECHAT,
+          page: () => SdkWechatView(),
+          binding: SdkWechatBinding(),
+        ),
+        GetPage(
+          name: _Paths.SDK_UMENG,
+          page: () => SdkUmengView(),
+          binding: SdkUmengBinding(),
         ),
       ],
     ),
@@ -180,17 +196,22 @@ class AppPages {
           page: () => WaLoginView(),
           binding: WaLoginBinding(),
         ),
+        GetPage(
+          name: _Paths.WA_VIDEO,
+          page: () => WaVideoView(),
+          binding: WaVideoBinding(),
+        ),
+        GetPage(
+          name: _Paths.WA_VIDEO_DETAIL,
+          page: () => WaVideoDetailView(),
+          binding: WaVideoDetailBinding(),
+        ),
       ],
     ),
     GetPage(
       name: _Paths.TEST_FLUTTER,
       page: () => TestFlutterView(),
       binding: TestFlutterBinding(),
-    ),
-    GetPage(
-      name: _Paths.TEST_EYEPETIZER,
-      page: () => TestEyepetizerView(),
-      binding: TestEyepetizerBinding(),
     ),
   ];
 }

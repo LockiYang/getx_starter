@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_test/app/utils/toast_util.dart';
 
+import '../../../common/utils/cache_util.dart';
+import '../../../common/utils/toast_util.dart';
 import '../../../data/models/user.dart';
 import '../../../data/repositorys/wan_android_api.dart';
 import '../../../routes/app_pages.dart';
-import '../../../utils/cache_util.dart';
 
 class WaLoginController extends GetxController {
   late WanAndroidApi wanAndroidApi;
@@ -28,7 +28,8 @@ class WaLoginController extends GetxController {
       var loginUser = User.fromJson(data);
       loginUser.password = password;
       CacheUtil.putUserInfo(loginUser);
-      Get.offAllNamed(Routes.TEST_WANANDROID);
+      // Get.offAllNamed(Routes.TEST_WANANDROID);
+      Get.until((route) => Get.currentRoute == Routes.TEST_WANANDROID);
     }, fail: (error){
       ToastUtil.show(error.message);
     });

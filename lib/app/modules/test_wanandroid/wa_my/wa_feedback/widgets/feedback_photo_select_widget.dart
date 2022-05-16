@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:getx_test/app/common/getx/getz_view.dart';
 import 'package:getx_test/app/modules/test_wanandroid/wa_my/wa_feedback/wa_feedback_controller.dart';
-import 'package:getx_test/app/styles/theme_constants.dart';
+
+import '../../../../../common/styles/theme_constants.dart';
 
 class FeedbackPhotoSelectWidget extends GetzView<WaFeedbackController>{
 
