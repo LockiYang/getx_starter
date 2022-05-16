@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_test/app/routes/app_pages.dart';
 
-import '../services/config_store.dart';
-import '../services/user_store.dart';
+import '../services/config_service.dart';
+import '../services/user_service.dart';
 
 /// 第一次欢迎页面
 class RouteWelcomeMiddleware extends GetMiddleware {
@@ -16,9 +16,9 @@ class RouteWelcomeMiddleware extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    if (ConfigStore.to.isFirstOpen == true) {
+    if (ConfigService.to.isFirstOpen == true) {
       return null;
-    } else if (UserStore.to.isLogin == true) {
+    } else if (UserService.to.isLogin == true) {
       return RouteSettings(name: Routes.NEWS_INDEX);
     } else {
       return RouteSettings(name: Routes.NEWS_SIGNIN);

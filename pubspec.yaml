@@ -11,6 +11,7 @@ dependencies:
   bruno: ^2.2.0
   flutter_screenutil: ^5.4.0
   fluttertoast: ^8.0.9
+  flutter_native_splash: ^2.2.0+1
 
   image_picker: ^0.8.5+3
   extended_image: ^6.2.0
@@ -29,10 +30,10 @@ dependencies:
   get: ^4.6.1
   intl: ^0.17.0
   shared_preferences: ^2.0.13
+  path_provider: ^2.0.9
   dio: ^4.0.6
   dio_cache_interceptor: ^3.2.6
   json_annotation: ^4.5.0
-  path_provider: ^2.0.9
 
   umeng_common_sdk: ^1.2.4
   fluwx_no_pay: ^3.8.5
@@ -70,3 +71,8 @@ flutter:
     - family: AntdIcons
       fonts:
         - asset: assets/fonts/AntdIcons.ttf
+
+flutter_native_splash:
+  color: "#42a5f5"
+  android_12:
+

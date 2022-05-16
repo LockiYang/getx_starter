@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-/// @class : KeyboardUtils
-/// @name : jhf
-/// @description :软键盘相关工具类
-class KeyboardUtils {
+/// 软键盘相关工具类
+class KeyboardUtil {
   ///隐藏软键盘
   ///[context] 上下文
   static hideKeyboard(BuildContext context) {

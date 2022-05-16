@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'storage_service.dart';
+import 'cache_service.dart';
 
-class ConfigStore extends GetxController {
+/// App配置服务 - 全局响应
+class ConfigService extends GetxController {
   /// 用户 - 配置信息
   static const String STORAGE_USER_PROFILE_KEY = 'user_profile';
 
@@ -19,7 +20,7 @@ class ConfigStore extends GetxController {
   /// 多语言
   static const String STORAGE_LANGUAGE_CODE = 'language_code';
 
-  static ConfigStore get to => Get.find();
+  static ConfigService get to => Get.find();
 
   bool isFirstOpen = false;
   // PackageInfo? _platform;
@@ -34,7 +35,7 @@ class ConfigStore extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    isFirstOpen = StorageService.to.getBool(STORAGE_DEVICE_FIRST_OPEN_KEY);
+    isFirstOpen = CacheService.to.getBool(STORAGE_DEVICE_FIRST_OPEN_KEY) ?? false;
   }
 
   // Future<void> getPlatform() async {
@@ -43,11 +44,11 @@ class ConfigStore extends GetxController {
 
   // 标记用户已打开APP
   Future<bool> saveAlreadyOpen() {
-    return StorageService.to.setBool(STORAGE_DEVICE_FIRST_OPEN_KEY, false);
+    return CacheService.to.setBool(STORAGE_DEVICE_FIRST_OPEN_KEY, false);
   }
 
   void onInitLocale() {
-    var langCode = StorageService.to.getString(STORAGE_LANGUAGE_CODE);
+    var langCode = CacheService.to.getString(STORAGE_LANGUAGE_CODE) ?? '';
     if (langCode.isEmpty) return;
     var index = languages.indexWhere((element) {
       return element.languageCode == langCode;
@@ -59,6 +60,6 @@ class ConfigStore extends GetxController {
   void onLocaleUpdate(Locale value) {
     locale = value;
     Get.updateLocale(value);
-    StorageService.to.setString(STORAGE_LANGUAGE_CODE, value.languageCode);
+    CacheService.to.setString(STORAGE_LANGUAGE_CODE, value.languageCode);
   }
 }

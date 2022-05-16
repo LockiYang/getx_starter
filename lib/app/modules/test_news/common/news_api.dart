@@ -3,7 +3,7 @@ import '../../../data/categories.dart';
 import '../../../data/channels.dart';
 import '../../../data/news.dart';
 import '../../../data/tags.dart';
-import '../../../services/config_store.dart';
+import '../../../services/config_service.dart';
 import 'http.dart';
 
 /// 新闻
@@ -20,7 +20,7 @@ class NewsAPI {
       queryParameters: params?.toJson(),
       refresh: refresh,
       cacheDisk: cacheDisk,
-      cacheKey: ConfigStore.STORAGE_INDEX_NEWS_CACHE_KEY,
+      cacheKey: ConfigService.STORAGE_INDEX_NEWS_CACHE_KEY,
     );
     return NewsPageListResponseEntity.fromJson(response);
   }

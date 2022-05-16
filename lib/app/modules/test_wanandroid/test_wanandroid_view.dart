@@ -22,7 +22,7 @@ class TestWanandroidView extends GetView<TestWanandroidController> {
           controller
             ..lastPopTime = DateTime.now()
             ..update();
-          ToastUtil.show("再按一次退出app");
+          ToastUtil.show("再按一次退出应用");
           return false;
         } else {
           controller.lastPopTime = DateTime.now();

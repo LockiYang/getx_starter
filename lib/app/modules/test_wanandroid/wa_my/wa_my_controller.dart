@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../common/utils/cache_util.dart';
+import '../common/cache_util.dart';
 import '../../../data/models/user.dart';
 
 class WaMyController extends GetxController {

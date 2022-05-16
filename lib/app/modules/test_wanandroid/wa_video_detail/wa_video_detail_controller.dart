@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:wakelock/wakelock.dart';
 
 import '../../../common/widgets/fijkplayer/fijkplayer_skin.dart';
-import '../../../services/video_history.dart';
 
 class WaVideoDetailController extends GetxController {
   //
@@ -26,25 +25,9 @@ class WaVideoDetailController extends GetxController {
   final FijkPlayer player = FijkPlayer();
   ShowConfigAbs vSkinCfg = PlayerShowConfig();
 
-  // 全局控制器
-  HistoryService historyService = Get.put(HistoryService());
-
   @override
   void onInit() {
     super.onInit();
-    // 加入历史记录
-    historyService.add(
-      id: videoId ?? "",
-      playUrl: curPlayUrl ?? "",
-      title: title ?? "",
-      typeName: typeName ?? "",
-      desText: desText ?? "",
-      subTime: subTime ?? "",
-      avatarUrl: avatarUrl ?? "",
-      authorDes: authorDes ?? "",
-      authorName: authorName ?? "",
-      videoPoster: videoPoster ?? "",
-    );
     // 设置播放源
     player.setDataSource(curPlayUrl ?? "", autoPlay: true);
     isInitAnimition = true;

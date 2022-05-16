@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
-import '../widgets/loadding_dialog.dart';
+import '../widgets/dialog/loadding_dialog.dart';
+
 
 /// 扩展Getx
 extension GetExtension on GetInterface {
@@ -12,7 +13,7 @@ extension GetExtension on GetInterface {
   }
 
   /// 显示dialog
-  showLoading({String text = ''}) {
+  showLoading({String text = '加载中'}) {
     if (Get.isDialogOpen != null && Get.isDialogOpen!) {
       Get.back();
     }

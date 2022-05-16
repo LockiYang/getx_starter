@@ -3,6 +3,29 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 
+/// 操作手机本地目录
+/// 
+/// 临时目录
+///   iOS对应的实现方式是 NSCachesDirectory
+///   Android对应的实现方式是getCacheDir()
+/// 
+/// 文档目录
+///   iOS对应的实现方式是 NSDocumentDirectory
+///   Android对应的实现方式是 AppData
+/// 
+/// 应用程序支持目录
+///   iOS对应的实现方式是 NSApplicationSupportDirectory
+///   Android对应的实现方式是 getFilesDir()
+/// 
+/// 应用程序持久文件目录
+/// 
+/// 外部存储目录
+/// 
+/// 外部存储缓存目录
+/// 
+/// 外部存储目录（单独分区）
+/// 
+/// 桌面程序下载目录
 class FileUtil {
   ///加载缓存
   static Future<double> loadCache() async {
@@ -88,5 +111,4 @@ class FileUtil {
       return '${size}GB';
     }
   }
-
 }

@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 
 import '../data/user.dart';
 import '../data/user_api.dart';
-import 'config_store.dart';
-import 'storage_service.dart';
+import 'cache_service.dart';
+import 'config_service.dart';
 
-class UserStore extends GetxController {
-  static UserStore get to => Get.find();
+class UserService extends GetxController {
+  static UserService get to => Get.find();
 
   // 是否登录
   final _isLogin = false.obs;
@@ -24,8 +24,8 @@ class UserStore extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    token = StorageService.to.getString(ConfigStore.STORAGE_USER_TOKEN_KEY);
-    var profileOffline = StorageService.to.getString(ConfigStore.STORAGE_USER_PROFILE_KEY);
+    token = CacheService.to.getString(ConfigService.STORAGE_USER_TOKEN_KEY) ?? '';
+    var profileOffline = CacheService.to.getString(ConfigService.STORAGE_USER_PROFILE_KEY) ?? '';
     if (profileOffline.isNotEmpty) {
       _profile(UserLoginResponseEntity.fromJson(jsonDecode(profileOffline)));
     }
@@ -33,7 +33,7 @@ class UserStore extends GetxController {
 
   // 保存 token
   Future<void> setToken(String value) async {
-    await StorageService.to.setString(ConfigStore.STORAGE_USER_TOKEN_KEY, value);
+    await CacheService.to.setString(ConfigService.STORAGE_USER_TOKEN_KEY, value);
     token = value;
   }
 
@@ -43,19 +43,19 @@ class UserStore extends GetxController {
     var result = await UserAPI.profile();
     _profile(result);
     _isLogin.value = true;
-    StorageService.to.setString(ConfigStore.STORAGE_USER_PROFILE_KEY, jsonEncode(result));
+    CacheService.to.setString(ConfigService.STORAGE_USER_PROFILE_KEY, jsonEncode(result));
   }
 
   // 保存 profile
   Future<void> saveProfile(UserLoginResponseEntity profile) async {
     _isLogin.value = true;
-    StorageService.to.setString(ConfigStore.STORAGE_USER_PROFILE_KEY, jsonEncode(profile));
+    CacheService.to.setString(ConfigService.STORAGE_USER_PROFILE_KEY, jsonEncode(profile));
   }
 
   // 注销
   Future<void> onLogout() async {
     if (_isLogin.value) await UserAPI.logout();
-    await StorageService.to.remove(ConfigStore.STORAGE_USER_TOKEN_KEY);
+    await CacheService.to.remove(ConfigService.STORAGE_USER_TOKEN_KEY);
     _isLogin.value = false;
     token = '';
   }

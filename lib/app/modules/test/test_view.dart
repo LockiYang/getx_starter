@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../common/utils/screen_util.dart';
 import '../../routes/app_pages.dart';
 import 'test_controller.dart';
 
 class TestView extends GetView<TestController> {
   @override
   Widget build(BuildContext context) {
-    // ScreenUtil.removeStatusBarTransparent(context);
+    ScreenUtil.removeStatusBarTransparent(context);
     return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(

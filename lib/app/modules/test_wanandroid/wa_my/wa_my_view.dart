@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:getx_test/app/common/getx/get_extension.dart';
 import 'package:getx_test/app/common/getx/getz_view_binding.dart';
 import 'package:getx_test/app/modules/test_wanandroid/wa_my/wa_my_binding.dart';
-import '../../../common/getx/get_extension.dart';
 
 import '../../../common/styles/app_theme.dart';
-import '../../../common/utils/screen_util.dart';
 import '../../../common/widgets/menu_item.dart';
 import '../../../routes/app_pages.dart';
 import 'wa_my_controller.dart';
@@ -14,7 +13,6 @@ import 'wa_my_controller.dart';
 class WaMyView extends GetzViewBindng<WaMyController> {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.removeStatusBarTransparent(context);
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
       backgroundColor: Colors.white,

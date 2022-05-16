@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:getx_test/app/data/repositorys/wan_android_api.dart';
 
-import '../../../../common/utils/cache_util.dart';
+import '../../common/cache_util.dart';
 import '../../../../common/utils/file_util.dart';
 import '../../../../common/utils/toast_util.dart';
 import '../../../../routes/app_pages.dart';
