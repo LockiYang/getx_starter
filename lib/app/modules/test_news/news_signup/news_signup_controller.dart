@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../common/security.dart';
+import '../common/user_api.dart';
+import '../data/user.dart';
+
 class NewsSignupController extends GetxController {
-  
   final TextEditingController fullnameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
 
-    // 返回上一页
+  // 返回上一页
   handleNavPop() {
     Get.back();
   }
 
-    // 提示信息
+  // 提示信息
   handleTip() {
     // toastInfo(msg: '这是注册界面');
   }
 
-    // 忘记密码
+  // 忘记密码
   handleFogotPassword() {
     // toastInfo(msg: '忘记密码');
   }
@@ -37,19 +40,17 @@ class NewsSignupController extends GetxController {
     //   return;
     // }
 
-    // UserRegisterRequestEntity params = UserRegisterRequestEntity(
-    //   email: emailController.value.text,
-    //   password: duSHA256(passController.value.text),
-    // );
+    UserRegisterRequestEntity params = UserRegisterRequestEntity(
+      email: emailController.value.text,
+      password: duSHA256(passController.value.text),
+    );
 
-    // await UserAPI.register(
-    //   params: params,
-    // );
+    await UserAPI.register(
+      params: params,
+    );
 
     Get.back();
   }
-
-
 
   @override
   void onClose() {}

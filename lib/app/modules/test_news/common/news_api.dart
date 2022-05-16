@@ -1,9 +1,8 @@
-
-import '../../../data/categories.dart';
-import '../../../data/channels.dart';
-import '../../../data/news.dart';
-import '../../../data/tags.dart';
 import '../../../services/config_service.dart';
+import '../data/categories.dart';
+import '../data/channels.dart';
+import '../data/news.dart';
+import '../data/tags.dart';
 import 'http.dart';
 
 /// 新闻

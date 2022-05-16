@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../modules/test/basic_widgets/basic_widgets_binding.dart';
@@ -56,6 +57,7 @@ import '../modules/test_wanandroid/wa_video_detail/wa_video_detail_binding.dart'
 import '../modules/test_wanandroid/wa_video_detail/wa_video_detail_view.dart';
 import '../modules/webview/webview_binding.dart';
 import '../modules/webview/webview_view.dart';
+import 'observers.dart';
 
 part 'app_routes.dart';
 
@@ -63,6 +65,7 @@ class AppPages {
   AppPages._();
 
   static const INITIAL = Routes.TEST;
+  static final RouteObserver<Route> observer = RouteObservers();
 
   static final routes = [
     GetPage(

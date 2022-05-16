@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import '../../../data/news.dart';
 import '../common/news_api.dart';
+import '../data/news.dart';
 
 class NewsCategoryController extends GetxController {
   RxList<NewsItem> newsList = <NewsItem>[].obs;
@@ -57,8 +57,6 @@ class NewsCategoryController extends GetxController {
 
     newsList.addAll(result.items!);
   }
-
-
 
   @override
   void onClose() {}

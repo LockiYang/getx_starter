@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/utils/date_util.dart';
-import '../../../../data/news.dart';
 import '../../common/app_colors.dart';
+import '../../data/news.dart';
 import '../../widgets/image.dart';
 
 Widget newsListItem(NewsItem item) {
@@ -23,7 +23,7 @@ Widget newsListItem(NewsItem item) {
             // );
           },
           child: netImageCached(
-            item.thumbnail ?? "",
+            "https://wyjob.oss-cn-beijing.aliyuncs.com/pic/2022-04-23/165d325912f2446ea879d612e6dc69b9.png",
             width: 121.w,
             height: 121.w,
           ),

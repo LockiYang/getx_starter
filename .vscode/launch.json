@@ -5,11 +5,34 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-chrome",
+            "name": "getx_test - DEFAULT",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
+            "type": "dart",
+            "args": [
+                "--dart-define",
+                "APP_CHANNEL=DEFAULT"
+            ]
+        },
+        {
+            "name": "getx_test - HUAWEI",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--dart-define",
+                "APP_CHANNEL=HUAWEI"
+            ]
+        },
+        {
+            "name": "getx_test (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "getx_test (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
         }
     ]
 }

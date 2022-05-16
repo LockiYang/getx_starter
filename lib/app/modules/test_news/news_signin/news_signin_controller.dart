@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_test/app/routes/app_pages.dart';
 
+import '../common/security.dart';
+import '../common/user_api.dart';
+import '../data/user.dart';
+
 class NewsSigninController extends GetxController {
   
   final TextEditingController emailController = TextEditingController();
@@ -28,14 +32,14 @@ class NewsSigninController extends GetxController {
     //   return;
     // }
 
-    // UserLoginRequestEntity params = UserLoginRequestEntity(
-    //   email: emailController.value.text,
-    //   password: duSHA256(passController.value.text),
-    // );
+    UserLoginRequestEntity params = UserLoginRequestEntity(
+      email: emailController.value.text,
+      password: duSHA256(passController.value.text),
+    );
 
-    // UserLoginResponseEntity userProfile = await UserAPI.login(
-    //   params: params,
-    // );
+    UserLoginResponseEntity userProfile = await UserAPI.login(
+      params: params,
+    );
     // UserStore.to.saveProfile(userProfile);
 
     Get.offAndToNamed(Routes.NEWS_INDEX);

@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-import '../../../data/categories.dart';
-import '../../../data/channels.dart';
-import '../../../data/news.dart';
 import '../common/news_api.dart';
+import '../data/categories.dart';
+import '../data/channels.dart';
+import '../data/news.dart';
 
 class NewsHomeController extends GetxController {
   // 分类
@@ -52,7 +52,6 @@ class NewsHomeController extends GetxController {
       cacheDisk: true,
     );
   }
-
 
   @override
   void onReady() {

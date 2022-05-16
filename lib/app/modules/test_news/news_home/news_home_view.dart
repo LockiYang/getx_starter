@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../common/utils/date_util.dart';
-import '../../../data/news.dart';
 import '../common/app_colors.dart';
+import '../data/news.dart';
 import '../widgets/button.dart';
 import '../widgets/image.dart';
 import '../widgets/input.dart';
@@ -85,7 +85,8 @@ class NewsHomeView extends GetView<NewsHomeController> {
                     // );
                   },
                   child: netImageCached(
-                    controller.newsRecommend.value!.thumbnail!,
+                    // controller.newsRecommend.value!.thumbnail!,
+                    'https://wyjob.oss-cn-beijing.aliyuncs.com/pic/2022-04-23/165d325912f2446ea879d612e6dc69b9.png',
                     width: 335.w,
                     height: 290.h,
                   ),
@@ -410,7 +411,7 @@ class NewsHomeView extends GetView<NewsHomeController> {
               width: 121.w,
               height: 121.w,
               child: netImageCached(
-                item.thumbnail ?? "",
+                'https://wyjob.oss-cn-beijing.aliyuncs.com/pic/2022-04-23/165d325912f2446ea879d612e6dc69b9.png',
                 width: 121.w,
                 height: 121.w,
               ),

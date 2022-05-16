@@ -35,7 +35,8 @@ class ConfigService extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    isFirstOpen = CacheService.to.getBool(STORAGE_DEVICE_FIRST_OPEN_KEY) ?? false;
+    isFirstOpen =
+        CacheService.to.getBool(STORAGE_DEVICE_FIRST_OPEN_KEY) ?? false;
   }
 
   // Future<void> getPlatform() async {

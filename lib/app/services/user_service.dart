@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 
-import '../data/user.dart';
-import '../data/user_api.dart';
+import '../modules/test_news/common/user_api.dart';
+import '../modules/test_news/data/user.dart';
 import 'cache_service.dart';
 import 'config_service.dart';
 
