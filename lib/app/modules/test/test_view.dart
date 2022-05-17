@@ -49,6 +49,10 @@ class TestView extends GetView<TestController> {
                     onTap: () => Get.toNamed(Routes.TEST_WANANDROID),
                   ),
                   BrnActionCardTitle(
+                    title: 'Job APP',
+                    onTap: () => Get.toNamed(Routes.APP_JOB),
+                  ),
+                  BrnActionCardTitle(
                     title: '登录',
                     onTap: () => Get.toNamed(Routes.WELCOME),
                   ),

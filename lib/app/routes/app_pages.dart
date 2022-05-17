@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
+import '../modules/app_job/app_job_binding.dart';
+import '../modules/app_job/app_job_view.dart';
+import '../modules/app_job/job_home/job_home_binding.dart';
+import '../modules/app_job/job_home/job_home_view.dart';
 import '../modules/test/basic_widgets/basic_widgets_binding.dart';
 import '../modules/test/basic_widgets/basic_widgets_view.dart';
 import '../modules/test/custom_icon/custom_icon_binding.dart';
@@ -215,6 +220,18 @@ class AppPages {
       name: _Paths.TEST_FLUTTER,
       page: () => TestFlutterView(),
       binding: TestFlutterBinding(),
+    ),
+    GetPage(
+      name: _Paths.APP_JOB,
+      page: () => AppJobView(),
+      binding: AppJobBinding(),
+      children: [
+        GetPage(
+          name: _Paths.JOB_HOME,
+          page: () => JobHomeView(),
+          binding: JobHomeBinding(),
+        ),
+      ],
     ),
   ];
 }

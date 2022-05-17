@@ -59,7 +59,6 @@ flutter:
     - assets/images/
     - assets/svgs/
     - assets/gifs/
-    - assets/img/
     - assets/lotties/lottie_common_load.json
     - assets/lotties/refresh_empty_page.json
     - assets/lotties/refresh_head_loading.json

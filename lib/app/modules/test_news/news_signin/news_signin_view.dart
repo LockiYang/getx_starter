@@ -65,7 +65,7 @@ class NewsSigninView extends GetView<NewsSigninController> {
                 Positioned(
                   top: 13.w,
                   child: Image.asset(
-                    "assets/images/logo1.png",
+                    "assets/images/logo.png",
                     fit: BoxFit.none,
                   ),
                 ),

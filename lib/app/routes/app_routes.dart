@@ -43,6 +43,8 @@ abstract class Routes {
       _Paths.TEST_WANANDROID + _Paths.WA_VIDEO_DETAIL;
   static const SDK_WECHAT = _Paths.TEST + _Paths.SDK_WECHAT;
   static const SDK_UMENG = _Paths.TEST + _Paths.SDK_UMENG;
+  static const APP_JOB = _Paths.APP_JOB;
+  static const JOB_HOME = _Paths.APP_JOB + _Paths.JOB_HOME;
 }
 
 abstract class _Paths {
@@ -83,4 +85,6 @@ abstract class _Paths {
   static const WA_VIDEO_DETAIL = '/wa-video-detail';
   static const SDK_WECHAT = '/sdk-wechat';
   static const SDK_UMENG = '/sdk-umeng';
+  static const APP_JOB = '/app-job';
+  static const JOB_HOME = '/job-home';
 }
