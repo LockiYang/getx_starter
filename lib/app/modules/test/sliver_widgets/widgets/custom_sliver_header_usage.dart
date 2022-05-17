@@ -182,42 +182,44 @@ class FilmContent extends StatelessWidget {
                 ),
               ),
               Padding(padding: EdgeInsets.only(left: 16)),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    '哪吒之魔童降世',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF333333),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      '哪吒之魔童降世',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF333333),
+                      ),
                     ),
-                  ),
-                  Padding(padding: EdgeInsets.only(top: 10)),
-                  Text(
-                    '动画/中国大陆/110分钟',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Color(0xFF999999),
+                    Padding(padding: EdgeInsets.only(top: 10)),
+                    Text(
+                      '动画/中国大陆/110分钟',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color(0xFF999999),
+                      ),
                     ),
-                  ),
-                  Padding(padding: EdgeInsets.only(top: 2)),
-                  Text(
-                    '2019-07-26 08:00 中国大陆上映',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Color(0xFF999999),
+                    Padding(padding: EdgeInsets.only(top: 2)),
+                    Text(
+                      '2019-07-26 08:00 中国大陆上映',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color(0xFF999999),
+                      ),
                     ),
-                  ),
-                  Padding(padding: EdgeInsets.only(top: 2)),
-                  Text(
-                    '32.1万人想看/大V推荐度95%',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Color(0xFF999999),
+                    Padding(padding: EdgeInsets.only(top: 2)),
+                    Text(
+                      '32.1万人想看/大V推荐度95%',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color(0xFF999999),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

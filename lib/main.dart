@@ -40,17 +40,17 @@ void appInit() async {
 }
 
 void setSystemUi() {
-  if (GetPlatform.isAndroid) {
+  // if (GetPlatform.isAndroid) {
     SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.dark,
+      statusBarColor: Colors.transparent, // 状态栏颜色
+      statusBarBrightness: Brightness.light, // 
+      statusBarIconBrightness: Brightness.dark, // 状态栏图标字体颜色
       systemNavigationBarDividerColor: Color.fromARGB(0, 42, 41, 41),
       systemNavigationBarColor: Colors.white,
       systemNavigationBarIconBrightness: Brightness.dark,
     );
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-  }
+  // }
 }
 
 class App extends StatelessWidget {
