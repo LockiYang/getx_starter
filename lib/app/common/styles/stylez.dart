@@ -1,3 +1,4 @@
+import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 
 import 'theme_constants.dart';
@@ -27,7 +28,7 @@ class Stylez {
   /// 标题/录入文字/大按钮文字/二级标题
   static const TextStyle textSubHead = TextStyle(
       fontSize: ThemeConstants.fontSizeSubHead,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w600,
       color: ThemeConstants.colorTextBase);
 
   /// 基础字号
@@ -101,3 +102,4 @@ class Dividerz {
     color: ThemeConstants.borderColorBase,
   );
 }
+

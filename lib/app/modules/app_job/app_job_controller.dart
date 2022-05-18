@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_test/app/modules/app_job/job_home/job_home_view.dart';
+import 'package:getx_test/app/modules/app_job/job_message/job_message_view.dart';
+import 'package:getx_test/app/modules/app_job/job_my/job_my_view.dart';
 
 class AppJobController extends GetxController {
   int currentIndex = 0;
@@ -8,8 +10,8 @@ class AppJobController extends GetxController {
 
   final List<Widget> navbarBodys = [
     JobHomeView(),
-    Text('MESSAGE'),
-    Text('MY')
+    JobMessageView(),
+    JobMyView()
   ];
 
   late PageController pageController;

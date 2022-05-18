@@ -12,7 +12,7 @@ class GradientBtnWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return GestureDetector( 
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,

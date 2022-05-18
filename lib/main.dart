@@ -22,7 +22,7 @@ void appInit() async {
 
   /// 屏幕方向设为竖直上，不能切换
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  setSystemUi();
+  // setSystemUi();
 
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
@@ -40,7 +40,7 @@ void appInit() async {
 }
 
 void setSystemUi() {
-  // if (GetPlatform.isAndroid) {
+  if (GetPlatform.isAndroid) {
     SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, // 状态栏颜色
       statusBarBrightness: Brightness.light, // 
@@ -50,7 +50,7 @@ void setSystemUi() {
       systemNavigationBarIconBrightness: Brightness.dark,
     );
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-  // }
+  }
 }
 
 class App extends StatelessWidget {

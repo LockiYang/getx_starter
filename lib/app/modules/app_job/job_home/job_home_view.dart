@@ -7,7 +7,9 @@ import 'package:getx_test/app/modules/app_job/job_home/job_home_binding.dart';
 
 import '../../../common/getx/getz_view_binding.dart';
 import '../../../common/styles/theme_constants.dart';
+import '../../../routes/app_pages.dart';
 import '../../test/sliver_widgets/widgets/sticky_usage.dart';
+import '../widgets/course_item.dart';
 import 'job_home_controller.dart';
 
 class JobHomeView extends GetzViewBindng<JobHomeController> {
@@ -17,51 +19,81 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          titleSpacing: ThemeConstants.hSpacingMd,
+          titleSpacing: ThemeConstants.hSpacingSm,
           toolbarHeight: 60.w,
           title: _buildAppBarContent(),
         ),
-        body: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: _buildBanner(),
-            ),
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: StickyTabBarDelegate(
-                child: TabBar(
-                  labelColor: Colors.black,
-                  controller: controller.tabController,
-                  tabs: controller.tabs,
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return <Widget>[
+              SliverToBoxAdapter(
+                child: _buildBanner(),
+              ),
+              SliverToBoxAdapter(
+                  child: Padding(
+                padding: EdgeInsets.all(ThemeConstants.hSpacingSm),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Padding(
+                            padding: EdgeInsets.only(right: 3),
+                            child: GestureDetector(
+                              onTap: () =>
+                                  Get.toNamed(Routes.JOB_COURSE_DETAIL),
+                              child: ClipRRect(
+                                  child: Image.asset('assets/images/ad01.png')),
+                            ))),
+                    Expanded(
+                        child: Padding(
+                            padding: EdgeInsets.only(left: 3),
+                            child: ClipRRect(
+                                child: Image.asset('assets/images/ad02.png'))))
+                  ],
+                ),
+              )),
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: StickyTabBarDelegate(
+                  child: TabBar(
+                    labelColor: Colors.black,
+                    controller: controller.tabController,
+                    tabs: controller.tabs,
+                  ),
                 ),
               ),
-            ),
-            SliverFixedExtentList(
-              itemExtent: 100,
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return Container(
-                    color: controller.colorList[index],
-                  );
-                },
-                childCount: controller.colorList.length,
+            ];
+          },
+          body: TabBarView(
+            controller: controller.tabController,
+            children: <Widget>[
+              Container(
+                color: ThemeConstants.fillBody,
+                child: ListView(
+                  children: controller.colorList.map((e) {
+                    return CourseItem();
+                  }).toList(),
+                ),
               ),
-            )
-          ],
+              Center(child: Text('Content of Profile')),
+              Center(child: Text('Content of Profile')),
+              Center(child: Text('Content of Profile')),
+              Center(child: Text('Content of Profile')),
+            ],
+          ),
         ));
   }
 
   Container _buildBanner() {
     return Container(
-      height: 180,
+      height: 140.w,
       margin: EdgeInsets.only(top: 10),
-      // padding: EdgeInsets.all(ThemeConstants.hSpacingMd),
+      // padding: EdgeInsets.all(ThemeConstants.hSpacingSm),
       child: Swiper(
           itemBuilder: (context, index) {
             final image = controller.bannerUrlList[index];
             return Container(
               padding:
-                  EdgeInsets.symmetric(horizontal: ThemeConstants.hSpacingMd),
+                  EdgeInsets.symmetric(horizontal: ThemeConstants.hSpacingSm),
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 child: Image.asset(

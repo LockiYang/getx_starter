@@ -14,6 +14,8 @@ class TestView extends GetView<TestController> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
+          top: true,
+          bottom: false,
           child: SingleChildScrollView(
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 20),

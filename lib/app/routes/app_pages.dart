@@ -4,8 +4,14 @@ import 'package:get/get.dart';
 
 import '../modules/app_job/app_job_binding.dart';
 import '../modules/app_job/app_job_view.dart';
+import '../modules/app_job/job_course_detail/job_course_detail_binding.dart';
+import '../modules/app_job/job_course_detail/job_course_detail_view.dart';
 import '../modules/app_job/job_home/job_home_binding.dart';
 import '../modules/app_job/job_home/job_home_view.dart';
+import '../modules/app_job/job_message/job_message_binding.dart';
+import '../modules/app_job/job_message/job_message_view.dart';
+import '../modules/app_job/job_my/job_my_binding.dart';
+import '../modules/app_job/job_my/job_my_view.dart';
 import '../modules/test/basic_widgets/basic_widgets_binding.dart';
 import '../modules/test/basic_widgets/basic_widgets_view.dart';
 import '../modules/test/custom_icon/custom_icon_binding.dart';
@@ -230,6 +236,21 @@ class AppPages {
           name: _Paths.JOB_HOME,
           page: () => JobHomeView(),
           binding: JobHomeBinding(),
+        ),
+        GetPage(
+          name: _Paths.JOB_MESSAGE,
+          page: () => JobMessageView(),
+          binding: JobMessageBinding(),
+        ),
+        GetPage(
+          name: _Paths.JOB_MY,
+          page: () => JobMyView(),
+          binding: JobMyBinding(),
+        ),
+        GetPage(
+          name: _Paths.JOB_COURSE_DETAIL,
+          page: () => JobCourseDetailView(),
+          binding: JobCourseDetailBinding(),
         ),
       ],
     ),

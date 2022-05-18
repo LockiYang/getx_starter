@@ -15,6 +15,7 @@ class WaProjectView extends GetzViewBindng<WaProjectController> {
         backgroundColor: Colors.white,
         body: SafeArea(
             top: true,
+            bottom: false,
             child: PagingRefreshWidget<WaProjectController>(
                 child: ListView.builder(
                     padding: EdgeInsets.zero,

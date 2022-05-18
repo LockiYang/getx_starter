@@ -45,6 +45,9 @@ abstract class Routes {
   static const SDK_UMENG = _Paths.TEST + _Paths.SDK_UMENG;
   static const APP_JOB = _Paths.APP_JOB;
   static const JOB_HOME = _Paths.APP_JOB + _Paths.JOB_HOME;
+  static const JOB_MESSAGE = _Paths.APP_JOB + _Paths.JOB_MESSAGE;
+  static const JOB_MY = _Paths.APP_JOB + _Paths.JOB_MY;
+  static const JOB_COURSE_DETAIL = _Paths.APP_JOB + _Paths.JOB_COURSE_DETAIL;
 }
 
 abstract class _Paths {
@@ -87,4 +90,7 @@ abstract class _Paths {
   static const SDK_UMENG = '/sdk-umeng';
   static const APP_JOB = '/app-job';
   static const JOB_HOME = '/job-home';
+  static const JOB_MESSAGE = '/job-message';
+  static const JOB_MY = '/job-my';
+  static const JOB_COURSE_DETAIL = '/job-course-detail';
 }
