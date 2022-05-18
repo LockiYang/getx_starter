@@ -1,4 +1,3 @@
-import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 
 import 'theme_constants.dart';
@@ -80,7 +79,7 @@ class Spacez {
 
 class Dividerz {
   ///分割线 0.5 - 20边距
-  static Widget divider1HalfPadding20 = const Divider(
+  static Widget divider1Pd20 = const Divider(
     height: 0.5,
     thickness: 0.5,
     indent: 20,
@@ -89,17 +88,16 @@ class Dividerz {
   );
 
   ///分割线 0.5 - 无边距
-  static Widget divider1Half = const Divider(
+  static Widget divider1 = const Divider(
     height: 0.5,
     thickness: 0.5,
     color: ThemeConstants.borderColorBase,
   );
 
   ///分割线 20 - 无边距
-  static Widget divider20Half = const Divider(
+  static Widget divider20 = const Divider(
     height: 20,
     thickness: 20,
     color: ThemeConstants.borderColorBase,
   );
 }
-

@@ -92,7 +92,7 @@ class CommonDialog extends StatelessWidget {
                                 style: Stylez.textSubHead,
                               ),
                             ),
-                            Dividerz.divider1Half,
+                            Dividerz.divider1,
 
                             ///确定、取消按钮
                             Flex(

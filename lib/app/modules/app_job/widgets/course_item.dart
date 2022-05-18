@@ -32,13 +32,36 @@ class CourseItem extends StatelessWidget {
           margin: EdgeInsets.only(bottom: ThemeConstants.hSpacingSm),
           child: Row(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(ThemeConstants.radiusSm),
-                child: Image.asset(
-                  'assets/images/course.jpeg',
-                  height: 100.w,
-                  fit: BoxFit.contain,
-                ),
+              Container(
+                child: Stack(children: [
+                  ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(ThemeConstants.radiusSm),
+                    child: Image.asset(
+                      'assets/images/course.jpeg',
+                      height: 100.w,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  Positioned(
+                      left: 0,
+                      top: 0,
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 3, vertical: 2),
+                        decoration: BoxDecoration(
+                            color: Colors.black26,
+                            borderRadius: BorderRadius.only(
+                                topLeft:
+                                    Radius.circular(ThemeConstants.radiusSm),
+                                bottomRight:
+                                    Radius.circular(ThemeConstants.radiusSm))),
+                        child: Text(
+                          '视频',
+                          style: TextStyle(color: Colors.white, fontSize: 12),
+                        ),
+                      ))
+                ]),
               ),
               Expanded(
                   child: Container(
@@ -83,7 +106,9 @@ class CourseItem extends StatelessWidget {
                                 '900人报名',
                                 style: Stylez.textCaption,
                               ),
-                              ZbuttonSm(text: '免费报名',)
+                              ZbuttonSm(
+                                text: '免费报名',
+                              )
                             ],
                           )),
                     ]),
@@ -91,7 +116,7 @@ class CourseItem extends StatelessWidget {
             ],
           ),
         ),
-        Dividerz.divider1Half,
+        Dividerz.divider1,
         Visibility(
           visible: showBottom,
           child: Container(

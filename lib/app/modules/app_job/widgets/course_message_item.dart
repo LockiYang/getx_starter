@@ -27,13 +27,36 @@ class CourseMessageItem extends StatelessWidget {
           margin: EdgeInsets.only(bottom: ThemeConstants.hSpacingSm),
           child: Row(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(ThemeConstants.radiusSm),
-                child: Image.asset(
-                  'assets/images/course.jpeg',
-                  height: 80.w,
-                  fit: BoxFit.contain,
-                ),
+              Container(
+                child: Stack(children: [
+                  ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(ThemeConstants.radiusSm),
+                    child: Image.asset(
+                      'assets/images/course.jpeg',
+                      height: 80.w,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  Positioned(
+                      left: 0,
+                      top: 0,
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 3, vertical: 2),
+                        decoration: BoxDecoration(
+                            color: Colors.green[400],
+                            borderRadius: BorderRadius.only(
+                                topLeft:
+                                    Radius.circular(ThemeConstants.radiusSm),
+                                bottomRight:
+                                    Radius.circular(ThemeConstants.radiusSm))),
+                        child: Text(
+                          '已报名',
+                          style: TextStyle(color: Colors.white, fontSize: 12),
+                        ),
+                      ))
+                ]),
               ),
               Expanded(
                   child: Container(
@@ -74,7 +97,7 @@ class CourseMessageItem extends StatelessWidget {
             ],
           ),
         ),
-        Dividerz.divider1Half,
+        Dividerz.divider1,
         Container(
             padding: EdgeInsets.only(top: ThemeConstants.hSpacingSm),
             // alignment: Alignment.centerLeft,

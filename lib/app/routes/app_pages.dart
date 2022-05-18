@@ -8,6 +8,8 @@ import '../modules/app_job/job_course_detail/job_course_detail_binding.dart';
 import '../modules/app_job/job_course_detail/job_course_detail_view.dart';
 import '../modules/app_job/job_home/job_home_binding.dart';
 import '../modules/app_job/job_home/job_home_view.dart';
+import '../modules/app_job/job_login/job_login_binding.dart';
+import '../modules/app_job/job_login/job_login_view.dart';
 import '../modules/app_job/job_message/job_message_binding.dart';
 import '../modules/app_job/job_message/job_message_view.dart';
 import '../modules/app_job/job_my/job_my_binding.dart';
@@ -16,6 +18,8 @@ import '../modules/test/basic_widgets/basic_widgets_binding.dart';
 import '../modules/test/basic_widgets/basic_widgets_view.dart';
 import '../modules/test/custom_icon/custom_icon_binding.dart';
 import '../modules/test/custom_icon/custom_icon_view.dart';
+import '../modules/test/device_info/device_info_binding.dart';
+import '../modules/test/device_info/device_info_view.dart';
 import '../modules/test/grid_view/grid_view_binding.dart';
 import '../modules/test/grid_view/grid_view_view.dart';
 import '../modules/test/list_view/list_view_binding.dart';
@@ -128,6 +132,11 @@ class AppPages {
           name: _Paths.SDK_UMENG,
           page: () => SdkUmengView(),
           binding: SdkUmengBinding(),
+        ),
+        GetPage(
+          name: _Paths.DEVICE_INFO,
+          page: () => DeviceInfoView(),
+          binding: DeviceInfoBinding(),
         ),
       ],
     ),
@@ -251,6 +260,11 @@ class AppPages {
           name: _Paths.JOB_COURSE_DETAIL,
           page: () => JobCourseDetailView(),
           binding: JobCourseDetailBinding(),
+        ),
+        GetPage(
+          name: _Paths.JOB_LOGIN,
+          page: () => JobLoginView(),
+          binding: JobLoginBinding(),
         ),
       ],
     ),

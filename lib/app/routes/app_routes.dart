@@ -48,6 +48,8 @@ abstract class Routes {
   static const JOB_MESSAGE = _Paths.APP_JOB + _Paths.JOB_MESSAGE;
   static const JOB_MY = _Paths.APP_JOB + _Paths.JOB_MY;
   static const JOB_COURSE_DETAIL = _Paths.APP_JOB + _Paths.JOB_COURSE_DETAIL;
+  static const DEVICE_INFO = _Paths.TEST + _Paths.DEVICE_INFO;
+  static const JOB_LOGIN = _Paths.APP_JOB + _Paths.JOB_LOGIN;
 }
 
 abstract class _Paths {
@@ -93,4 +95,6 @@ abstract class _Paths {
   static const JOB_MESSAGE = '/job-message';
   static const JOB_MY = '/job-my';
   static const JOB_COURSE_DETAIL = '/job-course-detail';
+  static const DEVICE_INFO = '/device-info';
+  static const JOB_LOGIN = '/job-login';
 }

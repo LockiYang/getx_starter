@@ -74,7 +74,7 @@ class _StickyDemoState extends State<StickyDemo>
 }
 
 class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
-  final TabBar child;
+  final dynamic child;
 
   StickyTabBarDelegate({required this.child});
 

@@ -8,13 +8,9 @@ class JobHomeController extends GetxController
     'assets/images/banner01.png'
   ];
 
-  var tabs = <Widget>[
-    Tab(text: "需求1"),
-    Tab(text: "需求1"),
-    Tab(text: "需求1"),
-    Tab(text: "需求1"),
-    Tab(text: "需求1"),
-  ];
+  int tabIndex = 0;
+
+  var tabs = ['推荐兼职', '在家做', '技能兼职', '在线课程', '手机兼职'];
 
   final List<Color> colorList = [
     Colors.red,
@@ -34,6 +30,10 @@ class JobHomeController extends GetxController
   void onInit() {
     super.onInit();
     tabController = TabController(length: tabs.length, vsync: this);
+    // ..addListener(() {
+    //   tabIndex = tabController.index;
+    //   update();
+    // });
   }
 
   @override

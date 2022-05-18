@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/styles/stylez.dart';
+import 'package:getx_test/app/common/widgets/over_scroll_behavior.dart';
+import 'package:getx_test/app/common/widgets/tabbar/kugou_tabbar.dart';
 import 'package:getx_test/app/modules/app_job/job_home/job_home_binding.dart';
 
 import '../../../common/getx/getz_view_binding.dart';
 import '../../../common/styles/theme_constants.dart';
+import '../../../common/widgets/tabbar/rrect_indicator.dart';
 import '../../../routes/app_pages.dart';
 import '../../test/sliver_widgets/widgets/sticky_usage.dart';
 import '../widgets/course_item.dart';
@@ -54,10 +57,27 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
               SliverPersistentHeader(
                 pinned: true,
                 delegate: StickyTabBarDelegate(
-                  child: TabBar(
-                    labelColor: Colors.black,
+                  child: KuGouTabBar(
+                    isScrollable: true,
+                    labelColor: Color(0xFF24CF5F),
+                    unselectedLabelColor: Color(0xFFB8C0D4),
                     controller: controller.tabController,
-                    tabs: controller.tabs,
+                    labelStyle: TextStyle(fontSize: 18),
+                    unselectedLabelStyle:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    tabs: controller.tabs.asMap().entries.map((item) {
+                      return Tab(
+                        child: Text(
+                          item.value,
+                        ),
+                      );
+                    }).toList(),
+                    padding: EdgeInsets.zero,
+                    indicator: const RRecTabIndicator(
+                        radius: 5,
+                        insets: EdgeInsets.only(bottom: 5),
+                        color: ThemeConstants.brandPrimary),
+                    indicatorMinWidth: 10,
                   ),
                 ),
               ),
@@ -68,10 +88,13 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
             children: <Widget>[
               Container(
                 color: ThemeConstants.fillBody,
-                child: ListView(
-                  children: controller.colorList.map((e) {
-                    return CourseItem();
-                  }).toList(),
+                child: ScrollConfiguration(
+                  behavior: OverScrollBehavior(),
+                  child: ListView(
+                    children: controller.colorList.map((e) {
+                      return CourseItem();
+                    }).toList(),
+                  ),
                 ),
               ),
               Center(child: Text('Content of Profile')),

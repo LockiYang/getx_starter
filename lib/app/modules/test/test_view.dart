@@ -74,6 +74,10 @@ class TestView extends GetView<TestController> {
                     title: '友盟SDK',
                     onTap: () => Get.toNamed(Routes.SHANYAN),
                   ),
+                  BrnActionCardTitle(
+                    title: 'Device Info',
+                    onTap: () => Get.toNamed(Routes.DEVICE_INFO),
+                  ),
                 ],
               ),
             ),

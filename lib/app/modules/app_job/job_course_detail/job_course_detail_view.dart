@@ -107,7 +107,7 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
                                       ],
                                     ),
                                     Spacez.vSpacezXs,
-                                    Dividerz.divider1Half,
+                                    Dividerz.divider1,
                                     Spacez.vSpacezXs,
                                     Text(
                                       '祖籍江苏省苏州市吴江区震泽镇，生于上海，中国篮球运动员，曾为中国国家篮球队队员，曾效力于中国篮球职业联赛上海大鲨鱼篮球俱乐部和美国国家篮球协会休斯敦火箭，外号“移动长城”。现任中国篮球协会主席。',
@@ -243,7 +243,7 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
           ],
         ),
         Spacez.vSpacezSm,
-        Dividerz.divider1Half,
+        Dividerz.divider1,
         Container(
           alignment: Alignment.topLeft,
           width: double.infinity,

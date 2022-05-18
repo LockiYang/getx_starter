@@ -10,7 +10,8 @@
             "type": "dart",
             "args": [
                 "--dart-define",
-                "APP_CHANNEL=DEFAULT"
+                "APP_CHANNEL=DEFAULT",
+                "--no-sound-null-safety"
             ]
         },
         {
