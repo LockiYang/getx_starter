@@ -41,7 +41,7 @@ dependencies:
   fluwx_no_pay: ^3.8.5
   shanyan:
     git:
-      url: https://gitee.com/TaXiangZhiKe/CLShanYan_Flutter.git
+      url: https://github.com/253CL/CLShanYan_Flutter.git
       path: shanyan
       ref: v2.3.3.5
   flutter:
