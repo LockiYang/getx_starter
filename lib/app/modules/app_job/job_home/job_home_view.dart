@@ -20,90 +20,165 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          titleSpacing: ThemeConstants.hSpacingSm,
-          toolbarHeight: 60.w,
-          title: _buildAppBarContent(),
-        ),
-        body: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) {
-            return <Widget>[
-              SliverToBoxAdapter(
-                child: _buildBanner(),
-              ),
-              SliverToBoxAdapter(
-                  child: Padding(
-                padding: EdgeInsets.all(ThemeConstants.hSpacingSm),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Padding(
-                            padding: EdgeInsets.only(right: 3),
-                            child: GestureDetector(
-                              onTap: () =>
-                                  Get.toNamed(Routes.JOB_COURSE_DETAIL),
-                              child: ClipRRect(
-                                  child: Image.asset('assets/images/ad01.png')),
-                            ))),
-                    Expanded(
-                        child: Padding(
-                            padding: EdgeInsets.only(left: 3),
-                            child: ClipRRect(
-                                child: Image.asset('assets/images/ad02.png'))))
-                  ],
-                ),
-              )),
-              SliverPersistentHeader(
-                pinned: true,
-                delegate: StickyTabBarDelegate(
-                  child: KuGouTabBar(
-                    isScrollable: true,
-                    labelColor: Color(0xFF24CF5F),
-                    unselectedLabelColor: Color(0xFFB8C0D4),
-                    controller: controller.tabController,
-                    labelStyle: TextStyle(fontSize: 18),
-                    unselectedLabelStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                    tabs: controller.tabs.asMap().entries.map((item) {
-                      return Tab(
-                        child: Text(
-                          item.value,
-                        ),
-                      );
-                    }).toList(),
-                    padding: EdgeInsets.zero,
-                    indicator: const RRecTabIndicator(
-                        radius: 5,
-                        insets: EdgeInsets.only(bottom: 5),
-                        color: ThemeConstants.brandPrimary),
-                    indicatorMinWidth: 10,
-                  ),
-                ),
-              ),
-            ];
+        // appBar: AppBar(
+        //   automaticallyImplyLeading: false,
+        //   titleSpacing: ThemeConstants.hSpacingSm,
+        //   toolbarHeight: 60.w,
+        //   title: _buildAppBarContent(),
+        // ),
+        body: RefreshIndicator(
+          // controller: controller.refreshController,
+          // scrollController: controller.scrollController,
+          // enablePullDown: true,
+          // enablePullUp: true,
+          //可滚动组件在滚动时会发送ScrollNotification类型的通知
+          notificationPredicate: (ScrollNotification notifation) {
+            //该属性包含当前ViewPort及滚动位置等信息
+            ScrollMetrics scrollMetrics = notifation.metrics;
+            if (scrollMetrics.minScrollExtent == 0) {
+              return true;
+            } else {
+              return false;
+            }
           },
-          body: TabBarView(
-            controller: controller.tabController,
-            children: <Widget>[
-              Container(
-                color: ThemeConstants.fillBody,
-                child: ScrollConfiguration(
-                  behavior: OverScrollBehavior(),
-                  child: ListView(
-                    children: controller.colorList.map((e) {
-                      return CourseItem();
-                    }).toList(),
+          onRefresh: () async {
+            //模拟网络刷新 等待2秒
+            await Future.delayed(Duration(milliseconds: 2000));
+            //返回值以结束刷新
+            return Future.value(true);
+          },
+          // onLoading: () => controller.loadingData(),
+          child: NestedScrollView(
+            controller: controller.scrollController,
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return <Widget>[
+                SliverAppBar(
+                  pinned: true,
+                  automaticallyImplyLeading: false,
+                  titleSpacing: ThemeConstants.hSpacingSm,
+                  collapsedHeight: 60.w,
+                  expandedHeight: 60.w,
+                  toolbarHeight: 60.w,
+                  title: _buildAppBarContent(),
+                ),
+                SliverToBoxAdapter(
+                  child: _buildBanner(),
+                ),
+                // SliverToBoxAdapter(
+                //     child: Padding(
+                //   padding: EdgeInsets.all(ThemeConstants.hSpacingSm),
+                //   child: _buildAd(),
+                // )),
+                SliverPersistentHeader(
+                  pinned: true,
+                  delegate: StickyTabBarDelegate(
+                    child: _buildTabbar(),
                   ),
                 ),
-              ),
-              Center(child: Text('Content of Profile')),
-              Center(child: Text('Content of Profile')),
-              Center(child: Text('Content of Profile')),
-              Center(child: Text('Content of Profile')),
-            ],
+              ];
+            },
+            body: _buildTabBarView(),
           ),
         ));
+  }
+
+  // dynamic _buildTabBarView() {
+  //   return pullToRefresh.SmartRefresher(
+  //     controller: controller.refreshController,
+  //     enablePullDown: true,
+  //     enablePullUp: true,
+  //     onLoading: controller.loadingData(),
+  //     onRefresh: controller.refreshData(),
+  //     child: TabBarView(
+  //         controller: controller.tabController,
+  //         children: List.generate(controller.tabs.length, (index) {
+  //           return Container(
+  //             color: ThemeConstants.fillBody,
+  //             child: ScrollConfiguration(
+  //               behavior: OverScrollBehavior(),
+  //               child: ListView(
+  //                 children: controller.tabsData[index] == null
+  //                     ? []
+  //                     : List.generate(controller.tabsData[index]?.length ?? 0,
+  //                         (i) {
+  //                         return CourseItem(
+  //                           post: controller.tabsData[index]![i],
+  //                         );
+  //                       }),
+  //               ),
+  //             ),
+  //           );
+  //         })),
+  //   );
+  // }
+
+  dynamic _buildTabBarView() {
+    return TabBarView(
+        controller: controller.tabController,
+        children: List.generate(controller.tabs.length, (index) {
+          return Container(
+            color: ThemeConstants.fillBody,
+            child: ScrollConfiguration(
+              behavior: OverScrollBehavior(),
+              child: ListView(
+                physics: const ClampingScrollPhysics(),
+                padding: EdgeInsets.all(0),
+                children: controller.tabsData[index] == null
+                    ? []
+                    : List.generate(controller.tabsData[index]?.length ?? 0,
+                        (i) {
+                        return CourseItem(
+                          post: controller.tabsData[index]![i],
+                        );
+                      }),
+              ),
+            ),
+          );
+        }));
+  }
+
+  KuGouTabBar _buildTabbar() {
+    return KuGouTabBar(
+      isScrollable: true,
+      labelColor: Color(0xFF24CF5F),
+      unselectedLabelColor: Color(0xFFB8C0D4),
+      controller: controller.tabController,
+      labelStyle: TextStyle(fontSize: 18),
+      unselectedLabelStyle:
+          TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+      tabs: controller.tabs.asMap().entries.map((item) {
+        return Tab(
+          child: Text(
+            item.value.name,
+          ),
+        );
+      }).toList(),
+      padding: EdgeInsets.zero,
+      indicator: const RRecTabIndicator(
+          radius: 5,
+          insets: EdgeInsets.only(bottom: 5),
+          color: ThemeConstants.brandPrimary),
+      indicatorMinWidth: 10,
+    );
+  }
+
+  Row _buildAd() {
+    return Row(
+      children: [
+        Expanded(
+            child: Padding(
+                padding: EdgeInsets.only(right: 3),
+                child: GestureDetector(
+                  onTap: () => Get.toNamed(Routes.JOB_COURSE_DETAIL),
+                  child:
+                      ClipRRect(child: Image.asset('assets/images/ad01.png')),
+                ))),
+        Expanded(
+            child: Padding(
+                padding: EdgeInsets.only(left: 3),
+                child: ClipRRect(child: Image.asset('assets/images/ad02.png'))))
+      ],
+    );
   }
 
   Container _buildBanner() {
@@ -119,7 +194,7 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
                   EdgeInsets.symmetric(horizontal: ThemeConstants.hSpacingSm),
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                child: Image.asset(
+                child: Image.network(
                   image,
                   fit: BoxFit.fill,
                 ),
@@ -129,7 +204,14 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
           indicatorLayout: PageIndicatorLayout.COLOR,
           autoplay: true,
           itemCount: controller.bannerUrlList.length,
-          pagination: const SwiperPagination()),
+          pagination: SwiperPagination(
+              alignment: Alignment.bottomCenter,
+              builder: SwiperCustomPagination(builder: ((context, config) {
+                return NLIndicator(
+                  currentIndex: config.activeIndex,
+                  count: controller.bannerUrlList.length,
+                );
+              })))),
     );
   }
 
@@ -167,5 +249,41 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
   @override
   Bindings? binding() {
     return JobHomeBinding();
+  }
+}
+
+class NLIndicator extends StatelessWidget {
+  const NLIndicator({Key? key, required this.currentIndex, required this.count})
+      : super(key: key);
+
+  final int currentIndex;
+  final int count;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(count, (index) {
+          return currentIndex == index
+              ? Container(
+                  width: 12,
+                  height: 6,
+                  margin: EdgeInsets.symmetric(horizontal: 2),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(6)),
+                )
+              : Container(
+                  width: 6,
+                  height: 6,
+                  margin: EdgeInsets.symmetric(horizontal: 2),
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(6)),
+                );
+        }),
+      ),
+    );
   }
 }

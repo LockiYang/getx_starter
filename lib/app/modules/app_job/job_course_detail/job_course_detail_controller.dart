@@ -19,7 +19,7 @@ class JobCourseDetailController extends GetxController {
   void onInit() {
     super.onInit();
     // 设置播放源
-    player.setDataSource(curPlayUrl ?? "", autoPlay: true);
+    player.setDataSource(curPlayUrl ?? "", autoPlay: false);
     isInitAnimition = true;
     Wakelock.enable();
   }

@@ -1,0 +1,15 @@
+{
+    "appType": "string",
+    "bannerName": "string",
+    "bannerTarget": "string",
+    "bannerType": 0,
+    "bgColor": "string",
+    "createAt": "2022-05-19T07:43:48.686Z",
+    "id": 0,
+    "imageUrl": "string",
+    "imageUrlAddress": "string",
+    "orders": 0,
+    "position": "string",
+    "status": true,
+    "updateAt": "2022-05-19T07:43:48.686Z"
+  }
