@@ -939,7 +939,7 @@ class BuildGestureDetectorState extends State<BuildGestureDetector> {
                     color: Colors.white70,
                     child: Container(
                       color: Colors.blue,
-                      width: curBottomProW is double ? curBottomProW : 0,
+                      width: curBottomProW,
                       height: 4,
                     ),
                   )
