@@ -8,9 +8,8 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../data/feed.dart';
 
 class WaVideoController extends GetxController {
-
   /// 是否首次加载
-  bool isInit = true;
+  // bool isInit = true;
 
   /// 当前页码
   int currentPage = 0;
@@ -21,12 +20,12 @@ class WaVideoController extends GetxController {
   /// 是否更多数据
   bool hasMore = true;
 
+  /// 下一页Url
+  String? nextPageUrl;
+
   /// 加载数据，可以加载多个数据，但只能一个是分页数据=itemList
   List<FeedIssueListItemList?> bannerList = [];
   List<FeedIssueListItemList?> itemList = [];
-
-  /// 下一页Url
-  String? nextPageUrl;
 
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
@@ -35,8 +34,23 @@ class WaVideoController extends GetxController {
 
   late EyepetizerApi eyepetizerApi;
 
+  @override
+  void onInit() {
+    super.onInit();
+    eyepetizerApi = Get.find<EyepetizerApi>();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    refreshData();
+  }
+
+  @override
+  void onClose() {}
+
   /// 刷新数据
-  void refreshData() async {
+  refreshData() async {
     eyepetizerApi.getFeed(0, success: (data) {
       bannerList = [];
       nextPageUrl = data.nextPageUrl;
@@ -53,7 +67,7 @@ class WaVideoController extends GetxController {
   }
 
   /// 加载更多
-  void loadingData() async {
+  loadingData() async {
     eyepetizerApi.getFeed(currentPage, success: (data) {
       nextPageUrl = data.nextPageUrl;
       itemList.addAll(data.issueList![0]!.itemList!);
@@ -63,19 +77,4 @@ class WaVideoController extends GetxController {
       update();
     }, fail: (error) {});
   }
-
-  @override
-  void onInit() {
-    super.onInit();
-    eyepetizerApi = Get.find<EyepetizerApi>();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-    refreshData();
-  }
-
-  @override
-  void onClose() {}
 }

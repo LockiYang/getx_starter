@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../common/styles/theme_constants.dart';
+import '../../../../common/styles/zstyle_constants.dart';
 import 'wa_feedback_controller.dart';
 import 'widgets/feedback_photo_select_widget.dart';
 
@@ -31,9 +31,9 @@ class WaFeedbackView extends GetView<WaFeedbackController> {
             ),
             BrnInputText(
               hint: '您可以在这里输入反馈的内容',
-              borderColor: ThemeConstants.borderColorBase,
+              borderColor: ZStyleConstans.borderColorBase,
               padding: EdgeInsets.all(10),
-              borderRadius: ThemeConstants.radiusMd,
+              borderRadius: ZStyleConstans.radiusMd,
               onTextChange: (text) => controller
                 ..issue
                 ..update(),
@@ -73,19 +73,19 @@ class WaFeedbackView extends GetView<WaFeedbackController> {
                     hintStyle: TextStyle(
                         fontSize: 16,
                         height: 1,
-                        color: ThemeConstants.colorTextHint),
+                        color: ZStyleConstans.colorTextHint),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
-                            color: ThemeConstants.borderColorBase, width: 1)),
+                            color: ZStyleConstans.borderColorBase, width: 1)),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
-                            color: ThemeConstants.borderColorBase, width: 1)),
+                            color: ZStyleConstans.borderColorBase, width: 1)),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
-                            color: ThemeConstants.borderColorBase, width: 1))),
+                            color: ZStyleConstans.borderColorBase, width: 1))),
                 style: TextStyle(fontSize: 16, height: 1),
                 onChanged: (value) => {}),
             SizedBox(

@@ -37,7 +37,6 @@ void appInit() async {
   FlutterNativeSplash.remove();
   runApp(const App());
 
-  // ScreenUtilInit
   // RefreshConfiguration
 }
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:getx_test/app/common/styles/theme_constants.dart';
+import 'package:getx_test/app/common/styles/zstyle_constants.dart';
 import 'package:getx_test/app/common/utils/dialog_util.dart';
 
-import '../../styles/stylez.dart';
+import '../../styles/zstyle.dart';
 import '../over_scroll_behavior.dart';
 
 /// 公共加载弹窗
@@ -82,14 +82,14 @@ class CommonDialog extends StatelessWidget {
                             Spacez.vSpacezSm,
                             Text(
                               title,
-                              style: Stylez.textHead,
+                              style: ZStyle.textHead,
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 16, vertical: 12),
                               child: Text(
                                 content,
-                                style: Stylez.textSubHead,
+                                style: ZStyle.textSubHead,
                               ),
                             ),
                             Dividerz.divider1,
@@ -128,7 +128,7 @@ class CommonDialog extends StatelessWidget {
               },
               style: ButtonStyle(
                 shadowColor:
-                    MaterialStateProperty.all(ThemeConstants.borderColorBase),
+                    MaterialStateProperty.all(ZStyleConstans.borderColorBase),
                 animationDuration: const Duration(milliseconds: 200),
                 padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
               ),
@@ -137,7 +137,7 @@ class CommonDialog extends StatelessWidget {
                 height: 60,
                 child: Text(
                   text,
-                  style: Stylez.textSubHead,
+                  style: ZStyle.textSubHead,
                 ),
               ),
             )));

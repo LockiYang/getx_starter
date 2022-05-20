@@ -1,14 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getx_test/app/common/styles/stylez.dart';
+import 'package:getx_test/app/common/styles/zstyle.dart';
 import 'package:getx_test/app/common/widgets/over_scroll_behavior.dart';
 import 'package:getx_test/app/common/widgets/tabbar/kugou_tabbar.dart';
 import 'package:getx_test/app/modules/app_job/job_home/job_home_binding.dart';
 
 import '../../../common/getx/getz_view_binding.dart';
-import '../../../common/styles/theme_constants.dart';
+import '../../../common/styles/zstyle_constants.dart';
 import '../../../common/widgets/tabbar/rrect_indicator.dart';
 import '../../../routes/app_pages.dart';
 import '../../test/sliver_widgets/widgets/sticky_usage.dart';
@@ -20,17 +21,7 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        // appBar: AppBar(
-        //   automaticallyImplyLeading: false,
-        //   titleSpacing: ThemeConstants.hSpacingSm,
-        //   toolbarHeight: 60.w,
-        //   title: _buildAppBarContent(),
-        // ),
         body: RefreshIndicator(
-          // controller: controller.refreshController,
-          // scrollController: controller.scrollController,
-          // enablePullDown: true,
-          // enablePullUp: true,
           //可滚动组件在滚动时会发送ScrollNotification类型的通知
           notificationPredicate: (ScrollNotification notifation) {
             //该属性包含当前ViewPort及滚动位置等信息
@@ -41,13 +32,7 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
               return false;
             }
           },
-          onRefresh: () async {
-            //模拟网络刷新 等待2秒
-            await Future.delayed(Duration(milliseconds: 2000));
-            //返回值以结束刷新
-            return Future.value(true);
-          },
-          // onLoading: () => controller.loadingData(),
+          onRefresh: controller.refreshData,
           child: NestedScrollView(
             controller: controller.scrollController,
             headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -55,7 +40,7 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
                 SliverAppBar(
                   pinned: true,
                   automaticallyImplyLeading: false,
-                  titleSpacing: ThemeConstants.hSpacingSm,
+                  titleSpacing: ZStyleConstans.hSpacingSm,
                   collapsedHeight: 60.w,
                   expandedHeight: 60.w,
                   toolbarHeight: 60.w,
@@ -66,7 +51,7 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
                 ),
                 // SliverToBoxAdapter(
                 //     child: Padding(
-                //   padding: EdgeInsets.all(ThemeConstants.hSpacingSm),
+                //   padding: EdgeInsets.all(ZStyleConstans.hSpacingSm),
                 //   child: _buildAd(),
                 // )),
                 SliverPersistentHeader(
@@ -82,57 +67,58 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
         ));
   }
 
-  // dynamic _buildTabBarView() {
-  //   return pullToRefresh.SmartRefresher(
-  //     controller: controller.refreshController,
-  //     enablePullDown: true,
-  //     enablePullUp: true,
-  //     onLoading: controller.loadingData(),
-  //     onRefresh: controller.refreshData(),
-  //     child: TabBarView(
-  //         controller: controller.tabController,
-  //         children: List.generate(controller.tabs.length, (index) {
-  //           return Container(
-  //             color: ThemeConstants.fillBody,
-  //             child: ScrollConfiguration(
-  //               behavior: OverScrollBehavior(),
-  //               child: ListView(
-  //                 children: controller.tabsData[index] == null
-  //                     ? []
-  //                     : List.generate(controller.tabsData[index]?.length ?? 0,
-  //                         (i) {
-  //                         return CourseItem(
-  //                           post: controller.tabsData[index]![i],
-  //                         );
-  //                       }),
-  //               ),
-  //             ),
-  //           );
-  //         })),
-  //   );
-  // }
+  Widget _buildProgressIndicator() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Opacity(
+          opacity: controller.loadStatus == 0 ? 1.0 : 0,
+          child: CircularProgressIndicator(),
+        ),
+      ),
+    );
+  }
 
-  dynamic _buildTabBarView() {
+  TabBarView _buildTabBarView() {
     return TabBarView(
         controller: controller.tabController,
-        children: List.generate(controller.tabs.length, (index) {
+        children: List.generate(controller.tabs.length, (tabIndex) {
           return Container(
-            color: ThemeConstants.fillBody,
+            color: ZStyleConstans.fillBody,
             child: ScrollConfiguration(
-              behavior: OverScrollBehavior(),
-              child: ListView(
-                physics: const ClampingScrollPhysics(),
-                padding: EdgeInsets.all(0),
-                children: controller.tabsData[index] == null
-                    ? []
-                    : List.generate(controller.tabsData[index]?.length ?? 0,
-                        (i) {
-                        return CourseItem(
-                          post: controller.tabsData[index]![i],
-                        );
-                      }),
-              ),
-            ),
+                behavior: OverScrollBehavior(),
+                child: ListView.builder(
+                    padding: EdgeInsets.all(0),
+                    itemCount:
+                        controller.isListEmpty(controller.tabsData[tabIndex])
+                            ? 1
+                            : controller.tabsData[tabIndex]!.length + 1,
+                    itemBuilder: (context, itemIndex) {
+                      if (controller
+                          .isListEmpty(controller.tabsData[tabIndex])) {
+                        // 加载中
+                        if (controller.loadStatus == 0) {
+                          return _buildProgressIndicator();
+                        } else {
+                          return Text('无数据');
+                        }
+                      } else {
+                        if (controller.tabsData[tabIndex]!.length ==
+                            itemIndex) {
+                          if (controller.loadStatus == 0) {
+                            return _buildProgressIndicator();
+                          } else if (!controller.hasMore) {
+                            return Text('没有更多了');
+                          } else {
+                            return Text('无数据');
+                          }
+                        } else {
+                          return CourseItem(
+                            post: controller.tabsData[tabIndex]![itemIndex],
+                          );
+                        }
+                      }
+                    })),
           );
         }));
   }
@@ -140,8 +126,8 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
   KuGouTabBar _buildTabbar() {
     return KuGouTabBar(
       isScrollable: true,
-      labelColor: Color(0xFF24CF5F),
-      unselectedLabelColor: Color(0xFFB8C0D4),
+      labelColor: ZStyleConstans.colorTextBase,
+      unselectedLabelColor: ZStyleConstans.colorTextSecondary,
       controller: controller.tabController,
       labelStyle: TextStyle(fontSize: 18),
       unselectedLabelStyle:
@@ -157,7 +143,7 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
       indicator: const RRecTabIndicator(
           radius: 5,
           insets: EdgeInsets.only(bottom: 5),
-          color: ThemeConstants.brandPrimary),
+          color: ZStyleConstans.brandPrimary),
       indicatorMinWidth: 10,
     );
   }
@@ -185,24 +171,23 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
     return Container(
       height: 140.w,
       margin: EdgeInsets.only(top: 10),
-      // padding: EdgeInsets.all(ThemeConstants.hSpacingSm),
+      // padding: EdgeInsets.all(ZStyleConstans.hSpacingSm),
       child: Swiper(
           itemBuilder: (context, index) {
             final image = controller.bannerUrlList[index];
             return Container(
               padding:
-                  EdgeInsets.symmetric(horizontal: ThemeConstants.hSpacingSm),
+                  EdgeInsets.symmetric(horizontal: ZStyleConstans.hSpacingSm),
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                child: Image.network(
-                  image,
-                  fit: BoxFit.fill,
-                ),
-              ),
+                  borderRadius: BorderRadius.circular(ZStyleConstans.radiusSm),
+                  child: CachedNetworkImage(
+                    imageUrl: image,
+                    fit: BoxFit.fill,
+                  )),
             );
           },
           indicatorLayout: PageIndicatorLayout.COLOR,
-          autoplay: true,
+          autoplay: controller.bannerUrlList.isNotEmpty,
           itemCount: controller.bannerUrlList.length,
           pagination: SwiperPagination(
               alignment: Alignment.bottomCenter,
@@ -233,11 +218,11 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
             children: [
               Text(
                 '无忧兼职 ｜ 兼职无忧',
-                style: Stylez.textHead,
+                style: ZStyle.textHead,
               ),
               Text(
                 '低门槛·多重岗位审核·100%客服响应',
-                style: Stylez.textCaption,
+                style: ZStyle.textCaption,
               ),
             ],
           )
@@ -274,13 +259,16 @@ class NLIndicator extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(6)),
                 )
-              : Container(
-                  width: 6,
-                  height: 6,
-                  margin: EdgeInsets.symmetric(horizontal: 2),
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(6)),
+              : Opacity(
+                  opacity: 0.4,
+                  child: Container(
+                    width: 6,
+                    height: 6,
+                    margin: EdgeInsets.symmetric(horizontal: 2),
+                    decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(6)),
+                  ),
                 );
         }),
       ),

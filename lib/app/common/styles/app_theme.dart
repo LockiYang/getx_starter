@@ -3,42 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../no_splash_factory.dart';
 import 'lib_color_schemes.g.dart';
-import 'theme_constants.dart';
-
-///一、颜色
-///关键颜色
-///重点色 Primary Secondary Tertiary
-///中性色
-///
-///二、字体
-/// NAME         SIZE  WEIGHT  SPACING
-/// headline1    96.0  light   -1.5
-/// headline2    60.0  light   -0.5
-/// headline3    48.0  regular  0.0
-/// headline4    34.0  regular  0.25
-/// headline5    24.0  regular  0.0
-/// headline6    20.0  medium   0.15
-/// subtitle1    16.0  regular  0.15
-/// subtitle2    14.0  medium   0.1
-/// body1        16.0  regular  0.5   (bodyText1)
-/// body2        14.0  regular  0.25  (bodyText2)
-/// button       14.0  medium   1.25
-/// caption      12.0  regular  0.4
-/// overline     10.0  regular  1.5
-
-const appColorPrimary = Color.fromARGB(255, 243, 52, 211);
-const appColorSuccess = Color(0xff10dc60);
-const appColorWarning = Color(0xffFF794C);
-const appColorDanger = Color(0xffF20A23);
-
-const appColorDark = Color(0xff333333);
-const appColorGray = Color(0xff666666);
-const appColorMedium = Color(0xff999999);
-const appColorlight = Color(0xffececec);
-const appColorWhite = Color(0xffffffff);
-
-const appColorDivider = Color(0xffececec);
-const appColorBackground = Color(0xfff8f8f8);
+import 'zstyle_constants.dart';
 
 class AppTheme {
   static ThemeData light = ThemeData(
@@ -71,57 +36,57 @@ class AppTheme {
   );
 
   static BrnCommonConfig commonConfig = BrnCommonConfig(
-      brandPrimary: ThemeConstants.brandPrimary,
-      brandPrimaryTap: ThemeConstants.brandPrimaryTap,
-      brandSuccess: ThemeConstants.brandSuccess,
-      brandWarning: ThemeConstants.brandWarning,
-      brandError: ThemeConstants.brandError,
-      brandImportant: ThemeConstants.brandImportant,
-      brandImportantValue: ThemeConstants.brandImportantValue,
-      brandAuxiliary: ThemeConstants.brandAuxiliary,
-      colorTextBase: ThemeConstants.colorTextBase,
-      colorTextImportant: ThemeConstants.colorTextImportant,
-      colorTextBaseInverse: ThemeConstants.colorTextBaseInverse,
-      colorTextSecondary: ThemeConstants.colorTextSecondary,
-      colorTextDisabled: ThemeConstants.colorTextDisabled,
-      colorTextHint: ThemeConstants.colorTextHint,
-      colorLink: ThemeConstants.colorLink,
-      fillBase: ThemeConstants.fillBase,
-      fillBody: ThemeConstants.fillBody,
-      fillMask: ThemeConstants.fillMask,
-      borderColorBase: ThemeConstants.borderColorBase,
-      dividerColorBase: ThemeConstants.dividerColorBase,
-      fontSizeBebas: ThemeConstants.fontSizeBebas,
-      fontSizeHeadLg: ThemeConstants.fontSizeHeadLg,
-      fontSizeHead: ThemeConstants.fontSizeHead,
-      fontSizeSubHead: ThemeConstants.fontSizeSubHead,
-      fontSizeBase: ThemeConstants.fontSizeBase,
-      fontSizeCaption: ThemeConstants.fontSizeCaption,
-      fontSizeCaptionSm: ThemeConstants.fontSizeCaptionSm,
-      radiusXs: ThemeConstants.radiusXs,
-      radiusSm: ThemeConstants.radiusSm,
-      radiusMd: ThemeConstants.radiusMd,
-      radiusLg: ThemeConstants.radiusLg,
-      borderWidthSm: ThemeConstants.borderWidthSm,
-      borderWidthMd: ThemeConstants.borderWidthMd,
-      borderWidthLg: ThemeConstants.borderWidthLg,
-      hSpacingXs: ThemeConstants.hSpacingXs,
-      hSpacingSm: ThemeConstants.hSpacingSm,
-      hSpacingMd: ThemeConstants.hSpacingMd,
-      hSpacingLg: ThemeConstants.hSpacingLg,
-      hSpacingXl: ThemeConstants.hSpacingXl,
-      hSpacingXxl: ThemeConstants.hSpacingXxl,
-      vSpacingXs: ThemeConstants.vSpacingXs,
-      vSpacingSm: ThemeConstants.vSpacingSm,
-      vSpacingMd: ThemeConstants.vSpacingMd,
-      vSpacingLg: ThemeConstants.vSpacingLg,
-      vSpacingXl: ThemeConstants.vSpacingXl,
-      vSpacingXxl: ThemeConstants.vSpacingXxl,
-      iconSizeXxs: ThemeConstants.iconSizeXxs,
-      iconSizeXs: ThemeConstants.iconSizeXs,
-      iconSizeSm: ThemeConstants.iconSizeSm,
-      iconSizeMd: ThemeConstants.iconSizeMd,
-      iconSizeLg: ThemeConstants.iconSizeLg);
+      brandPrimary: ZStyleConstans.brandPrimary,
+      brandPrimaryTap: ZStyleConstans.brandPrimaryTap,
+      brandSuccess: ZStyleConstans.brandSuccess,
+      brandWarning: ZStyleConstans.brandWarning,
+      brandError: ZStyleConstans.brandError,
+      brandImportant: ZStyleConstans.brandImportant,
+      brandImportantValue: ZStyleConstans.brandImportantValue,
+      brandAuxiliary: ZStyleConstans.brandAuxiliary,
+      colorTextBase: ZStyleConstans.colorTextBase,
+      colorTextImportant: ZStyleConstans.colorTextImportant,
+      colorTextBaseInverse: ZStyleConstans.colorTextBaseInverse,
+      colorTextSecondary: ZStyleConstans.colorTextSecondary,
+      colorTextDisabled: ZStyleConstans.colorTextDisabled,
+      colorTextHint: ZStyleConstans.colorTextHint,
+      colorLink: ZStyleConstans.colorLink,
+      fillBase: ZStyleConstans.fillBase,
+      fillBody: ZStyleConstans.fillBody,
+      fillMask: ZStyleConstans.fillMask,
+      borderColorBase: ZStyleConstans.borderColorBase,
+      dividerColorBase: ZStyleConstans.dividerColorBase,
+      fontSizeBebas: ZStyleConstans.fontSizeBebas,
+      fontSizeHeadLg: ZStyleConstans.fontSizeHeadLg,
+      fontSizeHead: ZStyleConstans.fontSizeHead,
+      fontSizeSubHead: ZStyleConstans.fontSizeSubHead,
+      fontSizeBase: ZStyleConstans.fontSizeBase,
+      fontSizeCaption: ZStyleConstans.fontSizeCaption,
+      fontSizeCaptionSm: ZStyleConstans.fontSizeCaptionSm,
+      radiusXs: ZStyleConstans.radiusXs,
+      radiusSm: ZStyleConstans.radiusSm,
+      radiusMd: ZStyleConstans.radiusMd,
+      radiusLg: ZStyleConstans.radiusLg,
+      borderWidthSm: ZStyleConstans.borderWidthSm,
+      borderWidthMd: ZStyleConstans.borderWidthMd,
+      borderWidthLg: ZStyleConstans.borderWidthLg,
+      hSpacingXs: ZStyleConstans.hSpacingXs,
+      hSpacingSm: ZStyleConstans.hSpacingSm,
+      hSpacingMd: ZStyleConstans.hSpacingMd,
+      hSpacingLg: ZStyleConstans.hSpacingLg,
+      hSpacingXl: ZStyleConstans.hSpacingXl,
+      hSpacingXxl: ZStyleConstans.hSpacingXxl,
+      vSpacingXs: ZStyleConstans.vSpacingXs,
+      vSpacingSm: ZStyleConstans.vSpacingSm,
+      vSpacingMd: ZStyleConstans.vSpacingMd,
+      vSpacingLg: ZStyleConstans.vSpacingLg,
+      vSpacingXl: ZStyleConstans.vSpacingXl,
+      vSpacingXxl: ZStyleConstans.vSpacingXxl,
+      iconSizeXxs: ZStyleConstans.iconSizeXxs,
+      iconSizeXs: ZStyleConstans.iconSizeXs,
+      iconSizeSm: ZStyleConstans.iconSizeSm,
+      iconSizeMd: ZStyleConstans.iconSizeMd,
+      iconSizeLg: ZStyleConstans.iconSizeLg);
 
   static BrnCardTitleConfig cardTitleConfig = BrnCardTitleConfig(
       titleTextStyle: BrnTextStyle.withStyle(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/getx/getz_view_binding.dart';
-import 'package:getx_test/app/common/styles/theme_constants.dart';
+import 'package:getx_test/app/common/styles/zstyle_constants.dart';
 import 'package:getx_test/app/modules/app_job/job_my/job_my_binding.dart';
 
 import '../../../common/widgets/menu_item.dart';
@@ -41,7 +41,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                 onTap: () => {},
                 child: Icon(
                   Icons.settings,
-                  color: ThemeConstants.colorTextSecondary,
+                  color: ZStyleConstans.colorTextSecondary,
                 ),
               )
             ],
@@ -57,7 +57,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                 boxShadow: [
                   BoxShadow(
                       offset: const Offset(4, 4),
-                      color: ThemeConstants.colorTextHint,
+                      color: ZStyleConstans.colorTextHint,
                       blurRadius: 10)
                 ]),
             child: Row(
@@ -73,7 +73,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                       ),
                       Text(
                         '收藏',
-                        style: TextStyle(color: ThemeConstants.colorTextHint),
+                        style: TextStyle(color: ZStyleConstans.colorTextHint),
                       )
                     ],
                   ),
@@ -87,7 +87,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                     ),
                     Text(
                       '历史',
-                      style: TextStyle(color: ThemeConstants.colorTextHint),
+                      style: TextStyle(color: ZStyleConstans.colorTextHint),
                     )
                   ],
                 ))
@@ -105,7 +105,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                 boxShadow: [
                   BoxShadow(
                       offset: const Offset(2, 1),
-                      color: ThemeConstants.colorTextHint,
+                      color: ZStyleConstans.colorTextHint,
                       blurRadius: 10)
                 ]),
             child: Column(children: [
@@ -134,18 +134,18 @@ class JobMyView extends GetzViewBindng<JobMyController> {
               MenuItemWidget(
                 icon: Icons.perm_identity,
                 title: '意见反馈',
-                endIconColor: ThemeConstants.colorTextHint,
+                endIconColor: ZStyleConstans.colorTextHint,
                 onTap: () => {},
               ),
               MenuItemWidget(
                 icon: Icons.perm_identity,
                 title: '帮助中心',
-                endIconColor: ThemeConstants.colorTextHint,
+                endIconColor: ZStyleConstans.colorTextHint,
               ),
               MenuItemWidget(
                 icon: Icons.perm_identity,
                 title: '关于我们',
-                endIconColor: ThemeConstants.colorTextHint,
+                endIconColor: ZStyleConstans.colorTextHint,
               )
             ]),
           )

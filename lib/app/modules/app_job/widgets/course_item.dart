@@ -3,8 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../common/styles/stylez.dart';
-import '../../../common/styles/theme_constants.dart';
+import '../../../common/styles/zstyle.dart';
+import '../../../common/styles/zstyle_constants.dart';
 import '../../../common/widgets/button/zbutton_sm.dart';
 import '../data/models/post.dart';
 
@@ -19,17 +19,17 @@ class CourseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(ThemeConstants.hSpacingSm,
-          ThemeConstants.hSpacingSm, ThemeConstants.hSpacingSm, 0),
-      padding: EdgeInsets.all(ThemeConstants.hSpacingSm),
+      margin: EdgeInsets.fromLTRB(ZStyleConstans.hSpacingSm,
+          ZStyleConstans.hSpacingSm, ZStyleConstans.hSpacingSm, 0),
+      padding: EdgeInsets.all(ZStyleConstans.hSpacingSm),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(ThemeConstants.radiusLg),
+          borderRadius: BorderRadius.circular(ZStyleConstans.radiusLg),
           color: Colors.white),
       // color: Colors.white,
       // color: e,
       child: Column(children: [
         Container(
-          margin: EdgeInsets.only(bottom: ThemeConstants.hSpacingSm),
+          margin: EdgeInsets.only(bottom: ZStyleConstans.hSpacingSm),
           child: Row(
             children: [
               _buildImg(),
@@ -37,7 +37,7 @@ class CourseItem extends StatelessWidget {
                   child: Container(
                 width: double.infinity,
                 height: 90.w,
-                margin: EdgeInsets.only(left: ThemeConstants.hSpacingXs),
+                margin: EdgeInsets.only(left: ZStyleConstans.hSpacingXs),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,12 +46,12 @@ class CourseItem extends StatelessWidget {
                         post.title,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
-                        style: Stylez.textSubHead,
+                        style: ZStyle.textSubHead,
                       ),
                       Wrap(
                         // alignment: WrapAlignment.end,
-                        spacing: ThemeConstants.hSpacingXs,
-                        runSpacing: ThemeConstants.hSpacingXs,
+                        spacing: ZStyleConstans.hSpacingXs,
+                        runSpacing: ZStyleConstans.hSpacingXs,
                         children: [
                           BrnStateTag(
                             tagText: '非常好',
@@ -72,7 +72,7 @@ class CourseItem extends StatelessWidget {
                         children: [
                           Text(
                             '${post.subScribeNum}人报名',
-                            style: Stylez.textCaption,
+                            style: ZStyle.textCaption,
                           ),
                           ZbuttonSm(
                             text: '免费报名',
@@ -92,7 +92,7 @@ class CourseItem extends StatelessWidget {
 
   Container _buildBottom() {
     return Container(
-        padding: EdgeInsets.only(top: ThemeConstants.hSpacingSm),
+        padding: EdgeInsets.only(top: ZStyleConstans.hSpacingSm),
         alignment: Alignment.centerLeft,
         child: Row(
           children: [
@@ -110,7 +110,7 @@ class CourseItem extends StatelessWidget {
     return Container(
       child: Stack(children: [
         ClipRRect(
-            borderRadius: BorderRadius.circular(ThemeConstants.radiusSm),
+            borderRadius: BorderRadius.circular(ZStyleConstans.radiusSm),
             child: CachedNetworkImage(
                 imageUrl: post.bgImg,
                 height: 90.w,
@@ -124,8 +124,8 @@ class CourseItem extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.black26,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(ThemeConstants.radiusSm),
-                      bottomRight: Radius.circular(ThemeConstants.radiusSm))),
+                      topLeft: Radius.circular(ZStyleConstans.radiusSm),
+                      bottomRight: Radius.circular(ZStyleConstans.radiusSm))),
               child: Text(
                 '视频',
                 style: TextStyle(color: Colors.white, fontSize: 12),

@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_test/app/common/size_extention.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getx_test/app/modules/test/common/size.dart';
 import 'package:getx_test/app/modules/test/widgets/btn.dart';
 
@@ -23,8 +23,8 @@ class LoginView extends GetView<LoginController> {
                 left: 0,
                 child: Image.asset(
                   'assets/images/bg_login_header.png',
-                  width: 375.spW(),
-                  height: 476.spH(),
+                  width: 375.w,
+                  height: 476.h,
                   fit: BoxFit.fitWidth,
                 )),
             Column(

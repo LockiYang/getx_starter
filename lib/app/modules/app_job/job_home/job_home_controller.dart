@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_test/app/common/utils/toast_util.dart';
 import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../data/models/post.dart';
 import '../data/models/post_list.dart';
 
 class JobHomeController extends GetxController
     with GetTickerProviderStateMixin {
-  late JobApi jobApi;
   var bannerUrlList = <String>[];
 
   int tabIndex = 0;
   var tabs = <Post_list>[];
   var tabsData = <int, List<Post>>{};
+  var currentPages = <int, int>{};
+  var totalPages = <int, int>{};
+  // 加载状态: 0加载中 1加载成功 2加载数据为空 3加载失败
+  int loadStatus = 0;
+  bool hasMore = true;
 
+  late JobApi jobApi;
   late TabController tabController;
-  final RefreshController refreshController =
-      RefreshController(initialRefresh: false);
   late ScrollController scrollController;
-
-  refreshData() {}
-  loadingData() {}
 
   @override
   void onInit() {
@@ -32,7 +32,15 @@ class JobHomeController extends GetxController
       ..addListener(() {
         if (scrollController.position.pixels ==
             scrollController.position.maxScrollExtent) {
-          print('滑动到了最底部');
+          if (currentPages[tabIndex]! < totalPages[tabIndex]!) {
+            currentPages[tabIndex] = currentPages[tabIndex]! + 1;
+            loadStatus = 0;
+            // 加载数据
+            // _getMoreData();
+          } else {
+            hasMore = false;
+          }
+          update();
         }
       });
   }
@@ -40,36 +48,65 @@ class JobHomeController extends GetxController
   @override
   void onReady() {
     super.onReady();
+    refreshData();
+  }
+
+  @override
+  void onClose() {
+    tabController.dispose();
+    scrollController.dispose();
+  }
+
+  Future<void> refreshData() async {
     jobApi.getBanners(success: ((data) {
-      debugPrint(data.toString());
+      bannerUrlList.clear();
       for (var banner in data) {
         bannerUrlList.add(banner.imageUrl);
       }
       update();
     }));
     jobApi.getCategory(success: ((data) {
+      tabs.clear();
+      int i = 0;
       for (var item in data) {
         if (item.type == 1) {
           tabs.add(item);
+          tabsData[i] = [];
+          currentPages[i] = 1;
+          totalPages[i] = 1;
+          ++i;
         }
       }
-      tabController = TabController(length: tabs.length, vsync: this)
+      update();
+      tabController = TabController(
+          initialIndex: tabIndex, length: tabs.length, vsync: this)
         ..addListener(() {
           tabIndex = tabController.index;
-          // jobApi.getPostPage(tabs[tabIndex].id.toInt(), success: (data) {
-          //   tabsData[tabIndex] = data;
-          //   update();
-          // });
-          update();
+          jobApi.getPostPage(
+              tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,
+              success: (data, page) {
+            tabsData[tabIndex] = data;
+            loadStatus = 1;
+            update();
+          });
         });
-      update();
-      jobApi.getPostPage(tabs[0].id.toInt(), success: (data) {
+      jobApi.getPostPage(tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,
+          success: (data, page) {
         tabsData[0] = data;
+        loadStatus = 1;
         update();
+        ToastUtil.show('刷新成功');
       });
     }));
   }
 
-  @override
-  void onClose() {}
+  Future<void> loadingData() async {}
+
+  bool isListEmpty(List? list) {
+    if (list == null || list.isEmpty) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

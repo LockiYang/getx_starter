@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ThemeConstants {
+class ZStyleConstans {
   /// 主题色相关
   ///
   /// 主题色

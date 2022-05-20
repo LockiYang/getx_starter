@@ -36,8 +36,6 @@ import '../modules/test/sliver_widgets/sliver_widgets_binding.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_view.dart';
 import '../modules/test/test_binding.dart';
 import '../modules/test/test_view.dart';
-import '../modules/test_flutter/test_flutter_binding.dart';
-import '../modules/test_flutter/test_flutter_view.dart';
 import '../modules/test_news/news_category/news_category_binding.dart';
 import '../modules/test_news/news_category/news_category_view.dart';
 import '../modules/test_news/news_home/news_home_binding.dart';
@@ -230,11 +228,6 @@ class AppPages {
           binding: WaVideoDetailBinding(),
         ),
       ],
-    ),
-    GetPage(
-      name: _Paths.TEST_FLUTTER,
-      page: () => TestFlutterView(),
-      binding: TestFlutterBinding(),
     ),
     GetPage(
       name: _Paths.APP_JOB,

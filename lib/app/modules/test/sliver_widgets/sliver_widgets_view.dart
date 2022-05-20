@@ -15,8 +15,8 @@ class SliverWidgetsView extends GetView<SliverWidgetsController> {
       body: ListView.builder(
           itemCount: controller.demos.length,
           itemBuilder: (context, index) {
-            return Padding(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+            return Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: ElevatedButton(
                   child: Text(controller.demos[index].title),
                   onPressed: () => {

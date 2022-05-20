@@ -30,7 +30,7 @@ abstract class PagingController<T> extends GetxController {
   }
 
   /// 刷新数据
-  void refreshData() async {
+  refreshData() async {
     currentPage = 0;
     hasMore = true;
     List<T> datas = await loadData();
@@ -45,7 +45,7 @@ abstract class PagingController<T> extends GetxController {
   }
 
   /// 加载更多
-  void loadMoreData() async{
+  loadMoreData() async{
     List<T> datas = await loadData();
     data.addAll(datas);
     /// 加载完成

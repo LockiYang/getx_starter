@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_test/app/modules/test/sliver_widgets/widgets/nested_usage.dart';
 
 import 'widgets/basic_usage.dart';
 import 'widgets/custom_sliver_header_usage.dart';
@@ -11,7 +12,7 @@ import 'widgets/sticky_usage.dart';
 class SliverWidgetsController extends GetxController {
   final List<DemoViewModal> demos = [
     DemoViewModal(
-      title: 'Sliver - Grid和List混合使用',
+      title: 'CustomScrollView 基本用法',
       demo: BasicDemo(title: 'Sliver - Grid和List混合使用'),
     ),
     DemoViewModal(
@@ -33,6 +34,10 @@ class SliverWidgetsController extends GetxController {
     DemoViewModal(
       title: 'Sliver - 自定义效果',
       demo: CustomSliverHeaderDemo(),
+    ),
+    DemoViewModal(
+      title: 'NestedScrollView 基本用法',
+      demo: NestedUsage(),
     ),
   ];
 

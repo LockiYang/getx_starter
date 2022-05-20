@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getx_test/app/modules/test/common/size.dart';
-import 'package:getx_test/app/common/size_extention.dart';
 import 'package:getx_test/app/modules/test/widgets/btn.dart';
 import 'package:getx_test/app/routes/app_pages.dart';
 
@@ -13,7 +13,6 @@ import 'welcome_controller.dart';
 class WelcomeView extends GetView<WelcomeController> {
   @override
   Widget build(BuildContext context) {
-    SizeConfig.initScreen(context);
     return Scaffold(
       backgroundColor: bgColor,
       body: Stack(fit: StackFit.expand, children: [
@@ -22,13 +21,13 @@ class WelcomeView extends GetView<WelcomeController> {
           children: [
             Image.asset(
               "assets/images/bg_welcome_header.png",
-              width: 375.spW(),
-              height: 542.spH(),
+              width: 375.w,
+              height: 542.h,
               fit: BoxFit.fitWidth,
             ),
             Positioned(
-                top: 194.spH(),
-                left: 40.spW(),
+                top: 194.h,
+                left: 40.w,
                 child: Column(
                   children: [
                     Container(

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_test/app/common/getx/get_extension.dart';
 import 'package:getx_test/app/common/getx/getz_view_binding.dart';
+import 'package:getx_test/app/common/styles/zstyle_constants.dart';
 import 'package:getx_test/app/modules/test_wanandroid/wa_my/wa_my_binding.dart';
 
-import '../../../common/styles/app_theme.dart';
 import '../../../common/widgets/menu_item.dart';
 import '../../../routes/app_pages.dart';
 import 'wa_my_controller.dart';
@@ -52,7 +51,7 @@ class WaMyView extends GetzViewBindng<WaMyController> {
                     ?.then((value) => {controller.routeCallback()}),
                 child: Icon(
                   Icons.settings,
-                  color: appColorMedium,
+                  color: ZStyleConstans.colorTextSecondary,
                 ),
               )
             ],
@@ -68,7 +67,7 @@ class WaMyView extends GetzViewBindng<WaMyController> {
                 boxShadow: [
                   BoxShadow(
                       offset: const Offset(4, 4),
-                      color: appColorlight,
+                      color: ZStyleConstans.colorTextSecondary,
                       blurRadius: 10)
                 ]),
             child: Row(
@@ -84,7 +83,8 @@ class WaMyView extends GetzViewBindng<WaMyController> {
                       ),
                       Text(
                         '收藏',
-                        style: TextStyle(color: appColorMedium),
+                        style:
+                            TextStyle(color: ZStyleConstans.colorTextSecondary),
                       )
                     ],
                   ),
@@ -98,7 +98,8 @@ class WaMyView extends GetzViewBindng<WaMyController> {
                     ),
                     Text(
                       '分享',
-                      style: TextStyle(color: appColorMedium),
+                      style:
+                          TextStyle(color: ZStyleConstans.colorTextSecondary),
                     )
                   ],
                 )),
@@ -111,7 +112,8 @@ class WaMyView extends GetzViewBindng<WaMyController> {
                     ),
                     Text(
                       '积分',
-                      style: TextStyle(color: appColorMedium),
+                      style:
+                          TextStyle(color: ZStyleConstans.colorTextSecondary),
                     )
                   ],
                 )),
@@ -124,7 +126,8 @@ class WaMyView extends GetzViewBindng<WaMyController> {
                     ),
                     Text(
                       '历史',
-                      style: TextStyle(color: appColorMedium),
+                      style:
+                          TextStyle(color: ZStyleConstans.colorTextSecondary),
                     )
                   ],
                 ))
@@ -142,7 +145,7 @@ class WaMyView extends GetzViewBindng<WaMyController> {
                 boxShadow: [
                   BoxShadow(
                       offset: const Offset(2, 1),
-                      color: appColorlight,
+                      color: ZStyleConstans.colorTextSecondary,
                       blurRadius: 10)
                 ]),
             child: Column(children: [
@@ -171,23 +174,23 @@ class WaMyView extends GetzViewBindng<WaMyController> {
               MenuItemWidget(
                 icon: Icons.perm_identity,
                 title: '个人信息',
-                endIconColor: appColorMedium,
-                onTap: () => Get.showLoading(text: '加载中'),
+                endIconColor: ZStyleConstans.colorTextSecondary,
+                onTap: () => {},
               ),
               MenuItemWidget(
                 icon: Icons.perm_identity,
                 title: '关于',
-                endIconColor: appColorMedium,
+                endIconColor: ZStyleConstans.colorTextSecondary,
               ),
               MenuItemWidget(
                 icon: Icons.perm_identity,
                 title: '分享',
-                endIconColor: appColorMedium,
+                endIconColor: ZStyleConstans.colorTextSecondary,
               ),
               MenuItemWidget(
                 icon: Icons.perm_identity,
                 title: '问题反馈',
-                endIconColor: appColorMedium,
+                endIconColor: ZStyleConstans.colorTextSecondary,
                 onTap: () => Get.toNamed(Routes.WA_FEEDBACK),
               )
             ]),

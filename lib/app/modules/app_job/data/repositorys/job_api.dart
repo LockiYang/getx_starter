@@ -5,8 +5,11 @@ import '../../../../common/http/config/dio_config.dart';
 import '../../../../common/http/http_client.dart';
 import '../../../test_wanandroid/common/http/default_http_transformer.dart';
 import '../models/banner.dart';
+import '../models/pagination.dart';
 import '../models/post.dart';
 import '../models/post_list.dart';
+
+typedef SuccessPagination<T> = Function(T data, Pagination page);
 
 class JobApi extends GetxService {
   late HttpClient client;
@@ -55,16 +58,24 @@ class JobApi extends GetxService {
   }
 
   /// 分类列表
-  getPostPage(int category, {Success<List<Post>>? success}) {
-    client.get('/post/list?pageNum=1&pageSize=10&postList=' + category.toString(),
+  getPostPage(int category, int pageNum,
+      {SuccessPagination<List<Post>>? success}) {
+    client.get('/post/list',
+        queryParameters: {
+          'pageNum': pageNum,
+          'pageSize': 10,
+          'postList': category.toString()
+        },
         options: options,
         httpTransformer: EyepetizerHttpTransformer.getInstance(),
         success: (data) {
-      var result = ((data as  Map<String, dynamic>)['result'] as List<dynamic>)
+      var page = Pagination.fromJson((data as Map)['pagination']);
+
+      var result = ((data as Map<String, dynamic>)['result'] as List<dynamic>)
           .map((e) => Post.fromJson(e as Map<String, dynamic>))
           .toList();
       if (success != null) {
-        success(result);
+        success(result, page);
       }
     });
   }

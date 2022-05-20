@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/getx/getz_view_binding.dart';
-import 'package:getx_test/app/common/styles/stylez.dart';
-import 'package:getx_test/app/common/styles/theme_constants.dart';
+import 'package:getx_test/app/common/styles/zstyle.dart';
+import 'package:getx_test/app/common/styles/zstyle_constants.dart';
 import 'package:getx_test/app/modules/app_job/job_course_detail/job_course_detail_binding.dart';
 
 import '../../../common/widgets/fijkplayer/fijkplayer_skin.dart';
@@ -50,14 +50,14 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
     return Container(
         alignment: Alignment.topLeft,
         width: double.infinity,
-        margin: EdgeInsets.only(bottom: ThemeConstants.vSpacingMd),
-        padding: EdgeInsets.all(ThemeConstants.vSpacingMd),
+        margin: EdgeInsets.only(bottom: ZStyleConstans.vSpacingMd),
+        padding: EdgeInsets.all(ZStyleConstans.vSpacingMd),
         decoration: BoxDecoration(color: Colors.white),
         child: Column(
           children: [
             Text(
               '大家都在看',
-              style: Stylez.textSubHead,
+              style: ZStyle.textSubHead,
             ),
           ],
         ));
@@ -67,24 +67,24 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
     return Container(
         alignment: Alignment.topLeft,
         width: double.infinity,
-        margin: EdgeInsets.only(bottom: ThemeConstants.vSpacingMd),
-        padding: EdgeInsets.all(ThemeConstants.vSpacingMd),
+        margin: EdgeInsets.only(bottom: ZStyleConstans.vSpacingMd),
+        padding: EdgeInsets.all(ZStyleConstans.vSpacingMd),
         decoration: BoxDecoration(color: Colors.white),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               '讲师介绍',
-              style: Stylez.textSubHead,
+              style: ZStyle.textSubHead,
             ),
             Spacez.vSpacezSm,
             Container(
               alignment: Alignment.topLeft,
               width: double.infinity,
-              padding: EdgeInsets.all(ThemeConstants.vSpacingMd),
+              padding: EdgeInsets.all(ZStyleConstans.vSpacingMd),
               decoration: BoxDecoration(
-                  color: ThemeConstants.fillBody,
-                  borderRadius: BorderRadius.circular(ThemeConstants.radiusMd)),
+                  color: ZStyleConstans.fillBody,
+                  borderRadius: BorderRadius.circular(ZStyleConstans.radiusMd)),
               child: Column(
                 children: [
                   Row(
@@ -117,7 +117,7 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
                   Spacez.vSpacezXs,
                   Text(
                     '祖籍江苏省苏州市吴江区震泽镇，生于上海，中国篮球运动员，曾为中国国家篮球队队员，曾效力于中国篮球职业联赛上海大鲨鱼篮球俱乐部和美国国家篮球协会休斯敦火箭，外号“移动长城”。现任中国篮球协会主席。',
-                    style: Stylez.textBase,
+                    style: ZStyle.textBase,
                   )
                 ],
               ),
@@ -125,21 +125,21 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
             Spacez.vSpacezMd,
             Text(
               '授课机构',
-              style: Stylez.textSubHead,
+              style: ZStyle.textSubHead,
             ),
             Spacez.vSpacezSm,
             Container(
               alignment: Alignment.topLeft,
               width: double.infinity,
-              padding: EdgeInsets.all(ThemeConstants.vSpacingMd),
+              padding: EdgeInsets.all(ZStyleConstans.vSpacingMd),
               decoration: BoxDecoration(
-                  color: ThemeConstants.fillBody,
-                  borderRadius: BorderRadius.circular(ThemeConstants.radiusMd)),
+                  color: ZStyleConstans.fillBody,
+                  borderRadius: BorderRadius.circular(ZStyleConstans.radiusMd)),
               child: Row(
                 children: [
                   Container(
                     padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.only(right: ThemeConstants.vSpacingMd),
+                    margin: EdgeInsets.only(right: ZStyleConstans.vSpacingMd),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.blue,
@@ -160,14 +160,14 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
                       ),
                       Text(
                         '擅长设计，师资雄厚',
-                        style: Stylez.textCaption,
+                        style: ZStyle.textCaption,
                       )
                     ],
                   )),
                   Icon(
                     AntdIcons.right,
                     size: 16,
-                    color: ThemeConstants.colorTextHint,
+                    color: ZStyleConstans.colorTextHint,
                   ),
                 ],
               ),
@@ -180,20 +180,20 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
     return Container(
         alignment: Alignment.topLeft,
         width: double.infinity,
-        margin: EdgeInsets.only(bottom: ThemeConstants.vSpacingMd),
-        padding: EdgeInsets.all(ThemeConstants.vSpacingMd),
+        margin: EdgeInsets.only(bottom: ZStyleConstans.vSpacingMd),
+        padding: EdgeInsets.all(ZStyleConstans.vSpacingMd),
         decoration: BoxDecoration(color: Colors.white),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               '课程介绍',
-              style: Stylez.textSubHead,
+              style: ZStyle.textSubHead,
             ),
             Spacez.vSpacezSm,
             Text(
               '【报名须知】\n1、没有电脑，请勿报名!\n2、未满18岁，请勿报名!\n3、对设计与平面设计感兴趣!\n【课程讲解内容】\n第一部分：软件介绍、学习版本的选择、以及学习方向定位。\n第二部分：图层使用方法，文件打开保存的方法，注意事项。\n第三部分：工具的讲解，以及使用方法。\n第四部分：调色，滤镜等讲解\n第五部分：抠图\n第六部分：实例部分\n第七部分：动画制作\n第八部分：实战综合讲解\n【报名须知】\n1、没有电脑，请勿报名!\n2、未满18岁，请勿报名!\n3、对设计与平面设计感兴趣!\n【课程讲解内容】\n第一部分：软件介绍、学习版本的选择、以及学习方向定位。\n第二部分：图层使用方法，文件打开保存的方法，注意事项。\n第三部分：工具的讲解，以及使用方法。\n第四部分：调色，滤镜等讲解\n第五部分：抠图\n第六部分：实例部分\n第七部分：动画制作\n第八部分：实战综合讲解\n',
-              style: Stylez.textBase,
+              style: ZStyle.textBase,
             ),
           ],
         ));
@@ -203,20 +203,20 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
     return Container(
       alignment: Alignment.topLeft,
       width: double.infinity,
-      margin: EdgeInsets.only(bottom: ThemeConstants.vSpacingMd),
-      padding: EdgeInsets.all(ThemeConstants.vSpacingMd),
+      margin: EdgeInsets.only(bottom: ZStyleConstans.vSpacingMd),
+      padding: EdgeInsets.all(ZStyleConstans.vSpacingMd),
       decoration: BoxDecoration(color: Colors.white),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
           '0基础免费P图 接单赚钱',
-          style: Stylez.textHead,
+          style: ZStyle.textHead,
         ),
         SizedBox(
           height: 4,
         ),
         Wrap(
-          spacing: ThemeConstants.hSpacingXs,
-          runSpacing: ThemeConstants.hSpacingXs,
+          spacing: ZStyleConstans.hSpacingXs,
+          runSpacing: ZStyleConstans.hSpacingXs,
           children: [
             BrnStateTag(
               tagText: '非常好',
@@ -237,13 +237,13 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
         Container(
           alignment: Alignment.topLeft,
           width: double.infinity,
-          margin: EdgeInsets.only(top: ThemeConstants.vSpacingMd),
+          margin: EdgeInsets.only(top: ZStyleConstans.vSpacingMd),
           padding: EdgeInsets.symmetric(
-              vertical: ThemeConstants.vSpacingSm,
-              horizontal: ThemeConstants.hSpacingMd),
+              vertical: ZStyleConstans.vSpacingSm,
+              horizontal: ZStyleConstans.hSpacingMd),
           decoration: BoxDecoration(
               color: Colors.blueGrey[50],
-              borderRadius: BorderRadius.circular(ThemeConstants.radiusMd)),
+              borderRadius: BorderRadius.circular(ZStyleConstans.radiusMd)),
           child: Row(
             children: [
               Icon(
@@ -262,14 +262,14 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
                   ),
                   Text(
                     '100G PS设计学习包',
-                    style: Stylez.textCaption,
+                    style: ZStyle.textCaption,
                   )
                 ],
               )),
               Icon(
                 AntdIcons.right,
                 size: 16,
-                color: ThemeConstants.colorTextHint,
+                color: ZStyleConstans.colorTextHint,
               ),
             ],
           ),
@@ -277,13 +277,13 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
         Container(
           alignment: Alignment.topLeft,
           width: double.infinity,
-          margin: EdgeInsets.only(top: ThemeConstants.vSpacingMd),
+          margin: EdgeInsets.only(top: ZStyleConstans.vSpacingMd),
           padding: EdgeInsets.symmetric(
-              vertical: ThemeConstants.vSpacingSm,
-              horizontal: ThemeConstants.hSpacingMd),
+              vertical: ZStyleConstans.vSpacingSm,
+              horizontal: ZStyleConstans.hSpacingMd),
           decoration: BoxDecoration(
               color: Colors.blueGrey[50],
-              borderRadius: BorderRadius.circular(ThemeConstants.radiusMd)),
+              borderRadius: BorderRadius.circular(ZStyleConstans.radiusMd)),
           child: Row(
             children: [
               Icon(
@@ -302,14 +302,14 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
                   ),
                   Text(
                     '学成可做兼职，收入可达800/天',
-                    style: Stylez.textCaption,
+                    style: ZStyle.textCaption,
                   )
                 ],
               )),
               Icon(
                 AntdIcons.right,
                 size: 16,
-                color: ThemeConstants.colorTextHint,
+                color: ZStyleConstans.colorTextHint,
               ),
             ],
           ),
@@ -323,7 +323,7 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
         //     ),
         //     Text(
         //       '已有30123人报名',
-        //       style: Stylez.textCaption,
+        //       style: ZStyle.textCaption,
         //     )
         //   ],
         // ),

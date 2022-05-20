@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:getx_test/app/common/getx/getz_view.dart';
 import 'package:getx_test/app/modules/test_wanandroid/wa_my/wa_feedback/wa_feedback_controller.dart';
 
-import '../../../../../common/styles/theme_constants.dart';
+import '../../../../../common/styles/zstyle_constants.dart';
 
 class FeedbackPhotoSelectWidget extends GetzView<WaFeedbackController>{
 
@@ -46,7 +46,7 @@ class FeedbackPhotoSelectWidget extends GetzView<WaFeedbackController>{
                   width: 15,
                   height: 15,
                   child: Material(
-                    color: ThemeConstants.borderColorBase,
+                    color: ZStyleConstans.borderColorBase,
                     child: const Icon(
                       Icons.close,
                       size: 10,
@@ -80,7 +80,7 @@ class FeedbackPhotoSelectWidget extends GetzView<WaFeedbackController>{
         child: const Icon(
           Icons.add,
           size: 60,
-          color: ThemeConstants.borderColorBase
+          color: ZStyleConstans.borderColorBase
         ),
       );
     } else {
