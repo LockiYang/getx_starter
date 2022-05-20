@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 /// 装载GetxController
 /// 装载GetBuilder状态管理
 abstract class GetzView<T extends GetxController> extends StatefulWidget {
-  const GetzView({Key? key}) : super(key: key);
+  const GetzView({Key? key, this.tag}) : super(key: key);
 
-  final String? tag = null;
+  final String? tag;
 
   T get controller => GetInstance().find<T>(tag: tag);
 

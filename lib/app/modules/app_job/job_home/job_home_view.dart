@@ -22,15 +22,10 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: RefreshIndicator(
-          //可滚动组件在滚动时会发送ScrollNotification类型的通知
+          // 解决NestedScrollView和RefreshIndicator的滑动冲突
+          // NestedScrollView有内外两个controller控制器。（out控制header，inner控制body。只有当out不能滚动了才会滚动inner）
           notificationPredicate: (ScrollNotification notifation) {
-            //该属性包含当前ViewPort及滚动位置等信息
-            ScrollMetrics scrollMetrics = notifation.metrics;
-            if (scrollMetrics.minScrollExtent == 0) {
-              return true;
-            } else {
-              return false;
-            }
+            return true;
           },
           onRefresh: controller.refreshData,
           child: NestedScrollView(
@@ -94,23 +89,30 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
                             ? 1
                             : controller.tabsData[tabIndex]!.length + 1,
                     itemBuilder: (context, itemIndex) {
-                      if (controller
-                          .isListEmpty(controller.tabsData[tabIndex])) {
-                        // 加载中
+                      if (controller.isListEmpty(controller.tabsData[tabIndex])) {
                         if (controller.loadStatus == 0) {
-                          return _buildProgressIndicator();
-                        } else {
-                          return Text('无数据');
-                        }
+                            return _buildProgressIndicator();
+                          } else if (controller.loadStatus == 1) {
+                            return Text('');
+                          } else if (controller.loadStatus == 2) {
+                            return Text('无数据2');
+                          } else if (controller.loadStatus == 3) {
+                            return Text('加载失败，重试');
+                          } else {
+                            return Text('');
+                          }
                       } else {
-                        if (controller.tabsData[tabIndex]!.length ==
-                            itemIndex) {
+                        if (controller.tabsData[tabIndex]!.length == itemIndex) {
                           if (controller.loadStatus == 0) {
                             return _buildProgressIndicator();
-                          } else if (!controller.hasMore) {
+                          } else if (controller.loadStatus == 1 && !controller.hasMore) {
                             return Text('没有更多了');
+                          } else if (controller.loadStatus == 2) {
+                            return Text('无数据3');
+                          } else if (controller.loadStatus == 3) {
+                            return Text('加载失败，重试');
                           } else {
-                            return Text('无数据');
+                            return Text('');
                           }
                         } else {
                           return CourseItem(

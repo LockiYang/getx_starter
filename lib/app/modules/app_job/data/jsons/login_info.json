@@ -1,0 +1,9 @@
+{
+    "errcode": 0,
+    "isBan": true,
+    "isFirst": true,
+    "isNew": true,
+    "token": "string",
+    "userId": 0,
+    "username": "string"
+  }

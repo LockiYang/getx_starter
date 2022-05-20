@@ -44,7 +44,7 @@ void setSystemUi() {
   if (GetPlatform.isAndroid) {
     SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, // 状态栏颜色
-      statusBarBrightness: Brightness.light, // 
+      statusBarBrightness: Brightness.light, //
       statusBarIconBrightness: Brightness.dark, // 状态栏图标字体颜色
       systemNavigationBarDividerColor: Color.fromARGB(0, 42, 41, 41),
       systemNavigationBarColor: Colors.white,
@@ -68,7 +68,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(375, 812),
-      child: GetMaterialApp(
+      builder: (context, widget) => GetMaterialApp(
         title: "Application",
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,

@@ -6,6 +6,7 @@ import 'package:getx_test/app/common/styles/zstyle_constants.dart';
 import 'package:getx_test/app/modules/app_job/job_my/job_my_binding.dart';
 
 import '../../../common/widgets/menu_item.dart';
+import '../../../routes/app_pages.dart';
 import 'job_my_controller.dart';
 
 class JobMyView extends GetzViewBindng<JobMyController> {
@@ -31,9 +32,12 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                 ),
               ),
               // 昵称
-              Container(
-                margin: EdgeInsets.only(left: 10),
-                child: Text('点击登录', style: TextStyle(fontSize: 16)),
+              GestureDetector(
+                onTap: () => Get.toNamed(Routes.JOB_LOGIN),
+                child: Container(
+                  margin: EdgeInsets.only(left: 10),
+                  child: Text('点击登录', style: TextStyle(fontSize: 16)),
+                ),
               ),
               const Expanded(child: Text('')),
               // 设置

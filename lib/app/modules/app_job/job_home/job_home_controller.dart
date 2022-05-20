@@ -26,8 +26,8 @@ class JobHomeController extends GetxController
   @override
   void onInit() {
     super.onInit();
-    tabController = TabController(length: tabs.length, vsync: this);
     jobApi = Get.find<JobApi>();
+    tabController = TabController(length: tabs.length, vsync: this);
     scrollController = ScrollController()
       ..addListener(() {
         if (scrollController.position.pixels ==
@@ -58,6 +58,7 @@ class JobHomeController extends GetxController
   }
 
   Future<void> refreshData() async {
+    loadStatus = 0;
     jobApi.getBanners(success: ((data) {
       bannerUrlList.clear();
       for (var banner in data) {
@@ -81,6 +82,7 @@ class JobHomeController extends GetxController
       tabController = TabController(
           initialIndex: tabIndex, length: tabs.length, vsync: this)
         ..addListener(() {
+          // 刷新列表数据
           tabIndex = tabController.index;
           jobApi.getPostPage(
               tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,
@@ -92,10 +94,11 @@ class JobHomeController extends GetxController
         });
       jobApi.getPostPage(tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,
           success: (data, page) {
-        tabsData[0] = data;
+        tabsData[tabIndex] = data;
         loadStatus = 1;
         update();
         ToastUtil.show('刷新成功');
+        // Get.toNamed(page)
       });
     }));
   }

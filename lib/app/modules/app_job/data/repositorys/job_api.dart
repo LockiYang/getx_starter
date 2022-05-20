@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 
 import '../../../../common/http/config/dio_config.dart';
 import '../../../../common/http/http_client.dart';
-import '../../../test_wanandroid/common/http/default_http_transformer.dart';
+import '../../../test_wanandroid/common/http/eyepetizer_http_transformer.dart';
 import '../models/banner.dart';
+import '../models/login_info.dart';
 import '../models/pagination.dart';
 import '../models/post.dart';
 import '../models/post_list.dart';
+import '../models/user_info.dart';
 
 typedef SuccessPagination<T> = Function(T data, Pagination page);
 
@@ -21,10 +23,12 @@ class JobApi extends GetxService {
   }
 
   Options options = Options(headers: {
-    "Authorization": "Bearer ",
-    "appType": '51ykt',
-    "city": Uri.encodeComponent('深圳'),
-    "Content-Type": 'application/json'
+    'Authorization': 'Bearer ',
+    'appType': '51ykt',
+    'city': Uri.encodeComponent('深圳'),
+    'Content-Type': 'application/json',
+    'x-appStoreUuid': 'apasykt',
+    'x-appVersion': '1.0.1'
   });
 
   /// 首页banner轮播图
@@ -44,7 +48,7 @@ class JobApi extends GetxService {
 
   /// 首页分类
   getCategory({Success<List<Post_list>>? success}) {
-    client.get('/postList/list',
+    client.get('postList/list',
         options: options,
         httpTransformer: EyepetizerHttpTransformer.getInstance(),
         success: (data) {
@@ -57,10 +61,10 @@ class JobApi extends GetxService {
     });
   }
 
-  /// 分类列表
+  /// 岗位列表
   getPostPage(int category, int pageNum,
       {SuccessPagination<List<Post>>? success}) {
-    client.get('/post/list',
+    client.get('post/list',
         queryParameters: {
           'pageNum': pageNum,
           'pageSize': 10,
@@ -79,4 +83,82 @@ class JobApi extends GetxService {
       }
     });
   }
+
+  /// 岗位详情
+  getPostInfo(int postId, {Success<Post>? success}) {
+    client.get('post/info',
+        queryParameters: {
+          'postId': postId.toString()
+        },
+        options: options,
+        httpTransformer: EyepetizerHttpTransformer.getInstance(),
+        success: (data) {
+      var result = Post.fromJson(data as Map<String, dynamic>);
+      if (success != null) {
+        success(result);
+      }
+    });
+  }
+
+  /// 获取短信验证码
+  postSmsCode(String mobile, {Success<Login_info>? success}) {
+    client.post('auth/sms',
+        queryParameters: {
+          'mobile': mobile
+        },
+        options: options,
+        httpTransformer: EyepetizerHttpTransformer.getInstance(),
+        success: (data) {
+      var result = Login_info.fromJson(data as Map<String, dynamic>);
+      if (success != null) {
+        success(result);
+      }
+    });
+  }
+
+  /// 获取短信验证码
+  postLoginByMobile(String mobile, String sms,  {Success<Login_info>? success}) {
+    client.post('auth/login-by-mobile',
+        queryParameters: {
+          'mobile': mobile,
+          'sms': sms
+        },
+        options: options,
+        httpTransformer: EyepetizerHttpTransformer.getInstance(),
+        success: (data) {
+      var result = Login_info.fromJson(data as Map<String, dynamic>);
+      if (success != null) {
+        success(result);
+      }
+    });
+  }
+
+  /// 获取用户信息
+  getUserInfo({Success<User_info>? success}) {
+    client.post('user/info',
+        options: options,
+        httpTransformer: EyepetizerHttpTransformer.getInstance(),
+        success: (data) {
+      var result = User_info.fromJson(data as Map<String, dynamic>);
+      if (success != null) {
+        success(result);
+      }
+    });
+  }
+
+  /// 删除账户
+  deleteAccount({Success<User_info>? success}) {
+    client.post('user/info',
+        options: options,
+        httpTransformer: EyepetizerHttpTransformer.getInstance(),
+        success: (data) {
+      var result = User_info.fromJson(data as Map<String, dynamic>);
+      if (success != null) {
+        success(result);
+      }
+    });
+  }
+
+
+
 }

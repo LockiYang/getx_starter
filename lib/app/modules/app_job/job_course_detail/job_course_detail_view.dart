@@ -1,18 +1,19 @@
 import 'package:bruno/bruno.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
 
-import 'package:get/get.dart';
-import 'package:getx_test/app/common/getx/getz_view_binding.dart';
+import 'package:getx_test/app/common/getx/getz_view.dart';
 import 'package:getx_test/app/common/styles/zstyle.dart';
 import 'package:getx_test/app/common/styles/zstyle_constants.dart';
-import 'package:getx_test/app/modules/app_job/job_course_detail/job_course_detail_binding.dart';
 
 import '../../../common/widgets/fijkplayer/fijkplayer_skin.dart';
 import '../../test/custom_icon/widgets/antd_icons.dart';
 import 'job_course_detail_controller.dart';
 
-class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
+class JobCourseDetailView extends GetzView<JobCourseDetailController> {
+  const JobCourseDetailView({Key? key, String? tag})
+      : super(key: key, tag: tag);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -93,7 +94,7 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
                       Row(
                         children: [
                           Text(
-                            '霍尔老师',
+                            controller.personName,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           BrnStateTag(
@@ -104,11 +105,12 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
                       ),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(40),
-                        child: Image(
-                          image: AssetImage("assets/images/customer.jpg"),
+                        child: controller.personLogo.isNotEmpty ? CachedNetworkImage(
+                          imageUrl: controller.personLogo,
                           width: 40,
                           height: 40,
-                        ),
+                          fit: BoxFit.fill,
+                        ) : Container(),
                       )
                     ],
                   ),
@@ -116,7 +118,7 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
                   Dividerz.divider1,
                   Spacez.vSpacezXs,
                   Text(
-                    '祖籍江苏省苏州市吴江区震泽镇，生于上海，中国篮球运动员，曾为中国国家篮球队队员，曾效力于中国篮球职业联赛上海大鲨鱼篮球俱乐部和美国国家篮球协会休斯敦火箭，外号“移动长城”。现任中国篮球协会主席。',
+                    controller.personDesc,
                     style: ZStyle.textBase,
                   )
                 ],
@@ -155,11 +157,11 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '看点设计',
+                        controller.companyAlias,
                         style: TextStyle(fontWeight: FontWeight.w600),
                       ),
                       Text(
-                        '擅长设计，师资雄厚',
+                        '企业认证',
                         style: ZStyle.textCaption,
                       )
                     ],
@@ -192,7 +194,7 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
             ),
             Spacez.vSpacezSm,
             Text(
-              '【报名须知】\n1、没有电脑，请勿报名!\n2、未满18岁，请勿报名!\n3、对设计与平面设计感兴趣!\n【课程讲解内容】\n第一部分：软件介绍、学习版本的选择、以及学习方向定位。\n第二部分：图层使用方法，文件打开保存的方法，注意事项。\n第三部分：工具的讲解，以及使用方法。\n第四部分：调色，滤镜等讲解\n第五部分：抠图\n第六部分：实例部分\n第七部分：动画制作\n第八部分：实战综合讲解\n【报名须知】\n1、没有电脑，请勿报名!\n2、未满18岁，请勿报名!\n3、对设计与平面设计感兴趣!\n【课程讲解内容】\n第一部分：软件介绍、学习版本的选择、以及学习方向定位。\n第二部分：图层使用方法，文件打开保存的方法，注意事项。\n第三部分：工具的讲解，以及使用方法。\n第四部分：调色，滤镜等讲解\n第五部分：抠图\n第六部分：实例部分\n第七部分：动画制作\n第八部分：实战综合讲解\n',
+              controller.postDetail,
               style: ZStyle.textBase,
             ),
           ],
@@ -208,7 +210,7 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
       decoration: BoxDecoration(color: Colors.white),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
-          '0基础免费P图 接单赚钱',
+          controller.title,
           style: ZStyle.textHead,
         ),
         SizedBox(
@@ -313,11 +315,11 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
               ),
             ],
           ),
-        )
+        ),
         // Row(
         //   children: [
         //     AvatarStack(
-        //       num: 10,
+        //       num: 20,
         //       size: 16,
         //       offset: 10,
         //     ),
@@ -364,10 +366,5 @@ class JobCourseDetailView extends GetzViewBindng<JobCourseDetailController> {
               },
             ),
     );
-  }
-
-  @override
-  Bindings? binding() {
-    return JobCourseDetailBinding();
   }
 }

@@ -80,15 +80,15 @@ class CourseMessageItem extends StatelessWidget {
                         children: [
                           BrnStateTag(
                             tagText: '非常好',
-                            tagState: TagState.succeed,
+                            tagState: TagState.invalidate,
                           ),
                           BrnStateTag(
                             tagText: '前景高',
-                            tagState: TagState.failed,
+                            tagState: TagState.invalidate,
                           ),
                           BrnStateTag(
                             tagText: '轻松在家',
-                            tagState: TagState.running,
+                            tagState: TagState.invalidate,
                           ),
                         ],
                       ),

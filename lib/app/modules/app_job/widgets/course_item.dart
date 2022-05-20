@@ -2,6 +2,9 @@ import 'package:bruno/bruno.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:getx_test/app/modules/app_job/job_course_detail/job_course_detail_binding.dart';
+import 'package:getx_test/app/modules/app_job/job_course_detail/job_course_detail_view.dart';
 
 import '../../../common/styles/zstyle.dart';
 import '../../../common/styles/zstyle_constants.dart';
@@ -18,75 +21,80 @@ class CourseItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(ZStyleConstans.hSpacingSm,
-          ZStyleConstans.hSpacingSm, ZStyleConstans.hSpacingSm, 0),
-      padding: EdgeInsets.all(ZStyleConstans.hSpacingSm),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(ZStyleConstans.radiusLg),
-          color: Colors.white),
-      // color: Colors.white,
-      // color: e,
-      child: Column(children: [
-        Container(
-          margin: EdgeInsets.only(bottom: ZStyleConstans.hSpacingSm),
-          child: Row(
-            children: [
-              _buildImg(),
-              Expanded(
-                  child: Container(
-                width: double.infinity,
-                height: 90.w,
-                margin: EdgeInsets.only(left: ZStyleConstans.hSpacingXs),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        post.title,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                        style: ZStyle.textSubHead,
-                      ),
-                      Wrap(
-                        // alignment: WrapAlignment.end,
-                        spacing: ZStyleConstans.hSpacingXs,
-                        runSpacing: ZStyleConstans.hSpacingXs,
-                        children: [
-                          BrnStateTag(
-                            tagText: '非常好',
-                            tagState: TagState.succeed,
-                          ),
-                          BrnStateTag(
-                            tagText: '前景高',
-                            tagState: TagState.failed,
-                          ),
-                          BrnStateTag(
-                            tagText: '轻松在家',
-                            tagState: TagState.running,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '${post.subScribeNum}人报名',
-                            style: ZStyle.textCaption,
-                          ),
-                          ZbuttonSm(
-                            text: '免费报名',
-                          )
-                        ],
-                      ),
-                    ]),
-              ))
-            ],
+    return GestureDetector(
+      onTap: () => Get.to(JobCourseDetailView(tag: post.postId.toString()),
+          arguments: {"id": post.postId.toString()},
+          binding: JobCourseDetailBinding(tag: post.postId.toString())),
+      child: Container(
+        margin: EdgeInsets.fromLTRB(ZStyleConstans.hSpacingSm,
+            ZStyleConstans.hSpacingSm, ZStyleConstans.hSpacingSm, 0),
+        padding: EdgeInsets.all(ZStyleConstans.hSpacingSm),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(ZStyleConstans.radiusLg),
+            color: Colors.white),
+        // color: Colors.white,
+        // color: e,
+        child: Column(children: [
+          Container(
+            margin: EdgeInsets.only(bottom: ZStyleConstans.hSpacingSm),
+            child: Row(
+              children: [
+                _buildImg(),
+                Expanded(
+                    child: Container(
+                  width: double.infinity,
+                  height: 90.w,
+                  margin: EdgeInsets.only(left: ZStyleConstans.hSpacingXs),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          post.title,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          style: ZStyle.textSubHead,
+                        ),
+                        Wrap(
+                          // alignment: WrapAlignment.end,
+                          spacing: ZStyleConstans.hSpacingXs,
+                          runSpacing: ZStyleConstans.hSpacingXs,
+                          children: [
+                            BrnStateTag(
+                              tagText: '非常好',
+                              tagState: TagState.invalidate,
+                            ),
+                            BrnStateTag(
+                              tagText: '前景高',
+                              tagState: TagState.invalidate,
+                            ),
+                            BrnStateTag(
+                              tagText: '轻松在家',
+                              tagState: TagState.invalidate,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '${post.subScribeNum}人报名',
+                              style: ZStyle.textCaption,
+                            ),
+                            ZbuttonSm(
+                              text: '免费报名',
+                            )
+                          ],
+                        ),
+                      ]),
+                ))
+              ],
+            ),
           ),
-        ),
-        Dividerz.divider1,
-        _buildBottom(),
-      ]),
+          Dividerz.divider1,
+          _buildBottom(),
+        ]),
+      ),
     );
   }
 

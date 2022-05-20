@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:getx_test/app/modules/test_wanandroid/common/http/default_http_transformer.dart';
 
 import '../../../common/http/config/dio_config.dart';
 import '../../../common/http/http_client.dart';
+import '../common/http/eyepetizer_http_transformer.dart';
 import 'feed.dart';
 
 class EyepetizerApi extends GetxService {
