@@ -13,23 +13,23 @@ class SliverWidgetsController extends GetxController {
   final List<DemoViewModal> demos = [
     DemoViewModal(
       title: 'CustomScrollView 基本用法',
-      demo: BasicDemo(title: 'Sliver - Grid和List混合使用'),
+      demo: BasicDemo(title: 'CustomScrollView 基本用法'),
     ),
     DemoViewModal(
-      title: 'Sliver - float效果',
-      demo: FloatDemo(title: 'Sliver - float效果'),
+      title: 'SliverAppBar - float效果',
+      demo: FloatDemo(title: 'SliverAppBar - float效果'),
     ),
     DemoViewModal(
-      title: 'Sliver - snap效果',
-      demo: SnapDemo(title: 'Sliver - snap效果'),
+      title: 'SliverAppBar - snap效果',
+      demo: SnapDemo(title: 'SliverAppBar - float效果'),
     ),
     DemoViewModal(
-      title: 'Sliver - pinned效果',
-      demo: PinnedDemo(title: 'Sliver - pinned效果'),
+      title: 'SliverAppBar - pinned效果',
+      demo: PinnedDemo(title: 'SliverAppBar - float效果'),
     ),
     DemoViewModal(
-      title: 'Sliver - sticky效果',
-      demo: StickyDemo(title: 'Sliver - sticky效果'),
+      title: 'SliverPersistentHeader - sticky效果',
+      demo: StickyDemo(title: 'SliverPersistentHeader - sticky效果'),
     ),
     DemoViewModal(
       title: 'Sliver - 自定义效果',

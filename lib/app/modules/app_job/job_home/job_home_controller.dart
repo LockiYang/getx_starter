@@ -19,14 +19,12 @@ class JobHomeController extends GetxController
   int loadStatus = 0;
   bool hasMore = true;
 
-  late JobApi jobApi;
   late TabController tabController;
   late ScrollController scrollController;
 
   @override
   void onInit() {
     super.onInit();
-    jobApi = Get.find<JobApi>();
     tabController = TabController(length: tabs.length, vsync: this);
     scrollController = ScrollController()
       ..addListener(() {
@@ -59,14 +57,14 @@ class JobHomeController extends GetxController
 
   Future<void> refreshData() async {
     loadStatus = 0;
-    jobApi.getBanners(success: ((data) {
+    JobApi.to.getBanners(success: ((data) {
       bannerUrlList.clear();
       for (var banner in data) {
         bannerUrlList.add(banner.imageUrl);
       }
       update();
     }));
-    jobApi.getCategory(success: ((data) {
+    JobApi.to.getCategory(success: ((data) {
       tabs.clear();
       int i = 0;
       for (var item in data) {
@@ -84,7 +82,7 @@ class JobHomeController extends GetxController
         ..addListener(() {
           // 刷新列表数据
           tabIndex = tabController.index;
-          jobApi.getPostPage(
+          JobApi.to.getPostPage(
               tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,
               success: (data, page) {
             tabsData[tabIndex] = data;
@@ -92,7 +90,7 @@ class JobHomeController extends GetxController
             update();
           });
         });
-      jobApi.getPostPage(tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,
+      JobApi.to.getPostPage(tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,
           success: (data, page) {
         tabsData[tabIndex] = data;
         loadStatus = 1;

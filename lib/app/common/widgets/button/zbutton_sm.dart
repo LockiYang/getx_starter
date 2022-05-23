@@ -1,5 +1,5 @@
-import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
+import 'package:getx_test/app/common/widgets/button/basic_button.dart';
 
 class ZbuttonSm extends StatelessWidget {
   const ZbuttonSm({
@@ -15,7 +15,7 @@ class ZbuttonSm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BrnNormalButton(
+    return BasicButtom(
       onTap: onTap,
       text: text,
       textStyle: TextStyle(fontSize: 12, color: color, fontWeight: FontWeight.w600),

@@ -13,11 +13,13 @@ import '../data/models/post.dart';
 
 class CourseItem extends StatelessWidget {
   const CourseItem({
-    required this.post,
     Key? key,
+    this.showBottom = true,
+    required this.post,
   }) : super(key: key);
 
   final Post post;
+  final bool showBottom;
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +30,11 @@ class CourseItem extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.fromLTRB(ZStyleConstans.hSpacingSm,
             ZStyleConstans.hSpacingSm, ZStyleConstans.hSpacingSm, 0),
-        padding: EdgeInsets.all(ZStyleConstans.hSpacingSm),
+        padding: EdgeInsets.fromLTRB(ZStyleConstans.hSpacingSm,
+            ZStyleConstans.hSpacingSm, ZStyleConstans.hSpacingSm, 0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(ZStyleConstans.radiusLg),
             color: Colors.white),
-        // color: Colors.white,
-        // color: e,
         child: Column(children: [
           Container(
             margin: EdgeInsets.only(bottom: ZStyleConstans.hSpacingSm),
@@ -91,27 +92,33 @@ class CourseItem extends StatelessWidget {
               ],
             ),
           ),
-          Dividerz.divider1,
           _buildBottom(),
         ]),
       ),
     );
   }
 
-  Container _buildBottom() {
-    return Container(
-        padding: EdgeInsets.only(top: ZStyleConstans.hSpacingSm),
-        alignment: Alignment.centerLeft,
-        child: Row(
-          children: [
-            Text('学完可做兼职，收入可达'),
-            Text(
-              '7000元/月',
-              style: TextStyle(
-                  color: Colors.red, fontSize: 16, fontWeight: FontWeight.bold),
-            )
-          ],
-        ));
+  Column _buildBottom() {
+    return Column(
+      children: [
+        Dividerz.dividerH1,
+        Container(
+            padding: EdgeInsets.symmetric(vertical: ZStyleConstans.hSpacingSm),
+            alignment: Alignment.centerLeft,
+            child: Row(
+              children: [
+                Text('学完可做兼职，收入可达'),
+                Text(
+                  '7000元/月',
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            )),
+      ],
+    );
   }
 
   Container _buildImg() {

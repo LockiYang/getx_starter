@@ -1,10 +1,11 @@
 import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/utils/dialog_util.dart';
 
-import '../../../common/utils/toast_util.dart';
+import '../../../common/styles/zstyle.dart';
+import '../../../common/widgets/button/basic_button.dart';
+import '../../../common/widgets/button/basic_switch_button.dart';
 import 'little_widgets_controller.dart';
 
 class LittleWidgetsView extends GetView<LittleWidgetsController> {
@@ -17,9 +18,38 @@ class LittleWidgetsView extends GetView<LittleWidgetsController> {
       ),
       body: Column(
         children: [
-          BrnSmallMainButton(
+          BrnSwitchButton(
+                  size: Size(42,25),
+                  value: true,
+                  enabled:true,
+                  onChanged: (bool value) {
+                  },
+                ),
+          BasicSwitchButton(
+            size: Size(40, 20),
+            onChanged: (value) => {},
+            value: true,
+            enabled: true,
+          ),
+          BasicButtom(
+              text: '我测试',
+              constraints: BoxConstraints.expand(height: 40, width: 200)),
+          BasicButtom.outline(
+            text: '我测试',
+            borderWith: 1,
+            // constraints: BoxConstraints.expand(height: 40, width: 200)
+          ),
+          Spacez.vSpacezLg,
+          BrnBigGhostButton(
             title: 'Toast',
-            onTap: () => {ToastUtil.show('默认通知')},
+            onTap: () => {
+              Get.bottomSheet(
+                  Container(
+                    height: 100,
+                    child: Text('xxx'),
+                  ),
+                  backgroundColor: Colors.white)
+            },
           ),
           BrnSmallMainButton(
             title: 'Loadding',

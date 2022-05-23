@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/getx/getz_view_binding.dart';
+import 'package:getx_test/app/common/styles/zstyle.dart';
 import 'package:getx_test/app/common/styles/zstyle_constants.dart';
 import 'package:getx_test/app/modules/app_job/job_my/job_my_binding.dart';
+import 'package:getx_test/app/modules/app_job/services/user_service.dart';
 
-import '../../../common/widgets/menu_item.dart';
+import '../../../common/widgets/menu_list_tile.dart';
 import '../../../routes/app_pages.dart';
 import 'job_my_controller.dart';
 
@@ -36,13 +37,19 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                 onTap: () => Get.toNamed(Routes.JOB_LOGIN),
                 child: Container(
                   margin: EdgeInsets.only(left: 10),
-                  child: Text('点击登录', style: TextStyle(fontSize: 16)),
+                  child: Obx(() => UserService.to.isLogin
+                      ? Text(
+                          UserService.to.profile.username
+                              .replaceFirst(RegExp(r'\d{4}'), '****', 3),
+                          style: ZStyle.textHead,
+                        )
+                      : Text('点击登录', style: ZStyle.textHead)),
                 ),
               ),
               const Expanded(child: Text('')),
               // 设置
               GestureDetector(
-                onTap: () => {},
+                onTap: () => Get.toNamed(Routes.JOB_SETTING),
                 child: Icon(
                   Icons.settings,
                   color: ZStyleConstans.colorTextSecondary,
@@ -61,39 +68,44 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                 boxShadow: [
                   BoxShadow(
                       offset: const Offset(4, 4),
-                      color: ZStyleConstans.colorTextHint,
+                      color: ZStyleConstans.borderColorBase,
                       blurRadius: 10)
                 ]),
             child: Row(
               children: [
                 Expanded(
                     child: GestureDetector(
-                  onTap: () => {},
+                  onTap: () => Get.toNamed(Routes.JOB_COLLECT),
                   child: Column(
                     children: [
-                      Text('0'),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      Text(controller.collectNum.toString(),
+                          style: ZStyle.textHead),
+                      Spacez.vSpacezXs,
                       Text(
                         '收藏',
-                        style: TextStyle(color: ZStyleConstans.colorTextHint),
+                        style:
+                            TextStyle(color: ZStyleConstans.colorTextSecondary),
                       )
                     ],
                   ),
                 )),
                 Expanded(
-                    child: Column(
-                  children: [
-                    Text('0'),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      '历史',
-                      style: TextStyle(color: ZStyleConstans.colorTextHint),
-                    )
-                  ],
+                    child: GestureDetector(
+                  onTap: () => Get.toNamed(Routes.JOB_HISTORY),
+                  child: Column(
+                    children: [
+                      Text(
+                        UserService.to.getBrowseHistoryLength().toString(),
+                        style: ZStyle.textHead,
+                      ),
+                      Spacez.vSpacezXs,
+                      Text(
+                        '历史',
+                        style:
+                            TextStyle(color: ZStyleConstans.colorTextSecondary),
+                      )
+                    ],
+                  ),
                 ))
               ],
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -103,53 +115,35 @@ class JobMyView extends GetzViewBindng<JobMyController> {
           // 菜单
           Container(
             margin: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
                       offset: const Offset(2, 1),
-                      color: ZStyleConstans.colorTextHint,
+                      color: ZStyleConstans.borderColorBase,
                       blurRadius: 10)
                 ]),
             child: Column(children: [
-              ///积分排行榜
-              GestureDetector(
-                onTap: () => {},
-                child: Container(
-                  padding: const EdgeInsets.only(top: 16, left: 16, bottom: 10),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.volume_down,
-                        size: 20,
-                        color: Color(0xFF24CF5F),
-                      ),
-                      const SizedBox(width: 3),
-                      Text(
-                        '快来查看积分排行榜吧~',
-                        style:
-                            TextStyle(color: Color(0xFF24CF5F), fontSize: 13),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              MenuItemWidget(
-                icon: Icons.perm_identity,
+              MenuListTile(
+                icon: Icons.outlet,
                 title: '意见反馈',
-                endIconColor: ZStyleConstans.colorTextHint,
-                onTap: () => {},
+                onTap: () => Get.toNamed(Routes.JOB_FEEDBACK),
               ),
-              MenuItemWidget(
-                icon: Icons.perm_identity,
+              MenuListTile(
+                icon: Icons.help_outline,
                 title: '帮助中心',
-                endIconColor: ZStyleConstans.colorTextHint,
               ),
-              MenuItemWidget(
-                icon: Icons.perm_identity,
+              MenuListTile(
+                icon: Icons.help_outline,
+                title: '用户协议',
+                onTap: () => {Get.toNamed(Routes.JOB_SPLASH)},
+              ),
+              MenuListTile(
+                icon: Icons.info_outline,
                 title: '关于我们',
-                endIconColor: ZStyleConstans.colorTextHint,
+                onTap: () => Get.toNamed(Routes.JOB_ADDING_INFO),
               )
             ]),
           )

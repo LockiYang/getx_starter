@@ -8,7 +8,7 @@ import 'package:getx_test/app/modules/test_wanandroid/wa_home/wa_home_binding.da
 import 'package:getx_test/app/modules/test_wanandroid/wa_home/wa_main/wa_main_view.dart';
 import 'package:getx_test/app/modules/test_wanandroid/wa_home/wa_square/wa_square_view.dart';
 
-import '../../../common/widgets/banner_widget.dart';
+import '../../../common/widgets/banner/banner_widget.dart';
 import '../../../routes/app_pages.dart';
 import 'wa_home_controller.dart';
 

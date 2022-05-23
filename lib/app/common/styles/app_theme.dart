@@ -93,9 +93,14 @@ class AppTheme {
           TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
       cardTitlePadding: EdgeInsets.symmetric(vertical: 15));
 
+  static BrnFormItemConfig brnFormItemConfig =
+      BrnFormItemConfig(formPadding: EdgeInsets.symmetric(vertical: 15));
+
   static initTheme() {
     BrnInitializer.register(
         allThemeConfig: BrnAllThemeConfig(
-            commonConfig: commonConfig, cardTitleConfig: cardTitleConfig));
+            commonConfig: commonConfig,
+            cardTitleConfig: cardTitleConfig,
+            formItemConfig: brnFormItemConfig));
   }
 }

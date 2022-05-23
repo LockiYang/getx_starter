@@ -13,6 +13,7 @@ class SliverWidgetsView extends GetView<SliverWidgetsController> {
         centerTitle: true,
       ),
       body: ListView.builder(
+          physics: BouncingScrollPhysics(), //去掉ios下拉
           itemCount: controller.demos.length,
           itemBuilder: (context, index) {
             return Container(

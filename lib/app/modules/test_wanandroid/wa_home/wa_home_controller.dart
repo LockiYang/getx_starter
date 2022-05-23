@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_test/app/common/widgets/banner_model.dart';
 
+import '../../../common/widgets/banner/banner_model.dart';
 import '../../../data/repositorys/wan_android_api.dart';
 
 class WaHomeController extends GetxController with GetSingleTickerProviderStateMixin {

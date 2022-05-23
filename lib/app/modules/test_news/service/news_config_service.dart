@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'cache_service.dart';
+import '../../../services/cache_service.dart';
 
 /// App配置服务 - 全局响应
-class ConfigService extends GetxController {
+class NewsConfigService extends GetxService {
+  static NewsConfigService get to => Get.find();
+
   /// 用户 - 配置信息
   static const String STORAGE_USER_PROFILE_KEY = 'user_profile';
 
@@ -19,8 +21,6 @@ class ConfigService extends GetxController {
 
   /// 多语言
   static const String STORAGE_LANGUAGE_CODE = 'language_code';
-
-  static ConfigService get to => Get.find();
 
   bool isFirstOpen = false;
   // PackageInfo? _platform;

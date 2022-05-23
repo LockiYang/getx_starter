@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-
+/// 1. 下载iconfont字体
+/// 2. pubspec.yaml引入字体
+/// 3. 编写自定义的IconData
+/// 4. 自动获取IconData，在demo_index.html的控制台中输入auto_gen.js
+/// 
 class AntdIcons {
   static const IconData checkCircle = IconData(0xe77d, fontFamily: 'AntdIcons');
 

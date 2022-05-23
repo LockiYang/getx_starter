@@ -1,4 +1,3 @@
-import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -37,19 +36,25 @@ class AppJobView extends GetView<AppJobController> {
               ..currentIndex = index
               ..update(),
           ),
-          bottomNavigationBar: BrnBottomTabBar(
+          bottomNavigationBar: BottomNavigationBar(
             currentIndex: controller.currentIndex,
             onTap: (index) {
               controller.setIndex(index);
               controller.pageController.jumpToPage(index);
             },
             items: [
-              BrnBottomTabBarItem(
+              BottomNavigationBarItem(
                 icon: Icon(Icons.turned_in),
-                title: Text('首页'),
+                label: '首页',
               ),
-              BrnBottomTabBarItem(icon: Icon(Icons.send), title: Text('消息')),
-              BrnBottomTabBarItem(icon: Icon(Icons.person), title: Text('我的')),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.send),
+                label: '消息',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: '我的',
+              ),
             ],
           ),
         ),

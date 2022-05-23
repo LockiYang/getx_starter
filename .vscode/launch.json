@@ -10,7 +10,7 @@
             "type": "dart",
             "args": [
                 "--dart-define",
-                "APP_CHANNEL=DEFAULT",
+                "APP_CHANNEL=hongtt",
                 "--no-sound-null-safety"
             ]
         },

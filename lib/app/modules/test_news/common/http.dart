@@ -4,7 +4,8 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' hide FormData;
 
-import '../../../services/user_service.dart';
+import '../service/news_user_service.dart';
+
 
 /*
   * http 操作类
@@ -183,8 +184,8 @@ class HttpUtil {
   /// 读取本地配置
   Map<String, dynamic>? getAuthorizationHeader() {
     var headers = <String, dynamic>{};
-    if (Get.isRegistered<UserService>() && UserService.to.hasToken == true) {
-      headers['Authorization'] = 'Bearer ${UserService.to.token}';
+    if (Get.isRegistered<NewsUserService>() && NewsUserService.to.hasToken == true) {
+      headers['Authorization'] = 'Bearer ${NewsUserService.to.token}';
     }
     return headers;
   }

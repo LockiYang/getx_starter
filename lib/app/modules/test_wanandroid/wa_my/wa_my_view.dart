@@ -5,7 +5,7 @@ import 'package:getx_test/app/common/getx/getz_view_binding.dart';
 import 'package:getx_test/app/common/styles/zstyle_constants.dart';
 import 'package:getx_test/app/modules/test_wanandroid/wa_my/wa_my_binding.dart';
 
-import '../../../common/widgets/menu_item.dart';
+import '../../../common/widgets/menu_list_tile.dart';
 import '../../../routes/app_pages.dart';
 import 'wa_my_controller.dart';
 
@@ -171,23 +171,23 @@ class WaMyView extends GetzViewBindng<WaMyController> {
                   ),
                 ),
               ),
-              MenuItemWidget(
+              MenuListTile(
                 icon: Icons.perm_identity,
                 title: '个人信息',
                 endIconColor: ZStyleConstans.colorTextSecondary,
                 onTap: () => {},
               ),
-              MenuItemWidget(
+              MenuListTile(
                 icon: Icons.perm_identity,
                 title: '关于',
                 endIconColor: ZStyleConstans.colorTextSecondary,
               ),
-              MenuItemWidget(
+              MenuListTile(
                 icon: Icons.perm_identity,
                 title: '分享',
                 endIconColor: ZStyleConstans.colorTextSecondary,
               ),
-              MenuItemWidget(
+              MenuListTile(
                 icon: Icons.perm_identity,
                 title: '问题反馈',
                 endIconColor: ZStyleConstans.colorTextSecondary,

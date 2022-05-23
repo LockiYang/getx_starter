@@ -2,7 +2,7 @@
 class BannerModel {
   ///ID
   int id = 0;
-  
+
   ///描述
   String desc = '';
 

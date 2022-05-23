@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 
 import '../modules/app_job/app_job_binding.dart';
 import '../modules/app_job/app_job_view.dart';
+import '../modules/app_job/job_adding_info/job_adding_info_binding.dart';
+import '../modules/app_job/job_adding_info/job_adding_info_view.dart';
 import '../modules/app_job/job_course_detail/job_course_detail_binding.dart';
 import '../modules/app_job/job_course_detail/job_course_detail_view.dart';
 import '../modules/app_job/job_home/job_home_binding.dart';
@@ -12,8 +14,18 @@ import '../modules/app_job/job_login/job_login_binding.dart';
 import '../modules/app_job/job_login/job_login_view.dart';
 import '../modules/app_job/job_message/job_message_binding.dart';
 import '../modules/app_job/job_message/job_message_view.dart';
+import '../modules/app_job/job_my/job_collect/job_collect_binding.dart';
+import '../modules/app_job/job_my/job_collect/job_collect_view.dart';
+import '../modules/app_job/job_my/job_feedback/job_feedback_binding.dart';
+import '../modules/app_job/job_my/job_feedback/job_feedback_view.dart';
+import '../modules/app_job/job_my/job_history/job_history_binding.dart';
+import '../modules/app_job/job_my/job_history/job_history_view.dart';
 import '../modules/app_job/job_my/job_my_binding.dart';
 import '../modules/app_job/job_my/job_my_view.dart';
+import '../modules/app_job/job_my/job_setting/job_setting_binding.dart';
+import '../modules/app_job/job_my/job_setting/job_setting_view.dart';
+import '../modules/app_job/job_splash/job_splash_binding.dart';
+import '../modules/app_job/job_splash/job_splash_view.dart';
 import '../modules/test/basic_widgets/basic_widgets_binding.dart';
 import '../modules/test/basic_widgets/basic_widgets_view.dart';
 import '../modules/test/custom_icon/custom_icon_binding.dart';
@@ -30,8 +42,8 @@ import '../modules/test/sdk_umeng/sdk_umeng_binding.dart';
 import '../modules/test/sdk_umeng/sdk_umeng_view.dart';
 import '../modules/test/sdk_wechat/sdk_wechat_binding.dart';
 import '../modules/test/sdk_wechat/sdk_wechat_view.dart';
-import '../modules/test/shanyan/shanyan_binding.dart';
-import '../modules/test/shanyan/shanyan_view.dart';
+import '../modules/test/sdk_shanyan/shanyan_binding.dart';
+import '../modules/test/sdk_shanyan/shanyan_view.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_binding.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_view.dart';
 import '../modules/test/test_binding.dart';
@@ -248,6 +260,28 @@ class AppPages {
           name: _Paths.JOB_MY,
           page: () => JobMyView(),
           binding: JobMyBinding(),
+          children: [
+            GetPage(
+              name: _Paths.JOB_SETTING,
+              page: () => JobSettingView(),
+              binding: JobSettingBinding(),
+            ),
+            GetPage(
+              name: _Paths.JOB_COLLECT,
+              page: () => JobCollectView(),
+              binding: JobCollectBinding(),
+            ),
+            GetPage(
+              name: _Paths.JOB_FEEDBACK,
+              page: () => JobFeedbackView(),
+              binding: JobFeedbackBinding(),
+            ),
+            GetPage(
+              name: _Paths.JOB_HISTORY,
+              page: () => JobHistoryView(),
+              binding: JobHistoryBinding(),
+            ),
+          ],
         ),
         GetPage(
           name: _Paths.JOB_COURSE_DETAIL,
@@ -258,6 +292,16 @@ class AppPages {
           name: _Paths.JOB_LOGIN,
           page: () => JobLoginView(),
           binding: JobLoginBinding(),
+        ),
+        GetPage(
+          name: _Paths.JOB_ADDING_INFO,
+          page: () => JobAddingInfoView(),
+          binding: JobAddingInfoBinding(),
+        ),
+        GetPage(
+          name: _Paths.JOB_SPLASH,
+          page: () => JobSplashView(),
+          binding: JobSplashBinding(),
         ),
       ],
     ),

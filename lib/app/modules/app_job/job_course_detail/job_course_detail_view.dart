@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:getx_test/app/common/getx/getz_view.dart';
 import 'package:getx_test/app/common/styles/zstyle.dart';
 import 'package:getx_test/app/common/styles/zstyle_constants.dart';
+import 'package:getx_test/app/common/utils/toast_util.dart';
+import 'package:getx_test/app/common/widgets/button/basic_button.dart';
 
 import '../../../common/widgets/fijkplayer/fijkplayer_skin.dart';
 import '../../test/custom_icon/widgets/antd_icons.dart';
@@ -16,6 +18,7 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
       : super(key: key, tag: tag);
   @override
   Widget build(BuildContext context) {
+    final double bottomHeight = MediaQuery.of(context).padding.bottom;
     return SafeArea(
       top: true,
       bottom: false,
@@ -35,12 +38,36 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
                 ),
               ),
             ),
-            BrnBottomButtonPanel(
-              mainButtonName: '免费报名',
-              mainButtonOnTap: () {
-                BrnToast.show('主按钮被点击', context);
-              },
-            )
+            Container(
+              padding: EdgeInsets.fromLTRB(20, 6, 20, bottomHeight),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () => {controller.saveCollect()},
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      margin: EdgeInsets.only(right: 10),
+                      child: Column(children: [
+                        Icon(Icons.star_border),
+                        Text(
+                          '收藏',
+                          style: ZStyle.textCaption,
+                        )
+                      ]),
+                    ),
+                  ),
+                  Expanded(
+                    child: BasicButtom(
+                      text: '免费报名',
+                      alignment: Alignment.center,
+                      onTap: () {
+                        ToastUtil.show('message');
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -105,17 +132,19 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
                       ),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(40),
-                        child: controller.personLogo.isNotEmpty ? CachedNetworkImage(
-                          imageUrl: controller.personLogo,
-                          width: 40,
-                          height: 40,
-                          fit: BoxFit.fill,
-                        ) : Container(),
+                        child: controller.personLogo.isNotEmpty
+                            ? CachedNetworkImage(
+                                imageUrl: controller.personLogo,
+                                width: 40,
+                                height: 40,
+                                fit: BoxFit.fill,
+                              )
+                            : Container(),
                       )
                     ],
                   ),
                   Spacez.vSpacezXs,
-                  Dividerz.divider1,
+                  Dividerz.dividerH1,
                   Spacez.vSpacezXs,
                   Text(
                     controller.personDesc,
@@ -235,7 +264,7 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
           ],
         ),
         Spacez.vSpacezSm,
-        Dividerz.divider1,
+        Dividerz.dividerH1,
         Container(
           alignment: Alignment.topLeft,
           width: double.infinity,

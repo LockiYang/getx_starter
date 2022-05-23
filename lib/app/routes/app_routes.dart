@@ -49,6 +49,16 @@ abstract class Routes {
   static const JOB_COURSE_DETAIL = _Paths.APP_JOB + _Paths.JOB_COURSE_DETAIL;
   static const DEVICE_INFO = _Paths.TEST + _Paths.DEVICE_INFO;
   static const JOB_LOGIN = _Paths.APP_JOB + _Paths.JOB_LOGIN;
+  static const JOB_SETTING =
+      _Paths.APP_JOB + _Paths.JOB_MY + _Paths.JOB_SETTING;
+  static const JOB_COLLECT =
+      _Paths.APP_JOB + _Paths.JOB_MY + _Paths.JOB_COLLECT;
+  static const JOB_FEEDBACK =
+      _Paths.APP_JOB + _Paths.JOB_MY + _Paths.JOB_FEEDBACK;
+  static const JOB_HISTORY =
+      _Paths.APP_JOB + _Paths.JOB_MY + _Paths.JOB_HISTORY;
+  static const JOB_ADDING_INFO = _Paths.APP_JOB + _Paths.JOB_ADDING_INFO;
+  static const JOB_SPLASH = _Paths.APP_JOB + _Paths.JOB_SPLASH;
 }
 
 abstract class _Paths {
@@ -95,4 +105,10 @@ abstract class _Paths {
   static const JOB_COURSE_DETAIL = '/job-course-detail';
   static const DEVICE_INFO = '/device-info';
   static const JOB_LOGIN = '/job-login';
+  static const JOB_SETTING = '/job-setting';
+  static const JOB_COLLECT = '/job-collect';
+  static const JOB_FEEDBACK = '/job-feedback';
+  static const JOB_HISTORY = '/job-history';
+  static const JOB_ADDING_INFO = '/job-adding-info';
+  static const JOB_SPLASH = '/job-splash';
 }

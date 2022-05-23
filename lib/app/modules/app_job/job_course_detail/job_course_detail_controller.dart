@@ -1,7 +1,9 @@
 import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_test/app/common/utils/toast_util.dart';
 import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
+import 'package:getx_test/app/modules/app_job/services/user_service.dart';
 import 'package:wakelock/wakelock.dart';
 
 import '../../../common/widgets/fijkplayer/fijkplayer_skin.dart';
@@ -26,7 +28,6 @@ class JobCourseDetailController extends GetxController {
   final FijkPlayer player = FijkPlayer();
   final double playerBoxWidth = 260;
   ShowConfigAbs vSkinCfg = PlayerShowConfig();
-  late JobApi jobApi;
 
   @override
   void onInit() {
@@ -35,8 +36,6 @@ class JobCourseDetailController extends GetxController {
     Map<String, String> params = Get.arguments;
     debugPrint('params=' + params.toString());
     postId = params['id'];
-    jobApi = Get.find<JobApi>();
-    bgVideo = 'https://wyjob.oss-cn-beijing.aliyuncs.com/bgvideo/ps.mp4';
     loadingData();
     isInitAnimition = true;
   }
@@ -49,11 +48,11 @@ class JobCourseDetailController extends GetxController {
   }
 
   loadingData() {
-    jobApi.getPostInfo(int.parse(postId!), success: ((data) {
+    JobApi.to.getPostInfo(int.parse(postId!), success: ((data) {
       debugPrint('result=' + data.toJson().toString());
       title = data.title;
       postDetail = data.postDetail;
-      bgVideo = data.bgVedio ?? '';
+      bgVideo = data.bgVedio;
       personName = data.personName;
       personLogo = data.personLogo;
       personDesc = data.personDescp;
@@ -63,7 +62,15 @@ class JobCourseDetailController extends GetxController {
       update();
       // 设置播放源
       player.setDataSource(bgVideo, autoPlay: true);
+      // 保存历史记录
+      UserService.to.saveBrowseHistory(data);
     }));
+  }
+
+  saveCollect() {
+    JobApi.to.saveCollect(int.parse(postId!), true, success: (data) {
+      ToastUtil.show('收藏成功');
+    });
   }
 }
 

@@ -1,3 +1,4 @@
+import 'package:getx_test/app/modules/app_job/data/models/index.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_info.g.dart';
@@ -29,6 +30,7 @@ class User_info {
   late String topVideo;
   late num userId;
   late String wechat;
+  late List<Login_info> loginInfos;
   
   factory User_info.fromJson(Map<String,dynamic> json) => _$User_infoFromJson(json);
   Map<String, dynamic> toJson() => _$User_infoToJson(this);

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_test/app/routes/app_pages.dart';
 
-import '../services/user_service.dart';
+import '../news_user_service.dart';
+
 
 /// 检查是否登录
 class RouteAuthMiddleware extends GetMiddleware {
@@ -15,7 +16,7 @@ class RouteAuthMiddleware extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    if (UserService.to.isLogin ||
+    if (NewsUserService.to.isLogin ||
         route == Routes.NEWS_SIGNIN ||
         route == Routes.NEWS_SIGNUP ||
         route == Routes.TEST_NEWS) {

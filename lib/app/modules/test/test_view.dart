@@ -52,7 +52,7 @@ class TestView extends GetView<TestController> {
                   ),
                   BrnActionCardTitle(
                     title: 'Job APP',
-                    onTap: () => Get.toNamed(Routes.APP_JOB),
+                    onTap: () => Get.offAllNamed(Routes.JOB_SPLASH),
                   ),
                   BrnActionCardTitle(
                     title: '登录',

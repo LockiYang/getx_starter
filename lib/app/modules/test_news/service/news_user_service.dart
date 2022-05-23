@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 
-import '../modules/test_news/common/user_api.dart';
-import '../modules/test_news/data/user.dart';
-import 'cache_service.dart';
-import 'config_service.dart';
+import '../../../services/cache_service.dart';
+import '../common/user_api.dart';
+import '../data/user.dart';
+import 'news_config_service.dart';
 
-class UserService extends GetxController {
-  static UserService get to => Get.find();
+class NewsUserService extends GetxService {
+  static NewsUserService get to => Get.find();
 
   // 是否登录
   final _isLogin = false.obs;
@@ -24,8 +24,12 @@ class UserService extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    token = CacheService.to.getString(ConfigService.STORAGE_USER_TOKEN_KEY) ?? '';
-    var profileOffline = CacheService.to.getString(ConfigService.STORAGE_USER_PROFILE_KEY) ?? '';
+    token =
+        CacheService.to.getString(NewsConfigService.STORAGE_USER_TOKEN_KEY) ??
+            '';
+    var profileOffline =
+        CacheService.to.getString(NewsConfigService.STORAGE_USER_PROFILE_KEY) ??
+            '';
     if (profileOffline.isNotEmpty) {
       _profile(UserLoginResponseEntity.fromJson(jsonDecode(profileOffline)));
     }
@@ -33,7 +37,8 @@ class UserService extends GetxController {
 
   // 保存 token
   Future<void> setToken(String value) async {
-    await CacheService.to.setString(ConfigService.STORAGE_USER_TOKEN_KEY, value);
+    await CacheService.to
+        .setString(NewsConfigService.STORAGE_USER_TOKEN_KEY, value);
     token = value;
   }
 
@@ -43,19 +48,21 @@ class UserService extends GetxController {
     var result = await UserAPI.profile();
     _profile(result);
     _isLogin.value = true;
-    CacheService.to.setString(ConfigService.STORAGE_USER_PROFILE_KEY, jsonEncode(result));
+    CacheService.to.setString(
+        NewsConfigService.STORAGE_USER_PROFILE_KEY, jsonEncode(result));
   }
 
   // 保存 profile
   Future<void> saveProfile(UserLoginResponseEntity profile) async {
     _isLogin.value = true;
-    CacheService.to.setString(ConfigService.STORAGE_USER_PROFILE_KEY, jsonEncode(profile));
+    CacheService.to.setString(
+        NewsConfigService.STORAGE_USER_PROFILE_KEY, jsonEncode(profile));
   }
 
   // 注销
   Future<void> onLogout() async {
     if (_isLogin.value) await UserAPI.logout();
-    await CacheService.to.remove(ConfigService.STORAGE_USER_TOKEN_KEY);
+    await CacheService.to.remove(NewsConfigService.STORAGE_USER_TOKEN_KEY);
     _isLogin.value = false;
     token = '';
   }

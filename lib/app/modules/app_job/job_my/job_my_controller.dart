@@ -1,12 +1,15 @@
 import 'package:get/get.dart';
+import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
 
 class JobMyController extends GetxController {
-  //TODO: Implement JobMyController
-
-  final count = 0.obs;
+  int collectNum = 0;
   @override
   void onInit() {
     super.onInit();
+    JobApi.to.getCollectnum(success: (data) {
+      collectNum = data;
+      update();
+    });
   }
 
   @override
@@ -16,5 +19,4 @@ class JobMyController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

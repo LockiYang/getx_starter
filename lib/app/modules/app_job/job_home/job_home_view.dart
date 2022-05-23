@@ -3,12 +3,12 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getx_test/app/common/getx/getz_view_keep_alive.dart';
 import 'package:getx_test/app/common/styles/zstyle.dart';
 import 'package:getx_test/app/common/widgets/over_scroll_behavior.dart';
 import 'package:getx_test/app/common/widgets/tabbar/kugou_tabbar.dart';
 import 'package:getx_test/app/modules/app_job/job_home/job_home_binding.dart';
 
-import '../../../common/getx/getz_view_binding.dart';
 import '../../../common/styles/zstyle_constants.dart';
 import '../../../common/widgets/tabbar/rrect_indicator.dart';
 import '../../../routes/app_pages.dart';
@@ -16,7 +16,7 @@ import '../../test/sliver_widgets/widgets/sticky_usage.dart';
 import '../widgets/course_item.dart';
 import 'job_home_controller.dart';
 
-class JobHomeView extends GetzViewBindng<JobHomeController> {
+class JobHomeView extends GetzViewKeepAlive<JobHomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,11 +44,11 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
                 SliverToBoxAdapter(
                   child: _buildBanner(),
                 ),
-                // SliverToBoxAdapter(
-                //     child: Padding(
-                //   padding: EdgeInsets.all(ZStyleConstans.hSpacingSm),
-                //   child: _buildAd(),
-                // )),
+                SliverToBoxAdapter(
+                    child: Padding(
+                  padding: EdgeInsets.all(ZStyleConstans.hSpacingSm),
+                  child: _buildAd(),
+                )),
                 SliverPersistentHeader(
                   pinned: true,
                   delegate: StickyTabBarDelegate(
@@ -79,33 +79,38 @@ class JobHomeView extends GetzViewBindng<JobHomeController> {
         controller: controller.tabController,
         children: List.generate(controller.tabs.length, (tabIndex) {
           return Container(
-            color: ZStyleConstans.fillBody,
+            color: Color(0xFFF8F8F8),
             child: ScrollConfiguration(
                 behavior: OverScrollBehavior(),
                 child: ListView.builder(
+                    key: PageStorageKey<String>('tab' + tabIndex.toString()),
+                    physics: ClampingScrollPhysics(),
                     padding: EdgeInsets.all(0),
                     itemCount:
                         controller.isListEmpty(controller.tabsData[tabIndex])
                             ? 1
                             : controller.tabsData[tabIndex]!.length + 1,
                     itemBuilder: (context, itemIndex) {
-                      if (controller.isListEmpty(controller.tabsData[tabIndex])) {
+                      if (controller
+                          .isListEmpty(controller.tabsData[tabIndex])) {
                         if (controller.loadStatus == 0) {
-                            return _buildProgressIndicator();
-                          } else if (controller.loadStatus == 1) {
-                            return Text('');
-                          } else if (controller.loadStatus == 2) {
-                            return Text('无数据2');
-                          } else if (controller.loadStatus == 3) {
-                            return Text('加载失败，重试');
-                          } else {
-                            return Text('');
-                          }
+                          return _buildProgressIndicator();
+                        } else if (controller.loadStatus == 1) {
+                          return Text('');
+                        } else if (controller.loadStatus == 2) {
+                          return Text('无数据2');
+                        } else if (controller.loadStatus == 3) {
+                          return Text('加载失败，重试');
+                        } else {
+                          return Text('');
+                        }
                       } else {
-                        if (controller.tabsData[tabIndex]!.length == itemIndex) {
+                        if (controller.tabsData[tabIndex]!.length ==
+                            itemIndex) {
                           if (controller.loadStatus == 0) {
                             return _buildProgressIndicator();
-                          } else if (controller.loadStatus == 1 && !controller.hasMore) {
+                          } else if (controller.loadStatus == 1 &&
+                              !controller.hasMore) {
                             return Text('没有更多了');
                           } else if (controller.loadStatus == 2) {
                             return Text('无数据3');

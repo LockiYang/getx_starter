@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../common/styles/app_theme.dart';
 
 class GlobalService extends GetxService {
+  
   static GlobalService get to => Get.find();
 
   final RxBool _isDarkMode = Get.isDarkMode.obs;

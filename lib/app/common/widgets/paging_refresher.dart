@@ -58,7 +58,7 @@ class _PagingRefreshWidgetState<T extends PagingController>
                     enablePullDown: widget.enablePullDown,
                     enablePullUp: widget.enablePullUp,
                     onRefresh: () => controller.refreshData(),
-                    onLoading: () => controller.loadMoreData(),
+                    onLoading: () => controller.loadingData(),
                     header: _buildHeader(),
                     footer: _buildFooter(),
                     child: widget.child)),
@@ -106,20 +106,24 @@ class _PagingRefreshWidgetState<T extends PagingController>
     return CustomFooter(
       builder: (BuildContext context, LoadStatus? mode) {
         Widget footer;
-        if (mode == LoadStatus.idle) {
-          ///下拉提示
-          footer = const Text("pull up load");
-        } else if (mode == LoadStatus.loading) {
-          ///加载中
-          footer = Lottie.asset('assets/lotties/refresh_footer.json',
-              width: 200, animate: true);
-        } else if (mode == LoadStatus.failed) {
-          ///加载失败
-          footer = Text('加载失败');
-        } else {
-          ///无更多数据
-          footer = Text('没有更多数据啦');
+        switch (mode) {
+          case LoadStatus.idle:
+            footer = Text('上拉加载');
+            break;
+          case LoadStatus.canLoading:
+            footer = Text('上拉加载');
+            break;
+          case LoadStatus.loading:
+            footer = Lottie.asset('assets/lotties/refresh_footer.json',
+                width: 200, animate: true);
+            break;
+          case LoadStatus.failed:
+            footer = Text('加载失败');
+            break;
+          default:
+            footer = Text('没有更多啦');
         }
+
         return SizedBox(
           height: 60,
           child: Center(child: footer),
@@ -135,7 +139,7 @@ class _PagingRefreshWidgetState<T extends PagingController>
         switch (mode) {
           case RefreshStatus.idle:
             // 下拉时显示
-            header = Text('上拉刷新');
+            header = Text('下拉刷新');
             break;
           case RefreshStatus.refreshing:
             // 加载中
@@ -152,7 +156,7 @@ class _PagingRefreshWidgetState<T extends PagingController>
             break;
           default:
             // 超过二层
-            header = Text('釋放刷新');
+            header = Text('释放刷新');
         }
         return SizedBox(
           height: 64,

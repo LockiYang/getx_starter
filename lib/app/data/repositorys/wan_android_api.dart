@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:getx_test/app/common/widgets/banner_model.dart';
 
 import '../../common/http/config/dio_config.dart';
 import '../../common/http/http_client.dart';
+import '../../common/widgets/banner/banner_model.dart';
 import '../models/project.dart';
 
 typedef SuccessPaging<T> = Function(T data, int total);

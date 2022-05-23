@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:getx_test/app/common/no_splash_factory.dart';
 import 'package:getx_test/app/common/styles/zstyle_constants.dart';
 import 'package:getx_test/app/common/utils/dialog_util.dart';
+import 'package:getx_test/app/common/widgets/button/basic_button.dart';
+import 'package:getx_test/app/common/widgets/dialog/base_dialog.dart';
 
 import '../../styles/zstyle.dart';
-import '../over_scroll_behavior.dart';
 
 /// 公共加载弹窗
 class CommonDialog extends StatelessWidget {
@@ -31,90 +33,113 @@ class CommonDialog extends StatelessWidget {
   ///右侧是否隐藏
   final bool nextVisible;
 
-  CommonDialog({
-    Key? key,
-    this.title = '',
-    this.content = '',
-    this.backText = '',
-    this.nextText = '',
-    this.backVisible = true,
-    this.nextVisible = true,
-    this.backTap,
-    this.nextTap,
-  }) : super(key: key);
+  final Widget? tipWidget;
+
+  final Widget? contentWidget;
+
+  final bool isNotice;
+
+  CommonDialog(
+      {Key? key,
+      this.title = '',
+      this.content = '',
+      this.backText = '',
+      this.nextText = '',
+      this.backVisible = true,
+      this.nextVisible = true,
+      this.backTap,
+      this.nextTap,
+      this.tipWidget,
+      this.contentWidget,
+      this.isNotice = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-
-        ///透明样式
-        type: MaterialType.transparency,
-
-        ///dialog居中
-        child: Center(
-
-            ///取消ListView滑动阴影
-            child: ScrollConfiguration(
-                behavior: OverScrollBehavior(),
-
-                ///ListView 的shrinkWrap属性可适应高度（有多少占多少）
-                child: ListView(
-                  shrinkWrap: true,
-                  children: [
-                    ///背景及内容、边距、圆角等，必须包裹在ListView中
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.symmetric(horizontal: 24),
-                      child: Container(
-                        decoration: const ShapeDecoration(
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.0),
-                            ),
-                          ),
+    return BaseDialog(
+      child: Column(
+        children: <Widget>[
+          // 内容
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                tipWidget == null ? Container() : tipWidget!,
+                Text(
+                  title,
+                  style: ZStyle.textHead,
+                ),
+                contentWidget == null
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        child: Text(
+                          content,
+                          style: TextStyle(
+                              color: ZStyleConstans.colorTextSecondary),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            ///标题、内容
-                            Spacez.vSpacezSm,
-                            Text(
-                              title,
-                              style: ZStyle.textHead,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 12),
-                              child: Text(
-                                content,
-                                style: ZStyle.textSubHead,
-                              ),
-                            ),
-                            Dividerz.divider1,
+                      )
+                    : contentWidget!,
+              ],
+            ),
+          ),
+          isNotice ? _buildNoticeButtom() : _buildNormalButtom()
+        ],
+      ),
+    );
+  }
 
-                            ///确定、取消按钮
-                            Flex(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              direction: Axis.horizontal,
-                              children: [
-                                ///对半分
-                                _buildTextButton(
-                                    backTap, backText, backVisible),
-                                _buildTextButton(nextTap, nextText, nextVisible)
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ))));
+  Container _buildNoticeButtom() {
+    return Container(
+      margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: backTap,
+            child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Text(
+                  backText,
+                  style: TextStyle(color: ZStyleConstans.colorTextSecondary),
+                )),
+          ),
+          BasicButtom(
+            text: nextText,
+            onTap: nextTap,
+            alignment: Alignment.center,
+            borderRadius: BorderRadius.circular(100),
+          )
+        ],
+      ),
+    );
+  }
+
+  Column _buildNormalButtom() {
+    return Column(
+      children: [
+        Dividerz.dividerH1,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ///对半分
+            _buildTextButton(backTap, backText, backVisible,
+                TextStyle(color: ZStyleConstans.colorTextBase, fontSize: 16)),
+            backVisible && nextVisible
+                ? Container(
+                    width: 0.5,
+                    height: 60,
+                    color: ZStyleConstans.borderColorBase,
+                  )
+                : Container(),
+            _buildTextButton(nextTap, nextText, nextVisible,
+                TextStyle(color: ZStyleConstans.brandPrimary, fontSize: 16))
+          ],
+        ),
+      ],
+    );
   }
 
   ///此处使用方法重新创建的原因是因为此处不需要频繁更新，不会造成过度创建
-  _buildTextButton(VoidCallback? tap, String text, bool show) {
+  _buildTextButton(VoidCallback? tap, String text, bool show, TextStyle style) {
     return Visibility(
         visible: show,
         child: Expanded(
@@ -127,17 +152,14 @@ class CommonDialog extends StatelessWidget {
                 }
               },
               style: ButtonStyle(
-                shadowColor:
-                    MaterialStateProperty.all(ZStyleConstans.borderColorBase),
-                animationDuration: const Duration(milliseconds: 200),
-                padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-              ),
+                  padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                  splashFactory: NoSplashFactory()),
               child: Container(
                 alignment: Alignment.center,
                 height: 60,
                 child: Text(
                   text,
-                  style: ZStyle.textSubHead,
+                  style: style,
                 ),
               ),
             )));

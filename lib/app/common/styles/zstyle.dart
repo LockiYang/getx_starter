@@ -78,8 +78,15 @@ class Spacez {
 }
 
 class Dividerz {
+  ///分割线 0.5 - 无边距
+  static Widget dividerH1 = const Divider(
+    height: 0.5,
+    thickness: 0.5,
+    color: ZStyleConstans.borderColorBase,
+  );
+
   ///分割线 0.5 - 20边距
-  static Widget divider1Pd20 = const Divider(
+  static Widget dividerH1Pd20 = const Divider(
     height: 0.5,
     thickness: 0.5,
     indent: 20,
@@ -87,17 +94,17 @@ class Dividerz {
     color: ZStyleConstans.borderColorBase,
   );
 
-  ///分割线 0.5 - 无边距
-  static Widget divider1 = const Divider(
-    height: 0.5,
-    thickness: 0.5,
-    color: ZStyleConstans.borderColorBase,
-  );
-
   ///分割线 20 - 无边距
-  static Widget divider20 = const Divider(
+  static Widget dividerH20 = const Divider(
     height: 20,
     thickness: 20,
     color: ZStyleConstans.borderColorBase,
+  );
+
+  ///分割线 0.5 - 无边距
+  static Widget dividerV1 = Container(
+    height: 10,
+    width: 10,
+    decoration: BoxDecoration(color: Colors.red),
   );
 }

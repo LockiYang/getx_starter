@@ -30,8 +30,11 @@ class DialogUtil {
       String nextText = '确定',
       VoidCallback? backTap,
       VoidCallback? nextTap,
+      Widget? tipWidget,
+      Widget? contentWidget,
       bool backVisible = true,
-      bool nextVisible = true}) {
+      bool nextVisible = true,
+      bool isNotice = false}) {
     if (Get.isDialogOpen != null && Get.isDialogOpen!) {
       Get.back();
     }
@@ -43,8 +46,11 @@ class DialogUtil {
           nextText: nextText,
           backTap: backTap,
           nextTap: nextTap,
+          tipWidget: tipWidget,
+          contentWidget: contentWidget,
           backVisible: backVisible,
           nextVisible: nextVisible,
+          isNotice: isNotice,
         ),
         transitionDuration: const Duration(milliseconds: 200),
         barrierDismissible: false);

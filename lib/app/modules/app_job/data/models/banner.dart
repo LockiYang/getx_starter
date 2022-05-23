@@ -19,6 +19,7 @@ class Banner {
   late String position;
   late bool status;
   late String updateAt;
+  late List tag;
   
   factory Banner.fromJson(Map<String,dynamic> json) => _$BannerFromJson(json);
   Map<String, dynamic> toJson() => _$BannerToJson(this);
