@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/styles/zstyle.dart';
+import 'package:getx_test/app/modules/app_job/services/config_service.dart';
 
 import 'job_splash_controller.dart';
 
 class JobSplashView extends GetView<JobSplashController> {
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         alignment: AlignmentDirectional.center,
@@ -25,7 +25,7 @@ class JobSplashView extends GetView<JobSplashController> {
                       )),
                   Spacez.vSpacezMd,
                   Text(
-                    '无忧兼职',
+                    ConfigService.appName!,
                     style: ZStyle.textSubHead,
                   ),
                 ],

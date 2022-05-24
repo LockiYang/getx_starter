@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:getx_test/app/modules/app_job/data/models/index.dart';
 import 'package:getx_test/app/modules/app_job/services/config_service.dart';
-import 'package:getx_test/app/services/cache_service.dart';
+
+import '../../../common/services/cache_service.dart';
 
 class UserService extends GetxService {
   static UserService get to => Get.find();
@@ -11,6 +12,7 @@ class UserService extends GetxService {
   String token = '';
   final _isLogin = false.obs;
   final _profile = Login_info().obs;
+  final username = ''.obs;
 
   bool get isLogin => _isLogin.value;
   Login_info get profile => _profile.value;
@@ -24,6 +26,8 @@ class UserService extends GetxService {
         CacheService.to.getString(ConfigService.cacheKeyUserProfile) ?? '';
     if (profileOffline.isNotEmpty) {
       _profile(Login_info.fromJson(jsonDecode(profileOffline)));
+      username.value =
+          _profile.value.username.replaceFirst(RegExp(r'\d{4}'), '****', 3);
       _isLogin.value = true;
     }
   }
@@ -47,6 +51,8 @@ class UserService extends GetxService {
   /// 保存profile
   Future<void> saveProfile(Login_info profile) async {
     _isLogin.value = true;
+    username.value = profile.username.replaceFirst(RegExp(r'\d{4}'), '****', 3);
+
     CacheService.to
         .setString(ConfigService.cacheKeyUserProfile, jsonEncode(profile));
   }

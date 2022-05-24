@@ -49,6 +49,7 @@ Post _$PostFromJson(Map<String, dynamic> json) => Post()
   ..subScribeNum = json['subScribeNum'] as num
   ..subscribeNum = json['subscribeNum'] as num
   ..subscribeStatus = json['subscribeStatus'] as num
+  ..scribeCreateAt = json['scribeCreateAt'] as String
   ..tags = json['tags'] as String
   ..tagsKc = json['tagsKc'] as String
   ..tips = json['tips'] as String
@@ -106,6 +107,7 @@ Map<String, dynamic> _$PostToJson(Post instance) => <String, dynamic>{
       'subScribeNum': instance.subScribeNum,
       'subscribeNum': instance.subscribeNum,
       'subscribeStatus': instance.subscribeStatus,
+      'scribeCreateAt': instance.scribeCreateAt,
       'tags': instance.tags,
       'tagsKc': instance.tagsKc,
       'tips': instance.tips,

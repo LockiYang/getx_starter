@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-import '../../../services/cache_service.dart';
+import '../../../common/services/cache_service.dart';
 import '../data/user.dart';
-
 
 /// App缓存工具类
 class CacheUtil {

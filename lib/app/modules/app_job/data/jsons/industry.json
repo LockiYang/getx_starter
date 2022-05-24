@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "createAt": "2021-12-21 17:55:11",
+  "updateAt": "2022-05-24 14:46:23",
+  "name": "ps",
+  "bg": "http://wyjob.oss-cn-beijing.aliyuncs.com/pic/2021-12-21/976f43adbba0425e88b99a9a2d4a1d69.png",
+  "orders": 1,
+  "isActive": true
+}

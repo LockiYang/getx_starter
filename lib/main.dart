@@ -9,8 +9,8 @@ import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
 import 'package:getx_test/app/modules/app_job/services/config_service.dart';
 import 'package:getx_test/app/modules/app_job/services/user_service.dart';
 import 'package:getx_test/app/modules/test_wanandroid/data/eyepetizer_api.dart';
-import 'package:getx_test/app/services/cache_service.dart';
 
+import 'app/common/services/cache_service.dart';
 import 'app/common/styles/app_theme.dart';
 import 'app/common/utils/logger.dart';
 import 'app/modules/test_news/service/news_config_service.dart';
@@ -35,7 +35,7 @@ void appInit() async {
   Get.lazyPut<UserService>(() => UserService());
   await Get.putAsync<JobApi>(() => JobApi().init());
   await Get.putAsync<ConfigService>(() => ConfigService().init());
-  
+
   Get.lazyPut<NewsConfigService>(() => NewsConfigService());
   FlutterNativeSplash.remove();
   runApp(const App());

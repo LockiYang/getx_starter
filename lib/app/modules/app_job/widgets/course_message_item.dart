@@ -81,20 +81,7 @@ class CourseMessageItem extends StatelessWidget {
                         // alignment: WrapAlignment.end,
                         spacing: ZStyleConstans.hSpacingXs,
                         runSpacing: ZStyleConstans.hSpacingXs,
-                        children: [
-                          BrnStateTag(
-                            tagText: '非常好',
-                            tagState: TagState.invalidate,
-                          ),
-                          BrnStateTag(
-                            tagText: '前景高',
-                            tagState: TagState.invalidate,
-                          ),
-                          BrnStateTag(
-                            tagText: '轻松在家',
-                            tagState: TagState.invalidate,
-                          ),
-                        ],
+                        children: _buildTags(),
                       ),
                     ]),
               ))
@@ -111,11 +98,11 @@ class CourseMessageItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '2022-04-01 12:00',
+                      '报名时间：' + post.scribeCreateAt,
                       style: ZStyle.textCaption,
                     ),
                     ZbuttonSm(
-                      text: '查看详情',
+                      text: '查看报名详情',
                       color: Colors.brown,
                     )
                   ],
@@ -123,5 +110,20 @@ class CourseMessageItem extends StatelessWidget {
             : Container(),
       ]),
     );
+  }
+
+  List<Widget> _buildTags() {
+    if (post.tags.isNotEmpty) {
+      List<String> tagList = post.tags.split(',');
+      if (tagList.isNotEmpty) {
+        return List.generate(
+            tagList.length,
+            (index) => BrnStateTag(
+                  tagText: tagList[index],
+                  tagState: TagState.invalidate,
+                ));
+      }
+    }
+    return [];
   }
 }

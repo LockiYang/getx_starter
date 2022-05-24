@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../services/cache_service.dart';
+import '../../../common/services/cache_service.dart';
+
 
 /// App配置服务 - 全局响应
 class NewsConfigService extends GetxService {

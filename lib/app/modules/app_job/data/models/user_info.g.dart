@@ -29,10 +29,7 @@ User_info _$User_infoFromJson(Map<String, dynamic> json) => User_info()
   ..topTitle = json['topTitle'] as String
   ..topVideo = json['topVideo'] as String
   ..userId = json['userId'] as num
-  ..wechat = json['wechat'] as String
-  ..loginInfos = (json['loginInfos'] as List<dynamic>)
-      .map((e) => Login_info.fromJson(e as Map<String, dynamic>))
-      .toList();
+  ..wechat = json['wechat'] as String;
 
 Map<String, dynamic> _$User_infoToJson(User_info instance) => <String, dynamic>{
       'admittedNum': instance.admittedNum,
@@ -58,5 +55,4 @@ Map<String, dynamic> _$User_infoToJson(User_info instance) => <String, dynamic>{
       'topVideo': instance.topVideo,
       'userId': instance.userId,
       'wechat': instance.wechat,
-      'loginInfos': instance.loginInfos,
     };

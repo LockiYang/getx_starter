@@ -1,9 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../common/styles/zstyle.dart';
 import '../../../common/styles/zstyle_constants.dart';
-import '../../../common/utils/toast_util.dart';
+import '../../../routes/app_pages.dart';
+import '../../webview/webview_controller.dart';
 import '../services/config_service.dart';
 
 class ProtocalContent extends StatelessWidget {
@@ -30,7 +32,11 @@ class ProtocalContent extends StatelessWidget {
                   ),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      ToastUtil.show('点击用户协议');
+                      Get.toNamed(Routes.WEBVIEW,
+                          arguments: WebModel(
+                            title: '用户协议',
+                            link: ConfigService.agreementUrl,
+                          ));
                     },
                 ),
                 TextSpan(text: '和'),
@@ -39,7 +45,11 @@ class ProtocalContent extends StatelessWidget {
                   style: TextStyle(color: Colors.blue),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      ToastUtil.show('点击用户协议');
+                      Get.toNamed(Routes.WEBVIEW,
+                          arguments: WebModel(
+                            title: '隐私政策',
+                            link: ConfigService.policyUrl,
+                          ));
                     },
                 ),
                 TextSpan(text: '，并确认了解我们对您个人信息的处理规则。'),

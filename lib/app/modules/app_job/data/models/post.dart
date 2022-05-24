@@ -48,6 +48,7 @@ class Post {
   late num subScribeNum;
   late num subscribeNum;
   late num subscribeStatus;
+  late String scribeCreateAt;
   late String tags;
   late String tagsKc;
   late String tips;

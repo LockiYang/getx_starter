@@ -16,6 +16,10 @@ import '../modules/app_job/job_login/job_login_binding.dart';
 import '../modules/app_job/job_login/job_login_view.dart';
 import '../modules/app_job/job_message/job_message_binding.dart';
 import '../modules/app_job/job_message/job_message_view.dart';
+import '../modules/app_job/job_message/job_system_message/job_system_message_binding.dart';
+import '../modules/app_job/job_message/job_system_message/job_system_message_view.dart';
+import '../modules/app_job/job_my/job_about_us/job_about_us_binding.dart';
+import '../modules/app_job/job_my/job_about_us/job_about_us_view.dart';
 import '../modules/app_job/job_my/job_collect/job_collect_binding.dart';
 import '../modules/app_job/job_my/job_collect/job_collect_view.dart';
 import '../modules/app_job/job_my/job_feedback/job_feedback_binding.dart';
@@ -28,6 +32,7 @@ import '../modules/app_job/job_my/job_setting/job_setting_binding.dart';
 import '../modules/app_job/job_my/job_setting/job_setting_view.dart';
 import '../modules/app_job/job_splash/job_splash_binding.dart';
 import '../modules/app_job/job_splash/job_splash_view.dart';
+import '../modules/app_job/services/router_auth.dart';
 import '../modules/test/basic_widgets/basic_widgets_binding.dart';
 import '../modules/test/basic_widgets/basic_widgets_view.dart';
 import '../modules/test/custom_icon/custom_icon_binding.dart';
@@ -60,6 +65,7 @@ import '../modules/test_news/news_signin/news_signin_binding.dart';
 import '../modules/test_news/news_signin/news_signin_view.dart';
 import '../modules/test_news/news_signup/news_signup_binding.dart';
 import '../modules/test_news/news_signup/news_signup_view.dart';
+import '../modules/test_news/service/middleware/router_auth.dart';
 import '../modules/test_news/test_news_binding.dart';
 import '../modules/test_news/test_news_view.dart';
 import '../modules/test_wanandroid/test_wanandroid_binding.dart';
@@ -257,11 +263,20 @@ class AppPages {
           name: _Paths.JOB_MESSAGE,
           page: () => JobMessageView(),
           binding: JobMessageBinding(),
+          middlewares: [JobAuthMiddleware(priority: 1)],
+          children: [
+            GetPage(
+              name: _Paths.JOB_SYSTEM_MESSAGE,
+              page: () => JobSystemMessageView(),
+              binding: JobSystemMessageBinding(),
+            ),
+          ],
         ),
         GetPage(
           name: _Paths.JOB_MY,
           page: () => JobMyView(),
           binding: JobMyBinding(),
+          middlewares: [JobAuthMiddleware(priority: 1)],
           children: [
             GetPage(
               name: _Paths.JOB_SETTING,
@@ -282,6 +297,11 @@ class AppPages {
               name: _Paths.JOB_HISTORY,
               page: () => JobHistoryView(),
               binding: JobHistoryBinding(),
+            ),
+            GetPage(
+              name: _Paths.JOB_ABOUT_US,
+              page: () => JobAboutUsView(),
+              binding: JobAboutUsBinding(),
             ),
           ],
         ),

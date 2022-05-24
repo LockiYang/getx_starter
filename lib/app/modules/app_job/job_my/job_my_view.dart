@@ -8,6 +8,8 @@ import 'package:getx_test/app/modules/app_job/services/user_service.dart';
 
 import '../../../common/widgets/menu_list_tile.dart';
 import '../../../routes/app_pages.dart';
+import '../../webview/webview_controller.dart';
+import '../services/config_service.dart';
 import 'job_my_controller.dart';
 
 class JobMyView extends GetzViewBindng<JobMyController> {
@@ -39,8 +41,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                   margin: EdgeInsets.only(left: 10),
                   child: Obx(() => UserService.to.isLogin
                       ? Text(
-                          UserService.to.profile.username
-                              .replaceFirst(RegExp(r'\d{4}'), '****', 3),
+                          UserService.to.username.value,
                           style: ZStyle.textHead,
                         )
                       : Text('点击登录', style: ZStyle.textHead)),
@@ -95,7 +96,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                   child: Column(
                     children: [
                       Text(
-                        UserService.to.getBrowseHistoryLength().toString(),
+                        controller.historyNum.toString(),
                         style: ZStyle.textHead,
                       ),
                       Spacez.vSpacezXs,
@@ -134,16 +135,25 @@ class JobMyView extends GetzViewBindng<JobMyController> {
               MenuListTile(
                 icon: Icons.help_outline,
                 title: '帮助中心',
+                onTap: () => Get.toNamed(Routes.WEBVIEW,
+                    arguments: WebModel(
+                      title: '帮助中心',
+                      link: ConfigService.askCenterUrl,
+                    )),
               ),
               MenuListTile(
                 icon: Icons.help_outline,
                 title: '用户协议',
-                onTap: () => {Get.toNamed(Routes.JOB_SPLASH)},
+                onTap: () => Get.toNamed(Routes.WEBVIEW,
+                    arguments: WebModel(
+                      title: '用户协议',
+                      link: ConfigService.agreementUrl,
+                    )),
               ),
               MenuListTile(
                 icon: Icons.info_outline,
                 title: '关于我们',
-                onTap: () => Get.toNamed(Routes.JOB_ADDING_INFO),
+                onTap: () => Get.toNamed(Routes.JOB_ABOUT_US),
               )
             ]),
           )

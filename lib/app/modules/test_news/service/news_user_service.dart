@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 
-import '../../../services/cache_service.dart';
+import '../../../common/services/cache_service.dart';
 import '../common/user_api.dart';
 import '../data/user.dart';
 import 'news_config_service.dart';

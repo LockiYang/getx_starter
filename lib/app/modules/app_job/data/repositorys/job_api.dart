@@ -91,8 +91,8 @@ class JobApi extends GetxService {
     var result = await client.get('post/listRecommand',
         queryParameters: {
           'pageNum': pageNum,
-          'pageSize': 1,
-          'postList': postList
+          'pageSize': 10,
+          'postList': '10002'
         },
         options: options(),
         httpTransformer: EyepetizerHttpTransformer.getInstance());
@@ -114,6 +114,55 @@ class JobApi extends GetxService {
         httpTransformer: EyepetizerHttpTransformer.getInstance(),
         success: (data) {
       var result = Post.fromJson(data as Map<String, dynamic>);
+      if (success != null) {
+        success(result);
+      }
+    });
+  }
+
+  /// 岗位报名
+  saveSubscribe(int postId, {Success<Map<String, dynamic>>? success}) {
+    client.get('subscribe/save',
+        queryParameters: {'postId': postId},
+        options: options(),
+        httpTransformer: EyepetizerHttpTransformer.getInstance(),
+        success: (data) {
+      var result = data as Map<String, dynamic>;
+      if (success != null) {
+        success(result);
+      }
+    });
+  }
+
+  /// 岗位推荐列表
+  Future<Pagination<Post>> getPostSubscribePage(int pageNum) async {
+    var result = await client.get('subscribe/list',
+        queryParameters: {
+          'pageNum': pageNum,
+          'pageSize': 10,
+        },
+        options: options(),
+        httpTransformer: EyepetizerHttpTransformer.getInstance());
+
+    var pagination = Pagination<Post>.fromJson(
+        (result as Map<String, dynamic>)['pagination']);
+    var data = (result['result'] as List<dynamic>)
+        .map((e) => Post.fromJson(e as Map<String, dynamic>))
+        .toList();
+    pagination.data = data;
+    return pagination;
+  }
+
+  /// 获取岗位行业
+  getPostIndustry(String name, {Success<List<Industry>>? success}) {
+    client.get('/industry/list',
+        queryParameters: {'name': name},
+        options: options(),
+        httpTransformer: EyepetizerHttpTransformer.getInstance(),
+        success: (data) {
+      var result = (data as List<dynamic>)
+          .map((e) => Industry.fromJson(e as Map<String, dynamic>))
+          .toList();
       if (success != null) {
         success(result);
       }

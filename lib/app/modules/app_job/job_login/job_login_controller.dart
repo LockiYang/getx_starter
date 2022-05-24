@@ -19,6 +19,7 @@ class JobLoginController extends GetxController {
   Timer? _smsCodeTimer;
   int countDown = 0;
   bool isSubmitEnable = false;
+  bool tips = false;
 
   FocusNode phoneFocus = FocusNode();
   FocusNode smsCodeFocus = FocusNode();
@@ -69,6 +70,8 @@ class JobLoginController extends GetxController {
 
   postSmscode() {
     // shakeKey.currentState?.shake();
+    // tips = true;
+    // update();
     // return;
     if (phoneNum.isEmpty || phoneNum.length != 11) {
       ToastUtil.show('请输入正确的手机号');

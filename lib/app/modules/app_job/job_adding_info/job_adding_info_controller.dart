@@ -35,9 +35,10 @@ class JobAddingInfoController extends GetxController {
       }
     }
     if (tags.isEmpty || tags.length < infoItems.length) {
-      tipsVisible = true;
+      ToastUtil.show('请完善信息～');
+      // tipsVisible = true;
       update();
-      shakeKey.currentState?.shake();
+      // shakeKey.currentState?.shake();
       return;
     } else {
       tipsVisible = false;

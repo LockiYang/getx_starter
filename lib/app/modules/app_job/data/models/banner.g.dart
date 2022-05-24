@@ -19,8 +19,7 @@ Banner _$BannerFromJson(Map<String, dynamic> json) => Banner()
   ..orders = json['orders'] as num
   ..position = json['position'] as String
   ..status = json['status'] as bool
-  ..updateAt = json['updateAt'] as String
-  ..tag = json['tag'] as List<dynamic>;
+  ..updateAt = json['updateAt'] as String;
 
 Map<String, dynamic> _$BannerToJson(Banner instance) => <String, dynamic>{
       'appType': instance.appType,
@@ -36,5 +35,4 @@ Map<String, dynamic> _$BannerToJson(Banner instance) => <String, dynamic>{
       'position': instance.position,
       'status': instance.status,
       'updateAt': instance.updateAt,
-      'tag': instance.tag,
     };

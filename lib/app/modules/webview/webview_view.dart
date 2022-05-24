@@ -1,4 +1,3 @@
-import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -10,9 +9,9 @@ class WebviewView extends GetzView<WebviewController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: BrnAppBar(
+      appBar: AppBar(
         // backLeadCallback: () => {},
-        title: controller.model.title,
+        title: Text(controller.model.title),
       ),
       body: Stack(
         children: [

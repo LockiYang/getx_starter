@@ -33,8 +33,7 @@ class ExRoundTriangleWidget extends StatelessWidget {
           triangleHeight: triangleHeight ?? 12,
           triangleDistance: triangleDistance ?? 8,
           triangleFromLeft: triangleFromLeft ?? true,
-          gradient: gradient ??
-              LinearGradient(colors: [Colors.black45, Colors.black54])),
+          gradient: gradient),
       child: Container(
         height: (roundRadius ?? 12) * 2 + (triangleHeight ?? 12),
         margin: EdgeInsets.only(left: roundRadius ?? 12),
@@ -71,24 +70,22 @@ class ExRoundTrianglePainter extends CustomPainter {
       ..filterQuality = FilterQuality.high //颜色渲染模式的质量
       ..strokeWidth = 15.0; //画笔的宽度
 
-    if (gradient == null) {
-      gradient = LinearGradient(colors: [Color(0xFFFF6D2A), Color(0xFFFF0094)]);
-    }
+    gradient ??= LinearGradient(colors: [Color(0xFFFF6D2A), Color(0xFFFF0094)]);
   }
 
   @override
   void paint(Canvas canvas, Size size) {
-    final rect = new Rect.fromLTWH(0.0, 0.0, size.width, size.height);
+    final rect = Rect.fromLTWH(0.0, 0.0, size.width, size.height);
     _paint.shader = gradient!.createShader(rect);
 
     Path path = Path();
     // 左半圆
-    path.addArc(new Rect.fromLTWH(0, 0, roundRadius * 2, roundRadius * 2),
+    path.addArc(Rect.fromLTWH(0, 0, roundRadius * 2, roundRadius * 2),
         90.0 * (pi / 180.0), 180.0 * (pi / 180.0));
     path.lineTo(size.width, 0);
     // 右半圆
     path.addArc(
-        new Rect.fromLTWH(
+        Rect.fromLTWH(
             size.width - roundRadius, 0, roundRadius * 2, roundRadius * 2),
         270.0 * (pi / 180.0),
         180.0 * (pi / 180.0));

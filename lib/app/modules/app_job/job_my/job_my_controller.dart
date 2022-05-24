@@ -6,16 +6,11 @@ import '../../../routes/app_pages.dart';
 
 class JobMyController extends GetxController {
   int collectNum = 0;
+  int historyNum = 0;
   @override
   void onInit() {
     super.onInit();
-    if (UserService.to.isLogin) {
-      // 获取收藏数
-      JobApi.to.getCollectnum(success: (data) {
-        collectNum = data;
-        update();
-      });
-    }
+    loadData();
   }
 
   @override
@@ -24,6 +19,18 @@ class JobMyController extends GetxController {
   tapLogin() {
     if (!UserService.to.isLogin) {
       Get.toNamed(Routes.JOB_LOGIN);
+    }
+  }
+
+  loadData() {
+    if (UserService.to.isLogin) {
+      // 获取收藏数
+      JobApi.to.getCollectnum(success: (data) {
+        collectNum = data;
+        update();
+      });
+
+      historyNum = UserService.to.getBrowseHistoryLength();
     }
   }
 }

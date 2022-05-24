@@ -10,7 +10,7 @@ import 'package:getx_test/app/common/widgets/button/basic_button.dart';
 
 import '../../../common/styles/zstyle.dart';
 import '../widgets/shake_widget.dart';
-import '../widgets/triangle_widget.dart';
+import '../widgets/tree_san.dart';
 import 'job_login_controller.dart';
 
 class JobLoginView extends GetzView<JobLoginController> {
@@ -135,7 +135,28 @@ class JobLoginView extends GetzView<JobLoginController> {
               height: 1,
             ),
             Spacez.vSpacezXxl,
-            ExRoundTriangleWidget(data: '我测试看看',),
+            Container(
+              height: 60,
+              child: Visibility(
+                visible: controller.tips,
+                child: ThreeSan(
+                    false,
+                    20,
+                    16.0,
+                    6.0,
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        '需勾选同意才可登录',
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    5,
+                    10,
+                    const Color(0xff999999),
+                    30),
+              ),
+            ),
             Row(
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [

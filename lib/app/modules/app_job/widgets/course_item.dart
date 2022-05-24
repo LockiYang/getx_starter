@@ -61,27 +61,13 @@ class CourseItem extends StatelessWidget {
                           maxLines: 2,
                           style: ZStyle.textSubHead,
                         ),
-                        browserMode
-                            ? Container()
-                            : Wrap(
-                                // alignment: WrapAlignment.end,
-                                spacing: ZStyleConstans.hSpacingXs,
-                                runSpacing: ZStyleConstans.hSpacingXs,
-                                children: [
-                                  BrnStateTag(
-                                    tagText: '非常好',
-                                    tagState: TagState.invalidate,
-                                  ),
-                                  BrnStateTag(
-                                    tagText: '前景高',
-                                    tagState: TagState.invalidate,
-                                  ),
-                                  BrnStateTag(
-                                    tagText: '轻松在家',
-                                    tagState: TagState.invalidate,
-                                  ),
-                                ],
-                              ),
+                        Visibility(
+                            visible: !browserMode,
+                            child: Wrap(
+                              spacing: ZStyleConstans.hSpacingXs,
+                              runSpacing: ZStyleConstans.hSpacingXs,
+                              children: _buildTags(),
+                            )),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -91,6 +77,13 @@ class CourseItem extends StatelessWidget {
                             ),
                             ZbuttonSm(
                               text: '免费报名',
+                              onTap: onTap ??
+                                  () => Get.to(
+                                      JobCourseDetailView(
+                                          tag: post.postId.toString()),
+                                      arguments: {"id": post.postId.toString()},
+                                      binding: JobCourseDetailBinding(
+                                          tag: post.postId.toString())),
                             )
                           ],
                         ),
@@ -126,6 +119,21 @@ class CourseItem extends StatelessWidget {
             )),
       ],
     );
+  }
+
+  List<Widget> _buildTags() {
+    if (post.tags.isNotEmpty) {
+      List<String> tagList = post.tags.split(',');
+      if (tagList.isNotEmpty) {
+        return List.generate(
+            tagList.length,
+            (index) => BrnStateTag(
+                  tagText: tagList[index],
+                  tagState: TagState.invalidate,
+                ));
+      }
+    }
+    return [];
   }
 
   Container _buildImg() {

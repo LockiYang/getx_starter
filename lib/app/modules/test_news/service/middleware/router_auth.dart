@@ -5,14 +5,11 @@ import 'package:getx_test/app/routes/app_pages.dart';
 
 import '../news_user_service.dart';
 
-
 /// 检查是否登录
 class RouteAuthMiddleware extends GetMiddleware {
   // priority 数字小优先级高
-  @override
-  int? priority = 0;
 
-  RouteAuthMiddleware({required this.priority});
+  RouteAuthMiddleware({required priority}) : super(priority: priority);
 
   @override
   RouteSettings? redirect(String? route) {

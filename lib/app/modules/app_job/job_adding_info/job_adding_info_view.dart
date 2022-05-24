@@ -45,36 +45,14 @@ class JobAddingInfoView extends GetzView<JobAddingInfoController> {
             children: List.generate(
               controller.infoItems.length,
               (index) {
-                return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        controller.infoItems[index].title,
-                        style: ZStyle.textSubHead,
-                      ),
-                      Spacez.vSpacezLg,
-                      BrnSelectTag(
-                          tags: controller.infoItems[index].selDescs,
-                          tagTextStyle: TextStyle(
-                              fontSize: 14,
-                              color: ZStyleConstans.colorTextBase),
-                          tagBackgroundColor: Colors.grey[100],
-                          selectedTagTextStyle: TextStyle(
-                              fontSize: 14,
-                              color: ZStyleConstans.brandPrimary,
-                              fontWeight: FontWeight.normal),
-                          selectedTagBackgroundColor:
-                              ZStyleConstans.brandPrimary,
-                          spacing: 16,
-                          fixWidthMode: false,
-                          onSelect: (selectedIndexes) {
-                            controller
-                              ..infoItems[index].selectIndex =
-                                  selectedIndexes[0]
-                              ..update();
-                          }),
-                      Spacez.vSpacezXl,
-                    ]);
+                return BasicInfoItem(
+                  infoItem: controller.infoItems[index],
+                  onSelect: (selectedIndexes) {
+                    controller
+                      ..infoItems[index].selectIndex = selectedIndexes[0]
+                      ..update();
+                  },
+                );
               },
             ),
           ),
@@ -97,14 +75,50 @@ class JobAddingInfoView extends GetzView<JobAddingInfoController> {
           Container(
             alignment: Alignment.center,
             child: BasicButtom(
-              text: '确认',
+              text: '立即进入',
               alignment: Alignment.center,
-              constraints: BoxConstraints.expand(width: 100, height: 44),
+              constraints: BoxConstraints.expand(width: 160, height: 44),
               onTap: () => controller.submit(),
             ),
           )
         ]),
       )),
     );
+  }
+}
+
+class BasicInfoItem extends StatelessWidget {
+  const BasicInfoItem({
+    Key? key,
+    required this.infoItem,
+    required this.onSelect,
+  }) : super(key: key);
+
+  final InfoItem infoItem;
+  final void Function(List<int>) onSelect;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(
+        infoItem.title,
+        style: ZStyle.textSubHead,
+      ),
+      Spacez.vSpacezLg,
+      BrnSelectTag(
+          tags: infoItem.selDescs,
+          tagTextStyle:
+              TextStyle(fontSize: 14, color: ZStyleConstans.colorTextBase),
+          tagBackgroundColor: Colors.grey[100],
+          selectedTagTextStyle: TextStyle(
+              fontSize: 14,
+              color: ZStyleConstans.brandPrimary,
+              fontWeight: FontWeight.normal),
+          selectedTagBackgroundColor: ZStyleConstans.brandPrimary,
+          spacing: 16,
+          fixWidthMode: false,
+          onSelect: onSelect),
+      Spacez.vSpacezXl,
+    ]);
   }
 }
