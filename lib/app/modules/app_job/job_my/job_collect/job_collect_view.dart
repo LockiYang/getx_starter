@@ -19,7 +19,10 @@ class JobCollectView extends GetzView<JobCollectController> {
               shrinkWrap: true,
               itemCount: controller.data.length,
               itemBuilder: (context, index) {
-                return CourseMessageItem(post: controller.data[index]);
+                return CourseMessageItem(
+                  post: controller.data[index],
+                  isCollect: true,
+                );
               })),
     );
   }

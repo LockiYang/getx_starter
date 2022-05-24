@@ -1,4 +1,3 @@
-import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -9,6 +8,9 @@ import 'package:getx_test/app/common/utils/toast_util.dart';
 import 'package:getx_test/app/common/widgets/button/basic_button.dart';
 
 import '../../../common/styles/zstyle.dart';
+import '../../../routes/app_pages.dart';
+import '../../webview/webview_controller.dart';
+import '../services/config_service.dart';
 import '../widgets/shake_widget.dart';
 import '../widgets/tree_san.dart';
 import 'job_login_controller.dart';
@@ -30,7 +32,7 @@ class JobLoginView extends GetzView<JobLoginController> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
-                    'assets/images/logo.png',
+                    'assets/icons/icon.png',
                     width: 40,
                     height: 40,
                   ),
@@ -67,6 +69,10 @@ class JobLoginView extends GetzView<JobLoginController> {
                 ),
                 Expanded(
                   child: TextField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      LengthLimitingTextInputFormatter(11) //限制长度
+                    ],
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(left: 10),
                         hintText: '请输入手机号',
@@ -84,8 +90,8 @@ class JobLoginView extends GetzView<JobLoginController> {
               children: [
                 Expanded(
                   child: TextField(
-                    keyboardType: TextInputType.number,
                     // focusNode: controller.smsCodeFocus,
+                    keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
                       LengthLimitingTextInputFormatter(4) //限制长度
                     ],
@@ -125,7 +131,6 @@ class JobLoginView extends GetzView<JobLoginController> {
                           color: controller.countDown > 0
                               ? ZStyleConstans.colorTextSecondary
                               : ZStyleConstans.brandPrimary),
-                      // strutStyle: StrutStyle(forceStrutHeight: true, leading: 0.2),
                     ),
                   ),
                 )
@@ -134,7 +139,6 @@ class JobLoginView extends GetzView<JobLoginController> {
             Divider(
               height: 1,
             ),
-            Spacez.vSpacezXxl,
             Container(
               height: 60,
               child: Visibility(
@@ -158,22 +162,33 @@ class JobLoginView extends GetzView<JobLoginController> {
               ),
             ),
             Row(
-              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ShakeWidget(
                   key: controller.shakeKey,
-                  child: BrnCheckbox(
-                    radioIndex: 1,
-                    isSelected: controller.protocalChecked,
-                    onValueChangedAtIndex: (index, status) =>
-                        controller.changeChecked(status),
+                  child: GestureDetector(
+                    onTap: controller.changeChecked,
                     child: Row(
                       children: [
+                        controller.protocalChecked
+                            ? Icon(
+                                Icons.check_circle,
+                                size: 20,
+                                color: ZStyleConstans.brandPrimary,
+                              )
+                            : Icon(
+                                Icons.panorama_fish_eye,
+                                size: 20,
+                                color: ZStyleConstans.colorTextSecondary,
+                              ),
                         Text(
-                          '已阅读并同意',
+                          ' 已阅读并同意',
                         ),
                         GestureDetector(
-                          onTap: () => ToastUtil.show('阅读用户协议'),
+                          onTap: () => Get.toNamed(Routes.WEBVIEW,
+                              arguments: WebModel(
+                                title: '用户协议',
+                                link: ConfigService.agreementUrl,
+                              )),
                           child: Text(
                             '用户协议',
                             style:
@@ -184,7 +199,11 @@ class JobLoginView extends GetzView<JobLoginController> {
                           '和',
                         ),
                         GestureDetector(
-                          onTap: () => ToastUtil.show('阅读隐私协议'),
+                          onTap: () => Get.toNamed(Routes.WEBVIEW,
+                              arguments: WebModel(
+                                title: '隐私政策',
+                                link: ConfigService.policyUrl,
+                              )),
                           child: Text(
                             '隐私协议',
                             style:

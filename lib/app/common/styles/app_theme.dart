@@ -2,38 +2,29 @@ import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 
 import '../no_splash_factory.dart';
-import 'lib_color_schemes.g.dart';
+import 'zstyle.dart';
 import 'zstyle_constants.dart';
 
 class AppTheme {
   static ThemeData light = ThemeData(
-    colorScheme: lightColorScheme,
+    // colorScheme: lightColorScheme,
+    // primaryColor: Colors.red,
+    // focusColor: Colors.red,
     splashColor: Colors.transparent,
     splashFactory: NoSplashFactory(),
     highlightColor: Colors.transparent,
     appBarTheme: ThemeData.light().appBarTheme.copyWith(
           centerTitle: true,
           backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
+          foregroundColor: ZStyleConstans.colorTextBase,
           shadowColor: Colors.transparent,
-          titleTextStyle: TextStyle(
-              fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
+          titleTextStyle: ZStyle.textHead,
           // toolbarTextStyle: Get.theme.textTheme.bodyText1,
-        ),
-    textTheme: ThemeData.light().textTheme.copyWith(
-          headline5: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
-          // headline6: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
-          // subtitle1: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
-          // subtitle2: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
-          // bodyText1: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
-          // bodyText2: TextStyle(fontWeight: FontWeight.normal, fontSize: 14)
         ),
     // buttonTheme:
   );
 
-  static ThemeData dark = ThemeData(
-    colorScheme: darkColorScheme,
-  );
+  static ThemeData dark = ThemeData();
 
   static BrnCommonConfig commonConfig = BrnCommonConfig(
       brandPrimary: ZStyleConstans.brandPrimary,

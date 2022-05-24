@@ -5,17 +5,21 @@ import 'package:getx_test/app/modules/app_job/data/models/index.dart';
 import 'package:getx_test/app/modules/app_job/services/config_service.dart';
 
 import '../../../common/services/cache_service.dart';
+import '../data/repositorys/job_api.dart';
 
 class UserService extends GetxService {
   static UserService get to => Get.find();
 
+  Login_info profile = Login_info();
+
   String token = '';
-  final _isLogin = false.obs;
-  final _profile = Login_info().obs;
+  final isLogin = false.obs;
+  final userId = 0.obs;
   final username = ''.obs;
 
-  bool get isLogin => _isLogin.value;
-  Login_info get profile => _profile.value;
+  final collectNum = 0.obs;
+  final historyNum = 0.obs;
+
   bool get hasToken => token.isNotEmpty;
 
   @override
@@ -25,45 +29,57 @@ class UserService extends GetxService {
     var profileOffline =
         CacheService.to.getString(ConfigService.cacheKeyUserProfile) ?? '';
     if (profileOffline.isNotEmpty) {
-      _profile(Login_info.fromJson(jsonDecode(profileOffline)));
+      // 已经登录
+      profile = Login_info.fromJson(jsonDecode(profileOffline));
+      isLogin.value = true;
+      userId.value = profile.userId.toInt();
       username.value =
-          _profile.value.username.replaceFirst(RegExp(r'\d{4}'), '****', 3);
-      _isLogin.value = true;
+          profile.username.replaceFirst(RegExp(r'\d{4}'), '****', 3);
     }
   }
 
-  /// 保存token
+  /// 登录-保存token
   Future<void> saveToken(String token) async {
-    await CacheService.to.setString(ConfigService.cackeKeyUserToken, token);
     this.token = token;
+    isLogin.value = true;
+    await CacheService.to.setString(ConfigService.cackeKeyUserToken, token);
   }
 
-  /// 获取profile
-  // Future<void> getProfile() async {
-  //   if (token.isEmpty) return;
-  //   var result = await UserAPI.profile();
-  //   _profile(result);
-  //   _isLogin.value = true;
-  //   CacheService.to.setString(
-  //       NewsConfigService.STORAGE_USER_PROFILE_KEY, jsonEncode(result));
-  // }
-
-  /// 保存profile
+  /// 登录-保存profile
   Future<void> saveProfile(Login_info profile) async {
-    _isLogin.value = true;
     username.value = profile.username.replaceFirst(RegExp(r'\d{4}'), '****', 3);
-
-    CacheService.to
+    userId.value = profile.userId.toInt();
+    await CacheService.to
         .setString(ConfigService.cacheKeyUserProfile, jsonEncode(profile));
   }
 
   // 注销
   Future<void> logout() async {
-    // if (_isLogin.value) await UserAPI.logout();
+    token = '';
+    isLogin.value = false;
+    username.value = '';
+    userId.value = 0;
     await CacheService.to.remove(ConfigService.cackeKeyUserToken);
     await CacheService.to.remove(ConfigService.cacheKeyUserProfile);
-    token = '';
-    _isLogin.value = false;
+  }
+
+  notifyCollectNum() {
+    if (isLogin.value) {
+      // 获取收藏数
+      JobApi.to.getCollectnum(success: (data) {
+        collectNum.value = data;
+      });
+    } else {
+      collectNum.value = 0;
+    }
+  }
+
+  notifyHistoryNum() {
+    if (isLogin.value) {
+      historyNum.value = getBrowseHistoryLength();
+    } else {
+      historyNum.value = 0;
+    }
   }
 
   // 浏览历史记录

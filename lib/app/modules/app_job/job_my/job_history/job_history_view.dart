@@ -15,7 +15,7 @@ class JobHistoryView extends GetView<JobHistoryController> {
         centerTitle: true,
       ),
       body: ListView.builder(
-          shrinkWrap: true,
+          shrinkWrap: false, // 是否根据子组件的总长度来设置ListView的长度
           itemCount: UserService.to.getBrowseHistoryLength(),
           itemBuilder: (context, index) {
             return CourseMessageItem(

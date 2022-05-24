@@ -19,8 +19,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        // width: double.infinity,
-        padding: EdgeInsets.fromLTRB(20, 20 + statusBarHeight, 20, 20),
+        padding: EdgeInsets.fromLTRB(20, 30 + statusBarHeight, 20, 20),
         child: Column(children: [
           // 个人信息
           Row(
@@ -39,7 +38,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                 onTap: controller.tapLogin,
                 child: Container(
                   margin: EdgeInsets.only(left: 10),
-                  child: Obx(() => UserService.to.isLogin
+                  child: Obx(() => UserService.to.isLogin.value
                       ? Text(
                           UserService.to.username.value,
                           style: ZStyle.textHead,
@@ -79,8 +78,8 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                   onTap: () => Get.toNamed(Routes.JOB_COLLECT),
                   child: Column(
                     children: [
-                      Text(controller.collectNum.toString(),
-                          style: ZStyle.textHead),
+                      Obx(() => Text(UserService.to.collectNum.value.toString(),
+                          style: ZStyle.textHead)),
                       Spacez.vSpacezXs,
                       Text(
                         '收藏',
@@ -95,10 +94,10 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                   onTap: () => Get.toNamed(Routes.JOB_HISTORY),
                   child: Column(
                     children: [
-                      Text(
-                        controller.historyNum.toString(),
-                        style: ZStyle.textHead,
-                      ),
+                      Obx((() => Text(
+                            UserService.to.historyNum.value.toString(),
+                            style: ZStyle.textHead,
+                          ))),
                       Spacez.vSpacezXs,
                       Text(
                         '历史',
@@ -128,12 +127,12 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                 ]),
             child: Column(children: [
               MenuListTile(
-                icon: Icons.outlet,
+                iconImg: Image.asset('assets/icons/wy_feedback.png', height: 22,),
                 title: '意见反馈',
                 onTap: () => Get.toNamed(Routes.JOB_FEEDBACK),
               ),
               MenuListTile(
-                icon: Icons.help_outline,
+                iconImg: Image.asset('assets/icons/wy_help.png', height: 22,),
                 title: '帮助中心',
                 onTap: () => Get.toNamed(Routes.WEBVIEW,
                     arguments: WebModel(
@@ -142,7 +141,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                     )),
               ),
               MenuListTile(
-                icon: Icons.help_outline,
+                iconImg: Image.asset('assets/icons/wy_protocal.png', height: 22,),
                 title: '用户协议',
                 onTap: () => Get.toNamed(Routes.WEBVIEW,
                     arguments: WebModel(
@@ -151,7 +150,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
                     )),
               ),
               MenuListTile(
-                icon: Icons.info_outline,
+                iconImg: Image.asset('assets/icons/wy_us.png', height: 22,),
                 title: '关于我们',
                 onTap: () => Get.toNamed(Routes.JOB_ABOUT_US),
               )

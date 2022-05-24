@@ -12,11 +12,13 @@ class CourseMessageItem extends StatelessWidget {
   const CourseMessageItem({
     required this.post,
     this.showBottom = true,
+    this.isCollect = false,
     Key? key,
   }) : super(key: key);
 
   final Post post;
   final bool showBottom;
+  final bool isCollect;
 
   @override
   Widget build(BuildContext context) {
@@ -97,10 +99,12 @@ class CourseMessageItem extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      '报名时间：' + post.scribeCreateAt,
-                      style: ZStyle.textCaption,
-                    ),
+                    isCollect
+                        ? Container()
+                        : Text(
+                            '报名时间：' + post.scribeCreateAt,
+                            style: ZStyle.textCaption,
+                          ),
                     ZbuttonSm(
                       text: '查看报名详情',
                       color: Colors.brown,

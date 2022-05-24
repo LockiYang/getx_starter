@@ -4,6 +4,7 @@ import 'package:getx_test/app/common/styles/zstyle_constants.dart';
 /// 菜单项目
 class MenuListTile extends StatelessWidget {
   final IconData? icon;
+  final Image? iconImg;
   final Color? iconColor;
   final double? iconSize;
   final String? title;
@@ -19,6 +20,7 @@ class MenuListTile extends StatelessWidget {
       this.title,
       this.content,
       this.icon,
+      this.iconImg,
       this.iconSize = 22,
       this.iconColor = ZStyleConstans.colorTextBase,
       this.endIcon = Icons.arrow_forward_ios,
@@ -51,6 +53,12 @@ class MenuListTile extends StatelessWidget {
                               size: iconSize,
                               color: iconColor,
                             ),
+                          ),
+                    iconImg == null
+                        ? Container()
+                        : Container(
+                            margin: EdgeInsets.only(right: 10),
+                            child: iconImg,
                           ),
                     title == null
                         ? Container()

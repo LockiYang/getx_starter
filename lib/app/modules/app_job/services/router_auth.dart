@@ -12,7 +12,7 @@ class JobAuthMiddleware extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    if (UserService.to.isLogin ||
+    if (UserService.to.isLogin.value ||
         route == Routes.JOB_LOGIN ||
         route == Routes.JOB_HOME ||
         route == Routes.JOB_ABOUT_US) {

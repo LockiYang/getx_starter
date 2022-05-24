@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
+import 'package:getx_test/app/modules/app_job/services/user_service.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../data/models/pagination.dart';
 import '../data/models/post.dart';
 import '../data/repositorys/job_api.dart';
-import '../services/user_service.dart';
 
 class JobMessageController extends GetxController {
   int currentPage = 1;
@@ -14,19 +14,27 @@ class JobMessageController extends GetxController {
   RefreshController refreshController =
       RefreshController(initialRefresh: false);
 
-  @override
-  void onInit() {
-    super.onInit();
-    if (UserService.to.isLogin) {
-      refreshData();
-    }
-  }
+  bool enabledPullUpDown = false;
 
   @override
   void onClose() {}
 
+  refreshPage() {
+    if (UserService.to.isLogin.value) {
+      refreshData();
+    } else {
+      data = [];
+    }
+    update();
+  }
+
   /// 刷新数据
   refreshData() async {
+    if (!UserService.to.isLogin.value) {
+      refreshController.refreshCompleted();
+      refreshController.loadNoData();
+      return;
+    }
     loadStatus = 0;
     currentPage = 1;
     List<Post> datas = await loadData();
@@ -44,6 +52,11 @@ class JobMessageController extends GetxController {
 
   /// 加载更多
   loadingData() async {
+    if (!UserService.to.isLogin.value) {
+      refreshController.loadComplete();
+      refreshController.loadNoData();
+      return;
+    }
     currentPage++;
     List<Post> datas = await loadData();
     data.addAll(datas);

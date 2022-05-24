@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/utils/toast_util.dart';
 import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
+import 'package:getx_test/app/modules/app_job/job_message/job_message_controller.dart';
+import 'package:getx_test/app/modules/app_job/job_my/job_my_controller.dart';
 import 'package:getx_test/app/modules/app_job/services/user_service.dart';
 
 import '../../../routes/app_pages.dart';
 import '../widgets/shake_widget.dart';
 
 class JobLoginController extends GetxController {
-  final shakeKey = GlobalKey<ShakeWidgetState>();
-  
   bool protocalChecked = false;
   String phoneNum = '';
   String smsCode = '';
@@ -20,18 +20,18 @@ class JobLoginController extends GetxController {
   int countDown = 0;
   bool isSubmitEnable = false;
   bool tips = false;
+  bool redirectHome = false;
 
+  final shakeKey = GlobalKey<ShakeWidgetState>();
   FocusNode phoneFocus = FocusNode();
   FocusNode smsCodeFocus = FocusNode();
 
   @override
   void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
+    String arg = Get.arguments;
+    if (arg == 'redirectHome') {
+      redirectHome = true;
+    }
   }
 
   @override
@@ -69,10 +69,6 @@ class JobLoginController extends GetxController {
   }
 
   postSmscode() {
-    // shakeKey.currentState?.shake();
-    // tips = true;
-    // update();
-    // return;
     if (phoneNum.isEmpty || phoneNum.length != 11) {
       ToastUtil.show('请输入正确的手机号');
       return;
@@ -84,7 +80,7 @@ class JobLoginController extends GetxController {
     }));
   }
 
-  login() {
+  login() async {
     if (phoneNum.isEmpty || phoneNum.length != 11) {
       ToastUtil.show('请输入正确的手机号');
       return;
@@ -93,8 +89,10 @@ class JobLoginController extends GetxController {
       ToastUtil.show('请输入短信验证码');
       return;
     }
-    if (protocalChecked) {
-      ToastUtil.show('请勾选同意后再登录');
+    if (!protocalChecked) {
+      shakeKey.currentState?.shake();
+      tips = true;
+      update();
       return;
     }
     JobApi.to.postLoginByMobile(
@@ -104,7 +102,14 @@ class JobLoginController extends GetxController {
         if (data.errcode == 0) {
           UserService.to.saveToken(data.token);
           UserService.to.saveProfile(data);
-          Get.until((route) => Get.currentRoute == Routes.APP_JOB);
+          Get.find<JobMyController>().refreshPage();
+          Get.find<JobMessageController>().refreshPage();
+          if (redirectHome) {
+            Get.offAllNamed(Routes.APP_JOB);
+          } else {
+            // 返回首页
+            Get.until((route) => Get.currentRoute == Routes.APP_JOB);
+          }
         } else {
           // 登录失败
         }
@@ -112,8 +117,11 @@ class JobLoginController extends GetxController {
     );
   }
 
-  changeChecked(value) {
-    value ? protocalChecked = true : protocalChecked = false;
+  void changeChecked() {
+    protocalChecked = !protocalChecked;
+    if (protocalChecked) {
+      tips = false;
+    }
     update();
   }
 }

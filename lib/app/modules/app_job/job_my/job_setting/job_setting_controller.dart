@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
+import 'package:getx_test/app/modules/app_job/job_splash/job_splash_controller.dart';
 import 'package:getx_test/app/modules/app_job/services/config_service.dart';
 import 'package:getx_test/app/modules/app_job/services/user_service.dart';
 
 import '../../../../common/utils/file_util.dart';
 import '../../../../common/utils/toast_util.dart';
-import '../../../../routes/app_pages.dart';
+import '../../job_message/job_message_controller.dart';
+import '../job_my_controller.dart';
 
 class JobSettingController extends GetxController {
   String cacheSize = '';
@@ -45,6 +47,9 @@ class JobSettingController extends GetxController {
 
   logout() {
     UserService.to.logout();
-    Get.until((route) => Get.currentRoute == Routes.APP_JOB);
+    Get.find<JobMyController>().refreshPage();
+    Get.find<JobMessageController>().refreshPage();
+
+    JobSplashController.toLastPage();
   }
 }

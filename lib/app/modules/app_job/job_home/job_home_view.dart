@@ -98,7 +98,7 @@ class JobHomeView extends GetzViewKeepAlive<JobHomeController> {
                         } else if (controller.loadStatus == 1) {
                           return Text('');
                         } else if (controller.loadStatus == 2) {
-                          return Text('无数据2');
+                          return Text('无数据');
                         } else if (controller.loadStatus == 3) {
                           return Text('加载失败，重试');
                         } else {
@@ -113,7 +113,7 @@ class JobHomeView extends GetzViewKeepAlive<JobHomeController> {
                               !controller.hasMore) {
                             return Text('没有更多了');
                           } else if (controller.loadStatus == 2) {
-                            return Text('无数据3');
+                            return Text('无数据');
                           } else if (controller.loadStatus == 3) {
                             return Text('加载失败，重试');
                           } else {
