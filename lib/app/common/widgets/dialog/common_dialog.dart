@@ -94,7 +94,12 @@ class CommonDialog extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: backTap,
+            onTap: () {
+              DialogUtil.dismiss();
+              if (backTap != null) {
+                backTap!();
+              }
+            },
             child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: Text(
@@ -104,7 +109,12 @@ class CommonDialog extends StatelessWidget {
           ),
           BasicButtom(
             text: nextText,
-            onTap: nextTap,
+            onTap: () {
+              DialogUtil.dismiss();
+              if (nextTap != null) {
+                nextTap!();
+              }
+            },
             alignment: Alignment.center,
             borderRadius: BorderRadius.circular(100),
           )

@@ -4,7 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_test/app/data/repositorys/wan_android_api.dart';
+import 'package:getx_test/app/modules/test_wanandroid/data/wan_android_api.dart';
 import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
 import 'package:getx_test/app/modules/app_job/services/config_service.dart';
 import 'package:getx_test/app/modules/app_job/services/user_service.dart';

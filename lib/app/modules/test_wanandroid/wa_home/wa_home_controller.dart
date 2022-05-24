@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/widgets/banner/banner_model.dart';
-import '../../../data/repositorys/wan_android_api.dart';
+import '../data/wan_android_api.dart';
 
 class WaHomeController extends GetxController with GetSingleTickerProviderStateMixin {
   late WanAndroidApi wanAndroidApi;

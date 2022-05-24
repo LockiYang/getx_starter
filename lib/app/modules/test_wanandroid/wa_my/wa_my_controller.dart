@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../common/cache_util.dart';
-import '../../../data/models/user.dart';
+import '../data/index.dart';
 
 class WaMyController extends GetxController {
   User? loginUser;

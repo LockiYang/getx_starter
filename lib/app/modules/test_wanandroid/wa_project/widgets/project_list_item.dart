@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../data/models/project.dart';
+import '../../data/project.dart';
+
 
 /// 项目列表item widget
 class ProjectListItem extends StatelessWidget {

@@ -3,10 +3,16 @@ import 'package:get/get.dart';
 import 'package:getx_test/app/common/utils/toast_util.dart';
 import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
 
+import '../widgets/shake_widget.dart';
+
 class JobAddingInfoController extends GetxController {
   List<InfoItem> infoItems = [];
+  bool tipsVisible = false;
+  final shakeKey = GlobalKey<ShakeWidgetState>();
+
   @override
   void onInit() {
+    super.onInit();
     JobApi.to.getBasicInfoConfig(
       success: (data) {
         infoItems = (data as List<dynamic>)
@@ -15,11 +21,6 @@ class JobAddingInfoController extends GetxController {
         update();
       },
     );
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
   }
 
   @override
@@ -33,14 +34,23 @@ class JobAddingInfoController extends GetxController {
         tags.add(item.selDescs[index]);
       }
     }
-    if (tags.isEmpty) {
-      ToastUtil.show('请选择');
+    if (tags.isEmpty || tags.length < infoItems.length) {
+      tipsVisible = true;
+      update();
+      shakeKey.currentState?.shake();
       return;
+    } else {
+      tipsVisible = false;
+      update();
     }
     JobApi.to.saveBasicInfo(
       tags.join(','),
       success: (data) => Get.back(),
     );
+  }
+
+  skip() {
+    ToastUtil.show('skip');
   }
 }
 

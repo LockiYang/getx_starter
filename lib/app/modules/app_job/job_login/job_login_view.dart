@@ -9,6 +9,8 @@ import 'package:getx_test/app/common/utils/toast_util.dart';
 import 'package:getx_test/app/common/widgets/button/basic_button.dart';
 
 import '../../../common/styles/zstyle.dart';
+import '../widgets/shake_widget.dart';
+import '../widgets/triangle_widget.dart';
 import 'job_login_controller.dart';
 
 class JobLoginView extends GetzView<JobLoginController> {
@@ -133,37 +135,43 @@ class JobLoginView extends GetzView<JobLoginController> {
               height: 1,
             ),
             Spacez.vSpacezXxl,
+            ExRoundTriangleWidget(data: '我测试看看',),
             Row(
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                BrnCheckbox(
-                  radioIndex: 1,
-                  isSelected: controller.protocalChecked,
-                  onValueChangedAtIndex: (index, status) =>
-                      controller.changeChecked(status),
-                  child: Row(
-                    children: [
-                      Text(
-                        '已阅读并同意',
-                      ),
-                      GestureDetector(
-                        onTap: () => ToastUtil.show('阅读用户协议'),
-                        child: Text(
-                          '用户协议',
-                          style: TextStyle(color: ZStyleConstans.brandPrimary),
+                ShakeWidget(
+                  key: controller.shakeKey,
+                  child: BrnCheckbox(
+                    radioIndex: 1,
+                    isSelected: controller.protocalChecked,
+                    onValueChangedAtIndex: (index, status) =>
+                        controller.changeChecked(status),
+                    child: Row(
+                      children: [
+                        Text(
+                          '已阅读并同意',
                         ),
-                      ),
-                      Text(
-                        '和',
-                      ),
-                      GestureDetector(
-                        onTap: () => ToastUtil.show('阅读隐私协议'),
-                        child: Text(
-                          '隐私协议',
-                          style: TextStyle(color: ZStyleConstans.brandPrimary),
+                        GestureDetector(
+                          onTap: () => ToastUtil.show('阅读用户协议'),
+                          child: Text(
+                            '用户协议',
+                            style:
+                                TextStyle(color: ZStyleConstans.brandPrimary),
+                          ),
                         ),
-                      ),
-                    ],
+                        Text(
+                          '和',
+                        ),
+                        GestureDetector(
+                          onTap: () => ToastUtil.show('阅读隐私协议'),
+                          child: Text(
+                            '隐私协议',
+                            style:
+                                TextStyle(color: ZStyleConstans.brandPrimary),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

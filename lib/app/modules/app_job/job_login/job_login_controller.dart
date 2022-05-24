@@ -7,9 +7,12 @@ import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
 import 'package:getx_test/app/modules/app_job/services/user_service.dart';
 
 import '../../../routes/app_pages.dart';
+import '../widgets/shake_widget.dart';
 
 class JobLoginController extends GetxController {
-  bool protocalChecked = true;
+  final shakeKey = GlobalKey<ShakeWidgetState>();
+  
+  bool protocalChecked = false;
   String phoneNum = '';
   String smsCode = '';
 
@@ -65,6 +68,8 @@ class JobLoginController extends GetxController {
   }
 
   postSmscode() {
+    // shakeKey.currentState?.shake();
+    // return;
     if (phoneNum.isEmpty || phoneNum.length != 11) {
       ToastUtil.show('请输入正确的手机号');
       return;

@@ -6,6 +6,8 @@ import '../modules/app_job/app_job_binding.dart';
 import '../modules/app_job/app_job_view.dart';
 import '../modules/app_job/job_adding_info/job_adding_info_binding.dart';
 import '../modules/app_job/job_adding_info/job_adding_info_view.dart';
+import '../modules/app_job/job_browser_mode/job_browser_mode_binding.dart';
+import '../modules/app_job/job_browser_mode/job_browser_mode_view.dart';
 import '../modules/app_job/job_course_detail/job_course_detail_binding.dart';
 import '../modules/app_job/job_course_detail/job_course_detail_view.dart';
 import '../modules/app_job/job_home/job_home_binding.dart';
@@ -38,12 +40,12 @@ import '../modules/test/list_view/list_view_binding.dart';
 import '../modules/test/list_view/list_view_view.dart';
 import '../modules/test/little_widgets/little_widgets_binding.dart';
 import '../modules/test/little_widgets/little_widgets_view.dart';
+import '../modules/test/sdk_shanyan/shanyan_binding.dart';
+import '../modules/test/sdk_shanyan/shanyan_view.dart';
 import '../modules/test/sdk_umeng/sdk_umeng_binding.dart';
 import '../modules/test/sdk_umeng/sdk_umeng_view.dart';
 import '../modules/test/sdk_wechat/sdk_wechat_binding.dart';
 import '../modules/test/sdk_wechat/sdk_wechat_view.dart';
-import '../modules/test/sdk_shanyan/shanyan_binding.dart';
-import '../modules/test/sdk_shanyan/shanyan_view.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_binding.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_view.dart';
 import '../modules/test/test_binding.dart';
@@ -302,6 +304,11 @@ class AppPages {
           name: _Paths.JOB_SPLASH,
           page: () => JobSplashView(),
           binding: JobSplashBinding(),
+        ),
+        GetPage(
+          name: _Paths.JOB_BROWSER_MODE,
+          page: () => JobBrowserModeView(),
+          binding: JobBrowserModeBinding(),
         ),
       ],
     ),

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:getx_test/app/data/repositorys/wan_android_api.dart';
+import 'package:getx_test/app/modules/test_wanandroid/data/wan_android_api.dart';
 
 import '../../common/cache_util.dart';
 import '../../../../common/utils/file_util.dart';

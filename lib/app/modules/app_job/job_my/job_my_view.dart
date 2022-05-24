@@ -34,7 +34,7 @@ class JobMyView extends GetzViewBindng<JobMyController> {
               ),
               // 昵称
               GestureDetector(
-                onTap: () => Get.toNamed(Routes.JOB_LOGIN),
+                onTap: controller.tapLogin,
                 child: Container(
                   margin: EdgeInsets.only(left: 10),
                   child: Obx(() => UserService.to.isLogin

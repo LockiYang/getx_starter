@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import '../common/cache_util.dart';
 import '../../../common/utils/toast_util.dart';
-import '../../../data/models/user.dart';
-import '../../../data/repositorys/wan_android_api.dart';
+import '../data/index.dart';
+import '../data/wan_android_api.dart';
 import '../../../routes/app_pages.dart';
 
 class WaLoginController extends GetxController {

@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 
 
 import '../../../../common/widgets/paging_controller.dart';
-import '../../../../data/models/article.dart';
-import '../../../../data/models/project.dart';
-import '../../../../data/repositorys/wan_android_api.dart';
+import '../../data/index.dart';
+import '../../data/project.dart';
+import '../../data/wan_android_api.dart';
 
 class WaMainController extends PagingController<Article> {
   late WanAndroidApi wanAndroidApi;

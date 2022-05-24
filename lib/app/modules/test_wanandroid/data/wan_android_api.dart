@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-import '../../common/http/config/dio_config.dart';
-import '../../common/http/http_client.dart';
-import '../../common/widgets/banner/banner_model.dart';
-import '../models/project.dart';
+import '../../../common/http/config/dio_config.dart';
+import '../../../common/http/http_client.dart';
+import '../../../common/widgets/banner/banner_model.dart';
+import 'project.dart';
 
 typedef SuccessPaging<T> = Function(T data, int total);
 

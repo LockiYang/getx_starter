@@ -15,18 +15,23 @@ class CourseItem extends StatelessWidget {
   const CourseItem({
     Key? key,
     this.showBottom = true,
+    this.browserMode = false,
     required this.post,
+    this.onTap,
   }) : super(key: key);
 
   final Post post;
   final bool showBottom;
+  final bool browserMode;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(JobCourseDetailView(tag: post.postId.toString()),
-          arguments: {"id": post.postId.toString()},
-          binding: JobCourseDetailBinding(tag: post.postId.toString())),
+      onTap: onTap ??
+          () => Get.to(JobCourseDetailView(tag: post.postId.toString()),
+              arguments: {"id": post.postId.toString()},
+              binding: JobCourseDetailBinding(tag: post.postId.toString())),
       child: Container(
         margin: EdgeInsets.fromLTRB(ZStyleConstans.hSpacingSm,
             ZStyleConstans.hSpacingSm, ZStyleConstans.hSpacingSm, 0),
@@ -56,25 +61,27 @@ class CourseItem extends StatelessWidget {
                           maxLines: 2,
                           style: ZStyle.textSubHead,
                         ),
-                        Wrap(
-                          // alignment: WrapAlignment.end,
-                          spacing: ZStyleConstans.hSpacingXs,
-                          runSpacing: ZStyleConstans.hSpacingXs,
-                          children: [
-                            BrnStateTag(
-                              tagText: '非常好',
-                              tagState: TagState.invalidate,
-                            ),
-                            BrnStateTag(
-                              tagText: '前景高',
-                              tagState: TagState.invalidate,
-                            ),
-                            BrnStateTag(
-                              tagText: '轻松在家',
-                              tagState: TagState.invalidate,
-                            ),
-                          ],
-                        ),
+                        browserMode
+                            ? Container()
+                            : Wrap(
+                                // alignment: WrapAlignment.end,
+                                spacing: ZStyleConstans.hSpacingXs,
+                                runSpacing: ZStyleConstans.hSpacingXs,
+                                children: [
+                                  BrnStateTag(
+                                    tagText: '非常好',
+                                    tagState: TagState.invalidate,
+                                  ),
+                                  BrnStateTag(
+                                    tagText: '前景高',
+                                    tagState: TagState.invalidate,
+                                  ),
+                                  BrnStateTag(
+                                    tagText: '轻松在家',
+                                    tagState: TagState.invalidate,
+                                  ),
+                                ],
+                              ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -92,7 +99,7 @@ class CourseItem extends StatelessWidget {
               ],
             ),
           ),
-          _buildBottom(),
+          showBottom ? _buildBottom() : Container(),
         ]),
       ),
     );

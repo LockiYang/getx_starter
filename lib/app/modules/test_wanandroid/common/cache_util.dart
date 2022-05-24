@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import '../../../data/models/user.dart';
 import '../../../services/cache_service.dart';
+import '../data/user.dart';
 
 
 /// App缓存工具类

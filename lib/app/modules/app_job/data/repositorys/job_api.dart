@@ -85,6 +85,27 @@ class JobApi extends GetxService {
     });
   }
 
+  /// 岗位推荐列表
+  Future<Pagination<Post>> getPostRecommendPage(
+      String postList, int pageNum) async {
+    var result = await client.get('post/listRecommand',
+        queryParameters: {
+          'pageNum': pageNum,
+          'pageSize': 1,
+          'postList': postList
+        },
+        options: options(),
+        httpTransformer: EyepetizerHttpTransformer.getInstance());
+
+    var pagination = Pagination<Post>.fromJson(
+        (result as Map<String, dynamic>)['pagination']);
+    var data = (result['result'] as List<dynamic>)
+        .map((e) => Post.fromJson(e as Map<String, dynamic>))
+        .toList();
+    pagination.data = data;
+    return pagination;
+  }
+
   /// 岗位详情
   getPostInfo(int postId, {Success<Post>? success}) {
     client.get('post/info',
@@ -241,6 +262,21 @@ class JobApi extends GetxService {
   /// 获取收藏数
   getCollectnum({Success<dynamic>? success}) async {
     await client.get('collect/totalCollectSum',
+        options: options(),
+        httpTransformer: EyepetizerHttpTransformer.getInstance(),
+        success: (data) {
+      if (success != null) {
+        success(data);
+      }
+    });
+  }
+
+  /// 获取收藏信息
+  getCollectInfo(String postId, {Success<dynamic>? success}) async {
+    await client.get('collect/info',
+        queryParameters: {
+          'postId': postId,
+        },
         options: options(),
         httpTransformer: EyepetizerHttpTransformer.getInstance(),
         success: (data) {

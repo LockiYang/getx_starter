@@ -59,6 +59,7 @@ abstract class Routes {
       _Paths.APP_JOB + _Paths.JOB_MY + _Paths.JOB_HISTORY;
   static const JOB_ADDING_INFO = _Paths.APP_JOB + _Paths.JOB_ADDING_INFO;
   static const JOB_SPLASH = _Paths.APP_JOB + _Paths.JOB_SPLASH;
+  static const JOB_BROWSER_MODE = _Paths.APP_JOB + _Paths.JOB_BROWSER_MODE;
 }
 
 abstract class _Paths {
@@ -111,4 +112,5 @@ abstract class _Paths {
   static const JOB_HISTORY = '/job-history';
   static const JOB_ADDING_INFO = '/job-adding-info';
   static const JOB_SPLASH = '/job-splash';
+  static const JOB_BROWSER_MODE = '/job-browser-mode';
 }

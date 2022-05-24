@@ -9,8 +9,11 @@ import 'package:getx_test/app/common/styles/zstyle_constants.dart';
 import 'package:getx_test/app/common/utils/toast_util.dart';
 import 'package:getx_test/app/common/widgets/button/basic_button.dart';
 
+import '../../../common/utils/multi_click_util.dart';
 import '../../../common/widgets/fijkplayer/fijkplayer_skin.dart';
+import '../../../common/widgets/paging_refresher.dart';
 import '../../test/custom_icon/widgets/antd_icons.dart';
+import '../widgets/course_message_item.dart';
 import 'job_course_detail_controller.dart';
 
 class JobCourseDetailView extends GetzView<JobCourseDetailController> {
@@ -43,12 +46,15 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
               child: Row(
                 children: [
                   GestureDetector(
-                    onTap: () => {controller.saveCollect()},
+                    onTap: () => MultiClickUtil.debounce(
+                        () => {controller.saveCollect()}),
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       margin: EdgeInsets.only(right: 10),
                       child: Column(children: [
-                        Icon(Icons.star_border),
+                        controller.isCollect
+                            ? Icon(Icons.star)
+                            : Icon(Icons.star_border),
                         Text(
                           '收藏',
                           style: ZStyle.textCaption,
@@ -87,6 +93,16 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
               '大家都在看',
               style: ZStyle.textSubHead,
             ),
+            // Expanded(
+            //     child: PagingRefreshWidget<JobCourseDetailController>(
+            //         child: ListView.builder(
+            //             padding: EdgeInsets.zero,
+            //             shrinkWrap: true,
+            //             itemCount: controller.data.length,
+            //             itemBuilder: (context, index) {
+            //               return CourseMessageItem(
+            //                   post: controller.data[index]);
+            //             })))
           ],
         ));
   }
@@ -390,7 +406,7 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
                   texturePos: texturePos,
                   pageContent: context,
                   showConfig: controller.vSkinCfg,
-                  curPlayUrl: controller.curPlayUrl ?? "",
+                  curPlayUrl: '',
                 );
               },
             ),
