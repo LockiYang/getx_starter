@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_test/app/common/utils/toast_util.dart';
 import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
 
 import '../data/models/post.dart';
@@ -9,6 +8,7 @@ import '../data/models/post_list.dart';
 class JobHomeController extends GetxController
     with GetTickerProviderStateMixin {
   var bannerUrlList = <String>[];
+  var adBannerUrlList = <String>[];
 
   int tabIndex = 0;
   var tabs = <Post_list>[];
@@ -16,6 +16,7 @@ class JobHomeController extends GetxController
   var currentPages = <int, int>{};
   var totalPages = <int, int>{};
   // 加载状态: 0加载中 1加载成功 2加载数据为空 3加载失败
+  
   int loadStatus = 0;
   bool hasMore = true;
 
@@ -57,10 +58,17 @@ class JobHomeController extends GetxController
 
   Future<void> refreshData() async {
     loadStatus = 0;
-    JobApi.to.getBanners(success: ((data) {
+    JobApi.to.getBanners('HOME', success: ((data) {
       bannerUrlList.clear();
       for (var banner in data) {
         bannerUrlList.add(banner.imageUrl);
+      }
+      update();
+    }));
+    JobApi.to.getBanners('HOME_AD', success: ((data) {
+      adBannerUrlList.clear();
+      for (var banner in data) {
+        adBannerUrlList.add(banner.imageUrl);
       }
       update();
     }));
@@ -90,18 +98,18 @@ class JobHomeController extends GetxController
             update();
           });
         });
-      JobApi.to.getPostPage(tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,
-          success: (data, page) {
+      JobApi.to
+          .getPostPage(tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,
+              success: (data, page) {
         tabsData[tabIndex] = data;
         loadStatus = 1;
         update();
-        ToastUtil.show('刷新成功');
         // Get.toNamed(page)
       });
     }));
   }
 
-  Future<void> loadingData() async {}
+  Future<void> loadData() async {}
 
   bool isListEmpty(List? list) {
     if (list == null || list.isEmpty) {

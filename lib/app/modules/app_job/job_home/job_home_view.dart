@@ -79,7 +79,7 @@ class JobHomeView extends GetzViewKeepAlive<JobHomeController> {
         controller: controller.tabController,
         children: List.generate(controller.tabs.length, (tabIndex) {
           return Container(
-            color: Color(0xFFF8F8F8),
+            color: ZStyleConstans.fillBody,
             child: ScrollConfiguration(
                 behavior: OverScrollBehavior(),
                 child: ListView.builder(
@@ -91,39 +91,43 @@ class JobHomeView extends GetzViewKeepAlive<JobHomeController> {
                             ? 1
                             : controller.tabsData[tabIndex]!.length + 1,
                     itemBuilder: (context, itemIndex) {
-                      if (controller
+                      if (!controller
                           .isListEmpty(controller.tabsData[tabIndex])) {
-                        if (controller.loadStatus == 0) {
-                          return _buildProgressIndicator();
-                        } else if (controller.loadStatus == 1) {
-                          return Text('');
-                        } else if (controller.loadStatus == 2) {
-                          return Text('无数据');
-                        } else if (controller.loadStatus == 3) {
-                          return Text('加载失败，重试');
-                        } else {
-                          return Text('');
-                        }
-                      } else {
                         if (controller.tabsData[tabIndex]!.length ==
                             itemIndex) {
                           if (controller.loadStatus == 0) {
+                            // 加载中
                             return _buildProgressIndicator();
                           } else if (controller.loadStatus == 1 &&
                               !controller.hasMore) {
-                            return Text('没有更多了');
+                            return Center(
+                                child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('没有更多了', style: ZStyle.textCaption),
+                            ));
                           } else if (controller.loadStatus == 2) {
-                            return Text('无数据');
+                            return Center(
+                                child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('无数据', style: ZStyle.textCaption),
+                            ));
                           } else if (controller.loadStatus == 3) {
-                            return Text('加载失败，重试');
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Center(
+                                  child: Text('加载失败，重试',
+                                      style: ZStyle.textCaption)),
+                            );
                           } else {
-                            return Text('');
+                            return Container();
                           }
                         } else {
                           return CourseItem(
                             post: controller.tabsData[tabIndex]![itemIndex],
                           );
                         }
+                      } else {
+                        return Container();
                       }
                     })),
           );
@@ -155,23 +159,33 @@ class JobHomeView extends GetzViewKeepAlive<JobHomeController> {
     );
   }
 
-  Row _buildAd() {
-    return Row(
-      children: [
-        Expanded(
-            child: Padding(
-                padding: EdgeInsets.only(right: 3),
-                child: GestureDetector(
-                  onTap: () => Get.toNamed(Routes.JOB_COURSE_DETAIL),
-                  child:
-                      ClipRRect(child: Image.asset('assets/images/ad01.png')),
-                ))),
-        Expanded(
-            child: Padding(
-                padding: EdgeInsets.only(left: 3),
-                child: ClipRRect(child: Image.asset('assets/images/ad02.png'))))
-      ],
-    );
+  Widget _buildAd() {
+    if (controller.adBannerUrlList.isNotEmpty &&
+        controller.adBannerUrlList.length == 2) {
+      return Row(
+        children: [
+          Expanded(
+              child: Padding(
+                  padding: EdgeInsets.only(right: 3),
+                  child: GestureDetector(
+                    onTap: () => Get.toNamed(Routes.JOB_COURSE_DETAIL),
+                    child: ClipRRect(
+                        child: CachedNetworkImage(
+                      imageUrl: controller.adBannerUrlList[0],
+                    )),
+                  ))),
+          Expanded(
+              child: Padding(
+                  padding: EdgeInsets.only(left: 3),
+                  child: ClipRRect(
+                      child: CachedNetworkImage(
+                    imageUrl: controller.adBannerUrlList[1],
+                  ))))
+        ],
+      );
+    } else {
+      return Container();
+    }
   }
 
   Container _buildBanner() {

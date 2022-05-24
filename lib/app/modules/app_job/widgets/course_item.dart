@@ -44,12 +44,13 @@ class CourseItem extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(bottom: ZStyleConstans.hSpacingSm),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildImg(),
                 Expanded(
                     child: Container(
                   width: double.infinity,
-                  height: 90.w,
+                  constraints: BoxConstraints(minHeight: 90.w),
                   margin: EdgeInsets.only(left: ZStyleConstans.hSpacingXs),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,7 +104,7 @@ class CourseItem extends StatelessWidget {
       children: [
         Dividerz.dividerH1,
         Container(
-            padding: EdgeInsets.symmetric(vertical: ZStyleConstans.hSpacingSm),
+            padding: EdgeInsets.symmetric(vertical: ZStyleConstans.vSpacingSm),
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
@@ -156,9 +157,12 @@ class CourseItem extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(ZStyleConstans.radiusSm),
                       bottomRight: Radius.circular(ZStyleConstans.radiusSm))),
-              child: Text(
-                '视频',
-                style: TextStyle(color: Colors.white, fontSize: 12),
+              child: Visibility(
+                visible: post.bgVedio != null && post.bgVedio.isNotEmpty,
+                child: Text(
+                  '视频',
+                  style: TextStyle(color: Colors.white, fontSize: 12),
+                ),
               ),
             ))
       ]),

@@ -33,8 +33,9 @@ class JobApi extends GetxService {
   }
 
   /// 首页banner轮播图
-  getBanners({Success<List<Banner>>? success}) {
-    client.get('banner/list?position=HOME',
+  getBanners(String position, {Success<List<Banner>>? success}) {
+    client.get('banner/list',
+        queryParameters: {'position': position},
         options: options(),
         httpTransformer: EyepetizerHttpTransformer.getInstance(),
         success: (data) {
@@ -68,7 +69,7 @@ class JobApi extends GetxService {
     client.get('post/list',
         queryParameters: {
           'pageNum': pageNum,
-          'pageSize': 10,
+          'pageSize': 1,
           'postList': category.toString()
         },
         options: options(),
