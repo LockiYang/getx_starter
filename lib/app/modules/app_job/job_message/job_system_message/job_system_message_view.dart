@@ -9,7 +9,7 @@ class JobSystemMessageView extends GetView<JobSystemMessageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('JobSystemMessageView'),
+        title: Text('系统消息'),
         centerTitle: true,
       ),
       body: Container(

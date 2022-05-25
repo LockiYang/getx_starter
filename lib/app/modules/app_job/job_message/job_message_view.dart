@@ -41,7 +41,7 @@ class JobMessageView extends GetzViewBindng<JobMessageController> {
                       color: Colors.white),
                   height: 60,
                   child: MenuListTile(
-                    title: '系统通知',
+                    title: '系统消息',
                     icon: Icons.notifications,
                     iconColor: Colors.red,
                     onTap: () => Get.toNamed(Routes.JOB_SYSTEM_MESSAGE),

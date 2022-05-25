@@ -16,7 +16,7 @@ class JobHomeController extends GetxController
   var currentPages = <int, int>{};
   var totalPages = <int, int>{};
   // 加载状态: 0加载中 1加载成功 2加载数据为空 3加载失败
-  
+
   int loadStatus = 0;
   bool hasMore = true;
 
@@ -58,6 +58,7 @@ class JobHomeController extends GetxController
 
   Future<void> refreshData() async {
     loadStatus = 0;
+    hasMore = true;
     JobApi.to.getBanners('HOME', success: ((data) {
       bannerUrlList.clear();
       for (var banner in data) {
@@ -90,13 +91,15 @@ class JobHomeController extends GetxController
         ..addListener(() {
           // 刷新列表数据
           tabIndex = tabController.index;
-          JobApi.to.getPostPage(
-              tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,
-              success: (data, page) {
-            tabsData[tabIndex] = data;
-            loadStatus = 1;
-            update();
-          });
+          if (tabsData[tabIndex]!.isEmpty) {
+            JobApi.to.getPostPage(
+                tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,
+                success: (data, page) {
+              tabsData[tabIndex] = data;
+              loadStatus = 1;
+              update();
+            });
+          }
         });
       JobApi.to
           .getPostPage(tabs[tabIndex].id.toInt(), currentPages[tabIndex] ?? 1,

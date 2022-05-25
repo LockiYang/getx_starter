@@ -8,7 +8,6 @@ import 'package:getx_test/app/modules/app_job/services/user_service.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wakelock/wakelock.dart';
 
-import '../../../common/widgets/button/basic_button.dart';
 import '../../../common/widgets/fijkplayer/fijkplayer_skin.dart';
 import '../data/models/pagination.dart';
 import '../job_adding_info/job_adding_info_controller.dart';
