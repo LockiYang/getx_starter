@@ -62,7 +62,7 @@ android {
 
     defaultConfig {
         // 唯一包名
-        applicationId "com.szsdtech.wyykt"
+        applicationId "com.szsdtech.wyjza"
         // minSdkVersion flutter.minSdkVersion
         // 适配的最低SDK版本，默认为flutter.minSdkVersion
         minSdkVersion 21
@@ -96,6 +96,7 @@ android {
             }
         }
         debug {
+            signingConfig signingConfigs.release
         }
     }
 

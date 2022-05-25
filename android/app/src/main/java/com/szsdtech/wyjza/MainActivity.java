@@ -1,4 +1,4 @@
-package com.szsdtech.wyykt;
+package com.szsdtech.wyjza;
 
 import io.flutter.embedding.android.FlutterActivity;
 

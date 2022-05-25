@@ -28,6 +28,7 @@ class ShanyanView extends GetView<ShanyanController> {
               flex: 1,
               child: ListView(
                 children: <Widget>[
+                  Text('免密登录API'),
                   Container(
                     margin: EdgeInsets.fromLTRB(40, 5, 40, 5),
                     child: Row(
@@ -37,15 +38,26 @@ class ShanyanView extends GetView<ShanyanController> {
                           onPressed: () {
                             controller.initSDK();
                           },
-                          child: Text("闪验SDK=初始化"),
+                          child: Text("1.初始化"),
                         ),
                         ElevatedButton(
                             onPressed: () {
                               controller.getPhoneInfo();
                             },
-                            child: Text("闪验SDK=预取号")),
+                            child: Text("2.预取号")),
                       ],
                     ),
+                  ),
+                  Container(
+                    child: SizedBox(
+                      child: ElevatedButton(
+                          onPressed: () {
+                            controller.openLoginAuth();
+                          },
+                          child: Text("3.拉起授权页")),
+                      width: double.infinity,
+                    ),
+                    margin: EdgeInsets.fromLTRB(40, 5, 40, 5),
                   ),
                   Container(
                     margin: EdgeInsets.fromLTRB(40, 5, 40, 5),
@@ -65,17 +77,7 @@ class ShanyanView extends GetView<ShanyanController> {
                       ],
                     ),
                   ),
-                  Container(
-                    child: SizedBox(
-                      child: ElevatedButton(
-                          onPressed: () {
-                            controller.openLoginAuth();
-                          },
-                          child: Text("闪验SDK=拉起授权页")),
-                      width: double.infinity,
-                    ),
-                    margin: EdgeInsets.fromLTRB(40, 5, 40, 5),
-                  ),
+                  Text('本机认证API'),
                   Container(
                     child: TextField(
                       keyboardType: TextInputType.number,

@@ -39,7 +39,7 @@ dependencies:
   json_annotation: ^4.5.0
 
   umeng_common_sdk: ^1.2.4
-  # fluwx_no_pay: ^3.8.5
+  fluwx_no_pay: ^3.9.0
   shanyan:
     git:
       url: https://github.com/253CL/CLShanYan_Flutter.git

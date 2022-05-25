@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.szsdtech.wyykt">
+    package="com.szsdtech.wyjza">
    <application
         android:label="${appName}"
         android:name="${applicationName}"
@@ -31,6 +31,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!--闪验-->
         <activity
             android:name="com.chuanglan.shanyan_sdk.view.CmccLoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -53,6 +54,7 @@
             android:launchMode="singleTop"
             android:screenOrientation="behind" /> 
     </application>
+    <!-- 闪验权限-->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>

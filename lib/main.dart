@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluwx_no_pay/fluwx_no_pay.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/utils/ui_util.dart';
@@ -44,22 +45,6 @@ void appInit() async {
   // RefreshConfiguration
 }
 
-void setSystemUi() {
-  // if (GetPlatform.isAndroid) {
-
-  // }
-  SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
-    // 状态栏
-    statusBarColor: Colors.transparent,
-    statusBarBrightness: Brightness.light, // for ios
-    statusBarIconBrightness: Brightness.light, // for android 状态栏图标字体颜色
-    // 底部安全区
-    systemNavigationBarDividerColor: Colors.white,
-    systemNavigationBarColor: Colors.white, // for android
-    systemNavigationBarIconBrightness: Brightness.light, // for android
-  );
-  SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-}
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
