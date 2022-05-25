@@ -10,8 +10,8 @@ class WaCollectView extends GetView<WaCollectController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: BrnAppBar(
-        title: '我的收藏',
+      appBar: AppBar(
+        title: Text('我的收藏'),
       ),
       body: Center(
         child: Text(

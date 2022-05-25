@@ -125,4 +125,12 @@ class UserService extends GetxService {
       return [];
     }
   }
+
+  ///清楚历史记录
+  deleteBrowseHistory() {
+    try {
+      CacheService.to
+          .setStringList(ConfigService.cacheKeyuserBrowseHistory, []);
+    } catch (e) {}
+  }
 }

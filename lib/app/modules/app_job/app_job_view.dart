@@ -37,6 +37,7 @@ class AppJobView extends GetView<AppJobController> {
               ..update(),
           ),
           bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.white,
             currentIndex: controller.currentIndex,
             onTap: (index) {
               controller.setIndex(index);

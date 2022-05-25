@@ -12,8 +12,8 @@ class WaFeedbackView extends GetView<WaFeedbackController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: BrnAppBar(
-        title: '问题反馈',
+      appBar: AppBar(
+        title: Text('问题反馈'),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20),

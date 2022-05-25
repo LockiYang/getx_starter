@@ -2,6 +2,7 @@ import 'package:bruno/bruno.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import 'package:getx_test/app/common/getx/getz_view.dart';
@@ -16,7 +17,6 @@ import '../../../common/utils/multi_click_util.dart';
 import '../../../common/widgets/avatar_stack.dart';
 import '../../../common/widgets/button/zbutton_sm.dart';
 import '../../../common/widgets/fijkplayer/fijkplayer_skin.dart';
-import '../../../routes/app_pages.dart';
 import '../../test/custom_icon/widgets/antd_icons.dart';
 import '../job_adding_info/job_adding_info_view.dart';
 import 'job_course_detail_controller.dart';
@@ -78,6 +78,7 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
                         delegate: SliverChildBuilderDelegate((context, index) {
                       return CourseItem(
                         post: controller.data[index],
+                        isPop: true,
                       );
                     }, childCount: controller.data.length))
                   ],
@@ -85,12 +86,13 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
               ),
             ),
             Container(
+              color: Colors.white,
               padding: EdgeInsets.fromLTRB(20, 6, 20, bottomHeight),
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () => MultiClickUtil.debounce(
-                        () => {controller.saveCollect()}),
+                        () => {controller.tapCollect()}),
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       margin: EdgeInsets.only(right: 10),
@@ -123,14 +125,14 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
         text: ConfigService.to.subscribeButtonName,
         alignment: Alignment.center,
         // onTap: () => _noInfoSubscribe(),
-        onTap: controller.subscribe,
+        onTap: controller.tapSubscribe,
       );
     } else if (type == 2) {
       return BasicButtom(
         text: ConfigService.to.positionProgressButtonName,
         alignment: Alignment.center,
         // onTap: () => _noInfoSubscribe(),
-        onTap: controller.subscribe,
+        onTap: controller.tapSubscribe,
       );
     } else {
       return BasicButtom(
@@ -234,6 +236,7 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
                             controller.personName,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
+                          Spacez.hSpacezXs,
                           BrnStateTag(
                             tagText: '金牌讲师',
                             tagState: TagState.waiting,
@@ -279,15 +282,16 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
               child: Row(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(8),
                     margin: EdgeInsets.only(right: ZStyleConstans.vSpacingMd),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.blue,
                     ),
-                    child: Icon(
-                      AntdIcons.home,
-                      size: 18,
+                    child: SvgPicture.asset(
+                      'assets/svgs/wy_company.svg',
+                      width: 24,
+                      height: 24,
                       color: Colors.white,
                     ),
                   ),
@@ -394,7 +398,7 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
                 ZbuttonSm(
                   text: '投诉',
                   color: Colors.blue,
-                  onTap: () => Get.toNamed(Routes.JOB_FEEDBACK),
+                  onTap: controller.tapFeedback,
                 )
               ],
             ),
@@ -419,29 +423,37 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
           controller.title,
           style: ZStyle.textHead,
         ),
-        SizedBox(
-          height: 4,
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 5),
+          child: Wrap(
+            spacing: ZStyleConstans.hSpacingXs,
+            runSpacing: ZStyleConstans.hSpacingXs,
+            children: _buildTags(),
+          ),
         ),
-        Wrap(
-          spacing: ZStyleConstans.hSpacingXs,
-          runSpacing: ZStyleConstans.hSpacingXs,
-          children: _buildTags(),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 5),
+          child: Row(
+            children: [
+              controller.machineUsers.isEmpty
+                  ? Container()
+                  : Row(
+                      children: [
+                        AvatarStack(
+                          avatarUrls: controller.machineUsers,
+                          size: 20,
+                          offset: 10,
+                        ),
+                        Text(
+                          '已有${controller.subScribeNum}人报名',
+                          style: ZStyle.textCaption,
+                        )
+                      ],
+                    ),
+            ],
+          ),
         ),
-        Spacez.vSpacezSm,
-        Row(
-          children: [
-            AvatarStack(
-              num: 20,
-              size: 16,
-              offset: 10,
-            ),
-            Text(
-              '已有30123人报名',
-              style: ZStyle.textCaption,
-            )
-          ],
-        ),
-        Spacez.vSpacezSm,
+        Spacez.vSpacezXs,
         Dividerz.dividerH1,
         Container(
           alignment: Alignment.topLeft,
@@ -457,7 +469,7 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
             children: [
               Icon(
                 AntdIcons.fileCopyFill,
-                size: 24,
+                size: 28,
                 color: Colors.blueGrey,
               ),
               Spacez.hSpacezSm,
@@ -491,14 +503,14 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
               vertical: ZStyleConstans.vSpacingSm,
               horizontal: ZStyleConstans.hSpacingMd),
           decoration: BoxDecoration(
-              color: Colors.blueGrey[50],
+              color: Colors.green[50],
               borderRadius: BorderRadius.circular(ZStyleConstans.radiusMd)),
           child: Row(
             children: [
               Icon(
                 AntdIcons.wechatFill,
-                size: 24,
-                color: Colors.blueGrey,
+                size: 28,
+                color: Colors.green,
               ),
               Spacez.hSpacezSm,
               Expanded(
@@ -507,7 +519,8 @@ class JobCourseDetailView extends GetzView<JobCourseDetailController> {
                 children: [
                   Text(
                     '兼职接单群',
-                    style: TextStyle(fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600, color: Colors.red),
                   ),
                   Text(
                     '学成可做兼职，收入可达800/天',

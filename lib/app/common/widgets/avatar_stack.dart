@@ -1,10 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class AvatarStack extends StatelessWidget {
-  const AvatarStack({Key? key, this.num = 3, this.size = 40, this.offset = 20})
+  const AvatarStack(
+      {Key? key, this.size = 40, this.offset = 20, required this.avatarUrls})
       : super(key: key);
 
-  final int num;
+  final List<String> avatarUrls;
   final double size;
   final double offset;
 
@@ -19,13 +21,12 @@ class AvatarStack extends StatelessWidget {
       _list.add(Positioned(
         left: off,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(size),
-          child: Image(
-            image: AssetImage("assets/images/customer.jpg"),
-            width: size,
-            height: size,
-          ),
-        ),
+            borderRadius: BorderRadius.circular(size),
+            child: CachedNetworkImage(
+              imageUrl: avatarUrls[i],
+              width: size,
+              height: size,
+            )),
       ));
     }
     return _list;
@@ -34,10 +35,10 @@ class AvatarStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: _getStackWidth(num),
+      width: _getStackWidth(avatarUrls.length),
       height: size,
       child: Stack(
-        children: _getStackItems(num),
+        children: _getStackItems(avatarUrls.length),
       ),
     );
   }

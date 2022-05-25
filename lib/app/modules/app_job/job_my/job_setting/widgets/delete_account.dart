@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getx_test/app/common/styles/zstyle_constants.dart';
-import 'package:getx_test/app/common/utils/toast_util.dart';
+import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
+import 'package:getx_test/app/modules/app_job/job_my/job_setting/job_setting_controller.dart';
 
 import '../../../../../common/utils/dialog_util.dart';
 import '../../../../../common/widgets/menu_list_tile.dart';
@@ -20,14 +22,14 @@ class DeleteAccountWidget extends StatelessWidget {
         child: Column(children: [
           MenuListTile(
             title: '注销账号',
-            onTap: () => deleteAccountTap(),
+            onTap: () => tapDeleteAccount(),
           ),
         ]),
       ),
     );
   }
 
-  void deleteAccountTap() {
+  void tapDeleteAccount() {
     DialogUtil.commonDialog(
         title: '确认注销账号：159****6012',
         content: '注销账号后，该账号内所有信息将被清空，且该操作无法恢复，请谨慎操作！',
@@ -43,6 +45,10 @@ class DeleteAccountWidget extends StatelessWidget {
   }
 
   void deleteAccount() {
-    ToastUtil.show('确认注销');
+    JobApi.to.deleteAccount(
+      success: (data) {
+        Get.find<JobSettingController>().logout();
+      },
+    );
   }
 }

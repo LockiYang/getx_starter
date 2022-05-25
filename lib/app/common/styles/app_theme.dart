@@ -21,6 +21,9 @@ class AppTheme {
           titleTextStyle: ZStyle.textHead,
           // toolbarTextStyle: Get.theme.textTheme.bodyText1,
         ),
+    navigationBarTheme: ThemeData.light()
+        .navigationBarTheme
+        .copyWith(backgroundColor: Colors.white),
     // buttonTheme:
   );
 

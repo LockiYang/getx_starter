@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/getx/getz_view_keep_alive.dart';
 import 'package:getx_test/app/common/styles/zstyle.dart';
+import 'package:getx_test/app/common/utils/ui_util.dart';
 import 'package:getx_test/app/common/widgets/over_scroll_behavior.dart';
 import 'package:getx_test/app/common/widgets/tabbar/kugou_tabbar.dart';
 import 'package:getx_test/app/modules/app_job/job_home/job_home_binding.dart';
@@ -27,12 +28,13 @@ class JobHomeView extends GetzViewKeepAlive<JobHomeController> {
           notificationPredicate: (ScrollNotification notifation) {
             return true;
           },
-          onRefresh: controller.refreshData,
+          onRefresh: controller.refreshPage,
           child: NestedScrollView(
             controller: controller.scrollController,
             headerSliverBuilder: (context, innerBoxIsScrolled) {
               return <Widget>[
                 SliverAppBar(
+                  systemOverlayStyle: UIUtil.defaultSystemUiOverlayStyle(),
                   pinned: true,
                   automaticallyImplyLeading: false,
                   titleSpacing: ZStyleConstans.hSpacingSm,
@@ -67,7 +69,8 @@ class JobHomeView extends GetzViewKeepAlive<JobHomeController> {
       padding: const EdgeInsets.all(8.0),
       child: Center(
         child: Opacity(
-          opacity: controller.loadStatus == 0 ? 1.0 : 0,
+          opacity:
+              controller.loadStatusList[controller.tabIndex] == 0 ? 1.0 : 0,
           child: CircularProgressIndicator(),
         ),
       ),
@@ -87,31 +90,31 @@ class JobHomeView extends GetzViewKeepAlive<JobHomeController> {
                     physics: ClampingScrollPhysics(),
                     padding: EdgeInsets.all(0),
                     itemCount:
-                        controller.isListEmpty(controller.tabsData[tabIndex])
+                        controller.isListEmpty(controller.dataList[tabIndex])
                             ? 1
-                            : controller.tabsData[tabIndex]!.length + 1,
+                            : controller.dataList[tabIndex]!.length + 1,
                     itemBuilder: (context, itemIndex) {
                       if (!controller
-                          .isListEmpty(controller.tabsData[tabIndex])) {
-                        if (controller.tabsData[tabIndex]!.length ==
+                          .isListEmpty(controller.dataList[tabIndex])) {
+                        if (controller.dataList[tabIndex]!.length ==
                             itemIndex) {
-                          if (controller.loadStatus == 0) {
+                          if (controller.loadStatusList[tabIndex] == 0) {
                             // 加载中
                             return _buildProgressIndicator();
-                          } else if (controller.loadStatus == 1 &&
-                              !controller.hasMore) {
+                          } else if (controller.loadStatusList[tabIndex] == 1 &&
+                              !controller.hasMoreList[tabIndex]!) {
                             return Center(
                                 child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text('没有更多了', style: ZStyle.textCaption),
                             ));
-                          } else if (controller.loadStatus == 2) {
+                          } else if (controller.loadStatusList[tabIndex] == 2) {
                             return Center(
                                 child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text('无数据', style: ZStyle.textCaption),
                             ));
-                          } else if (controller.loadStatus == 3) {
+                          } else if (controller.loadStatusList[tabIndex] == 3) {
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Center(
@@ -123,7 +126,7 @@ class JobHomeView extends GetzViewKeepAlive<JobHomeController> {
                           }
                         } else {
                           return CourseItem(
-                            post: controller.tabsData[tabIndex]![itemIndex],
+                            post: controller.dataList[tabIndex]![itemIndex],
                           );
                         }
                       } else {

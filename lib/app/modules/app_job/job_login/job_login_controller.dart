@@ -22,6 +22,8 @@ class JobLoginController extends GetxController {
   bool tips = false;
   bool redirectHome = false;
 
+  bool needUpdateInfo = false;
+
   final shakeKey = GlobalKey<ShakeWidgetState>();
   FocusNode phoneFocus = FocusNode();
   FocusNode smsCodeFocus = FocusNode();
@@ -80,6 +82,20 @@ class JobLoginController extends GetxController {
     }));
   }
 
+  loginFirstPage() {
+    // 先完善资料
+    if (needUpdateInfo) {
+      Get.offAllNamed(Routes.JOB_ADDING_INFO);
+    } else {
+      if (redirectHome) {
+        Get.offAllNamed(Routes.APP_JOB);
+      } else {
+        // 返回首页
+        Get.until((route) => Get.currentRoute == Routes.APP_JOB);
+      }
+    }
+  }
+
   login() async {
     if (phoneNum.isEmpty || phoneNum.length != 11) {
       ToastUtil.show('请输入正确的手机号');
@@ -102,14 +118,16 @@ class JobLoginController extends GetxController {
         if (data.errcode == 0) {
           UserService.to.saveToken(data.token);
           UserService.to.saveProfile(data);
+          JobApi.to.getUserInfo(
+            success: (data) {
+              if (data.extraInfo == null || data.extraInfo.isEmpty) {
+                needUpdateInfo = true;
+              }
+              loginFirstPage();
+            },
+          );
           Get.find<JobMyController>().refreshPage();
           Get.find<JobMessageController>().refreshPage();
-          if (redirectHome) {
-            Get.offAllNamed(Routes.APP_JOB);
-          } else {
-            // 返回首页
-            Get.until((route) => Get.currentRoute == Routes.APP_JOB);
-          }
         } else {
           // 登录失败
         }

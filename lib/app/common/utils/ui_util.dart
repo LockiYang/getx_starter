@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class ScreenUtil {
+class UIUtil {
   /// 去除安卓状态栏半透明
   static removeStatusBarTransparent(BuildContext context) {
     // android 平台
@@ -13,5 +13,18 @@ class ScreenUtil {
       );
       SystemChrome.setSystemUIOverlayStyle(_style);
     }
+  }
+
+  static defaultSystemUiOverlayStyle() {
+    return SystemUiOverlayStyle(
+      // 状态栏
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Brightness.light, // for ios
+      statusBarIconBrightness: Brightness.dark, // for android 状态栏图标字体颜色
+      // 底部安全区
+      systemNavigationBarDividerColor: Colors.white,
+      systemNavigationBarColor: Colors.white, // for android
+      systemNavigationBarIconBrightness: Brightness.light, // for android
+    );
   }
 }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:getx_test/app/common/utils/toast_util.dart';
 import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
 
+import '../../../routes/app_pages.dart';
 import '../widgets/shake_widget.dart';
 
 class JobAddingInfoController extends GetxController {
@@ -46,12 +47,12 @@ class JobAddingInfoController extends GetxController {
     }
     JobApi.to.saveBasicInfo(
       tags.join(','),
-      success: (data) => Get.back(),
+      success: (data) => skip(),
     );
   }
 
   skip() {
-    ToastUtil.show('skip');
+    Get.toNamed(Routes.APP_JOB);
   }
 }
 

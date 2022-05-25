@@ -8,7 +8,7 @@ class WaSettingView extends GetzView<WaSettingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BrnAppBar(title: Text('设置')),
+      appBar: AppBar(title: Text('设置')),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 20),

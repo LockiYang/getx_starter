@@ -18,20 +18,19 @@ class CourseItem extends StatelessWidget {
     this.browserMode = false,
     required this.post,
     this.onTap,
+    this.isPop = false,
   }) : super(key: key);
 
   final Post post;
   final bool showBottom;
   final bool browserMode;
   final GestureTapCallback? onTap;
+  final bool isPop;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap ??
-          () => Get.to(JobCourseDetailView(tag: post.postId.toString()),
-              arguments: {"id": post.postId.toString()},
-              binding: JobCourseDetailBinding(tag: post.postId.toString())),
+      onTap: onTap ?? toDetail,
       child: Container(
         margin: EdgeInsets.fromLTRB(ZStyleConstans.hSpacingSm,
             ZStyleConstans.hSpacingSm, ZStyleConstans.hSpacingSm, 0),
@@ -50,7 +49,7 @@ class CourseItem extends StatelessWidget {
                 Expanded(
                     child: Container(
                   width: double.infinity,
-                  constraints: BoxConstraints(minHeight: 90.w),
+                  constraints: BoxConstraints(minHeight: 95.w),
                   margin: EdgeInsets.only(left: ZStyleConstans.hSpacingXs),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,6 +98,21 @@ class CourseItem extends StatelessWidget {
     );
   }
 
+  toDetail() {
+    if (isPop) {
+      // 详情页跳详情页
+      Get.off(JobCourseDetailView(tag: post.postId.toString()),
+          preventDuplicates: false,
+          arguments: {"id": post.postId.toString()},
+          binding: JobCourseDetailBinding(tag: post.postId.toString()));
+    } else {
+      Get.to(JobCourseDetailView(tag: post.postId.toString()),
+          preventDuplicates: false,
+          arguments: {"id": post.postId.toString()},
+          binding: JobCourseDetailBinding(tag: post.postId.toString()));
+    }
+  }
+
   Column _buildBottom() {
     return Column(
       children: [
@@ -144,8 +158,8 @@ class CourseItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(ZStyleConstans.radiusSm),
             child: CachedNetworkImage(
                 imageUrl: post.bgImg,
-                height: 90.w,
-                width: 120.w,
+                height: 95.w,
+                width: 126.w,
                 fit: BoxFit.fill)),
         Positioned(
             left: 0,

@@ -11,7 +11,7 @@ class WaLoginView extends GetzView<WaLoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: BrnAppBar(),
+      appBar: AppBar(),
       body: Container(
         padding: EdgeInsets.all(20),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

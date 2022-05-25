@@ -64,26 +64,25 @@ class JobApi extends GetxService {
   }
 
   /// 岗位列表
-  getPostPage(int category, int pageNum,
-      {SuccessPagination<List<Post>>? success}) {
-    client.get('post/list',
+  Future<Pagination<Post>> getPostPage(int category, int pageNum,
+      {SuccessPagination<List<Post>>? success}) async {
+    var result = await client.get('post/list',
         queryParameters: {
           'pageNum': pageNum,
-          'pageSize': 1,
+          'pageSize': 10,
           'postList': category.toString()
         },
         options: options(),
-        httpTransformer: EyepetizerHttpTransformer.getInstance(),
-        success: (data) {
-      var page = Pagination.fromJson((data as Map)['pagination']);
+        httpTransformer: EyepetizerHttpTransformer.getInstance());
 
-      var result = ((data as Map<String, dynamic>)['result'] as List<dynamic>)
-          .map((e) => Post.fromJson(e as Map<String, dynamic>))
-          .toList();
-      if (success != null) {
-        success(result, page);
-      }
-    });
+    var pagination = Pagination<Post>.fromJson(
+        (result as Map<String, dynamic>)['pagination']);
+
+    var data = (result['result'] as List<dynamic>)
+        .map((e) => Post.fromJson(e as Map<String, dynamic>))
+        .toList();
+    pagination.data = data;
+    return pagination;
   }
 
   /// 岗位推荐列表
@@ -121,6 +120,22 @@ class JobApi extends GetxService {
     });
   }
 
+  /// 模拟用户
+  getMachineUser(int postId, {Success<List<Map<String, dynamic>>>? success}) {
+    client.get('machineUser/list',
+        queryParameters: {'postId': postId.toString()},
+        options: options(),
+        httpTransformer: EyepetizerHttpTransformer.getInstance(),
+        success: (data) {
+      var result = (data as List<dynamic>)
+          .map((e) => e as Map<String, dynamic>)
+          .toList();
+      if (success != null) {
+        success(result);
+      }
+    });
+  }
+
   /// 岗位报名
   saveSubscribe(int postId, {Success<Map<String, dynamic>>? success}) {
     client.get('subscribe/save',
@@ -135,12 +150,13 @@ class JobApi extends GetxService {
     });
   }
 
-  /// 岗位推荐列表
+  /// 岗位报名列表
   Future<Pagination<Post>> getPostSubscribePage(int pageNum) async {
     var result = await client.get('subscribe/list',
         queryParameters: {
           'pageNum': pageNum,
           'pageSize': 10,
+          'sort_createAt': 'desc'
         },
         options: options(),
         httpTransformer: EyepetizerHttpTransformer.getInstance());
@@ -213,7 +229,7 @@ class JobApi extends GetxService {
 
   /// 删除账户
   deleteAccount({Success<User_info>? success}) {
-    client.post('user/info',
+    client.post('user/deleteAccount',
         options: options(),
         httpTransformer: EyepetizerHttpTransformer.getInstance(),
         success: (data) {

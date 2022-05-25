@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:getx_test/app/common/utils/ui_util.dart';
 import 'package:getx_test/app/modules/test_wanandroid/data/wan_android_api.dart';
 import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
 import 'package:getx_test/app/modules/app_job/services/config_service.dart';
@@ -25,7 +26,7 @@ void appInit() async {
 
   /// 屏幕方向设为竖直上，不能切换
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  // setSystemUi();
+  SystemChrome.setSystemUIOverlayStyle(UIUtil.defaultSystemUiOverlayStyle());
   AppTheme.initTheme();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
@@ -44,17 +45,20 @@ void appInit() async {
 }
 
 void setSystemUi() {
-  if (GetPlatform.isAndroid) {
-    SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent, // 状态栏颜色
-      statusBarBrightness: Brightness.light, //
-      statusBarIconBrightness: Brightness.dark, // 状态栏图标字体颜色
-      systemNavigationBarDividerColor: Color.fromARGB(0, 42, 41, 41),
-      systemNavigationBarColor: Colors.white,
-      systemNavigationBarIconBrightness: Brightness.dark,
-    );
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-  }
+  // if (GetPlatform.isAndroid) {
+
+  // }
+  SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
+    // 状态栏
+    statusBarColor: Colors.transparent,
+    statusBarBrightness: Brightness.light, // for ios
+    statusBarIconBrightness: Brightness.light, // for android 状态栏图标字体颜色
+    // 底部安全区
+    systemNavigationBarDividerColor: Colors.white,
+    systemNavigationBarColor: Colors.white, // for android
+    systemNavigationBarIconBrightness: Brightness.light, // for android
+  );
+  SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 }
 
 class App extends StatelessWidget {
@@ -77,6 +81,9 @@ class App extends StatelessWidget {
         getPages: AppPages.routes,
         navigatorObservers: [AppPages.observer],
         debugShowCheckedModeBanner: false,
+        defaultTransition:
+            GetPlatform.isIOS ? Transition.native : Transition.rightToLeft,
+        transitionDuration: const Duration(milliseconds: 200),
         theme: AppTheme.light,
         enableLog: true,
         logWriterCallback: Logger.write,

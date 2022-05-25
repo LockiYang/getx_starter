@@ -10,6 +10,7 @@ class JobSplashView extends GetView<JobSplashController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         alignment: AlignmentDirectional.center,
         children: [

@@ -5,7 +5,7 @@ import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
 import 'package:getx_test/app/modules/app_job/job_splash/job_splash_controller.dart';
 
 import '../../../common/utils/dialog_util.dart';
-import '../../../routes/app_pages.dart';
+import '../data/models/pagination.dart';
 import '../data/models/post.dart';
 import '../widgets/protocal_widget.dart';
 
@@ -15,14 +15,16 @@ class JobBrowserModeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    JobApi.to.getPostPage(28, 1, success: (data, page) {
-      posts = data;
-      update();
-    });
+    loadData();
   }
 
   @override
   void onClose() {}
+
+  loadData() async {
+    Pagination<Post> result = await JobApi.to.getPostPage(28, 1);
+    posts = result.data;
+  }
 
   tapItem() {
     DialogUtil.commonDialog(
