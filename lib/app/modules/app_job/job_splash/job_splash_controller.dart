@@ -58,16 +58,16 @@ class JobSplashController extends GetxController {
 
   /// 退出登录
   static toLastPage() {
-    Get.until((route) => Get.currentRoute == Routes.APP_JOB);
-    // if (Platform.isIOS) {
-    //   // IOS直接登录
-    //   Get.offAllNamed(Routes.JOB_LOGIN, arguments: 'redirectHome');
-    // } else if (!UserService.to.isLogin.value &&
-    //     ConfigService.to.androidMustLogin) {
-    //   Get.offAllNamed(Routes.JOB_LOGIN, arguments: 'redirectHome');
-    // } else {
-    //   Get.until((route) => Get.currentRoute == Routes.APP_JOB);
-    // }
+    // Get.until((route) => Get.currentRoute == Routes.APP_JOB);
+    if (Platform.isIOS) {
+      // IOS直接登录
+      Get.offAllNamed(Routes.JOB_LOGIN, arguments: 'redirectHome');
+    } else if (!UserService.to.isLogin.value &&
+        ConfigService.to.androidMustLogin) {
+      Get.offAllNamed(Routes.JOB_LOGIN, arguments: 'redirectHome');
+    } else {
+      Get.until((route) => Get.currentRoute == Routes.APP_JOB);
+    }
   }
 
   @override

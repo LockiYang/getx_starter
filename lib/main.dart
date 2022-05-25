@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluwx_no_pay/fluwx_no_pay.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/utils/ui_util.dart';
@@ -14,7 +13,6 @@ import 'package:getx_test/app/modules/test_wanandroid/data/eyepetizer_api.dart';
 
 import 'app/common/services/cache_service.dart';
 import 'app/common/styles/app_theme.dart';
-import 'app/common/utils/logger.dart';
 import 'app/modules/test_news/service/news_config_service.dart';
 import 'app/routes/app_pages.dart';
 
@@ -45,7 +43,6 @@ void appInit() async {
   // RefreshConfiguration
 }
 
-
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
@@ -71,7 +68,7 @@ class App extends StatelessWidget {
         transitionDuration: const Duration(milliseconds: 200),
         theme: AppTheme.light,
         enableLog: true,
-        logWriterCallback: Logger.write,
+        // logWriterCallback: Logger.write,
       ),
     );
   }

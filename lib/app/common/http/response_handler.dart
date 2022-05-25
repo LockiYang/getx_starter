@@ -1,27 +1,24 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:getx_test/app/common/http/http_client.dart';
+import 'package:getx_test/app/common/http/http_util.dart';
 import 'transformer/default_http_transformer.dart';
 import 'http_exception.dart';
 import 'transformer/http_transformer.dart';
 
+/// HTTP status >=200 & <300
 T? handleResponse<T>(Response? response,
     {HttpTransformer? httpTransformer, Success<T>? success, Fail? fail}) {
   httpTransformer ??= DefaultHttpTransformer.getInstance();
 
-  // 返回值异常
-  if (response == null) {
+  if (response == null || !_isRequestSuccess(response.statusCode)) {
     return _handleError(UnknownException(), fail: fail);
-  } else if (_isRequestSuccess(response.statusCode)) {
-    // 接口调用成功
-    return httpTransformer.transform(response, success: success, fail: fail);
   } else {
-    // 不太可能
-    return _handleError(UnknownException(), fail: fail);
+    return httpTransformer.transform(response, success: success, fail: fail);
   }
 }
 
+// HTTP status <200 & >=300
 handleException(Exception exception, {Fail? fail}) {
   var parseException = _transformException(exception);
   return _handleError(parseException, fail: fail);
@@ -54,27 +51,26 @@ HttpException _transformException(Exception error) {
       case DioErrorType.response: //wrong incorrect HTTP status
         try {
           int? statusCode = error.response?.statusCode;
-          // int? errCode = error.response?.data; // 需要处理数据
+          // int? errCode = error.response?.data; // 可能有业务异常需要处理
           switch (statusCode) {
             case 400:
-              return BadRequestException(message: "请求语法错误", code: statusCode);
+              return RequestException(message: "请求语法错误", code: statusCode);
             case 401:
               return UnauthorisedException(message: "没有权限", code: statusCode);
             case 403:
-              return BadRequestException(message: "服务器拒绝执行", code: statusCode);
+              return RequestException(message: "服务器拒绝执行", code: statusCode);
             case 404:
-              return BadRequestException(message: "无法连接服务器", code: statusCode);
+              return RequestException(message: "无法连接服务器", code: statusCode);
             case 405:
-              return BadRequestException(message: "请求方法被禁止", code: statusCode);
+              return RequestException(message: "请求方法被禁止", code: statusCode);
             case 500:
-              return BadServiceException(message: "服务器内部错误", code: statusCode);
+              return ServiceException(message: "服务器内部错误", code: statusCode);
             case 502:
-              return BadServiceException(message: "无效的请求", code: statusCode);
+              return ServiceException(message: "无效的请求", code: statusCode);
             case 503:
-              return BadServiceException(message: "服务器挂了", code: statusCode);
+              return ServiceException(message: "服务器挂了", code: statusCode);
             case 505:
-              return UnauthorisedException(
-                  message: "不支持HTTP协议请求", code: statusCode);
+              return ServiceException(message: "不支持HTTP协议请求", code: statusCode);
             default:
               return UnknownException(error.message);
           }

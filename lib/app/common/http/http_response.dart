@@ -1,5 +1,6 @@
 import 'http_exception.dart';
 
+/// 返回数据封装
 class HttpResponse<T> {
   late bool ok = false;
   T? data;
@@ -10,7 +11,7 @@ class HttpResponse<T> {
   }
 
   HttpResponse.fail({String? errorMsg, int? errorCode}) {
-    exception = BadRequestException(message: errorMsg, code: errorCode);
+    exception = RequestException(message: errorMsg, code: errorCode);
     ok = false;
   }
 

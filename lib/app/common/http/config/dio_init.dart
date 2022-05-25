@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 
 import 'dio_config.dart';
 
-/// Dio配置类
 class DioInit with DioMixin implements Dio {
   DioInit({BaseOptions? options, DioConfig? dioConfig}) {
     options ??= BaseOptions(
@@ -14,10 +13,11 @@ class DioInit with DioMixin implements Dio {
       connectTimeout: dioConfig?.connectTimeout,
       sendTimeout: dioConfig?.sendTimeout,
       receiveTimeout: dioConfig?.receiveTimeout,
-    )..headers = dioConfig?.headers;
+      headers: dioConfig?.headers,
+    );
     this.options = options;
 
-    // Dio Cache Interceptor
+    // Cache Interceptor
     final cacheOptions = CacheOptions(
       store: MemCacheStore(),
       hitCacheOnErrorExcept: [401, 403],
@@ -25,23 +25,23 @@ class DioInit with DioMixin implements Dio {
     );
     interceptors.add(DioCacheInterceptor(options: cacheOptions));
 
-    // debug Interceptor
+    // Log Interceptor
     if (kDebugMode) {
       interceptors.add(LogInterceptor(
           responseBody: true,
           error: true,
-          requestHeader: false,
+          requestHeader: true,
           responseHeader: false,
           request: false,
           requestBody: true));
     }
 
-    // other Interceptor
+    // Custom Interceptor
     if (dioConfig?.interceptors?.isNotEmpty ?? false) {
       interceptors.addAll(dioConfig!.interceptors!);
     }
 
-    // Cookie管理
+    // Cookie Interceptor
     // if (dioConfig?.cookiesPath?.isNotEmpty ?? false) {
     //   interceptors.add(CookieManager(
     //       PersistCookieJar(storage: FileStorage(dioConfig!.cookiesPath))));
@@ -53,7 +53,7 @@ class DioInit with DioMixin implements Dio {
       (httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
           (client) {
         client.findProxy = (uri) {
-          // proxy all request to localhost:8888
+          // proxy all request to proxy, for example: localhost:8888
           return "PROXY $proxy";
         };
         return null;

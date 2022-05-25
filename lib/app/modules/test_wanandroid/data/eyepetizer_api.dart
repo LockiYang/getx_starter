@@ -1,16 +1,16 @@
 import 'package:get/get.dart';
 
 import '../../../common/http/config/dio_config.dart';
-import '../../../common/http/http_client.dart';
+import '../../../common/http/http_util.dart';
 import '../common/http/eyepetizer_http_transformer.dart';
 import 'feed.dart';
 
 class EyepetizerApi extends GetxService {
-  late HttpClient client;
+  late HttpUtil client;
 
   Future<EyepetizerApi> init() async {
     DioConfig config = DioConfig(baseUrl: 'http://baobab.kaiyanapp.com/api/');
-    client = HttpClient(dioConfig: config);
+    client = HttpUtil(dioConfig: config);
     return this;
   }
 

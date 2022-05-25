@@ -1,18 +1,18 @@
 import 'package:get/get.dart';
 
 import '../../../common/http/config/dio_config.dart';
-import '../../../common/http/http_client.dart';
+import '../../../common/http/http_util.dart';
 import '../../../common/widgets/banner/banner_model.dart';
 import 'project.dart';
 
 typedef SuccessPaging<T> = Function(T data, int total);
 
 class WanAndroidApi extends GetxService {
-  late HttpClient client;
+  late HttpUtil client;
 
   Future<WanAndroidApi> init() async {
     DioConfig config = DioConfig(baseUrl: 'https://www.wanandroid.com/');
-    client = HttpClient(dioConfig: config);
+    client = HttpUtil(dioConfig: config);
     return this;
   }
 
@@ -51,8 +51,7 @@ class WanAndroidApi extends GetxService {
 
   /// 我的收藏列表
   Future<ProjectPage> getMyCollet(int page, {Fail? fail}) async {
-    var uri =
-        'lg/collect/list/page/json'.replaceFirst(RegExp('page'), '$page');
+    var uri = 'lg/collect/list/page/json'.replaceFirst(RegExp('page'), '$page');
     dynamic result = await client.get(uri, fail: (exception) {
       if (fail != null) fail(exception);
     });

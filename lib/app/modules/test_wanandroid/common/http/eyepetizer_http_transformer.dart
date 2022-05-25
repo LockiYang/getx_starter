@@ -1,20 +1,20 @@
 import 'package:dio/dio.dart';
 
-import '../../../../common/http/http_client.dart';
+import '../../../../common/http/http_util.dart';
 import '../../../../common/http/http_exception.dart';
 import '../../../../common/http/transformer/http_transformer.dart';
 
 class EyepetizerHttpTransformer extends HttpTransformer {
   @override
   T? transform<T>(Response response, {Success<T>? success, Fail? fail}) {
-    if (response.data != null) {
+    if (response.data != null && response.data.toString().isNotEmpty) {
       T data = response.data;
       if (success != null) {
         success.call(data);
       }
       return data;
     } else {
-      HttpException exception =UnknownException();
+      HttpException exception = ServiceException(message: '未返回数据');
       if (fail != null) {
         fail.call(exception);
         return null;

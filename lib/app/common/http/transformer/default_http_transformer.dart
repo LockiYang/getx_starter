@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../http_client.dart';
+import '../http_util.dart';
 import '../http_exception.dart';
 import 'http_transformer.dart';
 
@@ -16,7 +16,7 @@ class DefaultHttpTransformer extends HttpTransformer {
       return data;
     } else {
       //后台errorCode不为0，返回了异常，获取业务异常代码封装
-      HttpException exception = BadServiceException(
+      HttpException exception = BussinessException(
           code: response.data["errorCode"], message: response.data["errorMsg"]);
       if (fail != null) {
         fail.call(exception);

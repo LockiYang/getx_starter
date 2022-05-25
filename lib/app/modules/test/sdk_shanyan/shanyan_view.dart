@@ -9,10 +9,10 @@ class ShanyanView extends GetView<ShanyanController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ShanyanView'),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   title: Text('ShanyanView'),
+      //   centerTitle: true,
+      // ),
       body: Center(
         widthFactor: 2,
         child: Column(
