@@ -6,9 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_test/app/common/utils/ui_util.dart';
 import 'package:getx_test/app/modules/test_wanandroid/data/wan_android_api.dart';
-import 'package:getx_test/app/modules/app_job/data/repositorys/job_api.dart';
-import 'package:getx_test/app/modules/app_job/services/config_service.dart';
-import 'package:getx_test/app/modules/app_job/services/user_service.dart';
 import 'package:getx_test/app/modules/test_wanandroid/data/eyepetizer_api.dart';
 
 import 'app/common/services/cache_service.dart';
@@ -32,9 +29,6 @@ void appInit() async {
   await Get.putAsync<CacheService>(() => CacheService().init());
   await Get.putAsync<WanAndroidApi>(() => WanAndroidApi().init());
   await Get.putAsync<EyepetizerApi>(() => EyepetizerApi().init());
-  Get.lazyPut<UserService>(() => UserService());
-  await Get.putAsync<JobApi>(() => JobApi().init());
-  await Get.putAsync<ConfigService>(() => ConfigService().init());
 
   Get.lazyPut<NewsConfigService>(() => NewsConfigService());
   FlutterNativeSplash.remove();
