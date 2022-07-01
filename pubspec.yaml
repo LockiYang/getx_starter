@@ -24,7 +24,7 @@ dependencies:
   wakelock: ^0.6.1+2
   fijkplayer: ^0.10.1
   # warning on 3.0.0
-  card_swiper: ^2.0.3
+  card_swiper: ^2.0.4
 
   get: ^4.6.1
   intl: ^0.17.0
@@ -38,8 +38,8 @@ dependencies:
   dio_cache_interceptor: ^3.2.6
   json_annotation: ^4.5.0
 
-  umeng_common_sdk: ^1.2.4
-  fluwx_no_pay: ^3.9.0
+  # umeng_common_sdk: ^1.2.4
+  # fluwx_no_pay: ^3.9.0
   shanyan:
     git:
       url: https://github.com/253CL/CLShanYan_Flutter.git

@@ -51,27 +51,11 @@ class TestView extends GetView<TestController> {
                     onTap: () => Get.toNamed(Routes.TEST_WANANDROID),
                   ),
                   BrnActionCardTitle(
-                    title: 'Job APP',
-                    onTap: () => Get.offAllNamed(Routes.JOB_SPLASH),
-                  ),
-                  BrnActionCardTitle(
-                    title: '登录',
-                    onTap: () => Get.toNamed(Routes.WELCOME),
-                  ),
-                  BrnActionCardTitle(
                     title: '小组件',
                     onTap: () => Get.toNamed(Routes.LITTLE_WIDGETS),
                   ),
                   BrnActionCardTitle(
                     title: '闪验SDK',
-                    onTap: () => Get.toNamed(Routes.SHANYAN),
-                  ),
-                  BrnActionCardTitle(
-                    title: '微信SDK',
-                    onTap: () => Get.toNamed(Routes.SDK_WECHAT),
-                  ),
-                  BrnActionCardTitle(
-                    title: '友盟SDK',
                     onTap: () => Get.toNamed(Routes.SHANYAN),
                   ),
                   BrnActionCardTitle(
