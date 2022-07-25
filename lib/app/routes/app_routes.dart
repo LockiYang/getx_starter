@@ -64,6 +64,8 @@ abstract class Routes {
       _Paths.APP_JOB + _Paths.JOB_MY + _Paths.JOB_ABOUT_US;
   static const JOB_SYSTEM_MESSAGE =
       _Paths.APP_JOB + _Paths.JOB_MESSAGE + _Paths.JOB_SYSTEM_MESSAGE;
+  static const SEARCH = _Paths.TEST + _Paths.SEARCH;
+  static const CITY = _Paths.TEST + _Paths.CITY;
 }
 
 abstract class _Paths {
@@ -119,4 +121,6 @@ abstract class _Paths {
   static const JOB_BROWSER_MODE = '/job-browser-mode';
   static const JOB_ABOUT_US = '/job-about-us';
   static const JOB_SYSTEM_MESSAGE = '/job-system-message';
+  static const SEARCH = '/search';
+  static const CITY = '/city';
 }

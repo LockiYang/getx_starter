@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 
 import '../modules/test/basic_widgets/basic_widgets_binding.dart';
 import '../modules/test/basic_widgets/basic_widgets_view.dart';
+import '../modules/test/city/city_binding.dart';
+import '../modules/test/city/city_view.dart';
 import '../modules/test/custom_icon/custom_icon_binding.dart';
 import '../modules/test/custom_icon/custom_icon_view.dart';
 import '../modules/test/device_info/device_info_binding.dart';
@@ -16,6 +18,8 @@ import '../modules/test/little_widgets/little_widgets_binding.dart';
 import '../modules/test/little_widgets/little_widgets_view.dart';
 import '../modules/test/sdk_shanyan/shanyan_binding.dart';
 import '../modules/test/sdk_shanyan/shanyan_view.dart';
+import '../modules/test/search/search_binding.dart';
+import '../modules/test/search/search_view.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_binding.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_view.dart';
 import '../modules/test/test_binding.dart';
@@ -109,6 +113,16 @@ class AppPages {
           name: _Paths.DEVICE_INFO,
           page: () => DeviceInfoView(),
           binding: DeviceInfoBinding(),
+        ),
+        GetPage(
+          name: _Paths.SEARCH,
+          page: () => SearchView(),
+          binding: SearchBinding(),
+        ),
+        GetPage(
+          name: _Paths.CITY,
+          page: () => CityView(),
+          binding: CityBinding(),
         ),
       ],
     ),

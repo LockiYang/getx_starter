@@ -62,6 +62,14 @@ class TestView extends GetView<TestController> {
                     title: 'Device Info',
                     onTap: () => Get.toNamed(Routes.DEVICE_INFO),
                   ),
+                  BrnActionCardTitle(
+                    title: 'CITY',
+                    onTap: () => Get.toNamed(Routes.CITY),
+                  ),
+                  BrnActionCardTitle(
+                    title: 'SEARCH',
+                    onTap: () => Get.toNamed(Routes.SEARCH),
+                  ),
                 ],
               ),
             ),

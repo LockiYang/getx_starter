@@ -7,7 +7,7 @@ environment:
 
 dependencies:
   # warning on 3.0.0
-  bruno: ^2.2.0
+  bruno: ^3.0.0
   flutter_screenutil: ^5.4.0
   fluttertoast: ^8.0.9
   flutter_native_splash: ^2.2.0+1
@@ -23,7 +23,6 @@ dependencies:
   webview_flutter: ^2.8.0
   wakelock: ^0.6.1+2
   fijkplayer: ^0.10.1
-  # warning on 3.0.0
   card_swiper: ^2.0.4
 
   get: ^4.6.1
