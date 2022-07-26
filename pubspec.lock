@@ -828,15 +828,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.27.3"
-  shanyan:
-    dependency: "direct main"
-    description:
-      path: shanyan
-      ref: "v2.3.3.5"
-      resolved-ref: "440e2e3c9f55414861507244f068977596c25a4c"
-      url: "https://github.com/253CL/CLShanYan_Flutter.git"
-    source: git
-    version: "2.3.3"
   shared_preferences:
     dependency: "direct main"
     description:

@@ -1,8 +1,9 @@
-import 'package:bruno/bruno.dart';
 import 'package:get/get.dart';
 
+import 'widget/city_model.dart';
+
 class CityController extends GetxController {
-  List<BrnSelectCityModel> hotCityList = [];
+  List<CityModel> hotCityList = [];
 
   @override
   void onInit() {
@@ -13,12 +14,12 @@ class CityController extends GetxController {
   void onReady() {
     super.onReady();
     hotCityList.addAll([
-      BrnSelectCityModel(name: "北京市"),
-      BrnSelectCityModel(name: "广州市"),
-      BrnSelectCityModel(name: "成都市"),
-      BrnSelectCityModel(name: "深圳市"),
-      BrnSelectCityModel(name: "杭州市"),
-      BrnSelectCityModel(name: "武汉市"),
+      CityModel(name: "北京市"),
+      CityModel(name: "广州市"),
+      CityModel(name: "成都市"),
+      CityModel(name: "深圳市"),
+      CityModel(name: "杭州市"),
+      CityModel(name: "武汉市"),
     ]);
   }
 

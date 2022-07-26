@@ -16,8 +16,6 @@ import '../modules/test/list_view/list_view_binding.dart';
 import '../modules/test/list_view/list_view_view.dart';
 import '../modules/test/little_widgets/little_widgets_binding.dart';
 import '../modules/test/little_widgets/little_widgets_view.dart';
-import '../modules/test/sdk_shanyan/shanyan_binding.dart';
-import '../modules/test/sdk_shanyan/shanyan_view.dart';
 import '../modules/test/search/search_binding.dart';
 import '../modules/test/search/search_view.dart';
 import '../modules/test/sliver_widgets/sliver_widgets_binding.dart';
@@ -98,11 +96,6 @@ class AppPages {
           name: _Paths.SLIVER_WIDGETS,
           page: () => SliverWidgetsView(),
           binding: SliverWidgetsBinding(),
-        ),
-        GetPage(
-          name: _Paths.SHANYAN,
-          page: () => ShanyanView(),
-          binding: ShanyanBinding(),
         ),
         GetPage(
           name: _Paths.LITTLE_WIDGETS,

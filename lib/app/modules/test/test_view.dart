@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-// import '../../common/utils/screen_util.dart';
 import '../../routes/app_pages.dart';
 import 'test_controller.dart';
 
@@ -53,10 +52,6 @@ class TestView extends GetView<TestController> {
                   BrnActionCardTitle(
                     title: '小组件',
                     onTap: () => Get.toNamed(Routes.LITTLE_WIDGETS),
-                  ),
-                  BrnActionCardTitle(
-                    title: '闪验SDK',
-                    onTap: () => Get.toNamed(Routes.SHANYAN),
                   ),
                   BrnActionCardTitle(
                     title: 'Device Info',
