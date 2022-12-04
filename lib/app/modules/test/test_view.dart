@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../routes/app_pages.dart';
 import 'test_controller.dart';
+import 'widgets/picker/multi_picker.dart';
 
 class TestView extends GetView<TestController> {
   @override
@@ -63,12 +64,95 @@ class TestView extends GetView<TestController> {
                   ),
                   BrnActionCardTitle(
                     title: 'SEARCH',
-                    onTap: () => Get.toNamed(Routes.SEARCH),
+                    onTap: () {
+                      MultiDataPicker(
+                        context: context,
+                        title: '来源',
+                        delegate: Brn1RowDelegate(firstSelectedIndex: 1),
+                        confirmClick: (list) {
+                          BrnToast.show(list.toString(), context);
+                        },
+                      ).show();
+                    },
                   ),
                 ],
               ),
             ),
           ),
         ));
+  }
+}
+
+List<Map<String, List>> list = [
+  {'AAA': []},
+  {'BBB': []},
+  {'CCC': []},
+  {'DDD': []}
+];
+
+class Brn1RowDelegate implements MultiDataPickerDelegate {
+  int firstSelectedIndex = 0;
+  int secondSelectedIndex = 0;
+  int thirdSelectedIndex = 0;
+
+  Brn1RowDelegate({this.firstSelectedIndex = 0, this.secondSelectedIndex = 0});
+
+  @override
+  int numberOfComponent() {
+    return 1;
+  }
+
+  @override
+  int numberOfRowsInComponent(int component) {
+    if (0 == component) {
+      return list.length;
+    } else if (1 == component) {
+      Map<String, List> secondMap = list[firstSelectedIndex];
+      return secondMap.values.first.length;
+    } else {
+      Map<String, List> secondMap = list[firstSelectedIndex];
+      Map<String, List> thirdMap = secondMap.values.first[secondSelectedIndex];
+      return thirdMap.values.first.length;
+    }
+  }
+
+  @override
+  String titleForRowInComponent(int component, int index) {
+    if (0 == component) {
+      return list[index].keys.first;
+    } else if (1 == component) {
+      Map<String, List> secondMap = list[firstSelectedIndex];
+      List secondList = secondMap.values.first;
+      return secondList[index].keys.first;
+    } else {
+      Map<String, List> secondMap = list[firstSelectedIndex];
+      Map<String, List> thirdMap = secondMap.values.first[secondSelectedIndex];
+      return thirdMap.values.first[index];
+    }
+  }
+
+  @override
+  double? rowHeightForComponent(int component) {
+    return null;
+  }
+
+  @override
+  selectRowInComponent(int component, int row) {
+    if (0 == component) {
+      firstSelectedIndex = row;
+    } else if (1 == component) {
+      secondSelectedIndex = row;
+    } else {
+      thirdSelectedIndex = row;
+      debugPrint('_thirdSelectedIndex  is selected to $thirdSelectedIndex');
+    }
+  }
+
+  @override
+  int initSelectedRowForComponent(int component) {
+    if (0 == component) {
+      return firstSelectedIndex;
+    }
+    return 0;
   }
 }
